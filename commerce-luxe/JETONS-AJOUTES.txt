@@ -1,6 +1,0 @@
-# Mise a niveau PRENIUM
-# Nouvelle page : signature.html (La signature), reliee dans la navigation de toutes les pages.
-# Ajouts : bandeau defilant / compteurs animes sur l'accueil, animations GSAP + Lenis (degradation douce si CDN indisponible).
-
-# Nouveaux jetons a remplacer (en plus des existants) :
-PIECE_SIGNATURE_DESC = Piece signature - description longue (page signature)
