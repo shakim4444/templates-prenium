@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — LUEUR</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Fraunces:ital,wght@1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="mesh"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+
+<nav>
+  <a class="logo" href="index.html">LUEUR<i>.</i></a>
+  <div class="links">
+    <a href="boutique.html">Boutique</a>
+    <a href="science.html">La science</a>
+    <a href="contact.html" class="active">Contact</a>
+    <a class="cta" href="boutique.html">Commander</a>
+  </div>
+</nav>
+
+<header class="page-hero">
+  <p class="eyebrow">On répond vite ✨</p>
+  <h1>Parle-<span class="shimmer serif-it">nous.</span></h1>
+  <p class="lede">Commandes, conseils peau, revente en boutique ou collaborations — écris-nous, une vraie personne te répond.</p>
+</header>
+
+<div class="contact-grid">
+  <form class="contact" data-fake>
+    <label>Ton nom<input type="text" name="name" required placeholder="Fatou Zongo"></label>
+    <label>Email ou WhatsApp<input type="text" name="reach" required placeholder="toi@exemple.com"></label>
+    <label>Sujet<select name="subject"><option>Commande</option><option>Conseil peau</option><option>Devenir revendeur</option><option>Presse / collab</option></select></label>
+    <label>Message<textarea name="message" rows="5" placeholder="Dis-nous tout…"></textarea></label>
+    <button type="submit">Envoyer →</button>
+  </form>
+  <aside class="contact-aside">
+    <div class="block" data-reveal>
+      <h3>Boutique</h3>
+      <p>Quartier Koulouba<br>Ouagadougou, Burkina Faso<br>Lun–Sam, 9h–19h</p>
+    </div>
+    <div class="block" data-reveal>
+      <h3>Direct</h3>
+      <p><a href="mailto:hello@lueur.bf">hello@lueur.bf</a><br>WhatsApp : +226 00 00 00 00</p>
+    </div>
+    <div class="block" data-reveal>
+      <h3>Suis-nous</h3>
+      <p>Instagram · TikTok · Facebook — @lueur.bf</p>
+    </div>
+  </aside>
+</div>
+
+<footer>
+  <div class="row"><a href="index.html">Accueil</a><a href="boutique.html">Boutique</a><a href="science.html">La science</a><span>© LUEUR 2026</span></div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+<script src="main.js"></script>
+</body>
+</html>

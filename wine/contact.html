@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — DOMAINE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500&family=EB+Garamond:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="index.html">Domaine</a>
+  <div class="links">
+    <a href="vins.html">Les vins</a>
+    <a href="domaine.html">Le domaine</a>
+    <a href="contact.html" class="active">Contact</a>
+  </div>
+</nav>
+
+<header class="page-hero">
+  <p class="small-caps">Contact & réservations</p>
+  <h1>À votre <em>santé.</em></h1>
+  <p class="lede">Réservez une dégustation, commandez un coffret ou demandez conseil — nous répondons sous 24 heures.</p>
+</header>
+
+<div class="contact-grid">
+  <form class="contact" data-fake>
+    <label><span class="small-caps">Nom</span><input type="text" name="name" required placeholder="Salif Koné"></label>
+    <label><span class="small-caps">Email ou téléphone</span><input type="text" name="reach" required placeholder="vous@exemple.com"></label>
+    <label><span class="small-caps">Objet</span><input type="text" name="subject" placeholder="Dégustation, coffret, conseil…"></label>
+    <label><span class="small-caps">Message</span><textarea name="message" rows="5" placeholder="Date souhaitée, nombre de personnes, budget…"></textarea></label>
+    <button type="submit">Envoyer</button>
+  </form>
+  <aside class="contact-aside">
+    <div class="block" data-reveal>
+      <h3>La cave</h3>
+      <p>Avenue de la Liberté<br>Ouagadougou, Burkina Faso<br>Mar–Sam, 10h–20h</p>
+    </div>
+    <div class="block" data-reveal>
+      <h3>Direct</h3>
+      <p><a href="mailto:cave@domaine.wine">cave@domaine.wine</a><br>WhatsApp : +226 00 00 00 00</p>
+    </div>
+    <div class="block" data-reveal>
+      <h3>Dégustations</h3>
+      <p>Tous les jeudis, 19h — sur réservation.<br>Soirées privées sur demande.</p>
+    </div>
+  </aside>
+</div>
+
+<footer>
+  <div class="row"><a href="index.html">Accueil</a><a href="vins.html">Les vins</a><a href="domaine.html">Le domaine</a><span>© Domaine 2026</span></div>
+  <p class="mention">L'abus d'alcool est dangereux pour la santé. À consommer avec modération.</p>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+<script src="main.js"></script>
+</body>
+</html>

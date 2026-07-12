@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — MAISON</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="index.html">MAISON</a>
+  <div class="links">
+    <a href="collection.html">Collection</a>
+    <a href="atelier.html">Atelier</a>
+    <a href="contact.html" class="active">Contact</a>
+  </div>
+</nav>
+
+<header class="page-hero">
+  <p class="eyebrow">Contact</p>
+  <h1>Écrivez-<em>nous.</em></h1>
+  <p class="lede">Commandes, essayages sur rendez-vous, presse ou collaborations — nous répondons sous 24 heures ouvrées.</p>
+</header>
+
+<div class="contact-grid">
+  <form class="contact" data-fake>
+    <label><span class="eyebrow">Nom</span><input type="text" name="name" required placeholder="Aïcha Sanogo"></label>
+    <label><span class="eyebrow">Email ou WhatsApp</span><input type="text" name="reach" required placeholder="vous@exemple.com"></label>
+    <label><span class="eyebrow">Sujet</span><input type="text" name="subject" placeholder="Commande, essayage, presse…"></label>
+    <label><span class="eyebrow">Message</span><textarea name="message" rows="5" placeholder="Pièce souhaitée, taille, ville…"></textarea></label>
+    <button type="submit">Envoyer</button>
+  </form>
+  <aside class="contact-aside">
+    <div class="block" data-reveal>
+      <h3>Boutique-atelier</h3>
+      <p>Quartier Zone du Bois<br>Ouagadougou, Burkina Faso<br>Mar–Sam, 10h–19h</p>
+    </div>
+    <div class="block" data-reveal>
+      <h3>Direct</h3>
+      <p><a href="mailto:bonjour@maison.style">bonjour@maison.style</a><br>WhatsApp : +226 00 00 00 00</p>
+    </div>
+    <div class="block" data-reveal>
+      <h3>Presse</h3>
+      <p>presse@maison.style</p>
+    </div>
+  </aside>
+</div>
+
+<footer>
+  <div class="row">
+    <span>MAISON — 2026</span>
+    <span><a href="index.html">Accueil</a> · <a href="collection.html">Collection</a> · <a href="atelier.html">Atelier</a></span>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
