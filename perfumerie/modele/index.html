@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<!--
+  TEMPLATE PARFUMERIE "Extrait - vapeur d'iris" - Atelier Web
+  Adaptation a un prospect :
+  1. Copier ce dossier modele/ vers <nom-du-prospect>/
+  2. Rechercher-remplacer chaque jeton {{...}} dans TOUS les fichiers .html
+  3. Remplacer les URLs images.unsplash.com par les photos du prospect
+  4. Verifier : grep -r "{{" . ne doit plus rien retourner
+-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{NOM_ENTREPRISE}} - Parfumerie de luxe à {{VILLE}} | {{SLOGAN}}</title>
+<meta name="description" content="{{NOM_ENTREPRISE}}, maison de parfum à {{VILLE}}, {{PAYS}}. {{DESCRIPTION_COURTE}} Conseil olfactif privé, collection d'exception, rendez-vous par WhatsApp.">
+<meta name="theme-color" content="#EFEDF4">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23221D2F'/%3E%3Crect x='26' y='9' width='12' height='9' rx='2' fill='%23C9BEE4'/%3E%3Crect x='19' y='20' width='26' height='34' rx='7' fill='none' stroke='%23C9BEE4' stroke-width='2'/%3E%3Cpath d='M19 38h26v9a7 7 0 0 1-7 7H26a7 7 0 0 1-7-7z' fill='%234E3D8F'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;500&family=Figtree:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./styles.css">
+<script>document.documentElement.classList.add('js')</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js" defer></script>
+<script src="./script.js" defer></script>
+</head>
+<body>
+
+<a class="skip-link" href="#contenu">Aller au contenu</a>
+
+<header class="site-header">
+  <div class="wrap header-in">
+    <a class="logo" href="./index.html">{{NOM_ENTREPRISE}}<em>.</em></a>
+    <nav class="nav-desktop" aria-label="Navigation principale">
+      <a href="./index.html" aria-current="page">Accueil</a>
+      <a href="./collection.html">La collection</a>
+      <a href="./maison.html">La maison</a>
+      <a href="./services.html">Services</a>
+      <a href="./parfum.html">Le parfum</a>
+      <a href="./contact.html">Contact</a>
+    </nav>
+    <div class="header-droite">
+      <a class="btn btn--iris header-cta" href="./contact.html#rendez-vous">Rendez-vous olfactif</a>
+      <button class="burger" type="button" aria-expanded="false" aria-controls="nav-mobile" aria-label="Ouvrir le menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<nav class="nav-panel" id="nav-mobile" aria-label="Navigation mobile">
+  <a href="./index.html" aria-current="page">Accueil</a>
+  <a href="./collection.html">La collection</a>
+  <a href="./maison.html">La maison</a>
+  <a href="./services.html">Services</a>
+  <a href="./parfum.html">Le parfum</a>
+      <a href="./contact.html">Contact</a>
+  <a class="nav-tel" href="tel:{{TELEPHONE_LIEN}}">Rendez-vous : {{TELEPHONE}}</a>
+</nav>
+
+<main id="contenu">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="vapeur-fond" aria-hidden="true"><span></span><span></span><span></span></div>
+    <div class="wrap hero-in">
+      <div>
+        <p class="chip" data-hero="2">Maison de parfum - {{VILLE}}</p>
+        <h1 data-hero="3">{{SLOGAN}}</h1>
+        <p class="hero-lede" data-hero="4">{{DESCRIPTION_COURTE}}</p>
+        <div class="hero-ctas" data-hero="5">
+          <a class="btn btn--iris" href="./collection.html">Découvrir la collection <span class="fleche" aria-hidden="true">&rarr;</span></a>
+          <a class="btn btn--ligne" href="./contact.html#rendez-vous">Rendez-vous olfactif</a>
+        </div>
+        <p class="hero-note" data-hero="5">Maison fondée en {{ANNEE_CREATION}} - Ouvert {{HORAIRES_SEMAINE}}, <strong>fermé le {{JOUR_FERMETURE}}</strong></p>
+      </div>
+      <div class="hero-figure" data-hero="4">
+        <div class="cadre-petale">
+          <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=1000&q=80" alt="Flacon de la collection {{NOM_ENTREPRISE}}, parfumerie de luxe à {{VILLE}}" fetchpriority="high" width="1000" height="1222">
+        </div>
+        <div class="hero-etiquette">
+          <p class="et-nom">{{PARFUM_SIGNATURE_NOM}}</p>
+          <p class="et-detail">Extrait de parfum - {{PARFUM_SIGNATURE_PRIX}} {{DEVISE}}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ BANDE DE FAITS ============ -->
+  <div class="bande-faits" aria-label="Nos engagements">
+    <div class="wrap">
+      <ul>
+        <li>Maison indépendante depuis {{ANNEE_CREATION}}</li>
+        <li>Conseil olfactif privé</li>
+        <li>Gravure et coffrets sur-mesure</li>
+        <li>Essai au comptoir, sans engagement</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ============ SIGNATURE + PYRAMIDE OLFACTIVE ============ -->
+  <section class="section section--voile" aria-labelledby="titre-signature">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow">Le parfum signature</p>
+        <h2 id="titre-signature">{{PARFUM_SIGNATURE_NOM}}, lu comme une <em>pyramide olfactive</em></h2>
+        <p>Un parfum se découvre en trois temps. Ouvrez chaque strate pour lire la composition, de l'envolée des premières minutes au sillage qui reste sur la peau.</p>
+      </div>
+      <div class="signature-grille">
+        <div class="signature-fiche" data-reveal>
+          <h3>{{PARFUM_SIGNATURE_NOM}}</h3>
+          <p>{{PARFUM_SIGNATURE_DESC}}</p>
+          <p class="prix-geant">{{PARFUM_SIGNATURE_PRIX}} {{DEVISE}}</p>
+          <a class="btn btn--iris" href="./contact.html#rendez-vous">Le sentir en boutique <span class="fleche" aria-hidden="true">&rarr;</span></a>
+        </div>
+        <div>
+          <div class="pyramide" data-reveal data-reveal-delay="120">
+            <div class="strate strate--tete">
+              <button class="strate-btn" id="btn-tete" type="button" aria-expanded="true" aria-controls="corps-tete">
+                <span class="st-nom">Notes de tête</span>
+                <span class="st-duree">Le premier quart d'heure</span>
+                <span class="st-signe" aria-hidden="true">+</span>
+              </button>
+              <div class="strate-corps" id="corps-tete" role="region" aria-labelledby="btn-tete">
+                <div class="strate-inner">
+                  <div class="strate-detail">
+                    <img src="https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?auto=format&fit=crop&w=300&q=80" alt="Matières des notes de tête : {{NOTE_TETE}}" loading="lazy" width="300" height="300">
+                    <div>
+                      <p class="st-notes">{{NOTE_TETE}}</p>
+                      <p class="st-role">L'ouverture : vive, volatile, c'est la première impression.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="strate strate--coeur">
+              <button class="strate-btn" id="btn-coeur" type="button" aria-expanded="false" aria-controls="corps-coeur">
+                <span class="st-nom">Notes de coeur</span>
+                <span class="st-duree">2 à 4 heures</span>
+                <span class="st-signe" aria-hidden="true">+</span>
+              </button>
+              <div class="strate-corps" id="corps-coeur" role="region" aria-labelledby="btn-coeur">
+                <div class="strate-inner">
+                  <div class="strate-detail">
+                    <img src="https://images.unsplash.com/photo-1532336414038-cf19250c5757?auto=format&fit=crop&w=300&q=80" alt="Matières des notes de coeur : {{NOTE_COEUR}}" loading="lazy" width="300" height="300">
+                    <div>
+                      <p class="st-notes">{{NOTE_COEUR}}</p>
+                      <p class="st-role">Le caractère : la personnalité du parfum se révèle.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="strate strate--fond">
+              <button class="strate-btn" id="btn-fond" type="button" aria-expanded="false" aria-controls="corps-fond">
+                <span class="st-nom">Notes de fond</span>
+                <span class="st-duree">Toute la journée</span>
+                <span class="st-signe" aria-hidden="true">+</span>
+              </button>
+              <div class="strate-corps" id="corps-fond" role="region" aria-labelledby="btn-fond">
+                <div class="strate-inner">
+                  <div class="strate-detail">
+                    <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=300&q=80" alt="Matières des notes de fond : {{NOTE_FOND}}" loading="lazy" width="300" height="300">
+                    <div>
+                      <p class="st-notes">{{NOTE_FOND}}</p>
+                      <p class="st-role">Le sillage : ce qui reste sur la peau et dans les mémoires.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p class="pyramide-note">Touchez une strate pour la déplier - la pyramide se lit de haut en bas, comme le parfum s'évapore.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ COLLECTION (teaser) ============ -->
+  <section class="section" aria-labelledby="titre-collection">
+    <div class="wrap">
+      <div class="section-head section-head--split" data-reveal>
+        <div>
+          <p class="eyebrow">La collection</p>
+          <h2 id="titre-collection">Six extraits, six manières de se souvenir</h2>
+        </div>
+        <a class="btn btn--ligne" href="./collection.html">Toute la collection <span class="fleche" aria-hidden="true">&rarr;</span></a>
+      </div>
+      <div class="parfums-grille">
+        <article class="parfum-carte" data-reveal>
+          <figure>
+            <img src="https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&w=700&q=80" alt="{{PARFUM_1_NOM}}, parfum {{PARFUM_1_FAMILLE}} - {{NOM_ENTREPRISE}}" loading="lazy" width="700" height="805">
+            <span class="famille-chip">{{PARFUM_1_FAMILLE}}</span>
+          </figure>
+          <div class="parfum-corps">
+            <h3>{{PARFUM_1_NOM}}</h3>
+            <p class="p-desc">{{PARFUM_1_DESC}}</p>
+            <p class="prix">{{PARFUM_1_PRIX}} {{DEVISE}}</p>
+          </div>
+        </article>
+        <article class="parfum-carte" data-reveal data-reveal-delay="120">
+          <figure>
+            <img src="https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?auto=format&fit=crop&w=700&q=80" alt="{{PARFUM_2_NOM}}, parfum {{PARFUM_2_FAMILLE}} - {{NOM_ENTREPRISE}}" loading="lazy" width="700" height="805">
+            <span class="famille-chip">{{PARFUM_2_FAMILLE}}</span>
+          </figure>
+          <div class="parfum-corps">
+            <h3>{{PARFUM_2_NOM}}</h3>
+            <p class="p-desc">{{PARFUM_2_DESC}}</p>
+            <p class="prix">{{PARFUM_2_PRIX}} {{DEVISE}}</p>
+          </div>
+        </article>
+        <article class="parfum-carte" data-reveal data-reveal-delay="240">
+          <figure>
+            <img src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad?auto=format&fit=crop&w=700&q=80" alt="{{PARFUM_3_NOM}}, parfum {{PARFUM_3_FAMILLE}} - {{NOM_ENTREPRISE}}" loading="lazy" width="700" height="805">
+            <span class="famille-chip">{{PARFUM_3_FAMILLE}}</span>
+          </figure>
+          <div class="parfum-corps">
+            <h3>{{PARFUM_3_NOM}}</h3>
+            <p class="p-desc">{{PARFUM_3_DESC}}</p>
+            <p class="prix">{{PARFUM_3_PRIX}} {{DEVISE}}</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LA MAISON (teaser) ============ -->
+  <section class="section section--voile" aria-labelledby="titre-maison">
+    <div class="wrap duo">
+      <div class="duo-media" data-reveal="gauche">
+        <div class="cadre-petale">
+          <img src="https://images.unsplash.com/photo-1499002238440-d264edd596ec?auto=format&fit=crop&w=900&q=80" alt="Les champs et les matières premières de {{NOM_ENTREPRISE}}" loading="lazy" width="900" height="1080">
+        </div>
+      </div>
+      <div data-reveal="droite">
+        <p class="eyebrow">La maison</p>
+        <h2 id="titre-maison">Une maison de parfum indépendante, depuis {{ANNEE_CREATION}}</h2>
+        <p>Chez {{NOM_ENTREPRISE}}, chaque extrait naît d'une matière première choisie à la source et d'un temps de maturation que nous ne raccourcissons jamais. Le parfum ne s'achète pas en vitrine : il se rencontre, sur la peau.</p>
+        <blockquote class="citation">
+          <p>&laquo; {{FONDATEUR_CITATION}} &raquo;</p>
+          <footer>{{FONDATEUR_NOM}}, fondateur de la maison</footer>
+        </blockquote>
+        <div class="hero-ctas">
+          <a class="btn btn--ligne" href="./maison.html">Notre histoire <span class="fleche" aria-hidden="true">&rarr;</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SERVICES (teaser) ============ -->
+  <section class="section" aria-labelledby="titre-services">
+    <div class="wrap">
+      <div class="section-head section-head--split" data-reveal>
+        <div>
+          <p class="eyebrow">Nos services</p>
+          <h2 id="titre-services">Le parfum, et tout ce qui l'entoure</h2>
+        </div>
+        <a class="btn btn--ligne" href="./services.html">Tous les services <span class="fleche" aria-hidden="true">&rarr;</span></a>
+      </div>
+      <div class="services-liste" data-reveal>
+        <div class="service-rang">
+          <span class="service-num">01</span>
+          <h3>{{SERVICE_1_NOM}}</h3>
+          <p>{{SERVICE_1_DESC}}</p>
+        </div>
+        <div class="service-rang">
+          <span class="service-num">02</span>
+          <h3>{{SERVICE_2_NOM}}</h3>
+          <p>{{SERVICE_2_DESC}}</p>
+        </div>
+        <div class="service-rang">
+          <span class="service-num">03</span>
+          <h3>{{SERVICE_3_NOM}}</h3>
+          <p>{{SERVICE_3_DESC}}</p>
+        </div>
+        <div class="service-rang">
+          <span class="service-num">04</span>
+          <h3>{{SERVICE_4_NOM}}</h3>
+          <p>{{SERVICE_4_DESC}}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TEMOIGNAGES ============ -->
+  <section class="section section--voile" aria-labelledby="titre-temoignages">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow">Ils portent nos parfums</p>
+        <h2 id="titre-temoignages">Le sillage qu'on nous décrit</h2>
+      </div>
+      <div class="temoins">
+        <figure class="temoin" data-reveal>
+          <span class="guillemet" aria-hidden="true">&ldquo;</span>
+          <blockquote><p>{{TEMOIN_1_TEXTE}}</p></blockquote>
+          <p class="etoiles" aria-label="Note : 5 sur 5">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+          <figcaption>{{TEMOIN_1_NOM}}</figcaption>
+        </figure>
+        <figure class="temoin" data-reveal data-reveal-delay="120">
+          <span class="guillemet" aria-hidden="true">&ldquo;</span>
+          <blockquote><p>{{TEMOIN_2_TEXTE}}</p></blockquote>
+          <p class="etoiles" aria-label="Note : 5 sur 5">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+          <figcaption>{{TEMOIN_2_NOM}}</figcaption>
+        </figure>
+        <figure class="temoin" data-reveal data-reveal-delay="240">
+          <span class="guillemet" aria-hidden="true">&ldquo;</span>
+          <blockquote><p>{{TEMOIN_3_TEXTE}}</p></blockquote>
+          <p class="etoiles" aria-label="Note : 5 sur 5">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+          <figcaption>{{TEMOIN_3_NOM}}</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CTA FINAL ============ -->
+  <!-- ============ BANDEAU DEFILANT (PRENIUM) ============ -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-inner"><span>Extraits de parfum</span><span class="m-sep">&bull;</span><span>Conseil olfactif privé</span><span class="m-sep">&bull;</span><span>{{NOM_ENTREPRISE}}</span><span class="m-sep">&bull;</span><span>{{VILLE}}</span><span class="m-sep">&bull;</span><span>Extraits de parfum</span><span class="m-sep">&bull;</span><span>Conseil olfactif privé</span><span class="m-sep">&bull;</span><span>{{NOM_ENTREPRISE}}</span><span class="m-sep">&bull;</span><span>{{VILLE}}</span><span class="m-sep">&bull;</span></div>
+  </div>
+
+  <!-- ============ CHIFFRES (PRENIUM) ============ -->
+  <section class="section chiffres" aria-label="La maison en chiffres">
+    <div class="wrap chiffres-grille">
+      <div class="chiffre" data-reveal><span class="chiffre-num"><span data-count="6">6</span></span><p>extraits à la collection</p></div>
+      <div class="chiffre" data-reveal data-reveal-delay="90"><span class="chiffre-num"><span data-count="3">3</span></span><p>notes par pyramide olfactive</p></div>
+      <div class="chiffre" data-reveal data-reveal-delay="180"><span class="chiffre-num"><span data-count="45">45</span></span><p>minutes de rendez-vous olfactif</p></div>
+      <div class="chiffre" data-reveal data-reveal-delay="270"><span class="chiffre-num"><span data-count="98">98</span>%</span><p>de sillages adoptés</p></div>
+    </div>
+  </section>
+
+  <section class="cta-band" aria-labelledby="titre-cta">
+    <div class="wrap">
+      <div>
+        <h2 id="titre-cta">Votre parfum vous attend <em>sur la peau</em>, pas en vitrine</h2>
+        <p>Passez au comptoir ou écrivez-nous : nous préparons trois essais adaptés à ce que vous cherchez.</p>
+      </div>
+      <a class="btn btn--vapeur" href="https://wa.me/{{WHATSAPP}}?text=Bonjour%2C%20je%20souhaite%20prendre%20rendez-vous%20a%20la%20parfumerie." target="_blank" rel="noopener">Écrire sur WhatsApp <span class="fleche" aria-hidden="true">&rarr;</span></a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p class="footer-marque" aria-hidden="true">{{NOM_ENTREPRISE}}</p>
+    <div class="footer-grille">
+      <div>
+        <h3>La maison</h3>
+        <p class="footer-desc">Maison de parfum à {{VILLE}}, {{PAYS}}. {{SLOGAN}}.</p>
+      </div>
+      <div>
+        <h3>Navigation</h3>
+        <ul>
+          <li><a href="./collection.html">La collection</a></li>
+          <li><a href="./maison.html">La maison</a></li>
+          <li><a href="./services.html">Services</a></li>
+          <li><a href="./parfum.html">Le parfum</a></li>
+          <li><a href="./contact.html">Contact et rendez-vous</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Contact</h3>
+        <ul>
+          <li><a href="tel:{{TELEPHONE_LIEN}}">{{TELEPHONE}}</a></li>
+          <li><a href="mailto:{{EMAIL}}">{{EMAIL}}</a></li>
+          <li><a href="{{FACEBOOK_URL}}" target="_blank" rel="noopener">Facebook</a></li>
+          <li><a href="{{INSTAGRAM_URL}}" target="_blank" rel="noopener">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bas">
+      <p>&copy; {{NOM_ENTREPRISE}} - {{VILLE}}, {{PAYS}}. Tous droits réservés.</p>
+      <p>Site réalisé par Atelier Web</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

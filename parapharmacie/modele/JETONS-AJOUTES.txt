@@ -1,0 +1,11 @@
+# Mise a niveau PRENIUM
+# Nouvelle page : equipe.html (L'équipe), reliee dans la navigation de toutes les pages.
+# Ajouts : bandeau defilant / compteurs animes sur l'accueil, animations GSAP + Lenis (degradation douce si CDN indisponible).
+
+# Nouveaux jetons a remplacer (en plus des existants) :
+CONSEILLERE_1_NOM = Conseillere 1 - nom
+CONSEILLERE_1_ROLE = Conseillere 1 - role (ex. Fondatrice, conseil dermo)
+CONSEILLERE_2_NOM = Conseillere 2 - nom
+CONSEILLERE_2_ROLE = Conseillere 2 - role
+CONSEILLERE_3_NOM = Conseillere 3 - nom
+CONSEILLERE_3_ROLE = Conseillere 3 - role
