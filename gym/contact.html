@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — FORGE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="index.html">FORGE<i>.</i></a>
+  <div class="links">
+    <a href="programs.html">Programmes</a>
+    <a href="planning.html">Planning</a>
+    <a href="contact.html" class="active">Contact</a>
+    <a class="cta" href="contact.html">S'inscrire</a>
+  </div>
+</nav>
+
+<header class="page-hero">
+  <p class="tag">Contact — première séance offerte</p>
+  <h1>Passe la <em>porte.</em></h1>
+  <p class="lede">Réserve ta séance d'essai offerte, renseigne-toi sur les abonnements, ou viens juste voir le club. On répond vite — généralement dans l'heure sur WhatsApp.</p>
+</header>
+
+<div class="contact-grid">
+  <form class="contact" data-fake>
+    <label><span class="tag">Ton nom</span><input type="text" name="name" required placeholder="Ibrahim Ouédraogo"></label>
+    <label><span class="tag">Téléphone / WhatsApp</span><input type="tel" name="phone" required placeholder="+226 …"></label>
+    <label><span class="tag">Je suis intéressé par</span><select name="interest"><option>Séance d'essai offerte</option><option>Abonnement mensuel</option><option>Abonnement annuel</option><option>Coaching personnel</option></select></label>
+    <label><span class="tag">Message (optionnel)</span><textarea name="message" rows="4" placeholder="Objectifs, disponibilités, questions…"></textarea></label>
+    <button type="submit">Réserver ma séance offerte</button>
+  </form>
+  <aside class="contact-aside">
+    <div class="block" data-reveal>
+      <h3>Le club</h3>
+      <p>Avenue Kwame N'Krumah<br>Ouagadougou, Burkina Faso</p>
+    </div>
+    <div class="block" data-reveal>
+      <h3>Direct</h3>
+      <p><a href="mailto:hello@forge.club">hello@forge.club</a><br>WhatsApp : +226 00 00 00 00</p>
+    </div>
+    <div class="block" data-reveal>
+      <h3>Horaires</h3>
+      <p>Lun–Ven 06:00–21:30<br>Sam 08:00–20:00 · Dim 09:00–14:00</p>
+    </div>
+    <div class="block" data-reveal>
+      <h3>Réseaux</h3>
+      <p>Instagram · TikTok · Facebook</p>
+    </div>
+  </aside>
+</div>
+
+<footer>
+  <div class="row"><a href="index.html">Accueil</a><a href="programs.html">Programmes</a><a href="planning.html">Planning</a><span>© FORGE 2026</span></div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+<script src="main.js"></script>
+</body>
+</html>

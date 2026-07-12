@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>L’Herbier - L'équipe conseil à Ouagadougou</title>
+<meta name="description" content="L'équipe de L’Herbier à Ouagadougou : des conseillères formées qui écoutent votre peau avant de conseiller. Conseil personnalisé en boutique ou sur WhatsApp.">
+<meta name="theme-color" content="#FBF8F3">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23FBF8F3'/%3E%3Cellipse cx='32' cy='34' rx='15' ry='19' fill='%2355385C'/%3E%3Cellipse cx='32' cy='24' rx='7' ry='9' fill='%23DDB7C0'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Karla:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./styles.css">
+<script>document.documentElement.classList.add('js')</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js" defer></script>
+<script src="./script.js" defer></script>
+</head>
+<body>
+
+<a class="skip-link" href="#contenu">Aller au contenu</a>
+
+<header class="site-header">
+  <div class="wrap header-in">
+    <a class="logo" href="./index.html">L’Herbier<em>.</em></a>
+    <nav class="nav-desktop" aria-label="Navigation principale">
+      <a href="./index.html">Accueil</a>
+      <a href="./services.html">Rayons et marques</a>
+      <a href="./conseils.html">Conseils</a>
+      <a href="./a-propos.html">À propos</a>
+      <a href="./equipe.html" aria-current="page">L'équipe</a>
+      <a href="./contact.html">Contact</a>
+    </nav>
+    <div class="header-droite">
+      <a class="btn btn--prune header-cta" href="./contact.html#commande">Commander sur WhatsApp</a>
+      <button class="burger" type="button" aria-expanded="false" aria-controls="nav-mobile" aria-label="Ouvrir le menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<nav class="nav-panel" id="nav-mobile" aria-label="Navigation mobile">
+  <a href="./index.html">Accueil</a>
+  <a href="./services.html">Rayons et marques</a>
+  <a href="./conseils.html">Conseils</a>
+  <a href="./a-propos.html">À propos</a>
+  <a href="./equipe.html" aria-current="page">L'équipe</a>
+      <a href="./contact.html">Contact</a>
+  <a class="nav-tel" href="tel:+22625364554">Un conseil ? +226 25 36 45 54</a>
+</nav>
+
+<main id="contenu">
+
+  <!-- ============ EN-TETE DE PAGE ============ -->
+  <section class="page-hero" aria-labelledby="titre-page">
+    <div class="wrap">
+      <p class="eyebrow">L'équipe</p>
+      <h1 id="titre-page">Des visages derrière le <em>comptoir</em></h1>
+      <p>Chez L’Herbier, le conseil n'est pas une option : c'est le métier. Voici celles qui écoutent votre peau avant de vous vendre quoi que ce soit.</p>
+    </div>
+  </section>
+
+  <!-- ============ LES CONSEILLERES ============ -->
+  <section class="section" aria-label="Les conseillères">
+    <div class="wrap cartes-3">
+      <div class="personne" data-reveal>
+        <div class="photo-cadre"><img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&w=800&q=80" alt="Mariam Sawadogo, Fondatrice, conseil dermo-cosmétique" loading="lazy" width="800" height="1000"></div>
+        <h3>Mariam Sawadogo</h3>
+        <p class="role">Fondatrice, conseil dermo-cosmétique</p>
+        <p>Son réflexe : poser trois questions avant d'ouvrir un tiroir. Sa spécialité, les peaux sensibles qui ont tout essayé.</p>
+      </div>
+      <div class="personne" data-reveal data-reveal-delay="120">
+        <div class="photo-cadre"><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80" alt="Élodie Zongo, Spécialiste cheveux et soins naturels" loading="lazy" width="800" height="1000"></div>
+        <h3>Élodie Zongo</h3>
+        <p class="role">Spécialiste cheveux et soins naturels</p>
+        <p>Elle connaît chaque marque du rayon par son nom de formule. Les rituels cheveux et le karité n'ont aucun secret pour elle.</p>
+      </div>
+      <div class="personne" data-reveal data-reveal-delay="240">
+        <div class="photo-cadre"><img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=800&q=80" alt="Safiatou Ilboudo, Conseil maman-bébé et compléments" loading="lazy" width="800" height="1000"></div>
+        <h3>Safiatou Ilboudo</h3>
+        <p class="role">Conseil maman-bébé et compléments</p>
+        <p>Le sourire du comptoir, et la mémoire de la maison : elle se souvient de votre peau d'une visite à l'autre.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROMESSE ============ -->
+  <section class="section section--voile" aria-labelledby="titre-promesse">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow">Notre promesse</p>
+        <h2 id="titre-promesse">Trois engagements, tenus chaque jour</h2>
+      </div>
+      <div class="etapes" data-reveal>
+        <div class="etape"><h3>On écoute d'abord</h3><p>Votre peau, vos habitudes, votre budget. Le conseil vient après, jamais avant.</p></div>
+        <div class="etape"><h3>On teste avant de référencer</h3><p>Aucun produit n'entre au rayon sans avoir été essayé par l'équipe.</p></div>
+        <div class="etape"><h3>On dit quand ce n'est pas la peine</h3><p>Si votre routine suffit, on vous le dit. La confiance vaut plus qu'une vente.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CTA ============ -->
+  <section class="cta-band" aria-labelledby="titre-cta">
+    <div class="wrap">
+      <div>
+        <h2 id="titre-cta">Votre peau mérite un vrai <em>conseil</em></h2>
+        <p>Écrivez-nous sur WhatsApp : décrivez votre peau, nous composons votre rituel.</p>
+      </div>
+      <a class="btn btn--clair" href="https://wa.me/22625364554?text=Bonjour%2C%20je%20souhaite%20un%20conseil%20beaut%C3%A9." target="_blank" rel="noopener">Écrire sur WhatsApp <span class="fleche" aria-hidden="true">&rarr;</span></a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p class="footer-marque" aria-hidden="true">L’Herbier</p>
+    <div class="footer-grille">
+      <div>
+        <h3>La maison</h3>
+        <p class="footer-desc">Parapharmacie et beauté au naturel à Ouagadougou. La beauté, au rythme des plantes.</p>
+      </div>
+      <div>
+        <h3>Navigation</h3>
+        <ul>
+          <li><a href="./services.html">Rayons et marques</a></li>
+          <li><a href="./conseils.html">Conseils beauté</a></li>
+          <li><a href="./a-propos.html">À propos</a></li>
+          <li><a href="./equipe.html" aria-current="page">L'équipe</a></li>
+          <li><a href="./contact.html">Contact et commande</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Contact</h3>
+        <ul>
+          <li><a href="tel:+22625364554">+226 25 36 45 54</a></li>
+          <li><a href="mailto:conseil@lherbier.bf">conseil@lherbier.bf</a></li>
+          <li><a href="https://www.facebook.com/lherbier.ouaga" target="_blank" rel="noopener">Facebook</a></li>
+          <li><a href="https://www.instagram.com/lherbier.ouaga" target="_blank" rel="noopener">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bas">
+      <p>&copy; L’Herbier - Ouagadougou, Burkina Faso. Depuis 2016. Tous droits réservés.</p>
+      <p>Site réalisé par Atelier Web</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

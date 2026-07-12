@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>L’Herbier - Contact et commande WhatsApp à Ouagadougou</title>
+<meta name="description" content="Contactez L’Herbier à Ouagadougou, Burkina Faso : commande sur WhatsApp, téléphone +226 25 36 45 54, adresse Boulevard Charles de Gaulle, Gounghin. Horaires : 8h – 19h.">
+<meta name="theme-color" content="#FBF8F3">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23FBF8F3'/%3E%3Cellipse cx='32' cy='34' rx='15' ry='19' fill='%2355385C'/%3E%3Cellipse cx='32' cy='24' rx='7' ry='9' fill='%23DDB7C0'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Karla:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./styles.css">
+<script>document.documentElement.classList.add('js')</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js" defer></script>
+<script src="./script.js" defer></script>
+</head>
+<body>
+
+<a class="skip-link" href="#contenu">Aller au contenu</a>
+
+<header class="site-header">
+  <div class="wrap header-in">
+    <a class="logo" href="./index.html">L’Herbier<em>.</em></a>
+    <nav class="nav-desktop" aria-label="Navigation principale">
+      <a href="./index.html">Accueil</a>
+      <a href="./services.html">Rayons et marques</a>
+      <a href="./conseils.html">Conseils</a>
+      <a href="./a-propos.html">À propos</a>
+      <a href="./equipe.html">L'équipe</a>
+      <a href="./contact.html" aria-current="page">Contact</a>
+    </nav>
+    <div class="header-droite">
+      <a class="btn btn--prune header-cta" href="./contact.html#commande">Commander sur WhatsApp</a>
+      <button class="burger" type="button" aria-expanded="false" aria-controls="nav-mobile" aria-label="Ouvrir le menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<nav class="nav-panel" id="nav-mobile" aria-label="Navigation mobile">
+  <a href="./index.html">Accueil</a>
+  <a href="./services.html">Rayons et marques</a>
+  <a href="./conseils.html">Conseils</a>
+  <a href="./a-propos.html">À propos</a>
+  <a href="./equipe.html">L'équipe</a>
+      <a href="./contact.html" aria-current="page">Contact</a>
+  <a class="nav-tel" href="tel:+22625364554">Un conseil ? +226 25 36 45 54</a>
+</nav>
+
+<main id="contenu">
+
+  <!-- ============ EN-TETE DE PAGE ============ -->
+  <section class="page-hero" aria-labelledby="titre-page">
+    <div class="wrap">
+      <p class="eyebrow">Contact et commande</p>
+      <h1 id="titre-page">Parlons de votre <em>peau</em></h1>
+      <p>Commandez un produit, demandez un conseil ou vérifiez une disponibilité : le plus simple, c'est WhatsApp. Le plus agréable, c'est de passer nous voir.</p>
+    </div>
+  </section>
+
+  <!-- ============ COMMANDE WHATSAPP + INFOS ============ -->
+  <section class="section" id="commande" aria-labelledby="titre-commande">
+    <div class="wrap duo-form">
+      <form class="formulaire" id="form-commande" data-reveal="gauche" data-whatsapp="22625364554" data-intro="Bonjour, je souhaite commander un produit.">
+        <h2 id="titre-commande" class="form-titre">Commander sur WhatsApp</h2>
+        <p class="form-lede">Remplissez ces champs : votre message WhatsApp s'écrit tout seul, il ne reste qu'à l'envoyer.</p>
+        <div class="champ">
+          <label for="cmd-nom">Votre nom</label>
+          <input type="text" id="cmd-nom" name="nom" data-label="Nom" autocomplete="name" required>
+        </div>
+        <div class="champ">
+          <label for="cmd-produit">Produit ou besoin</label>
+          <input type="text" id="cmd-produit" name="produit" data-label="Produit" placeholder="Ex. : crème hydratante visage, protection solaire..." required>
+        </div>
+        <div class="champ">
+          <label for="cmd-retrait">Retrait ou livraison</label>
+          <select id="cmd-retrait" name="retrait" data-label="Mode de retrait" required>
+            <option value="">Choisir...</option>
+            <option>Retrait en boutique</option>
+            <option>Livraison en ville</option>
+          </select>
+        </div>
+        <div class="champ">
+          <label for="cmd-message">Un message ? (facultatif)</label>
+          <textarea id="cmd-message" name="message" data-label="Message" placeholder="Quantité, marque préférée, question..."></textarea>
+        </div>
+        <button class="btn btn--prune" type="submit">Envoyer ma commande sur WhatsApp <span class="fleche" aria-hidden="true">&rarr;</span></button>
+        <p class="form-note">Sans JavaScript ? <a href="https://wa.me/22625364554?text=Bonjour%2C%20je%20souhaite%20commander%20un%20produit." target="_blank" rel="noopener">Écrivez-nous directement sur WhatsApp</a> ou appelez le <a href="tel:+22625364554">+226 25 36 45 54</a>.</p>
+      </form>
+      <div data-reveal="droite">
+        <p class="eyebrow">La boutique</p>
+        <h2 class="h2-moyen">Nous trouver à Ouagadougou</h2>
+        <div class="info-bloc">
+          <h3>Adresse</h3>
+          <p>Boulevard Charles de Gaulle, Gounghin<br>Ouagadougou, Burkina Faso</p>
+        </div>
+        <div class="info-bloc">
+          <h3>Horaires</h3>
+          <p class="horaire"><strong>Semaine</strong><span class="fil" aria-hidden="true"></span><span>8h – 19h</span></p>
+          <p class="horaire"><strong>Week-end</strong><span class="fil" aria-hidden="true"></span><span>9h – 13h</span></p>
+          <p class="horaire"><strong>Fermeture</strong><span class="fil" aria-hidden="true"></span><span>dimanche</span></p>
+        </div>
+        <div class="info-bloc">
+          <h3>Nous joindre</h3>
+          <p><a href="tel:+22625364554">+226 25 36 45 54</a></p>
+          <p><a href="mailto:conseil@lherbier.bf">conseil@lherbier.bf</a></p>
+          <p><a href="https://www.facebook.com/lherbier.ouaga" target="_blank" rel="noopener">Facebook</a> - <a href="https://www.instagram.com/lherbier.ouaga" target="_blank" rel="noopener">Instagram</a></p>
+        </div>
+        <div class="info-bloc">
+          <h3>Paiement</h3>
+          <p>En boutique ou à la livraison : espèces, mobile money. Prix en FCFA.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CARTE ============ -->
+  <section class="section section--voile section--haut-court" aria-labelledby="titre-carte">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow">Le plan</p>
+        <h2 id="titre-carte">On vous attend ici</h2>
+      </div>
+      <div class="carte-map" data-reveal>
+        <iframe src="https://www.google.com/maps?q=Ouagadougou%2C%20Burkina%20Faso&output=embed" title="Plan d'accès - L’Herbier, Ouagadougou" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+        <p class="map-note">Boulevard Charles de Gaulle, Gounghin - Ouagadougou, Burkina Faso</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CTA FINAL ============ -->
+  <section class="cta-band" aria-labelledby="titre-cta">
+    <div class="wrap">
+      <div>
+        <h2 id="titre-cta">Un doute ? Demandez, tout <em>simplement</em></h2>
+        <p>Photo de votre produit habituel, question sur une composition : on vous répond avec plaisir.</p>
+      </div>
+      <a class="btn btn--clair" href="https://wa.me/22625364554?text=Bonjour%2C%20j%27ai%20une%20question." target="_blank" rel="noopener">Écrire sur WhatsApp <span class="fleche" aria-hidden="true">&rarr;</span></a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p class="footer-marque" aria-hidden="true">L’Herbier</p>
+    <div class="footer-grille">
+      <div>
+        <h3>La maison</h3>
+        <p class="footer-desc">Parapharmacie et beauté au naturel à Ouagadougou. La beauté, au rythme des plantes.</p>
+      </div>
+      <div>
+        <h3>Navigation</h3>
+        <ul>
+          <li><a href="./services.html">Rayons et marques</a></li>
+          <li><a href="./conseils.html">Conseils beauté</a></li>
+          <li><a href="./a-propos.html">À propos</a></li>
+          <li><a href="./equipe.html">L'équipe</a></li>
+          <li><a href="./contact.html">Contact et commande</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Contact</h3>
+        <ul>
+          <li><a href="tel:+22625364554">+226 25 36 45 54</a></li>
+          <li><a href="mailto:conseil@lherbier.bf">conseil@lherbier.bf</a></li>
+          <li><a href="https://www.facebook.com/lherbier.ouaga" target="_blank" rel="noopener">Facebook</a></li>
+          <li><a href="https://www.instagram.com/lherbier.ouaga" target="_blank" rel="noopener">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bas">
+      <p>&copy; L’Herbier - Ouagadougou, Burkina Faso. Depuis 2016. Tous droits réservés.</p>
+      <p>Site réalisé par Atelier Web</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
