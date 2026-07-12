@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Maison Solène - Services | Conseil olfactif et sur-mesure à Ouagadougou</title>
+<meta name="description" content="Les services de Maison Solène à Ouagadougou, Burkina Faso : conseil olfactif privé, gravure du flacon, coffrets sur-mesure, recharge. Prenez rendez-vous par WhatsApp.">
+<meta name="theme-color" content="#EFEDF4">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23221D2F'/%3E%3Crect x='26' y='9' width='12' height='9' rx='2' fill='%23C9BEE4'/%3E%3Crect x='19' y='20' width='26' height='34' rx='7' fill='none' stroke='%23C9BEE4' stroke-width='2'/%3E%3Cpath d='M19 38h26v9a7 7 0 0 1-7 7H26a7 7 0 0 1-7-7z' fill='%234E3D8F'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;500&family=Figtree:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./styles.css">
+<script>document.documentElement.classList.add('js')</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js" defer></script>
+<script src="./script.js" defer></script>
+</head>
+<body>
+
+<a class="skip-link" href="#contenu">Aller au contenu</a>
+
+<header class="site-header">
+  <div class="wrap header-in">
+    <a class="logo" href="./index.html">Maison Solène<em>.</em></a>
+    <nav class="nav-desktop" aria-label="Navigation principale">
+      <a href="./index.html">Accueil</a>
+      <a href="./collection.html">La collection</a>
+      <a href="./maison.html">La maison</a>
+      <a href="./services.html" aria-current="page">Services</a>
+      <a href="./parfum.html">Le parfum</a>
+      <a href="./contact.html">Contact</a>
+    </nav>
+    <div class="header-droite">
+      <a class="btn btn--iris header-cta" href="./contact.html#rendez-vous">Rendez-vous olfactif</a>
+      <button class="burger" type="button" aria-expanded="false" aria-controls="nav-mobile" aria-label="Ouvrir le menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<nav class="nav-panel" id="nav-mobile" aria-label="Navigation mobile">
+  <a href="./index.html">Accueil</a>
+  <a href="./collection.html">La collection</a>
+  <a href="./maison.html">La maison</a>
+  <a href="./services.html" aria-current="page">Services</a>
+  <a href="./parfum.html">Le parfum</a>
+      <a href="./contact.html">Contact</a>
+  <a class="nav-tel" href="tel:+22625332211">Rendez-vous : +226 25 33 22 11</a>
+</nav>
+
+<main id="contenu">
+
+  <!-- ============ EN-TETE DE PAGE ============ -->
+  <section class="page-header">
+    <div class="vapeur-fond" aria-hidden="true"><span></span><span></span></div>
+    <div class="wrap">
+      <p class="eyebrow">Nos services</p>
+      <h1>Le parfum, et <em>l'attention</em> qui va avec</h1>
+      <p class="lede">Un extrait de Maison Solène ne s'arrête pas au flacon. Conseil, gravure, coffret, recharge : voici tout ce que nous faisons pour que votre parfum vous ressemble et vous dure.</p>
+    </div>
+  </section>
+
+  <!-- ============ LISTE DES SERVICES ============ -->
+  <section class="section" style="padding-top:0" aria-labelledby="titre-services">
+    <div class="wrap">
+      <h2 id="titre-services" class="eyebrow" style="font-size:0.76rem">Quatre services de la maison</h2>
+      <div class="services-liste" data-reveal>
+        <div class="service-rang">
+          <span class="service-num">01</span>
+          <h3>Découverte olfactive</h3>
+          <p>45 minutes au comptoir pour trouver votre famille de notes</p>
+        </div>
+        <div class="service-rang">
+          <span class="service-num">02</span>
+          <h3>Gravure du flacon</h3>
+          <p>Vos initiales gravées à la main, offert</p>
+        </div>
+        <div class="service-rang">
+          <span class="service-num">03</span>
+          <h3>Recharge au comptoir</h3>
+          <p>Rapportez votre flacon, économisez 20 %</p>
+        </div>
+        <div class="service-rang">
+          <span class="service-num">04</span>
+          <h3>Coffrets sur mesure</h3>
+          <p>Trois essais et l’extrait choisi, prêts à offrir</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SERVICE MIS EN AVANT : CONSEIL OLFACTIF ============ -->
+  <section class="section section--voile" aria-labelledby="titre-conseil">
+    <div class="wrap duo">
+      <div class="duo-media" data-reveal="gauche">
+        <div class="cadre-petale">
+          <img src="https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=900&q=80" alt="Comptoir de conseil olfactif chez Maison Solène" loading="lazy" width="900" height="1080">
+        </div>
+      </div>
+      <div data-reveal="droite">
+        <p class="eyebrow">Découverte olfactive</p>
+        <h2 id="titre-conseil">Un rendez-vous, trois essais préparés pour vous</h2>
+        <p>45 minutes au comptoir pour trouver votre famille de notes</p>
+        <p>Nous vous demandons ce que vous portez, ce que vous aimez, ce que vous fuyez. Puis nous préparons une sélection sur mesure que vous sentez à votre rythme, sur la peau, sans pression d'achat.</p>
+        <div class="hero-ctas">
+          <a class="btn btn--iris" href="./contact.html#rendez-vous">Réserver mon conseil <span class="fleche" aria-hidden="true">&rarr;</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ COMMENT CA SE PASSE ============ -->
+  <section class="section" aria-labelledby="titre-deroule">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow">Comment cela se passe</p>
+        <h2 id="titre-deroule">Du premier message à votre flacon</h2>
+      </div>
+      <div class="etapes">
+        <div class="etape" data-reveal>
+          <span class="etape-num">01</span>
+          <h3>Vous nous écrivez</h3>
+          <p>Un message WhatsApp ou un appel suffit. On fixe ensemble un créneau au calme, en boutique.</p>
+        </div>
+        <div class="etape" data-reveal data-reveal-delay="100">
+          <span class="etape-num">02</span>
+          <h3>On prépare votre séance</h3>
+          <p>Selon vos réponses, on sélectionne les extraits à sentir et, si besoin, les options de gravure ou de coffret.</p>
+        </div>
+        <div class="etape" data-reveal data-reveal-delay="200">
+          <span class="etape-num">03</span>
+          <h3>Vous essayez, vous choisissez</h3>
+          <p>Sur la peau, en prenant le temps. Aucune obligation : repartez avec des mouillettes pour décider chez vous.</p>
+        </div>
+        <div class="etape" data-reveal data-reveal-delay="300">
+          <span class="etape-num">04</span>
+          <h3>On personnalise et on prépare</h3>
+          <p>Gravure du flacon, coffret, recharge : votre parfum est prêt à emporter ou à offrir, exactement comme voulu.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CARTES SERVICES (rappel) ============ -->
+  <section class="section section--encre" aria-labelledby="titre-cartes">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow">En un coup d'oeil</p>
+        <h2 id="titre-cartes">Tout ce que la maison propose</h2>
+      </div>
+      <div class="services-cartes">
+        <div class="service-carte" data-reveal>
+          <span class="service-num">01</span>
+          <h3>Découverte olfactive</h3>
+          <p>45 minutes au comptoir pour trouver votre famille de notes</p>
+        </div>
+        <div class="service-carte" data-reveal data-reveal-delay="90">
+          <span class="service-num">02</span>
+          <h3>Gravure du flacon</h3>
+          <p>Vos initiales gravées à la main, offert</p>
+        </div>
+        <div class="service-carte" data-reveal data-reveal-delay="180">
+          <span class="service-num">03</span>
+          <h3>Recharge au comptoir</h3>
+          <p>Rapportez votre flacon, économisez 20 %</p>
+        </div>
+        <div class="service-carte" data-reveal data-reveal-delay="270">
+          <span class="service-num">04</span>
+          <h3>Coffrets sur mesure</h3>
+          <p>Trois essais et l’extrait choisi, prêts à offrir</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CTA FINAL ============ -->
+  <section class="cta-band" aria-labelledby="titre-cta">
+    <div class="wrap">
+      <div>
+        <h2 id="titre-cta">Prêt pour votre <em>rendez-vous olfactif</em> ?</h2>
+        <p>Dites-nous ce que vous cherchez : nous préparons votre séance et vos essais avant même votre arrivée.</p>
+      </div>
+      <a class="btn btn--vapeur" href="https://wa.me/22625332211?text=Bonjour%2C%20je%20souhaite%20reserver%20un%20service%20de%20la%20parfumerie." target="_blank" rel="noopener">Écrire sur WhatsApp <span class="fleche" aria-hidden="true">&rarr;</span></a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p class="footer-marque" aria-hidden="true">Maison Solène</p>
+    <div class="footer-grille">
+      <div>
+        <h3>La maison</h3>
+        <p class="footer-desc">Maison de parfum à Ouagadougou, Burkina Faso. Des extraits qui racontent.</p>
+      </div>
+      <div>
+        <h3>Navigation</h3>
+        <ul>
+          <li><a href="./collection.html">La collection</a></li>
+          <li><a href="./maison.html">La maison</a></li>
+          <li><a href="./services.html">Services</a></li>
+          <li><a href="./parfum.html">Le parfum</a></li>
+          <li><a href="./contact.html">Contact et rendez-vous</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Contact</h3>
+        <ul>
+          <li><a href="tel:+22625332211">+226 25 33 22 11</a></li>
+          <li><a href="mailto:atelier@maisonsolene.bf">atelier@maisonsolene.bf</a></li>
+          <li><a href="https://www.facebook.com/maisonsolene" target="_blank" rel="noopener">Facebook</a></li>
+          <li><a href="https://www.instagram.com/maisonsolene" target="_blank" rel="noopener">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bas">
+      <p>&copy; Maison Solène - Ouagadougou, Burkina Faso. Tous droits réservés.</p>
+      <p>Site réalisé par Atelier Web</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<!--
+  TEMPLATE RESTAURANT "Braise et feuille" - Atelier Web
+  Adaptation a un prospect :
+  1. Copier ce dossier vers <nom-du-prospect>/
+  2. Rechercher-remplacer les valeurs de demonstration (liste dans JETONS-VALEURS-DEMO.txt)
+  3. Remplacer les URLs images.unsplash.com par les photos du prospect
+  4. Verifier : grep -r "{{" . ne doit plus rien retourner
+-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Le Tamarinier - Restaurant à Ouagadougou | La braise, le marché du matin, le temps de bien manger</title>
+<meta name="description" content="Le Tamarinier, restaurant bistronomique à Ouagadougou, Burkina Faso. Produits du marché, cuissons à la braise et recettes de famille, servis dans une salle chaleureuse au cœur de Ouagadougou. Réservation par téléphone ou WhatsApp.">
+<meta name="theme-color" content="#16261C">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%2316261C'/%3E%3Ccircle cx='32' cy='32' r='14' fill='%23E4572E'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;1,600&family=Young+Serif&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./styles.css">
+<script>document.documentElement.classList.add('js')</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js" defer></script>
+<script src="./script.js" defer></script>
+</head>
+<body>
+
+<a class="skip-link" href="#contenu">Aller au contenu</a>
+
+<header class="site-header">
+  <div class="wrap header-in">
+    <a class="logo" href="./index.html">Le Tamarinier<em>.</em></a>
+    <nav class="nav-desktop" aria-label="Navigation principale">
+      <a href="./index.html" aria-current="page">Accueil</a>
+      <a href="./menu.html">La carte</a>
+      <a href="./galerie.html">Galerie</a>
+      <a href="./a-propos.html">À propos</a>
+      <a href="./chef.html">Le chef</a>
+      <a href="./contact.html">Contact</a>
+    </nav>
+    <div class="header-droite">
+      <a class="btn btn--braise header-cta" href="./contact.html#reservation">Réserver une table</a>
+      <button class="burger" type="button" aria-expanded="false" aria-controls="nav-mobile" aria-label="Ouvrir le menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<nav class="nav-panel" id="nav-mobile" aria-label="Navigation mobile">
+  <a href="./index.html" aria-current="page">Accueil</a>
+  <a href="./menu.html">La carte</a>
+  <a href="./galerie.html">Galerie</a>
+  <a href="./a-propos.html">À propos</a>
+  <a href="./chef.html">Le chef</a>
+      <a href="./contact.html">Contact</a>
+  <a class="nav-tel" href="tel:+22670123456">Réserver : +226 70 12 34 56</a>
+</nav>
+
+<main id="contenu">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="chip" data-hero="1"><span class="point"></span> Cuisine bistronomique - Ouagadougou</p>
+        <h1 data-hero="2">La braise, le marché du matin, le temps de bien manger</h1>
+        <p class="hero-lede" data-hero="3">Produits du marché, cuissons à la braise et recettes de famille, servis dans une salle chaleureuse au cœur de Ouagadougou.</p>
+        <div class="hero-ctas" data-hero="4">
+          <a class="btn btn--braise" href="https://wa.me/22670123456?text=Bonjour%2C%20je%20souhaite%20r%C3%A9server%20une%20table." target="_blank" rel="noopener">Réserver sur WhatsApp <span class="fleche" aria-hidden="true">&rarr;</span></a>
+          <a class="btn btn--ligne" href="./menu.html">Voir la carte</a>
+        </div>
+        <p class="hero-note" data-hero="5">Ouvert 11h30 – 14h30 · 19h – 23h - <strong>fermé le lundi</strong></p>
+      </div>
+      <div class="hero-visuel" data-hero="3">
+        <div class="arche">
+          <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1000&q=80" alt="Plat signature Poulet bicyclette à la braise servi au restaurant Le Tamarinier" fetchpriority="high" width="800" height="1000">
+        </div>
+        <aside class="carte-flottante" aria-label="Plat signature">
+          <p class="cf-label">Le plat signature</p>
+          <p class="cf-nom">Poulet bicyclette à la braise</p>
+          <p class="cf-prix">6 500 FCFA</p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MARQUEE SPECIALITES ============ -->
+  <div class="marquee" aria-label="Nos spécialités">
+    <div class="marquee-track">
+      <span>Grillades à la braise</span><span>Poissons du fleuve</span><span>Recettes de famille</span><span>Fait maison</span><span>Produits frais du marché</span>
+      <span aria-hidden="true">Grillades à la braise</span><span aria-hidden="true">Poissons du fleuve</span><span aria-hidden="true">Recettes de famille</span><span aria-hidden="true">Fait maison</span><span aria-hidden="true">Produits frais du marché</span>
+    </div>
+  </div>
+
+  <!-- ============ SPECIALITES ============ -->
+  <section class="section" aria-labelledby="titre-specialites">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow">La maison recommande</p>
+        <h2 id="titre-specialites">Trois assiettes qui font notre réputation</h2>
+        <p>Chaque plat est préparé à la commande, avec les produits du jour. Voici par où commencer.</p>
+      </div>
+      <div class="trio">
+        <article class="carte-item" data-reveal>
+          <figure><img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=800&q=80" alt="Salade de mangue verte au gingembre - restaurant Le Tamarinier" loading="lazy" width="800" height="600"></figure>
+          <div class="ci-corps">
+            <h3>Salade de mangue verte au gingembre</h3>
+            <p>Mangue croquante, oignon rouge, coriandre et vinaigrette au citron vert</p>
+          </div>
+        </article>
+        <article class="carte-item" data-reveal data-reveal-delay="120">
+          <figure><img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=800&q=80" alt="Poulet bicyclette grillé - restaurant Le Tamarinier" loading="lazy" width="800" height="600"></figure>
+          <div class="ci-corps">
+            <h3>Poulet bicyclette grillé</h3>
+            <p>Mariné au citron et au soumbala, cuit lentement à la braise</p>
+          </div>
+        </article>
+        <article class="carte-item" data-reveal data-reveal-delay="240">
+          <figure><img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=800&q=80" alt="Riz gras aux légumes confits - restaurant Le Tamarinier" loading="lazy" width="800" height="600"></figure>
+          <div class="ci-corps">
+            <h3>Riz gras aux légumes confits</h3>
+            <p>Le classique du dimanche, mijoté au bouillon maison</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LA CARTE (teaser papier) ============ -->
+  <section class="section section--panel" aria-labelledby="titre-carte">
+    <div class="wrap">
+      <div class="section-head section-head--split" data-reveal>
+        <div>
+          <p class="eyebrow">La carte</p>
+          <h2 id="titre-carte">Un aperçu, posé sur la table</h2>
+        </div>
+        <a class="btn btn--ligne" href="./menu.html">Toute la carte <span class="fleche" aria-hidden="true">&rarr;</span></a>
+      </div>
+      <div class="carte-papier carte-papier--seule" data-reveal>
+        <div class="tampon" aria-hidden="true">Fait<br>maison</div>
+        <h3 class="carte-titre">Entrées</h3>
+        <p class="carte-sous">Prix en FCFA</p>
+        <div class="plat">
+          <span class="plat-nom">Salade de mangue verte au gingembre</span><span class="plat-fill" aria-hidden="true"></span><span class="plat-prix">3 500</span>
+          <p class="plat-desc">Mangue croquante, oignon rouge, coriandre et vinaigrette au citron vert</p>
+        </div>
+        <div class="plat">
+          <span class="plat-nom">Velouté de patate douce</span><span class="plat-fill" aria-hidden="true"></span><span class="plat-prix">3 000</span>
+          <p class="plat-desc">Patate douce rôtie, lait de coco et éclats d’arachide</p>
+        </div>
+        <div class="plat">
+          <span class="plat-nom">Accras de niébé</span><span class="plat-fill" aria-hidden="true"></span><span class="plat-prix">2 500</span>
+          <p class="plat-desc">Beignets croustillants de haricot, sauce tomate pimentée</p>
+        </div>
+        <div class="carte-actions">
+          <a class="btn btn--papier" href="./menu.html">Découvrir toute la carte</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ A PROPOS (teaser) ============ -->
+  <section class="section" aria-labelledby="titre-apropos">
+    <div class="wrap duo">
+      <div class="arche" data-reveal="gauche">
+        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1000&q=80" alt="La salle du restaurant Le Tamarinier à Ouagadougou" loading="lazy" width="800" height="1000">
+      </div>
+      <div data-reveal="droite">
+        <p class="eyebrow">Notre maison</p>
+        <h2 id="titre-apropos">Une table de quartier, depuis 2012</h2>
+        <p>Chez Le Tamarinier, la cuisine bistronomique se vit comme à la maison : des produits choisis chaque matin, des recettes transmises, et une salle où l'on prend le temps.</p>
+        <blockquote class="citation">
+          <p>&laquo; La braise n’attend pas : elle récompense ceux qui la respectent. &raquo;</p>
+          <footer>Abdoul Ouédraogo, chef de cuisine</footer>
+        </blockquote>
+        <div class="hero-ctas">
+          <a class="btn btn--ligne" href="./a-propos.html">Notre histoire <span class="fleche" aria-hidden="true">&rarr;</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TEMOIGNAGES ============ -->
+  <section class="section section--panel" aria-labelledby="titre-temoignages">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow">Ils sont venus</p>
+        <h2 id="titre-temoignages">Le bouche à oreille fait le reste</h2>
+      </div>
+      <div class="temoins">
+        <figure class="temoin" data-reveal>
+          <span class="guillemet" aria-hidden="true">&ldquo;</span>
+          <blockquote><p>Le poulet à la braise est le meilleur de la ville, et l’accueil est d’une gentillesse rare.</p></blockquote>
+          <p class="etoiles" aria-label="Note : 5 sur 5">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+          <figcaption>Awa T.</figcaption>
+        </figure>
+        <figure class="temoin" data-reveal data-reveal-delay="120">
+          <span class="guillemet" aria-hidden="true">&ldquo;</span>
+          <blockquote><p>On vient pour la cuisine, on revient pour l’ambiance. Une adresse sûre.</p></blockquote>
+          <p class="etoiles" aria-label="Note : 5 sur 5">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+          <figcaption>Jean-Marc B.</figcaption>
+        </figure>
+        <figure class="temoin" data-reveal data-reveal-delay="240">
+          <span class="guillemet" aria-hidden="true">&ldquo;</span>
+          <blockquote><p>Chaque plat raconte quelque chose. Le dèguè vanille est une merveille.</p></blockquote>
+          <p class="etoiles" aria-label="Note : 5 sur 5">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+          <figcaption>Fatou K.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ INFOS PRATIQUES ============ -->
+  <section class="section" aria-labelledby="titre-infos">
+    <div class="wrap infos">
+      <div data-reveal>
+        <p class="eyebrow">Infos pratiques</p>
+        <h2 id="titre-infos">Nous trouver</h2>
+        <div class="info-bloc">
+          <h3>Adresse</h3>
+          <p>Avenue Kwame N'Krumah, secteur 4<br>Ouagadougou, Burkina Faso</p>
+        </div>
+        <div class="info-bloc">
+          <h3>Horaires</h3>
+          <p class="horaire"><strong>Semaine</strong><span class="plat-fill" aria-hidden="true"></span><span>11h30 – 14h30 · 19h – 23h</span></p>
+          <p class="horaire"><strong>Week-end</strong><span class="plat-fill" aria-hidden="true"></span><span>12h – 15h · 19h – minuit</span></p>
+          <p class="horaire"><strong>Fermeture</strong><span class="plat-fill" aria-hidden="true"></span><span>lundi</span></p>
+        </div>
+        <div class="info-bloc">
+          <h3>Réservation</h3>
+          <p><a href="tel:+22670123456">+226 70 12 34 56</a></p>
+          <p><a href="mailto:contact@letamarinier.bf">contact@letamarinier.bf</a></p>
+        </div>
+      </div>
+      <div class="carte-map" data-reveal data-reveal-delay="120">
+        <iframe src="https://www.google.com/maps?q=Ouagadougou%2C%20Burkina%20Faso&output=embed" title="Plan d'accès - Le Tamarinier, Ouagadougou" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+        <p class="map-note">Avenue Kwame N'Krumah, secteur 4 - Ouagadougou</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CTA FINAL ============ -->
+  <!-- ============ CHIFFRES (PRENIUM) ============ -->
+  <section class="section chiffres" aria-label="Le restaurant en chiffres">
+    <div class="wrap chiffres-grille">
+      <div class="chiffre" data-reveal><span class="chiffre-num"><span data-count="9">9</span></span><p>plats à la carte</p></div>
+      <div class="chiffre" data-reveal data-reveal-delay="90"><span class="chiffre-num"><span data-count="3">3</span></span><p>spécialités signature</p></div>
+      <div class="chiffre" data-reveal data-reveal-delay="180"><span class="chiffre-num"><span data-count="120">120</span></span><p>couverts par service</p></div>
+      <div class="chiffre" data-reveal data-reveal-delay="270"><span class="chiffre-num"><span data-count="98">98</span>%</span><p>de clients qui reviennent</p></div>
+    </div>
+  </section>
+
+  <section class="cta-band" aria-labelledby="titre-cta">
+    <div class="wrap">
+      <div>
+        <h2 id="titre-cta">Votre table vous attend ce soir</h2>
+        <p>Réponse rapide sur WhatsApp, ou appelez-nous directement.</p>
+      </div>
+      <a class="btn" href="https://wa.me/22670123456?text=Bonjour%2C%20je%20souhaite%20r%C3%A9server%20une%20table." target="_blank" rel="noopener">Réserver sur WhatsApp <span class="fleche" aria-hidden="true">&rarr;</span></a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p class="footer-marque" aria-hidden="true">Le Tamarinier</p>
+    <div class="footer-grille">
+      <div>
+        <h3>La maison</h3>
+        <p class="footer-desc">Restaurant bistronomique à Ouagadougou. La braise, le marché du matin, le temps de bien manger.</p>
+      </div>
+      <div>
+        <h3>Navigation</h3>
+        <ul>
+          <li><a href="./menu.html">La carte</a></li>
+          <li><a href="./galerie.html">Galerie</a></li>
+          <li><a href="./a-propos.html">À propos</a></li>
+          <li><a href="./chef.html">Le chef</a></li>
+          <li><a href="./contact.html">Contact et réservation</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Contact</h3>
+        <ul>
+          <li><a href="tel:+22670123456">+226 70 12 34 56</a></li>
+          <li><a href="mailto:contact@letamarinier.bf">contact@letamarinier.bf</a></li>
+          <li><a href="https://www.facebook.com/letamarinier" target="_blank" rel="noopener">Facebook</a></li>
+          <li><a href="https://www.instagram.com/letamarinier" target="_blank" rel="noopener">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bas">
+      <p>&copy; Le Tamarinier - Ouagadougou, Burkina Faso. Tous droits réservés.</p>
+      <p>Site réalisé par Atelier Web</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

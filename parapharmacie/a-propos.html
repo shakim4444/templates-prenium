@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>L’Herbier - Notre histoire et notre engagement naturel à Ouagadougou</title>
+<meta name="description" content="Depuis 2016, L’Herbier conseille les peaux de Ouagadougou, Burkina Faso. Découvrez notre histoire, notre équipe et notre engagement pour une beauté au naturel.">
+<meta name="theme-color" content="#FBF8F3">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23FBF8F3'/%3E%3Cellipse cx='32' cy='34' rx='15' ry='19' fill='%2355385C'/%3E%3Cellipse cx='32' cy='24' rx='7' ry='9' fill='%23DDB7C0'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Karla:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./styles.css">
+<script>document.documentElement.classList.add('js')</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js" defer></script>
+<script src="./script.js" defer></script>
+</head>
+<body>
+
+<a class="skip-link" href="#contenu">Aller au contenu</a>
+
+<header class="site-header">
+  <div class="wrap header-in">
+    <a class="logo" href="./index.html">L’Herbier<em>.</em></a>
+    <nav class="nav-desktop" aria-label="Navigation principale">
+      <a href="./index.html">Accueil</a>
+      <a href="./services.html">Rayons et marques</a>
+      <a href="./conseils.html">Conseils</a>
+      <a href="./a-propos.html" aria-current="page">À propos</a>
+      <a href="./equipe.html">L'équipe</a>
+      <a href="./contact.html">Contact</a>
+    </nav>
+    <div class="header-droite">
+      <a class="btn btn--prune header-cta" href="./contact.html#commande">Commander sur WhatsApp</a>
+      <button class="burger" type="button" aria-expanded="false" aria-controls="nav-mobile" aria-label="Ouvrir le menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<nav class="nav-panel" id="nav-mobile" aria-label="Navigation mobile">
+  <a href="./index.html">Accueil</a>
+  <a href="./services.html">Rayons et marques</a>
+  <a href="./conseils.html">Conseils</a>
+  <a href="./a-propos.html" aria-current="page">À propos</a>
+  <a href="./equipe.html">L'équipe</a>
+      <a href="./contact.html">Contact</a>
+  <a class="nav-tel" href="tel:+22625364554">Un conseil ? +226 25 36 45 54</a>
+</nav>
+
+<main id="contenu">
+
+  <!-- ============ EN-TETE DE PAGE ============ -->
+  <section class="page-hero" aria-labelledby="titre-page">
+    <div class="wrap">
+      <p class="eyebrow">À propos</p>
+      <h1 id="titre-page">Une maison de <em>confiance</em>, depuis 2016</h1>
+      <p>L’Herbier, c'est d'abord une conviction : on ne vend pas un produit de beauté comme un paquet de lessive. On écoute, on regarde la peau, puis on conseille.</p>
+    </div>
+  </section>
+
+  <!-- ============ HISTOIRE ============ -->
+  <section class="section" aria-labelledby="titre-histoire">
+    <div class="wrap duo">
+      <div class="duo-visuel" data-reveal="gauche">
+        <div class="ovale ovale--cadre">
+          <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1000&q=80" alt="La boutique L’Herbier à Ouagadougou, rayons soignés et lumière douce" loading="lazy" width="800" height="1000">
+        </div>
+      </div>
+      <div data-reveal="droite">
+        <p class="eyebrow">Notre histoire</p>
+        <h2 id="titre-histoire">De quelques étagères à une adresse qui compte à Ouagadougou</h2>
+        <p>Tout a commencé en 2016, avec quelques étagères de soins choisis un par un et une idée fixe : que chaque cliente reparte avec le produit qui lui convient, pas le plus cher du rayon.</p>
+        <p>Depuis, la boutique a grandi, les rayons se sont étoffés, mais la méthode n'a pas bougé : on teste avant de référencer, on explique avant de vendre, et on garde en mémoire la peau de nos habituées.</p>
+        <div class="citation">
+          <p>&laquo; Le bon produit, c'est celui qu'on vous aurait conseillé même sans rien avoir à vous vendre. &raquo;</p>
+          <footer>La fondatrice, L’Herbier</footer>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ENGAGEMENT NATUREL ============ -->
+  <section class="section section--voile" aria-labelledby="titre-engagement">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow">Notre engagement</p>
+        <h2 id="titre-engagement">La beauté au naturel, sans <em>compromis</em></h2>
+        <p>Trois règles guident chaque référence qui entre en boutique. Elles ne sont pas négociables.</p>
+      </div>
+      <div class="valeurs">
+        <article class="valeur" data-reveal>
+          <div class="v-ico" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c4-3.5 7-7 7-11a7 7 0 0 0-14 0c0 4 3 7.5 7 11z"/><path d="M12 3v18"/></svg>
+          </div>
+          <h3>Des formules <em class="mot-cle">propres</em></h3>
+          <p>Priorité aux compositions courtes et aux actifs d'origine naturelle. Quand un ingrédient fait débat, on préfère s'en passer.</p>
+        </article>
+        <article class="valeur" data-reveal data-reveal-delay="120">
+          <div class="v-ico" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+          </div>
+          <h3>Une sélection vérifiée</h3>
+          <p>Chaque marque est testée par l'équipe avant d'entrer au rayon. Ce qui ne nous convainc pas ne vous sera jamais proposé.</p>
+        </article>
+        <article class="valeur" data-reveal data-reveal-delay="240">
+          <div class="v-ico" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.5-9-9a5.2 5.2 0 0 1 9-5 5.2 5.2 0 0 1 9 5c-2 4.5-9 9-9 9z"/></svg>
+          </div>
+          <h3>Le conseil d'abord</h3>
+          <p>Notre métier, c'est d'écouter votre peau avant votre budget. Repartir sans acheter, chez nous, c'est aussi un bon conseil.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ EQUIPE ============ -->
+  <section class="section" aria-labelledby="titre-equipe">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow">L'équipe</p>
+        <h2 id="titre-equipe">Des conseillères qui connaissent votre peau par son prénom</h2>
+        <p>Formées aux soins et à la dermo-cosmétique, elles vous accueillent tous les jours d'ouverture, en boutique comme sur WhatsApp.</p>
+      </div>
+      <div class="equipe">
+        <div class="membre" data-reveal>
+          <div class="ovale">
+            <img src="https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?auto=format&fit=crop&w=600&q=80" alt="Portrait de la fondatrice de L’Herbier" loading="lazy" width="600" height="600">
+          </div>
+          <h3>La fondatrice</h3>
+          <p>Elle a ouvert la boutique en 2016 et choisit encore chaque nouvelle référence.</p>
+        </div>
+        <div class="membre" data-reveal data-reveal-delay="120">
+          <div class="ovale">
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80" alt="Portrait d'une conseillère beauté de L’Herbier" loading="lazy" width="600" height="600">
+          </div>
+          <h3>La conseillère soin</h3>
+          <p>Spécialiste des peaux sensibles et des diagnostics au comptoir.</p>
+        </div>
+        <div class="membre" data-reveal data-reveal-delay="240">
+          <div class="ovale">
+            <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=600&q=80" alt="Portrait d'une conseillère maquillage de L’Herbier" loading="lazy" width="600" height="600">
+          </div>
+          <h3>La conseillère éclat</h3>
+          <p>Teint, maquillage léger et rituels bonne mine : c'est elle qu'il vous faut.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CTA FINAL ============ -->
+  <section class="cta-band" aria-labelledby="titre-cta">
+    <div class="wrap">
+      <div>
+        <h2 id="titre-cta">Venez nous rencontrer à <em>Ouagadougou</em></h2>
+        <p>Boulevard Charles de Gaulle, Gounghin - ouvert 8h – 19h. Ou écrivez-nous, on vous répond vite.</p>
+      </div>
+      <a class="btn btn--clair" href="./contact.html">Nous trouver <span class="fleche" aria-hidden="true">&rarr;</span></a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p class="footer-marque" aria-hidden="true">L’Herbier</p>
+    <div class="footer-grille">
+      <div>
+        <h3>La maison</h3>
+        <p class="footer-desc">Parapharmacie et beauté au naturel à Ouagadougou. La beauté, au rythme des plantes.</p>
+      </div>
+      <div>
+        <h3>Navigation</h3>
+        <ul>
+          <li><a href="./services.html">Rayons et marques</a></li>
+          <li><a href="./conseils.html">Conseils beauté</a></li>
+          <li><a href="./a-propos.html">À propos</a></li>
+          <li><a href="./equipe.html">L'équipe</a></li>
+          <li><a href="./contact.html">Contact et commande</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Contact</h3>
+        <ul>
+          <li><a href="tel:+22625364554">+226 25 36 45 54</a></li>
+          <li><a href="mailto:conseil@lherbier.bf">conseil@lherbier.bf</a></li>
+          <li><a href="https://www.facebook.com/lherbier.ouaga" target="_blank" rel="noopener">Facebook</a></li>
+          <li><a href="https://www.instagram.com/lherbier.ouaga" target="_blank" rel="noopener">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bas">
+      <p>&copy; L’Herbier - Ouagadougou, Burkina Faso. Depuis 2016. Tous droits réservés.</p>
+      <p>Site réalisé par Atelier Web</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

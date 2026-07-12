@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Programme des soirées - Baobar, bar à Ouagadougou</title>
+<meta name="description" content="Le programme de la semaine au bar Baobar à Ouagadougou : Jam session, DJ set afro-house et plus. Happy hour 18h – 20h : -30 % sur les cocktails signatures. Soirées privées sur demande.">
+<meta name="theme-color" content="#0D1220">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%230D1220'/%3E%3Ccircle cx='26' cy='32' r='13' fill='%23E8A13D'/%3E%3Ccircle cx='40' cy='32' r='13' fill='%23D9488B' fill-opacity='.85'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./styles.css">
+<script>document.documentElement.classList.add('js')</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js" defer></script>
+<script src="./script.js" defer></script>
+</head>
+<body>
+
+<a class="skip-link" href="#contenu">Aller au contenu</a>
+
+<header class="site-header">
+  <div class="wrap header-in">
+    <a class="logo" href="./index.html">Baobar<em>.</em></a>
+    <nav class="nav-desktop" aria-label="Navigation principale">
+      <a href="./index.html">Accueil</a>
+      <a href="./carte.html">La carte</a>
+      <a href="./programme.html" aria-current="page">Programme</a>
+      <a href="./a-propos.html">À propos</a>
+      <a href="./privatiser.html">Privatiser</a>
+      <a href="./contact.html">Contact</a>
+    </nav>
+    <div class="header-droite">
+      <a class="btn btn--ambre header-cta" href="./contact.html#reservation">Réserver une table</a>
+      <button class="burger" type="button" aria-expanded="false" aria-controls="nav-mobile" aria-label="Ouvrir le menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<nav class="nav-panel" id="nav-mobile" aria-label="Navigation mobile">
+  <a href="./index.html">Accueil</a>
+  <a href="./carte.html">La carte</a>
+  <a href="./programme.html" aria-current="page">Programme</a>
+  <a href="./a-propos.html">À propos</a>
+  <a href="./privatiser.html">Privatiser</a>
+      <a href="./contact.html">Contact</a>
+  <a class="nav-tel" href="tel:+22676987654">Réserver : +226 76 98 76 54</a>
+</nav>
+
+<main id="contenu">
+
+  <header class="page-header">
+    <div class="wrap">
+      <p class="eyebrow" data-hero="1">Le programme</p>
+      <h1 data-hero="2">La semaine, soir après soir</h1>
+      <p class="lede" data-hero="3">Chaque soirée a sa couleur chez Baobar. Entrée libre sauf mention contraire - pour être sûr d'avoir une table, réservez sur WhatsApp.</p>
+    </div>
+  </header>
+
+  <!-- ============ BANDEAU HAPPY HOUR ============ -->
+  <div class="happy" role="note" aria-label="Happy hour">
+    <div class="wrap happy-in">
+      <p class="happy-tag"><span class="point" aria-hidden="true"></span> Happy hour</p>
+      <p class="happy-texte">18h – 20h - <strong>-30 % sur les cocktails signatures</strong></p>
+    </div>
+  </div>
+
+  <!-- ============ AGENDA COMPLET (signature) ============ -->
+  <section class="section" aria-labelledby="titre-agenda">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow">Cette semaine</p>
+        <h2 id="titre-agenda">Les soirées régulières</h2>
+        <p>Le rendez-vous est pris : mêmes jours, même énergie, chaque semaine.</p>
+      </div>
+      <div class="agenda">
+        <div class="agenda-ligne" data-reveal>
+          <span class="agenda-jour">Jeudi</span>
+          <span class="agenda-nom">Jam session</span>
+          <span class="agenda-detail">Scène ouverte aux musiciens de la ville, dès 21h</span>
+          <a class="agenda-fleche" href="./contact.html#reservation" aria-label="Réserver pour Jam session">&rarr;</a>
+        </div>
+        <div class="agenda-ligne" data-reveal data-reveal-delay="90">
+          <span class="agenda-jour">Vendredi</span>
+          <span class="agenda-nom">DJ set afro-house</span>
+          <span class="agenda-detail">Nos résidents aux platines jusqu’au bout de la nuit</span>
+          <a class="agenda-fleche" href="./contact.html#reservation" aria-label="Réserver pour DJ set afro-house">&rarr;</a>
+        </div>
+        <div class="agenda-ligne" data-reveal data-reveal-delay="180">
+          <span class="agenda-jour">Samedi</span>
+          <span class="agenda-nom">Live band</span>
+          <span class="agenda-detail">Concert acoustique, puis DJ jusqu’à la fermeture</span>
+          <a class="agenda-fleche" href="./contact.html#reservation" aria-label="Réserver pour Live band">&rarr;</a>
+        </div>
+        <div class="agenda-ligne" data-reveal data-reveal-delay="270">
+          <span class="agenda-jour">Dimanche</span>
+          <span class="agenda-nom">Sunset lounge</span>
+          <span class="agenda-detail">Ambiance douce, jus frais et coucher de soleil en terrasse</span>
+          <a class="agenda-fleche" href="./contact.html#reservation" aria-label="Réserver pour Sunset lounge">&rarr;</a>
+        </div>
+      </div>
+      <p class="carte-note">Le lundi, on ferme : l'équipe recharge les batteries. Le reste de la semaine, ouvert jusqu'à 3h.</p>
+    </div>
+  </section>
+
+  <!-- ============ COMMENT CA SE PASSE ============ -->
+  <section class="section section--panel" aria-labelledby="titre-deroule">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow">Mode d'emploi</p>
+        <h2 id="titre-deroule">Une soirée chez Baobar</h2>
+      </div>
+      <div class="trio">
+        <article class="carte-bloc" data-reveal>
+          <span class="num" aria-hidden="true">01</span>
+          <h3>Arrivez pour le happy hour</h3>
+          <p>18h – 20h : -30 % sur les cocktails signatures. Le meilleur moment pour découvrir la carte sans se presser.</p>
+        </article>
+        <article class="carte-bloc" data-reveal data-reveal-delay="120">
+          <span class="num" aria-hidden="true">02</span>
+          <h3>Installez-vous</h3>
+          <p>Comptoir pour discuter avec l'équipe, tables basses pour la bande d'amis. La musique monte doucement avec la nuit.</p>
+        </article>
+        <article class="carte-bloc" data-reveal data-reveal-delay="240">
+          <span class="num" aria-hidden="true">03</span>
+          <h3>Restez pour la soirée</h3>
+          <p>Le programme prend le relais jusqu'à 3h. On s'occupe de l'ambiance, vous n'avez plus qu'à profiter.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ EVENEMENTS PRIVES ============ -->
+  <section class="section" aria-labelledby="titre-prive">
+    <div class="wrap duo">
+      <figure class="duotone" data-reveal="gauche">
+        <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1000&q=80" alt="La salle du bar Baobar privatisée pour une soirée à Ouagadougou" loading="lazy" width="800" height="1000">
+      </figure>
+      <div data-reveal="droite">
+        <p class="eyebrow">Événements privés</p>
+        <h2 id="titre-prive">Privatisez le bar</h2>
+        <p>Anniversaire, afterwork d'équipe, lancement : Baobar se privatise en partie ou en totalité. Carte adaptée, playlist sur mesure, formules boissons au forfait.</p>
+        <blockquote class="citation">
+          <p>&laquo; Dites-nous la date et le nombre d'invités, on s'occupe du reste. &raquo;</p>
+          <footer>L'équipe du bar</footer>
+        </blockquote>
+        <div class="hero-ctas">
+          <a class="btn btn--magenta" href="https://wa.me/22676987654?text=Bonjour%2C%20je%20souhaite%20privatiser%20le%20bar%20pour%20un%20%C3%A9v%C3%A9nement." target="_blank" rel="noopener">Demander un devis <span class="fleche" aria-hidden="true">&rarr;</span></a>
+          <a class="btn btn--ligne" href="tel:+22676987654">Appeler le +226 76 98 76 54</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CTA FINAL ============ -->
+  <section class="cta-band" aria-labelledby="titre-cta">
+    <div class="wrap">
+      <div>
+        <h2 id="titre-cta">Ce soir, c'est quel programme ?</h2>
+        <p>Réservez votre table en un message, réponse rapide aux heures d'ouverture.</p>
+      </div>
+      <a class="btn btn--ambre" href="https://wa.me/22676987654?text=Bonjour%2C%20je%20souhaite%20r%C3%A9server%20une%20table%20pour%20la%20soir%C3%A9e." target="_blank" rel="noopener">Réserver sur WhatsApp <span class="fleche" aria-hidden="true">&rarr;</span></a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p class="footer-marque" aria-hidden="true">Baobar</p>
+    <div class="footer-grille">
+      <div>
+        <h3>La maison</h3>
+        <p class="footer-desc">Bar à cocktails à Ouagadougou. Cocktails d’auteur et nuits ambrées. Ouvert jusqu'à 3h, fermé le lundi.</p>
+      </div>
+      <div>
+        <h3>Navigation</h3>
+        <ul>
+          <li><a href="./carte.html">La carte</a></li>
+          <li><a href="./programme.html">Programme des soirées</a></li>
+          <li><a href="./a-propos.html">À propos</a></li>
+          <li><a href="./privatiser.html">Privatiser</a></li>
+          <li><a href="./contact.html">Contact et réservation</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Contact</h3>
+        <ul>
+          <li><a href="tel:+22676987654">+226 76 98 76 54</a></li>
+          <li><a href="mailto:hello@baobar.bf">hello@baobar.bf</a></li>
+          <li><a href="https://www.facebook.com/baobar.ouaga" target="_blank" rel="noopener">Facebook</a></li>
+          <li><a href="https://www.instagram.com/baobar.ouaga" target="_blank" rel="noopener">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bas">
+      <p>&copy; Baobar - Ouagadougou, Burkina Faso. Tous droits réservés. L'abus d'alcool est dangereux pour la santé.</p>
+      <p>Site réalisé par Atelier Web</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

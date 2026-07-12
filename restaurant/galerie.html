@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Galerie - Le Tamarinier, restaurant à Ouagadougou</title>
+<meta name="description" content="La galerie photos du restaurant Le Tamarinier à Ouagadougou : les plats, la salle, l'ambiance. La braise, le marché du matin, le temps de bien manger.">
+<meta name="theme-color" content="#16261C">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%2316261C'/%3E%3Ccircle cx='32' cy='32' r='14' fill='%23E4572E'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;1,600&family=Young+Serif&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./styles.css">
+<script>document.documentElement.classList.add('js')</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js" defer></script>
+<script src="./script.js" defer></script>
+</head>
+<body>
+
+<a class="skip-link" href="#contenu">Aller au contenu</a>
+
+<header class="site-header">
+  <div class="wrap header-in">
+    <a class="logo" href="./index.html">Le Tamarinier<em>.</em></a>
+    <nav class="nav-desktop" aria-label="Navigation principale">
+      <a href="./index.html">Accueil</a>
+      <a href="./menu.html">La carte</a>
+      <a href="./galerie.html" aria-current="page">Galerie</a>
+      <a href="./a-propos.html">À propos</a>
+      <a href="./chef.html">Le chef</a>
+      <a href="./contact.html">Contact</a>
+    </nav>
+    <div class="header-droite">
+      <a class="btn btn--braise header-cta" href="./contact.html#reservation">Réserver une table</a>
+      <button class="burger" type="button" aria-expanded="false" aria-controls="nav-mobile" aria-label="Ouvrir le menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<nav class="nav-panel" id="nav-mobile" aria-label="Navigation mobile">
+  <a href="./index.html">Accueil</a>
+  <a href="./menu.html">La carte</a>
+  <a href="./galerie.html" aria-current="page">Galerie</a>
+  <a href="./a-propos.html">À propos</a>
+  <a href="./chef.html">Le chef</a>
+      <a href="./contact.html">Contact</a>
+  <a class="nav-tel" href="tel:+22670123456">Réserver : +226 70 12 34 56</a>
+</nav>
+
+<main id="contenu">
+
+  <header class="page-header">
+    <div class="wrap">
+      <p class="eyebrow" data-hero="1">Galerie</p>
+      <h1 data-hero="2">L'assiette, la salle, la braise</h1>
+      <p class="lede" data-hero="3">Un aperçu de ce qui vous attend chez Le Tamarinier. Cliquez sur une photo pour l'agrandir.</p>
+    </div>
+  </header>
+
+  <section class="section" aria-label="Photos du restaurant">
+    <div class="wrap">
+      <div class="galerie-grille">
+        <button class="galerie-item galerie-item--large" type="button" data-reveal>
+          <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1200&q=80" alt="Table dressée dans la salle du restaurant Le Tamarinier" loading="lazy" width="1200" height="1200">
+        </button>
+        <button class="galerie-item" type="button" data-reveal data-reveal-delay="80">
+          <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80" alt="Poulet bicyclette à la braise, plat signature de la maison" loading="lazy" width="800" height="800">
+        </button>
+        <button class="galerie-item" type="button" data-reveal data-reveal-delay="160">
+          <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=800&q=80" alt="Salade de mangue verte au gingembre en cours de cuisson à la braise" loading="lazy" width="800" height="800">
+        </button>
+        <button class="galerie-item" type="button" data-reveal data-reveal-delay="120">
+          <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=800&q=80" alt="Assiettes servies au restaurant Le Tamarinier à Ouagadougou" loading="lazy" width="800" height="800">
+        </button>
+        <button class="galerie-item" type="button" data-reveal data-reveal-delay="200">
+          <img src="https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?auto=format&fit=crop&w=800&q=80" alt="La brigade de Abdoul Ouédraogo en pleine préparation" loading="lazy" width="800" height="800">
+        </button>
+        <button class="galerie-item galerie-item--wide" type="button" data-reveal data-reveal-delay="120">
+          <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80" alt="Vue d'ensemble de la salle du restaurant Le Tamarinier" loading="lazy" width="1200" height="600">
+        </button>
+        <button class="galerie-item" type="button" data-reveal data-reveal-delay="200">
+          <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=800&q=80" alt="Riz gras aux légumes confits, fraîcheur du marché de Ouagadougou" loading="lazy" width="800" height="800">
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <dialog class="lightbox" id="lightbox" aria-label="Photo agrandie">
+    <button class="lightbox-fermer" type="button" aria-label="Fermer">&times;</button>
+    <img src="" alt="">
+  </dialog>
+
+  <!-- ============ CTA FINAL ============ -->
+  <section class="cta-band" aria-labelledby="titre-cta">
+    <div class="wrap">
+      <div>
+        <h2 id="titre-cta">Venez le vivre en vrai</h2>
+        <p>Les photos ne rendent pas l'odeur de la braise.</p>
+      </div>
+      <a class="btn" href="https://wa.me/22670123456?text=Bonjour%2C%20je%20souhaite%20r%C3%A9server%20une%20table." target="_blank" rel="noopener">Réserver sur WhatsApp <span class="fleche" aria-hidden="true">&rarr;</span></a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p class="footer-marque" aria-hidden="true">Le Tamarinier</p>
+    <div class="footer-grille">
+      <div>
+        <h3>La maison</h3>
+        <p class="footer-desc">Restaurant bistronomique à Ouagadougou. La braise, le marché du matin, le temps de bien manger.</p>
+      </div>
+      <div>
+        <h3>Navigation</h3>
+        <ul>
+          <li><a href="./menu.html">La carte</a></li>
+          <li><a href="./galerie.html">Galerie</a></li>
+          <li><a href="./a-propos.html">À propos</a></li>
+          <li><a href="./chef.html">Le chef</a></li>
+          <li><a href="./contact.html">Contact et réservation</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Contact</h3>
+        <ul>
+          <li><a href="tel:+22670123456">+226 70 12 34 56</a></li>
+          <li><a href="mailto:contact@letamarinier.bf">contact@letamarinier.bf</a></li>
+          <li><a href="https://www.facebook.com/letamarinier" target="_blank" rel="noopener">Facebook</a></li>
+          <li><a href="https://www.instagram.com/letamarinier" target="_blank" rel="noopener">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bas">
+      <p>&copy; Le Tamarinier - Ouagadougou, Burkina Faso. Tous droits réservés.</p>
+      <p>Site réalisé par Atelier Web</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact et réservation - Baobar, bar à Ouagadougou</title>
+<meta name="description" content="Réservez votre table au bar Baobar à Ouagadougou : WhatsApp, téléphone +226 76 98 76 54, adresse Rue de la Culture, Ouaga 2000. Horaires, happy hour 18h – 20h et plan d'accès.">
+<meta name="theme-color" content="#0D1220">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%230D1220'/%3E%3Ccircle cx='26' cy='32' r='13' fill='%23E8A13D'/%3E%3Ccircle cx='40' cy='32' r='13' fill='%23D9488B' fill-opacity='.85'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./styles.css">
+<script>document.documentElement.classList.add('js')</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js" defer></script>
+<script src="./script.js" defer></script>
+</head>
+<body>
+
+<a class="skip-link" href="#contenu">Aller au contenu</a>
+
+<header class="site-header">
+  <div class="wrap header-in">
+    <a class="logo" href="./index.html">Baobar<em>.</em></a>
+    <nav class="nav-desktop" aria-label="Navigation principale">
+      <a href="./index.html">Accueil</a>
+      <a href="./carte.html">La carte</a>
+      <a href="./programme.html">Programme</a>
+      <a href="./a-propos.html">À propos</a>
+      <a href="./privatiser.html">Privatiser</a>
+      <a href="./contact.html" aria-current="page">Contact</a>
+    </nav>
+    <div class="header-droite">
+      <a class="btn btn--ambre header-cta" href="#reservation">Réserver une table</a>
+      <button class="burger" type="button" aria-expanded="false" aria-controls="nav-mobile" aria-label="Ouvrir le menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<nav class="nav-panel" id="nav-mobile" aria-label="Navigation mobile">
+  <a href="./index.html">Accueil</a>
+  <a href="./carte.html">La carte</a>
+  <a href="./programme.html">Programme</a>
+  <a href="./a-propos.html">À propos</a>
+  <a href="./privatiser.html">Privatiser</a>
+      <a href="./contact.html" aria-current="page">Contact</a>
+  <a class="nav-tel" href="tel:+22676987654">Réserver : +226 76 98 76 54</a>
+</nav>
+
+<main id="contenu">
+
+  <header class="page-header">
+    <div class="wrap">
+      <p class="eyebrow" data-hero="1">Contact</p>
+      <h1 data-hero="2">Réservez votre soirée</h1>
+      <p class="lede" data-hero="3">Le plus simple : remplissez le formulaire, votre demande part directement sur notre WhatsApp. Nous confirmons rapidement aux heures d'ouverture.</p>
+    </div>
+  </header>
+
+  <!-- ============ RESERVATION ============ -->
+  <section class="section" id="reservation" aria-labelledby="titre-resa">
+    <div class="wrap resa-grille">
+
+      <form class="resa-form" id="form-resa" data-whatsapp="22676987654" data-reveal>
+        <h2 id="titre-resa">Demande de réservation</h2>
+        <div class="champ">
+          <label for="resa-nom">Votre nom</label>
+          <input id="resa-nom" name="nom" type="text" autocomplete="name" required>
+        </div>
+        <div class="deux">
+          <div class="champ">
+            <label for="resa-date">Date</label>
+            <input id="resa-date" name="date" type="date" required>
+          </div>
+          <div class="champ">
+            <label for="resa-heure">Heure</label>
+            <input id="resa-heure" name="heure" type="time" required>
+          </div>
+        </div>
+        <div class="deux">
+          <div class="champ">
+            <label for="resa-personnes">Personnes</label>
+            <select id="resa-personnes" name="personnes" required>
+              <option value="2">2 personnes</option>
+              <option value="3">3 personnes</option>
+              <option value="4">4 personnes</option>
+              <option value="5">5 personnes</option>
+              <option value="6">6 personnes</option>
+              <option value="Plus de 6">Plus de 6 (groupe)</option>
+            </select>
+          </div>
+          <div class="champ">
+            <label for="resa-occasion">Occasion</label>
+            <select id="resa-occasion" name="occasion">
+              <option value="Entre amis">Entre amis</option>
+              <option value="Afterwork">Afterwork</option>
+              <option value="Anniversaire">Anniversaire</option>
+              <option value="Privatisation">Privatisation</option>
+              <option value="Autre">Autre</option>
+            </select>
+          </div>
+        </div>
+        <div class="champ">
+          <label for="resa-message">Message (facultatif)</label>
+          <textarea id="resa-message" name="message" placeholder="Table près du comptoir, bouteille à prévoir, playlist..."></textarea>
+        </div>
+        <button class="btn btn--ambre" type="submit">Envoyer sur WhatsApp <span class="fleche" aria-hidden="true">&rarr;</span></button>
+        <p class="resa-aide">Le formulaire ouvre WhatsApp avec votre demande déjà écrite. Rien ne part sans votre confirmation.</p>
+      </form>
+
+      <div data-reveal data-reveal-delay="120">
+        <p class="eyebrow">En direct</p>
+        <h2>Plus rapide encore</h2>
+        <div class="resa-directe">
+          <a class="btn btn--ambre" href="https://wa.me/22676987654?text=Bonjour%2C%20je%20souhaite%20r%C3%A9server%20une%20table%20au%20bar." target="_blank" rel="noopener">WhatsApp direct <span class="fleche" aria-hidden="true">&rarr;</span></a>
+          <a class="btn btn--ligne" href="tel:+22676987654">Appeler le +226 76 98 76 54</a>
+        </div>
+        <div class="info-bloc">
+          <h3>Adresse</h3>
+          <p>Rue de la Culture, Ouaga 2000<br>Ouagadougou, Burkina Faso</p>
+        </div>
+        <div class="info-bloc">
+          <h3>Horaires</h3>
+          <p class="horaire"><strong>Semaine</strong><span class="boisson-fill" aria-hidden="true"></span><span>18h – 1h</span></p>
+          <p class="horaire"><strong>Week-end</strong><span class="boisson-fill" aria-hidden="true"></span><span>18h – 3h</span></p>
+          <p class="horaire"><strong>Happy hour</strong><span class="boisson-fill" aria-hidden="true"></span><span>18h – 20h</span></p>
+          <p class="horaire"><strong>Fermeture</strong><span class="boisson-fill" aria-hidden="true"></span><span>lundi</span></p>
+        </div>
+        <div class="info-bloc">
+          <h3>Email</h3>
+          <p><a href="mailto:hello@baobar.bf">hello@baobar.bf</a></p>
+        </div>
+        <div class="info-bloc">
+          <h3>Réseaux</h3>
+          <p><a href="https://www.facebook.com/baobar.ouaga" target="_blank" rel="noopener">Facebook</a> - <a href="https://www.instagram.com/baobar.ouaga" target="_blank" rel="noopener">Instagram</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PLAN D'ACCES ============ -->
+  <section class="section section--panel" aria-labelledby="titre-plan">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow">Plan d'accès</p>
+        <h2 id="titre-plan">On vous attend ici</h2>
+      </div>
+      <div class="carte-map" data-reveal>
+        <iframe src="https://www.google.com/maps?q=Ouagadougou%2C%20Burkina%20Faso&output=embed" title="Plan d'accès - Baobar, Ouagadougou" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+        <p class="map-note">Rue de la Culture, Ouaga 2000 - Ouagadougou, Burkina Faso</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p class="footer-marque" aria-hidden="true">Baobar</p>
+    <div class="footer-grille">
+      <div>
+        <h3>La maison</h3>
+        <p class="footer-desc">Bar à cocktails à Ouagadougou. Cocktails d’auteur et nuits ambrées. Ouvert jusqu'à 3h, fermé le lundi.</p>
+      </div>
+      <div>
+        <h3>Navigation</h3>
+        <ul>
+          <li><a href="./carte.html">La carte</a></li>
+          <li><a href="./programme.html">Programme des soirées</a></li>
+          <li><a href="./a-propos.html">À propos</a></li>
+          <li><a href="./privatiser.html">Privatiser</a></li>
+          <li><a href="./contact.html">Contact et réservation</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Contact</h3>
+        <ul>
+          <li><a href="tel:+22676987654">+226 76 98 76 54</a></li>
+          <li><a href="mailto:hello@baobar.bf">hello@baobar.bf</a></li>
+          <li><a href="https://www.facebook.com/baobar.ouaga" target="_blank" rel="noopener">Facebook</a></li>
+          <li><a href="https://www.instagram.com/baobar.ouaga" target="_blank" rel="noopener">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bas">
+      <p>&copy; Baobar - Ouagadougou, Burkina Faso. Tous droits réservés. L'abus d'alcool est dangereux pour la santé.</p>
+      <p>Site réalisé par Atelier Web</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

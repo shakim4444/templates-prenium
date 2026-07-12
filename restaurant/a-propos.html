@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>À propos - Le Tamarinier, restaurant à Ouagadougou</title>
+<meta name="description" content="L'histoire du restaurant Le Tamarinier à Ouagadougou, Burkina Faso : la maison, le chef Abdoul Ouédraogo et notre façon de cuisiner depuis 2012.">
+<meta name="theme-color" content="#16261C">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%2316261C'/%3E%3Ccircle cx='32' cy='32' r='14' fill='%23E4572E'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;1,600&family=Young+Serif&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./styles.css">
+<script>document.documentElement.classList.add('js')</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js" defer></script>
+<script src="./script.js" defer></script>
+</head>
+<body>
+
+<a class="skip-link" href="#contenu">Aller au contenu</a>
+
+<header class="site-header">
+  <div class="wrap header-in">
+    <a class="logo" href="./index.html">Le Tamarinier<em>.</em></a>
+    <nav class="nav-desktop" aria-label="Navigation principale">
+      <a href="./index.html">Accueil</a>
+      <a href="./menu.html">La carte</a>
+      <a href="./galerie.html">Galerie</a>
+      <a href="./a-propos.html" aria-current="page">À propos</a>
+      <a href="./chef.html">Le chef</a>
+      <a href="./contact.html">Contact</a>
+    </nav>
+    <div class="header-droite">
+      <a class="btn btn--braise header-cta" href="./contact.html#reservation">Réserver une table</a>
+      <button class="burger" type="button" aria-expanded="false" aria-controls="nav-mobile" aria-label="Ouvrir le menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<nav class="nav-panel" id="nav-mobile" aria-label="Navigation mobile">
+  <a href="./index.html">Accueil</a>
+  <a href="./menu.html">La carte</a>
+  <a href="./galerie.html">Galerie</a>
+  <a href="./a-propos.html" aria-current="page">À propos</a>
+  <a href="./chef.html">Le chef</a>
+      <a href="./contact.html">Contact</a>
+  <a class="nav-tel" href="tel:+22670123456">Réserver : +226 70 12 34 56</a>
+</nav>
+
+<main id="contenu">
+
+  <header class="page-header">
+    <div class="wrap">
+      <p class="eyebrow" data-hero="1">À propos</p>
+      <h1 data-hero="2">Une maison, un feu, une histoire</h1>
+      <p class="lede" data-hero="3">Depuis 2012, Le Tamarinier fait vivre la cuisine bistronomique à Ouagadougou. Voici d'où l'on vient, et ce qui ne changera jamais.</p>
+    </div>
+  </header>
+
+  <!-- ============ HISTOIRE ============ -->
+  <section class="section" aria-labelledby="titre-histoire">
+    <div class="wrap duo">
+      <div class="arche" data-reveal="gauche">
+        <img src="https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?auto=format&fit=crop&w=1000&q=80" alt="En cuisine chez Le Tamarinier, la préparation du service" loading="lazy" width="800" height="1000">
+      </div>
+      <div data-reveal="droite">
+        <p class="eyebrow">Notre histoire</p>
+        <h2 id="titre-histoire">Tout a commencé par une table</h2>
+        <p>Le Tamarinier est né en 2012 d'une conviction simple : bien manger ne devrait jamais être compliqué. Une carte courte, des produits choisis chaque matin au marché de Ouagadougou, et le respect du temps de cuisson.</p>
+        <p>Produits du marché, cuissons à la braise et recettes de famille, servis dans une salle chaleureuse au cœur de Ouagadougou.</p>
+        <p>Aujourd'hui comme au premier jour, chaque assiette qui quitte la cuisine passe sous les yeux du chef. C'est notre façon de vous dire merci d'être là.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LE CHEF ============ -->
+  <section class="section section--panel" aria-labelledby="titre-chef">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow">Le chef</p>
+        <h2 id="titre-chef">Abdoul Ouédraogo, gardien du feu</h2>
+      </div>
+      <blockquote class="citation" data-reveal>
+        <p>&laquo; La braise n’attend pas : elle récompense ceux qui la respectent. &raquo;</p>
+        <footer>Abdoul Ouédraogo, chef de cuisine de Le Tamarinier</footer>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- ============ NOS ENGAGEMENTS ============ -->
+  <section class="section" aria-labelledby="titre-valeurs">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow">Nos engagements</p>
+        <h2 id="titre-valeurs">Ce qui ne se négocie pas</h2>
+      </div>
+      <div class="valeurs">
+        <div class="valeur" data-reveal>
+          <h3><span class="picto" aria-hidden="true">&#9670;</span>La fraîcheur d'abord</h3>
+          <p>Les produits arrivent du marché le matin même. Ce que la carte propose, c'est ce que le marché a offert. Quand c'est fini, c'est fini.</p>
+        </div>
+        <div class="valeur" data-reveal data-reveal-delay="100">
+          <h3><span class="picto" aria-hidden="true">&#9670;</span>Le geste juste</h3>
+          <p>Nos recettes sont transmises et travaillées à la main, sans raccourci. La braise demande de la patience : nous la prenons.</p>
+        </div>
+        <div class="valeur" data-reveal data-reveal-delay="200">
+          <h3><span class="picto" aria-hidden="true">&#9670;</span>L'accueil de la maison</h3>
+          <p>Ici, on vous connaît par votre prénom dès la deuxième visite. Une table, c'est d'abord des gens qui se retrouvent.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CTA FINAL ============ -->
+  <section class="cta-band" aria-labelledby="titre-cta">
+    <div class="wrap">
+      <div>
+        <h2 id="titre-cta">Écrivez la suite avec nous</h2>
+        <p>La meilleure façon de connaître la maison, c'est d'y goûter.</p>
+      </div>
+      <a class="btn" href="https://wa.me/22670123456?text=Bonjour%2C%20je%20souhaite%20r%C3%A9server%20une%20table." target="_blank" rel="noopener">Réserver sur WhatsApp <span class="fleche" aria-hidden="true">&rarr;</span></a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p class="footer-marque" aria-hidden="true">Le Tamarinier</p>
+    <div class="footer-grille">
+      <div>
+        <h3>La maison</h3>
+        <p class="footer-desc">Restaurant bistronomique à Ouagadougou. La braise, le marché du matin, le temps de bien manger.</p>
+      </div>
+      <div>
+        <h3>Navigation</h3>
+        <ul>
+          <li><a href="./menu.html">La carte</a></li>
+          <li><a href="./galerie.html">Galerie</a></li>
+          <li><a href="./a-propos.html">À propos</a></li>
+          <li><a href="./chef.html">Le chef</a></li>
+          <li><a href="./contact.html">Contact et réservation</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Contact</h3>
+        <ul>
+          <li><a href="tel:+22670123456">+226 70 12 34 56</a></li>
+          <li><a href="mailto:contact@letamarinier.bf">contact@letamarinier.bf</a></li>
+          <li><a href="https://www.facebook.com/letamarinier" target="_blank" rel="noopener">Facebook</a></li>
+          <li><a href="https://www.instagram.com/letamarinier" target="_blank" rel="noopener">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bas">
+      <p>&copy; Le Tamarinier - Ouagadougou, Burkina Faso. Tous droits réservés.</p>
+      <p>Site réalisé par Atelier Web</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
