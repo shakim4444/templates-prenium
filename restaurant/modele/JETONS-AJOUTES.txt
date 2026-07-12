@@ -1,6 +1,0 @@
-# Mise a niveau PRENIUM
-# Nouvelle page : chef.html (Le chef), reliee dans la navigation de toutes les pages.
-# Ajouts : bandeau defilant / compteurs animes sur l'accueil, animations GSAP + Lenis (degradation douce si CDN indisponible).
-
-# Nouveaux jetons a remplacer (en plus des existants) :
-CHEF_PARCOURS = Parcours du chef (paragraphe, page chef)
