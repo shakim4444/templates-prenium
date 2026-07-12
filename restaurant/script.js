@@ -1,11 +1,8 @@
-/* Template restaurant "Braise et feuille" - JS partage (vanilla, aucun jeton ici).
-   1. burger mobile  2. header au scroll  3. reveals  4. lightbox galerie
-   5. formulaire de reservation -> message WhatsApp compose */
+/* Restaurant "Braise et feuille" — script. Lenis retire, scroll natif. */
 (function () {
   'use strict';
   var reduit = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* 1. Burger mobile */
   var burger = document.querySelector('.burger');
   var panel = document.getElementById('nav-mobile');
   function fermerMenu() {
@@ -23,7 +20,6 @@
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape') fermerMenu(); });
   }
 
-  /* 2. Header plein au scroll */
   var header = document.querySelector('.site-header');
   function surScroll() {
     if (header) header.classList.toggle('is-scrolled', window.scrollY > 24);
@@ -31,7 +27,6 @@
   surScroll();
   window.addEventListener('scroll', surScroll, { passive: true });
 
-  /* 3. Reveals au scroll (coupes si reduced-motion) */
   var reveals = document.querySelectorAll('[data-reveal]');
   if (reveals.length) {
     if (reduit || !('IntersectionObserver' in window)) {
@@ -50,7 +45,6 @@
     }
   }
 
-  /* 4. Lightbox galerie (dialog natif) */
   var lightbox = document.getElementById('lightbox');
   if (lightbox && typeof lightbox.showModal === 'function') {
     var lbImg = lightbox.querySelector('img');
@@ -58,8 +52,7 @@
       btn.addEventListener('click', function () {
         var img = btn.querySelector('img');
         if (!img) return;
-        lbImg.src = img.src;
-        lbImg.alt = img.alt;
+        lbImg.src = img.src; lbImg.alt = img.alt;
         lightbox.showModal();
       });
     });
@@ -68,7 +61,6 @@
     if (fermer) fermer.addEventListener('click', function () { lightbox.close(); });
   }
 
-  /* 5. Reservation -> WhatsApp (repli sans JS : lien wa.me direct affiche a cote) */
   var form = document.getElementById('form-resa');
   if (form) {
     form.addEventListener('submit', function (e) {
@@ -81,39 +73,23 @@
         'Heure : ' + (d.get('heure') || '-'),
         'Personnes : ' + (d.get('personnes') || '-')
       ];
-      var msg = d.get('message');
-      if (msg) lignes.push('Message : ' + msg);
-      var numero = form.getAttribute('data-whatsapp') || '';
-      window.open('https://wa.me/' + numero + '?text=' + encodeURIComponent(lignes.join('\n')), '_blank', 'noopener');
+      var msg = d.get('message'); if (msg) lignes.push('Message : ' + msg);
+      window.open('https://wa.me/' + (form.getAttribute('data-whatsapp') || '') + '?text=' + encodeURIComponent(lignes.join('\n')), '_blank', 'noopener');
     });
   }
 })();
 
-/* ============ PRENIUM : couche d'animations (GSAP + Lenis, degradation douce) ============ */
+/* GSAP layer - PAS de Lenis */
 (function () {
   'use strict';
-  var reduit = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
   function finaliserCompteurs() {
-    document.querySelectorAll('[data-count]').forEach(function (el) {
-      el.textContent = el.getAttribute('data-count');
-    });
+    document.querySelectorAll('[data-count]').forEach(function (el) { el.textContent = el.getAttribute('data-count'); });
   }
-
   window.addEventListener('load', function () {
-    if (reduit || !window.gsap || !window.ScrollTrigger) { finaliserCompteurs(); return; }
+    if (!window.gsap || !window.ScrollTrigger) { finaliserCompteurs(); return; }
     try {
       gsap.registerPlugin(ScrollTrigger);
-
-      /* Defilement doux */
-      if (window.Lenis) {
-        var lenis = new Lenis({ lerp: 0.11, autoRaf: false });
-        lenis.on('scroll', ScrollTrigger.update);
-        gsap.ticker.add(function (t) { lenis.raf(t * 1000); });
-        gsap.ticker.lagSmoothing(0);
-      }
-
-      /* Compteurs animes */
+      /* PAS de Lenis */
       document.querySelectorAll('[data-count]').forEach(function (el) {
         var fin = parseFloat(el.getAttribute('data-count')) || 0;
         var obj = { v: 0 };
@@ -124,66 +100,16 @@
           onComplete: function () { el.textContent = el.getAttribute('data-count'); }
         });
       });
-
-      /* Parallaxe douce des images encadrees */
       document.querySelectorAll('[data-parallax]').forEach(function (el) {
         gsap.to(el, {
-          yPercent: parseFloat(el.getAttribute('data-parallax')) || -8,
-          ease: 'none',
+          yPercent: parseFloat(el.getAttribute('data-parallax')) || -8, ease: 'none',
           scrollTrigger: { trigger: el.closest('section') || el, start: 'top bottom', end: 'bottom top', scrub: true }
         });
       });
-
-      /* Bandeau defilant */
       document.querySelectorAll('.marquee-inner').forEach(function (el) {
         var demi = el.scrollWidth / 2;
         if (demi > 0) gsap.to(el, { x: -demi, duration: 26, ease: 'none', repeat: -1 });
       });
     } catch (e) { finaliserCompteurs(); }
-  });
-})();
-
-/* ============ PRENIUM+ : braises dans le hero ============ */
-(function () {
-  'use strict';
-  var reduit = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (reduit) return;
-  window.addEventListener('load', function () {
-    try {
-      var zone = document.querySelector('.hero') || document.querySelector('.page-header');
-      if (!zone) return;
-      var canvas = document.createElement('canvas');
-      canvas.className = 'braises';
-      canvas.setAttribute('aria-hidden', 'true');
-      if (!zone.style.position) zone.style.position = 'relative';
-      zone.appendChild(canvas);
-      var ctx = canvas.getContext('2d');
-      var braises = [];
-      function taille() { canvas.width = zone.clientWidth; canvas.height = zone.clientHeight; }
-      taille();
-      window.addEventListener('resize', taille);
-      for (var i = 0; i < 34; i++) {
-        braises.push({ x: Math.random(), y: Math.random(), v: .0006 + Math.random() * .0016, r: 1 + Math.random() * 2.4, o: .2 + Math.random() * .5, d: Math.random() * 6.28 });
-      }
-      var visible = true;
-      document.addEventListener('visibilitychange', function () { visible = !document.hidden; });
-      (function boucle() {
-        requestAnimationFrame(boucle);
-        if (!visible) return;
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        for (var i = 0; i < braises.length; i++) {
-          var b = braises[i];
-          b.y -= b.v; b.d += .02;
-          if (b.y < -0.05) { b.y = 1.05; b.x = Math.random(); }
-          var x = (b.x + Math.sin(b.d) * .012) * canvas.width;
-          var y = b.y * canvas.height;
-          var scint = .55 + Math.sin(b.d * 3) * .45;
-          ctx.beginPath();
-          ctx.arc(x, y, b.r, 0, 6.283);
-          ctx.fillStyle = 'rgba(228, 87, 46, ' + (b.o * scint).toFixed(3) + ')';
-          ctx.fill();
-        }
-      })();
-    } catch (e) { /* rien */ }
   });
 })();

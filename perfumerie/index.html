@@ -1,380 +1,182 @@
 <!doctype html>
 <html lang="fr">
 <head>
-<!--
-  TEMPLATE PARFUMERIE "Extrait - vapeur d'iris" - Atelier Web
-  Adaptation a un prospect :
-  1. Copier ce dossier vers <nom-du-prospect>/
-  2. Rechercher-remplacer les valeurs de demonstration (liste dans JETONS-VALEURS-DEMO.txt)
-  3. Remplacer les URLs images.unsplash.com par les photos du prospect
-  4. Verifier : grep -r "{{" . ne doit plus rien retourner
--->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Maison Solène - Parfumerie de luxe à Ouagadougou | Des extraits qui racontent</title>
-<meta name="description" content="Maison Solène, maison de parfum à Ouagadougou, Burkina Faso. Parfumerie de niche : extraits composés en petites séries, découverte guidée au comptoir olfactif. Conseil olfactif privé, collection d'exception, rendez-vous par WhatsApp.">
-<meta name="theme-color" content="#EFEDF4">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23221D2F'/%3E%3Crect x='26' y='9' width='12' height='9' rx='2' fill='%23C9BEE4'/%3E%3Crect x='19' y='20' width='26' height='34' rx='7' fill='none' stroke='%23C9BEE4' stroke-width='2'/%3E%3Cpath d='M19 38h26v9a7 7 0 0 1-7 7H26a7 7 0 0 1-7-7z' fill='%234E3D8F'/%3E%3C/svg%3E">
+<title>L'Olfactoire - Parfumerie de niche | Paris</title>
+<meta name="description" content="L'Olfactoire, parfumerie de niche a Paris. Flacons rares, conseil olfactif sur-mesure et creations exclusives.">
+<meta name="theme-color" content="#221D2F">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;500&family=Figtree:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="./styles.css">
 <script>document.documentElement.classList.add('js')</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js" defer></script>
 <script src="./script.js" defer></script>
 </head>
 <body>
-
 <a class="skip-link" href="#contenu">Aller au contenu</a>
-
-<header class="site-header">
+<header class="site-header" id="site-header">
   <div class="wrap header-in">
-    <a class="logo" href="./index.html">Maison Solène<em>.</em></a>
+    <a class="logo" href="./index.html">L'Olfactoire<em>.</em></a>
     <nav class="nav-desktop" aria-label="Navigation principale">
       <a href="./index.html" aria-current="page">Accueil</a>
-      <a href="./collection.html">La collection</a>
-      <a href="./maison.html">La maison</a>
-      <a href="./services.html">Services</a>
-      <a href="./parfum.html">Le parfum</a>
+      <a href="./collections.html">Collections</a>
+      <a href="./conseil.html">Conseil olfactif</a>
+      <a href="./maison.html">La Maison</a>
+      <a href="./savoir-faire.html">Savoir-faire</a>
       <a href="./contact.html">Contact</a>
     </nav>
     <div class="header-droite">
-      <a class="btn btn--iris header-cta" href="./contact.html#rendez-vous">Rendez-vous olfactif</a>
+      <a class="btn btn--iris header-cta" href="./conseil.html">Conseil olfactif</a>
       <button class="burger" type="button" aria-expanded="false" aria-controls="nav-mobile" aria-label="Ouvrir le menu">
         <span></span><span></span><span></span>
       </button>
     </div>
   </div>
 </header>
-
-<nav class="nav-panel" id="nav-mobile" aria-label="Navigation mobile">
+<nav class="nav-panel" id="nav-mobile">
   <a href="./index.html" aria-current="page">Accueil</a>
-  <a href="./collection.html">La collection</a>
-  <a href="./maison.html">La maison</a>
-  <a href="./services.html">Services</a>
-  <a href="./parfum.html">Le parfum</a>
-      <a href="./contact.html">Contact</a>
-  <a class="nav-tel" href="tel:+22625332211">Rendez-vous : +226 25 33 22 11</a>
+  <a href="./collections.html">Collections</a>
+  <a href="./conseil.html">Conseil olfactif</a>
+  <a href="./maison.html">La Maison</a>
+  <a href="./savoir-faire.html">Savoir-faire</a>
+  <a href="./contact.html">Contact</a>
 </nav>
-
 <main id="contenu">
-
-  <!-- ============ HERO ============ -->
   <section class="hero">
-    <div class="vapeur-fond" aria-hidden="true"><span></span><span></span><span></span></div>
-    <div class="wrap hero-in">
-      <div>
-        <p class="chip" data-hero="2">Maison de parfum - Ouagadougou</p>
-        <h1 data-hero="3">Des extraits qui racontent</h1>
-        <p class="hero-lede" data-hero="4">Parfumerie de niche : extraits composés en petites séries, découverte guidée au comptoir olfactif.</p>
-        <div class="hero-ctas" data-hero="5">
-          <a class="btn btn--iris" href="./collection.html">Découvrir la collection <span class="fleche" aria-hidden="true">&rarr;</span></a>
-          <a class="btn btn--ligne" href="./contact.html#rendez-vous">Rendez-vous olfactif</a>
-        </div>
-        <p class="hero-note" data-hero="5">Maison fondée en 2019 - Ouvert 10h – 19h, <strong>fermé le dimanche</strong></p>
-      </div>
-      <div class="hero-figure" data-hero="4">
-        <div class="cadre-petale">
-          <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=1000&q=80" alt="Flacon de la collection Maison Solène, parfumerie de luxe à Ouagadougou" fetchpriority="high" width="1000" height="1222">
-        </div>
-        <div class="hero-etiquette">
-          <p class="et-nom">Vapeur d’Iris</p>
-          <p class="et-detail">Extrait de parfum - 68 000 FCFA</p>
-        </div>
+    <div class="vapeur-fond" aria-hidden="true">
+      <span></span><span></span><span></span>
+    </div>
+    <div class="wrap hero-corps">
+      <p class="eyebrow" data-hero="1">Parfumerie de niche - Paris</p>
+      <h1 data-hero="2">Le parfum comme <em>langage intime</em></h1>
+      <p class="hero-lede" data-hero="3">Flacons rares, matieres precieuses et conseil olfactif pour trouver votre signature unique.</p>
+      <div class="hero-ctas" data-hero="4">
+        <a class="btn btn--iris" href="./conseil.html">Conseil olfactif <span class="fleche" aria-hidden="true">&rarr;</span></a>
+        <a class="btn btn--lilas" href="./collections.html">Nos collections</a>
       </div>
     </div>
+    <div class="hero-flacon" data-hero="3" aria-hidden="true">
+      <img src="https://images.unsplash.com/photo-1541643600914-78b084683702?auto=format&fit=crop&w=800&q=80" alt="" fetchpriority="high" width="800" height="1000">
+    </div>
   </section>
-
-  <!-- ============ BANDE DE FAITS ============ -->
-  <div class="bande-faits" aria-label="Nos engagements">
-    <div class="wrap">
-      <ul>
-        <li>Maison indépendante depuis 2019</li>
-        <li>Conseil olfactif privé</li>
-        <li>Gravure et coffrets sur-mesure</li>
-        <li>Essai au comptoir, sans engagement</li>
-      </ul>
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-inner">
+      <span>Parfumerie de niche</span><span class="m-sep">&#11835;</span>
+      <span>Flacons rares</span><span class="m-sep">&#11835;</span>
+      <span>Conseil olfactif</span><span class="m-sep">&#11835;</span>
+      <span>Creations exclusives</span><span class="m-sep">&#11835;</span>
+      <span>Parfumerie de niche</span><span class="m-sep">&#11835;</span>
+      <span>Flacons rares</span><span class="m-sep">&#11835;</span>
+      <span>Conseil olfactif</span><span class="m-sep">&#11835;</span>
+      <span>Creations exclusives</span><span class="m-sep">&#11835;</span>
     </div>
   </div>
-
-  <!-- ============ SIGNATURE + PYRAMIDE OLFACTIVE ============ -->
-  <section class="section section--voile" aria-labelledby="titre-signature">
+  <section class="section" aria-labelledby="titre-strates">
     <div class="wrap">
       <div class="section-head" data-reveal>
-        <p class="eyebrow">Le parfum signature</p>
-        <h2 id="titre-signature">Vapeur d’Iris, lu comme une <em>pyramide olfactive</em></h2>
-        <p>Un parfum se découvre en trois temps. Ouvrez chaque strate pour lire la composition, de l'envolée des premières minutes au sillage qui reste sur la peau.</p>
+        <p class="eyebrow">Nos univers</p>
+        <h2 id="titre-strates">Trois familles olfactives</h2>
+        <p>Chaque famille raconte une histoire differente. Laquelle est la votre ?</p>
       </div>
-      <div class="signature-grille">
-        <div class="signature-fiche" data-reveal>
-          <h3>Vapeur d’Iris</h3>
-          <p>Notre extrait fondateur : l’iris poudré porté par l’ambre et un fond de santal crémeux. Vingt flacons numérotés par saison.</p>
-          <p class="prix-geant">68 000 FCFA</p>
-          <a class="btn btn--iris" href="./contact.html#rendez-vous">Le sentir en boutique <span class="fleche" aria-hidden="true">&rarr;</span></a>
-        </div>
-        <div>
-          <div class="pyramide" data-reveal data-reveal-delay="120">
-            <div class="strate strate--tete">
-              <button class="strate-btn" id="btn-tete" type="button" aria-expanded="true" aria-controls="corps-tete">
-                <span class="st-nom">Notes de tête</span>
-                <span class="st-duree">Le premier quart d'heure</span>
-                <span class="st-signe" aria-hidden="true">+</span>
-              </button>
-              <div class="strate-corps" id="corps-tete" role="region" aria-labelledby="btn-tete">
-                <div class="strate-inner">
-                  <div class="strate-detail">
-                    <img src="https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?auto=format&fit=crop&w=300&q=80" alt="Matières des notes de tête : Bergamote et poivre rose" loading="lazy" width="300" height="300">
-                    <div>
-                      <p class="st-notes">Bergamote et poivre rose</p>
-                      <p class="st-role">L'ouverture : vive, volatile, c'est la première impression.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="strate strate--coeur">
-              <button class="strate-btn" id="btn-coeur" type="button" aria-expanded="false" aria-controls="corps-coeur">
-                <span class="st-nom">Notes de coeur</span>
-                <span class="st-duree">2 à 4 heures</span>
-                <span class="st-signe" aria-hidden="true">+</span>
-              </button>
-              <div class="strate-corps" id="corps-coeur" role="region" aria-labelledby="btn-coeur">
-                <div class="strate-inner">
-                  <div class="strate-detail">
-                    <img src="https://images.unsplash.com/photo-1532336414038-cf19250c5757?auto=format&fit=crop&w=300&q=80" alt="Matières des notes de coeur : Iris pallida et jasmin" loading="lazy" width="300" height="300">
-                    <div>
-                      <p class="st-notes">Iris pallida et jasmin</p>
-                      <p class="st-role">Le caractère : la personnalité du parfum se révèle.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="strate strate--fond">
-              <button class="strate-btn" id="btn-fond" type="button" aria-expanded="false" aria-controls="corps-fond">
-                <span class="st-nom">Notes de fond</span>
-                <span class="st-duree">Toute la journée</span>
-                <span class="st-signe" aria-hidden="true">+</span>
-              </button>
-              <div class="strate-corps" id="corps-fond" role="region" aria-labelledby="btn-fond">
-                <div class="strate-inner">
-                  <div class="strate-detail">
-                    <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=300&q=80" alt="Matières des notes de fond : Ambre gris, santal et musc blanc" loading="lazy" width="300" height="300">
-                    <div>
-                      <p class="st-notes">Ambre gris, santal et musc blanc</p>
-                      <p class="st-role">Le sillage : ce qui reste sur la peau et dans les mémoires.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+      <div class="strates">
+        <details class="strate" open>
+          <summary>
+            <span class="strate-num">01</span>
+            <span class="strate-titre">Bois & Resines</span>
+            <span class="strate-chevron" aria-hidden="true"></span>
+          </summary>
+          <div class="strate-corps">
+            <p>Santal, oud, patchouli et resines precieuses pour des sillages profonds et enveloppants.</p>
+            <a class="btn btn--iris" href="./collections.html">Explorer <span class="fleche" aria-hidden="true">&rarr;</span></a>
           </div>
-          <p class="pyramide-note">Touchez une strate pour la déplier - la pyramide se lit de haut en bas, comme le parfum s'évapore.</p>
-        </div>
+        </details>
+        <details class="strate">
+          <summary>
+            <span class="strate-num">02</span>
+            <span class="strate-titre">Floraux & Poudres</span>
+            <span class="strate-chevron" aria-hidden="true"></span>
+          </summary>
+          <div class="strate-corps">
+            <p>Rose, iris, violette et muscs blancs pour une elegance delicate et enveloppante.</p>
+            <a class="btn btn--iris" href="./collections.html">Explorer <span class="fleche" aria-hidden="true">&rarr;</span></a>
+          </div>
+        </details>
+        <details class="strate">
+          <summary>
+            <span class="strate-num">03</span>
+            <span class="strate-titre">Frais & Aquatiques</span>
+            <span class="strate-chevron" aria-hidden="true"></span>
+          </summary>
+          <div class="strate-corps">
+            <p>Agrumes, herbes marines et notes vertes pour des fragrances lumineuses et vitales.</p>
+            <a class="btn btn--iris" href="./collections.html">Explorer <span class="fleche" aria-hidden="true">&rarr;</span></a>
+          </div>
+        </details>
       </div>
     </div>
   </section>
-
-  <!-- ============ COLLECTION (teaser) ============ -->
-  <section class="section" aria-labelledby="titre-collection">
-    <div class="wrap">
-      <div class="section-head section-head--split" data-reveal>
-        <div>
-          <p class="eyebrow">La collection</p>
-          <h2 id="titre-collection">Six extraits, six manières de se souvenir</h2>
-        </div>
-        <a class="btn btn--ligne" href="./collection.html">Toute la collection <span class="fleche" aria-hidden="true">&rarr;</span></a>
-      </div>
-      <div class="parfums-grille">
-        <article class="parfum-carte" data-reveal>
-          <figure>
-            <img src="https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&w=700&q=80" alt="Vapeur d’Iris, parfum Poudré ambré - Maison Solène" loading="lazy" width="700" height="805">
-            <span class="famille-chip">Poudré ambré</span>
-          </figure>
-          <div class="parfum-corps">
-            <h3>Vapeur d’Iris</h3>
-            <p class="p-desc">L’iris signature de la maison, dense et lumineux</p>
-            <p class="prix">68 000 FCFA</p>
-          </div>
-        </article>
-        <article class="parfum-carte" data-reveal data-reveal-delay="120">
-          <figure>
-            <img src="https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?auto=format&fit=crop&w=700&q=80" alt="Nuit de Karité, parfum Boisé crémeux - Maison Solène" loading="lazy" width="700" height="805">
-            <span class="famille-chip">Boisé crémeux</span>
-          </figure>
-          <div class="parfum-corps">
-            <h3>Nuit de Karité</h3>
-            <p class="p-desc">Santal, karité toasté et fève tonka</p>
-            <p class="prix">55 000 FCFA</p>
-          </div>
-        </article>
-        <article class="parfum-carte" data-reveal data-reveal-delay="240">
-          <figure>
-            <img src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad?auto=format&fit=crop&w=700&q=80" alt="Bissap Rouge, parfum Fruité épicé - Maison Solène" loading="lazy" width="700" height="805">
-            <span class="famille-chip">Fruité épicé</span>
-          </figure>
-          <div class="parfum-corps">
-            <h3>Bissap Rouge</h3>
-            <p class="p-desc">Hibiscus, baies roses et gingembre confit</p>
-            <p class="prix">48 000 FCFA</p>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ LA MAISON (teaser) ============ -->
-  <section class="section section--voile" aria-labelledby="titre-maison">
+  <section class="section section--encre" aria-labelledby="titre-conseil">
     <div class="wrap duo">
-      <div class="duo-media" data-reveal="gauche">
-        <div class="cadre-petale">
-          <img src="https://images.unsplash.com/photo-1499002238440-d264edd596ec?auto=format&fit=crop&w=900&q=80" alt="Les champs et les matières premières de Maison Solène" loading="lazy" width="900" height="1080">
-        </div>
+      <div data-reveal>
+        <p class="eyebrow">Conseil olfactif</p>
+        <h2 id="titre-conseil">Trouvez votre <em>signature unique</em></h2>
+        <p>Notre expert vous guide dans un parcours olfactif de 45 minutes pour identifier les matieres qui vous correspondent, et composer votre propre sillage.</p>
+        <a class="btn btn--iris" href="./conseil.html">Reserver un conseil <span class="fleche" aria-hidden="true">&rarr;</span></a>
       </div>
-      <div data-reveal="droite">
-        <p class="eyebrow">La maison</p>
-        <h2 id="titre-maison">Une maison de parfum indépendante, depuis 2019</h2>
-        <p>Chez Maison Solène, chaque extrait naît d'une matière première choisie à la source et d'un temps de maturation que nous ne raccourcissons jamais. Le parfum ne s'achète pas en vitrine : il se rencontre, sur la peau.</p>
-        <blockquote class="citation">
-          <p>&laquo; Un parfum juste, c’est un souvenir qu’on peut rouvrir à volonté. &raquo;</p>
-          <footer>Solène Compaoré, fondateur de la maison</footer>
-        </blockquote>
-        <div class="hero-ctas">
-          <a class="btn btn--ligne" href="./maison.html">Notre histoire <span class="fleche" aria-hidden="true">&rarr;</span></a>
-        </div>
+      <div class="duo-visuel" data-reveal="droite">
+        <img src="https://images.unsplash.com/photo-1590736704728-f4730bb30770?auto=format&fit=crop&w=900&q=80" alt="Conseil olfactif" loading="lazy" width="900" height="1000">
       </div>
     </div>
   </section>
-
-  <!-- ============ SERVICES (teaser) ============ -->
-  <section class="section" aria-labelledby="titre-services">
-    <div class="wrap">
-      <div class="section-head section-head--split" data-reveal>
-        <div>
-          <p class="eyebrow">Nos services</p>
-          <h2 id="titre-services">Le parfum, et tout ce qui l'entoure</h2>
-        </div>
-        <a class="btn btn--ligne" href="./services.html">Tous les services <span class="fleche" aria-hidden="true">&rarr;</span></a>
-      </div>
-      <div class="services-liste" data-reveal>
-        <div class="service-rang">
-          <span class="service-num">01</span>
-          <h3>Découverte olfactive</h3>
-          <p>45 minutes au comptoir pour trouver votre famille de notes</p>
-        </div>
-        <div class="service-rang">
-          <span class="service-num">02</span>
-          <h3>Gravure du flacon</h3>
-          <p>Vos initiales gravées à la main, offert</p>
-        </div>
-        <div class="service-rang">
-          <span class="service-num">03</span>
-          <h3>Recharge au comptoir</h3>
-          <p>Rapportez votre flacon, économisez 20 %</p>
-        </div>
-        <div class="service-rang">
-          <span class="service-num">04</span>
-          <h3>Coffrets sur mesure</h3>
-          <p>Trois essais et l’extrait choisi, prêts à offrir</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ TEMOIGNAGES ============ -->
-  <section class="section section--voile" aria-labelledby="titre-temoignages">
+  <section class="section" aria-labelledby="titre-temoins">
     <div class="wrap">
       <div class="section-head" data-reveal>
-        <p class="eyebrow">Ils portent nos parfums</p>
-        <h2 id="titre-temoignages">Le sillage qu'on nous décrit</h2>
+        <p class="eyebrow">Avis clients</p>
+        <h2 id="titre-temoins">Le parfum laisse une trace</h2>
       </div>
       <div class="temoins">
         <figure class="temoin" data-reveal>
-          <span class="guillemet" aria-hidden="true">&ldquo;</span>
-          <blockquote><p>Vapeur d’Iris me suit partout. On m’arrête dans la rue pour me demander ce que je porte.</p></blockquote>
-          <p class="etoiles" aria-label="Note : 5 sur 5">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
-          <figcaption>Nadia B.</figcaption>
+          <span class="guillemet">&ldquo;</span>
+          <blockquote><p>Le conseil olfactif est une experience unique. J'ai enfin trouve mon parfum signature apres des annees de recherche.</p></blockquote>
+          <p class="etoiles">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+          <figcaption>Caroline M.</figcaption>
         </figure>
-        <figure class="temoin" data-reveal data-reveal-delay="120">
-          <span class="guillemet" aria-hidden="true">&ldquo;</span>
-          <blockquote><p>La séance découverte est un vrai moment. J’ai trouvé mon parfum en une heure.</p></blockquote>
-          <p class="etoiles" aria-label="Note : 5 sur 5">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
-          <figcaption>Thierry K.</figcaption>
+        <figure class="temoin" data-reveal>
+          <span class="guillemet">&ldquo;</span>
+          <blockquote><p>Des flacons introuvables ailleurs et un service de grande qualite. L'Olfactoire est une adresse rare.</p></blockquote>
+          <p class="etoiles">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+          <figcaption>Pierre V.</figcaption>
         </figure>
-        <figure class="temoin" data-reveal data-reveal-delay="240">
-          <span class="guillemet" aria-hidden="true">&ldquo;</span>
-          <blockquote><p>Des compositions qui n’existent nulle part ailleurs. Un bijou de maison.</p></blockquote>
-          <p class="etoiles" aria-label="Note : 5 sur 5">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
-          <figcaption>Alice M.</figcaption>
+        <figure class="temoin" data-reveal>
+          <span class="guillemet">&ldquo;</span>
+          <blockquote><p>Un univers envoûtant, une equipe passionnee. Je reviens chaque saison decouvrir les nouvelles creations.</p></blockquote>
+          <p class="etoiles">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+          <figcaption>Helene B.</figcaption>
         </figure>
       </div>
     </div>
   </section>
-
-  <!-- ============ CTA FINAL ============ -->
-  <!-- ============ BANDEAU DEFILANT (PRENIUM) ============ -->
-  <div class="marquee" aria-hidden="true">
-    <div class="marquee-inner"><span>Extraits de parfum</span><span class="m-sep">&bull;</span><span>Conseil olfactif privé</span><span class="m-sep">&bull;</span><span>Maison Solène</span><span class="m-sep">&bull;</span><span>Ouagadougou</span><span class="m-sep">&bull;</span><span>Extraits de parfum</span><span class="m-sep">&bull;</span><span>Conseil olfactif privé</span><span class="m-sep">&bull;</span><span>Maison Solène</span><span class="m-sep">&bull;</span><span>Ouagadougou</span><span class="m-sep">&bull;</span></div>
-  </div>
-
-  <!-- ============ CHIFFRES (PRENIUM) ============ -->
-  <section class="section chiffres" aria-label="La maison en chiffres">
-    <div class="wrap chiffres-grille">
-      <div class="chiffre" data-reveal><span class="chiffre-num"><span data-count="6">6</span></span><p>extraits à la collection</p></div>
-      <div class="chiffre" data-reveal data-reveal-delay="90"><span class="chiffre-num"><span data-count="3">3</span></span><p>notes par pyramide olfactive</p></div>
-      <div class="chiffre" data-reveal data-reveal-delay="180"><span class="chiffre-num"><span data-count="45">45</span></span><p>minutes de rendez-vous olfactif</p></div>
-      <div class="chiffre" data-reveal data-reveal-delay="270"><span class="chiffre-num"><span data-count="98">98</span>%</span><p>de sillages adoptés</p></div>
-    </div>
-  </section>
-
   <section class="cta-band" aria-labelledby="titre-cta">
     <div class="wrap">
       <div>
-        <h2 id="titre-cta">Votre parfum vous attend <em>sur la peau</em>, pas en vitrine</h2>
-        <p>Passez au comptoir ou écrivez-nous : nous préparons trois essais adaptés à ce que vous cherchez.</p>
+        <h2 id="titre-cta">Votre <em>sillage unique</em> commence ici</h2>
+        <p>Reservez une seance de conseil olfactif et repartez avec votre fragrance.</p>
       </div>
-      <a class="btn btn--vapeur" href="https://wa.me/22625332211?text=Bonjour%2C%20je%20souhaite%20prendre%20rendez-vous%20a%20la%20parfumerie." target="_blank" rel="noopener">Écrire sur WhatsApp <span class="fleche" aria-hidden="true">&rarr;</span></a>
+      <a class="btn btn--iris" href="./conseil.html">Reserver un conseil <span class="fleche" aria-hidden="true">&rarr;</span></a>
     </div>
   </section>
-
 </main>
-
 <footer class="site-footer">
   <div class="wrap">
-    <p class="footer-marque" aria-hidden="true">Maison Solène</p>
+    <p class="footer-marque" aria-hidden="true">L'Olfactoire</p>
     <div class="footer-grille">
-      <div>
-        <h3>La maison</h3>
-        <p class="footer-desc">Maison de parfum à Ouagadougou, Burkina Faso. Des extraits qui racontent.</p>
-      </div>
-      <div>
-        <h3>Navigation</h3>
-        <ul>
-          <li><a href="./collection.html">La collection</a></li>
-          <li><a href="./maison.html">La maison</a></li>
-          <li><a href="./services.html">Services</a></li>
-          <li><a href="./parfum.html">Le parfum</a></li>
-          <li><a href="./contact.html">Contact et rendez-vous</a></li>
-        </ul>
-      </div>
-      <div>
-        <h3>Contact</h3>
-        <ul>
-          <li><a href="tel:+22625332211">+226 25 33 22 11</a></li>
-          <li><a href="mailto:atelier@maisonsolene.bf">atelier@maisonsolene.bf</a></li>
-          <li><a href="https://www.facebook.com/maisonsolene" target="_blank" rel="noopener">Facebook</a></li>
-          <li><a href="https://www.instagram.com/maisonsolene" target="_blank" rel="noopener">Instagram</a></li>
-        </ul>
-      </div>
+      <div><h3>La Maison</h3><p class="footer-desc">Parfumerie de niche a Paris. Conseil olfactif sur rendez-vous.</p></div>
+      <div><h3>Navigation</h3><ul><li><a href="./collections.html">Collections</a></li><li><a href="./conseil.html">Conseil olfactif</a></li><li><a href="./maison.html">La Maison</a></li><li><a href="./contact.html">Contact</a></li></ul></div>
+      <div><h3>Contact</h3><ul><li><a href="tel:+33143561234">+33 1 43 56 12 34</a></li><li><a href="mailto:contact@lolfactoire.fr">contact@lolfactoire.fr</a></li></ul></div>
     </div>
-    <div class="footer-bas">
-      <p>&copy; Maison Solène - Ouagadougou, Burkina Faso. Tous droits réservés.</p>
-      <p>Site réalisé par Atelier Web</p>
-    </div>
+    <div class="footer-bas"><p>&copy; L'Olfactoire - Paris</p></div>
   </div>
 </footer>
-
 </body>
 </html>

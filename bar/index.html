@@ -1,20 +1,10 @@
 <!doctype html>
 <html lang="fr">
 <head>
-<!--
-  TEMPLATE BAR "Nuit ambree" - Atelier Web
-  Adaptation a un prospect :
-  1. Copier ce dossier vers <nom-du-prospect>/
-  2. Rechercher-remplacer les valeurs de demonstration (liste dans JETONS-VALEURS-DEMO.txt)
-  3. Remplacer les URLs images.unsplash.com par les photos du prospect
-  4. Verifier : grep -r "{{" . ne doit plus rien retourner
--->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Baobar - Bar à Ouagadougou | Cocktails d’auteur et nuits ambrées</title>
-<meta name="description" content="Baobar, bar à cocktails à Ouagadougou, Burkina Faso. Bar à cocktails au cœur de Ouaga 2000 : créations signées, musique live et une carte qui change avec les saisons. Happy hour 18h – 20h, ouvert jusqu'à 3h.">
-<meta name="theme-color" content="#0D1220">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%230D1220'/%3E%3Ccircle cx='26' cy='32' r='13' fill='%23E8A13D'/%3E%3Ccircle cx='40' cy='32' r='13' fill='%23D9488B' fill-opacity='.85'/%3E%3C/svg%3E">
+<title>Baobar - Bar a Ouagadougou | Cocktails d'auteur et nuits ambrees</title>
+<meta name="description" content="Baobar, bar a cocktails a Ouagadougou. Bar a cocktails au coeur de Ouaga 2000. Happy hour 18h-20h, ouvert jusqu'a 3h.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
@@ -22,13 +12,10 @@
 <script>document.documentElement.classList.add('js')</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js" defer></script>
 <script src="./script.js" defer></script>
 </head>
 <body>
-
 <a class="skip-link" href="#contenu">Aller au contenu</a>
-
 <header class="site-header">
   <div class="wrap header-in">
     <a class="logo" href="./index.html">Baobar<em>.</em></a>
@@ -36,180 +23,162 @@
       <a href="./index.html" aria-current="page">Accueil</a>
       <a href="./carte.html">La carte</a>
       <a href="./programme.html">Programme</a>
-      <a href="./a-propos.html">À propos</a>
+      <a href="./a-propos.html">&Agrave; propos</a>
       <a href="./privatiser.html">Privatiser</a>
       <a href="./contact.html">Contact</a>
     </nav>
     <div class="header-droite">
-      <a class="btn btn--ambre header-cta" href="./contact.html#reservation">Réserver une table</a>
+      <a class="btn btn--ambre header-cta" href="./contact.html">R&eacute;server une table</a>
       <button class="burger" type="button" aria-expanded="false" aria-controls="nav-mobile" aria-label="Ouvrir le menu">
         <span></span><span></span><span></span>
       </button>
     </div>
   </div>
 </header>
-
 <nav class="nav-panel" id="nav-mobile" aria-label="Navigation mobile">
   <a href="./index.html" aria-current="page">Accueil</a>
   <a href="./carte.html">La carte</a>
   <a href="./programme.html">Programme</a>
-  <a href="./a-propos.html">À propos</a>
+  <a href="./a-propos.html">&Agrave; propos</a>
   <a href="./privatiser.html">Privatiser</a>
-      <a href="./contact.html">Contact</a>
-  <a class="nav-tel" href="tel:+22676987654">Réserver : +226 76 98 76 54</a>
+  <a href="./contact.html">Contact</a>
+  <a class="nav-tel" href="tel:+22676987654">R&eacute;server : +226 76 98 76 54</a>
 </nav>
-
 <main id="contenu">
-
-  <!-- ============ HERO ============ -->
   <section class="hero-bar">
     <div class="hero-fond duotone" aria-hidden="true">
       <img src="https://images.unsplash.com/photo-1470337458703-46ad1756a187?auto=format&fit=crop&w=1600&q=80" alt="" fetchpriority="high" width="1600" height="1067">
     </div>
     <div class="wrap">
-      <p class="chip" data-hero="1"><span class="point" aria-hidden="true"></span> Ouvert jusqu'à 3h - Ouagadougou</p>
-      <h1 data-hero="2">Baobar<span class="contour">Cocktails d’auteur et nuits ambrées</span></h1>
-      <p class="hero-lede" data-hero="3">Bar à cocktails au cœur de Ouaga 2000 : créations signées, musique live et une carte qui change avec les saisons.</p>
+      <p class="chip" data-hero="1"><span class="point"></span> Ouvert jusqu&rsquo;&agrave; 3h - Ouagadougou</p>
+      <h1 data-hero="2">Baobar<br>Cocktails d&rsquo;auteur et nuits ambr&eacute;es</h1>
+      <p class="hero-lede" data-hero="3">Bar &agrave; cocktails au c&oelig;ur de Ouaga 2000 : cr&eacute;ations sign&eacute;es, musique live et une carte qui change avec les saisons.</p>
       <div class="hero-ctas" data-hero="4">
-        <a class="btn btn--ambre" href="./programme.html">Programme de la semaine <span class="fleche" aria-hidden="true">&rarr;</span></a>
+        <a class="btn btn--ambre" href="./programme.html">Programme de la semaine &rarr;</a>
         <a class="btn btn--ligne" href="./carte.html">Voir la carte</a>
       </div>
-      <p class="hero-note" data-hero="5">Happy hour <strong>18h – 20h</strong> - fermé le lundi</p>
+      <p class="hero-note" data-hero="5">Happy hour <strong>18h &ndash; 20h</strong> - ferm&eacute; le lundi</p>
     </div>
   </section>
-
-  <!-- ============ BANDEAU HAPPY HOUR (signature) ============ -->
   <div class="happy" role="note" aria-label="Happy hour">
     <div class="wrap happy-in">
-      <p class="happy-tag"><span class="point" aria-hidden="true"></span> Happy hour</p>
-      <p class="happy-texte">18h – 20h - <strong>-30 % sur les cocktails signatures</strong></p>
+      <p class="happy-tag"><span class="point"></span> Happy hour</p>
+      <p class="happy-texte">18h &ndash; 20h &mdash; <strong>-30 % sur les cocktails signatures</strong></p>
     </div>
   </div>
-
-  <!-- ============ MARQUEE WORDMARK ============ -->
   <div class="marquee" aria-hidden="true">
     <div class="marquee-track">
-      <span>Baobar</span><span>Cocktails</span><span>Soirées</span><span>Afterwork</span><span>Ouagadougou</span>
-      <span>Baobar</span><span>Cocktails</span><span>Soirées</span><span>Afterwork</span><span>Ouagadougou</span>
+      <span>Baobar</span><span>Cocktails</span><span>Soir&eacute;es</span><span>Afterwork</span><span>Ouagadougou</span>
+      <span>Baobar</span><span>Cocktails</span><span>Soir&eacute;es</span><span>Afterwork</span><span>Ouagadougou</span>
     </div>
   </div>
-
-  <!-- ============ PROGRAMME (agenda teaser) ============ -->
   <section class="section" aria-labelledby="titre-programme">
     <div class="wrap">
       <div class="section-head section-head--split" data-reveal>
         <div>
           <p class="eyebrow">Cette semaine</p>
-          <h2 id="titre-programme">Le programme des soirées</h2>
+          <h2 id="titre-programme">Le programme des soir&eacute;es</h2>
         </div>
-        <a class="btn btn--ligne" href="./programme.html">Tout le programme <span class="fleche" aria-hidden="true">&rarr;</span></a>
+        <a class="btn btn--ligne" href="./programme.html">Tout le programme &rarr;</a>
       </div>
       <div class="agenda" data-reveal>
         <a class="agenda-ligne" href="./programme.html">
           <span class="agenda-jour">Jeudi</span>
           <span class="agenda-nom">Jam session</span>
-          <span class="agenda-detail">Scène ouverte aux musiciens de la ville, dès 21h</span>
-          <span class="agenda-fleche" aria-hidden="true">&rarr;</span>
+          <span class="agenda-detail">Sc&egrave;ne ouverte aux musiciens de la ville, d&egrave;s 21h</span>
+          <span class="agenda-fleche">&rarr;</span>
         </a>
         <a class="agenda-ligne" href="./programme.html">
           <span class="agenda-jour">Vendredi</span>
           <span class="agenda-nom">DJ set afro-house</span>
-          <span class="agenda-detail">Nos résidents aux platines jusqu’au bout de la nuit</span>
-          <span class="agenda-fleche" aria-hidden="true">&rarr;</span>
+          <span class="agenda-detail">Nos r&eacute;sidents aux platines jusqu&rsquo;au bout de la nuit</span>
+          <span class="agenda-fleche">&rarr;</span>
         </a>
         <a class="agenda-ligne" href="./programme.html">
           <span class="agenda-jour">Samedi</span>
           <span class="agenda-nom">Live band</span>
-          <span class="agenda-detail">Concert acoustique, puis DJ jusqu’à la fermeture</span>
-          <span class="agenda-fleche" aria-hidden="true">&rarr;</span>
+          <span class="agenda-detail">Concert acoustique, puis DJ jusqu&rsquo;&agrave; la fermeture</span>
+          <span class="agenda-fleche">&rarr;</span>
         </a>
         <a class="agenda-ligne" href="./programme.html">
           <span class="agenda-jour">Dimanche</span>
           <span class="agenda-nom">Sunset lounge</span>
           <span class="agenda-detail">Ambiance douce, jus frais et coucher de soleil en terrasse</span>
-          <span class="agenda-fleche" aria-hidden="true">&rarr;</span>
+          <span class="agenda-fleche">&rarr;</span>
         </a>
       </div>
     </div>
   </section>
-
-  <!-- ============ COCKTAIL SIGNATURE + TEASER CARTE ============ -->
   <section class="section section--panel" aria-labelledby="titre-signature">
     <div class="wrap signature-grille">
       <div class="signature-visuel" data-reveal="gauche">
         <figure class="duotone">
-          <img src="https://images.unsplash.com/photo-1572116469696-31de0f17cc34?auto=format&fit=crop&w=1000&q=80" alt="Le cocktail signature Le Sahel Sour du bar Baobar à Ouagadougou" loading="lazy" width="800" height="1000">
+          <img src="https://images.unsplash.com/photo-1572116469696-31de0f17cc34?auto=format&fit=crop&w=1000&q=80" alt="Le cocktail signature Le Sahel Sour" loading="lazy" width="800" height="1000">
         </figure>
         <p class="badge-prix">5 000 FCFA</p>
       </div>
       <div data-reveal="droite">
         <p class="eyebrow">Le cocktail signature</p>
         <h2 id="titre-signature" class="signature-nom">Le Sahel Sour</h2>
-        <p>La création dont on parle en sortant. Préparée minute au shaker, servie glacée, à ne goûter qu'ici. Et derrière elle, toute une carte de cocktails, bières et softs pensée pour la nuit.</p>
+        <p>La cr&eacute;ation dont on parle en sortant. Pr&eacute;par&eacute;e minute au shaker, servie glac&eacute;e, &agrave; ne go&ucirc;ter qu&rsquo;ici.</p>
         <div class="mini-carte">
-          <div class="boisson"><span class="boisson-nom">Sahel Sour</span><span class="boisson-fill" aria-hidden="true"></span><span class="boisson-prix">5 000 FCFA</span></div>
-          <div class="boisson"><span class="boisson-nom">Bissap Royal</span><span class="boisson-fill" aria-hidden="true"></span><span class="boisson-prix">4 500 FCFA</span></div>
-          <div class="boisson"><span class="boisson-nom">Tamarin Mule</span><span class="boisson-fill" aria-hidden="true"></span><span class="boisson-prix">4 500 FCFA</span></div>
+          <div class="boisson"><span class="boisson-nom">Sahel Sour</span><span class="boisson-fill"></span><span class="boisson-prix">5 000 FCFA</span></div>
+          <div class="boisson"><span class="boisson-nom">Bissap Royal</span><span class="boisson-fill"></span><span class="boisson-prix">4 500 FCFA</span></div>
+          <div class="boisson"><span class="boisson-nom">Tamarin Mule</span><span class="boisson-fill"></span><span class="boisson-prix">4 500 FCFA</span></div>
         </div>
         <div class="hero-ctas">
-          <a class="btn btn--ambre" href="./carte.html">Découvrir la carte <span class="fleche" aria-hidden="true">&rarr;</span></a>
+          <a class="btn btn--ambre" href="./carte.html">D&eacute;couvrir la carte &rarr;</a>
         </div>
       </div>
     </div>
   </section>
-
-  <!-- ============ A PROPOS (teaser) ============ -->
   <section class="section" aria-labelledby="titre-apropos">
     <div class="wrap duo">
       <figure class="duotone" data-reveal="gauche">
-        <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1000&q=80" alt="L'ambiance du bar Baobar à Ouagadougou, un soir de semaine" loading="lazy" width="800" height="1000">
+        <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1000&q=80" alt="L'ambiance du bar Baobar" loading="lazy" width="800" height="1000">
       </figure>
       <div data-reveal="droite">
         <p class="eyebrow">La maison</p>
         <h2 id="titre-apropos">Le repaire de Ouagadougou depuis 2018</h2>
-        <p>Chez Baobar, la nuit a son adresse : lumière basse, musique choisie, cocktails travaillés et une équipe qui retient votre prénom. On vient pour un verre, on reste pour l'ambiance.</p>
+        <p>Chez Baobar, la nuit a son adresse : lumi&egrave;re basse, musique choisie, cocktails travaill&eacute;s et une &eacute;quipe qui retient votre pr&eacute;nom.</p>
         <blockquote class="citation">
-          <p>&laquo; Un bar, c'est réussi quand on ne regarde plus l'heure. &raquo;</p>
-          <footer>L'équipe du bar</footer>
+          <p>&laquo; Un bar, c&rsquo;est r&eacute;ussi quand on ne regarde plus l&rsquo;heure. &raquo;</p>
+          <footer>L&rsquo;&eacute;quipe du bar</footer>
         </blockquote>
         <div class="hero-ctas">
-          <a class="btn btn--ligne" href="./a-propos.html">Notre histoire <span class="fleche" aria-hidden="true">&rarr;</span></a>
+          <a class="btn btn--ligne" href="./a-propos.html">Notre histoire &rarr;</a>
         </div>
       </div>
     </div>
   </section>
-
-  <!-- ============ TEMOIGNAGES ============ -->
   <section class="section section--panel" aria-labelledby="titre-temoignages">
     <div class="wrap">
       <div class="section-head" data-reveal>
-        <p class="eyebrow">Ils sont passés</p>
+        <p class="eyebrow">Ils sont pass&eacute;s</p>
         <h2 id="titre-temoignages">La nuit en parle encore</h2>
       </div>
       <div class="temoins">
         <figure class="temoin" data-reveal>
-          <span class="guillemet" aria-hidden="true">&ldquo;</span>
-          <blockquote><p>Le Sahel Sour vaut à lui seul le déplacement. Ambiance impeccable.</p></blockquote>
+          <span class="guillemet">&ldquo;</span>
+          <blockquote><p>Le Sahel Sour vaut &agrave; lui seul le d&eacute;placement. Ambiance impeccable.</p></blockquote>
           <p class="etoiles" aria-label="Note : 5 sur 5">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
-          <figcaption>Inès Z.</figcaption>
+          <figcaption>In&egrave;s Z.</figcaption>
         </figure>
-        <figure class="temoin" data-reveal data-reveal-delay="120">
-          <span class="guillemet" aria-hidden="true">&ldquo;</span>
-          <blockquote><p>Enfin un vrai bar à cocktails à Ouaga. Le jeudi jam est devenu mon rituel.</p></blockquote>
+        <figure class="temoin" data-reveal>
+          <span class="guillemet">&ldquo;</span>
+          <blockquote><p>Enfin un vrai bar &agrave; cocktails &agrave; Ouaga. Le jeudi jam est devenu mon rituel.</p></blockquote>
           <p class="etoiles" aria-label="Note : 5 sur 5">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
           <figcaption>Karim S.</figcaption>
         </figure>
-        <figure class="temoin" data-reveal data-reveal-delay="240">
-          <span class="guillemet" aria-hidden="true">&ldquo;</span>
-          <blockquote><p>Service aux petits soins, terrasse magnifique à la tombée de la nuit.</p></blockquote>
+        <figure class="temoin" data-reveal>
+          <span class="guillemet">&ldquo;</span>
+          <blockquote><p>Service aux petits soins, terrasse magnifique &agrave; la tomb&eacute;e de la nuit.</p></blockquote>
           <p class="etoiles" aria-label="Note : 5 sur 5">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
-          <figcaption>Léa D.</figcaption>
+          <figcaption>L&eacute;a D.</figcaption>
         </figure>
       </div>
     </div>
   </section>
-
-  <!-- ============ INFOS PRATIQUES ============ -->
   <section class="section" aria-labelledby="titre-infos">
     <div class="wrap infos">
       <div data-reveal>
@@ -221,62 +190,56 @@
         </div>
         <div class="info-bloc">
           <h3>Horaires</h3>
-          <p class="horaire"><strong>Semaine</strong><span class="boisson-fill" aria-hidden="true"></span><span>18h – 1h</span></p>
-          <p class="horaire"><strong>Week-end</strong><span class="boisson-fill" aria-hidden="true"></span><span>18h – 3h</span></p>
-          <p class="horaire"><strong>Fermeture</strong><span class="boisson-fill" aria-hidden="true"></span><span>lundi</span></p>
+          <p class="horaire"><strong>Semaine</strong><span class="boisson-fill"></span>18h &ndash; 1h</p>
+          <p class="horaire"><strong>Week-end</strong><span class="boisson-fill"></span>18h &ndash; 3h</p>
+          <p class="horaire"><strong>Fermeture</strong><span class="boisson-fill"></span>lundi</p>
         </div>
         <div class="info-bloc">
-          <h3>Réservation</h3>
+          <h3>R&eacute;servation</h3>
           <p><a href="tel:+22676987654">+226 76 98 76 54</a></p>
           <p><a href="mailto:hello@baobar.bf">hello@baobar.bf</a></p>
         </div>
       </div>
-      <div class="carte-map" data-reveal data-reveal-delay="120">
-        <iframe src="https://www.google.com/maps?q=Ouagadougou%2C%20Burkina%20Faso&output=embed" title="Plan d'accès - Baobar, Ouagadougou" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+      <div class="carte-map" data-reveal>
+        <iframe src="https://www.google.com/maps?q=Ouagadougou%2C%20Burkina%20Faso&output=embed" title="Plan d'acc&egrave;s - Baobar" loading="lazy" allowfullscreen></iframe>
         <p class="map-note">Rue de la Culture, Ouaga 2000 - Ouagadougou</p>
       </div>
     </div>
   </section>
-
-  <!-- ============ CTA FINAL ============ -->
-  <!-- ============ CHIFFRES (PRENIUM) ============ -->
   <section class="section chiffres" aria-label="Le bar en chiffres">
     <div class="wrap chiffres-grille">
-      <div class="chiffre" data-reveal><span class="chiffre-num"><span data-count="120">120</span>+</span><p>cocktails servis chaque week-end</p></div>
-      <div class="chiffre" data-reveal data-reveal-delay="90"><span class="chiffre-num"><span data-count="45">45</span></span><p>références derrière le bar</p></div>
-      <div class="chiffre" data-reveal data-reveal-delay="180"><span class="chiffre-num"><span data-count="4">4</span></span><p>soirées à thème par semaine</p></div>
-      <div class="chiffre" data-reveal data-reveal-delay="270"><span class="chiffre-num"><span data-count="98">98</span>%</span><p>d'habitués qui reviennent</p></div>
+      <div class="chiffre" data-reveal><span>120+</span><p>cocktails servis chaque week-end</p></div>
+      <div class="chiffre" data-reveal><span>45</span><p>r&eacute;f&eacute;rences derri&egrave;re le bar</p></div>
+      <div class="chiffre" data-reveal><span>4</span><p>soir&eacute;es &agrave; th&egrave;me par semaine</p></div>
+      <div class="chiffre" data-reveal><span>98%</span><p>d&rsquo;habitués qui reviennent</p></div>
     </div>
   </section>
-
   <section class="cta-band" aria-labelledby="titre-cta">
     <div class="wrap">
       <div>
         <h2 id="titre-cta">Votre table vous attend ce soir</h2>
-        <p>Réponse rapide sur WhatsApp, ou appelez-nous directement.</p>
+        <p>R&eacute;ponse rapide sur WhatsApp, ou appelez-nous directement.</p>
       </div>
-      <a class="btn btn--ambre" href="https://wa.me/22676987654?text=Bonjour%2C%20je%20souhaite%20r%C3%A9server%20une%20table%20au%20bar." target="_blank" rel="noopener">Réserver sur WhatsApp <span class="fleche" aria-hidden="true">&rarr;</span></a>
+      <a class="btn btn--ambre" href="https://wa.me/22676987654?text=Bonjour" target="_blank" rel="noopener">R&eacute;server sur WhatsApp &rarr;</a>
     </div>
   </section>
-
 </main>
-
 <footer class="site-footer">
   <div class="wrap">
     <p class="footer-marque" aria-hidden="true">Baobar</p>
     <div class="footer-grille">
       <div>
         <h3>La maison</h3>
-        <p class="footer-desc">Bar à cocktails à Ouagadougou. Cocktails d’auteur et nuits ambrées. Ouvert jusqu'à 3h, fermé le lundi.</p>
+        <p class="footer-desc">Bar &agrave; cocktails &agrave; Ouagadougou. Ouvert jusqu&rsquo;&agrave; 3h, ferm&eacute; le lundi.</p>
       </div>
       <div>
         <h3>Navigation</h3>
         <ul>
           <li><a href="./carte.html">La carte</a></li>
-          <li><a href="./programme.html">Programme des soirées</a></li>
-          <li><a href="./a-propos.html">À propos</a></li>
+          <li><a href="./programme.html">Programme des soir&eacute;es</a></li>
+          <li><a href="./a-propos.html">&Agrave; propos</a></li>
           <li><a href="./privatiser.html">Privatiser</a></li>
-          <li><a href="./contact.html">Contact et réservation</a></li>
+          <li><a href="./contact.html">Contact et r&eacute;servation</a></li>
         </ul>
       </div>
       <div>
@@ -284,17 +247,13 @@
         <ul>
           <li><a href="tel:+22676987654">+226 76 98 76 54</a></li>
           <li><a href="mailto:hello@baobar.bf">hello@baobar.bf</a></li>
-          <li><a href="https://www.facebook.com/baobar.ouaga" target="_blank" rel="noopener">Facebook</a></li>
-          <li><a href="https://www.instagram.com/baobar.ouaga" target="_blank" rel="noopener">Instagram</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bas">
-      <p>&copy; Baobar - Ouagadougou, Burkina Faso. Tous droits réservés. L'abus d'alcool est dangereux pour la santé.</p>
-      <p>Site réalisé par Atelier Web</p>
+      <p>&copy; Baobar - Ouagadougou, Burkina Faso. L&rsquo;abus d&rsquo;alcool est dangereux pour la sant&eacute;.</p>
     </div>
   </div>
 </footer>
-
 </body>
 </html>

@@ -1,11 +1,9 @@
-/* Template bar "Nuit ambree" - JS partage (vanilla, aucun jeton ici).
-   1. burger mobile  2. header au scroll  3. reveals
-   4. parallaxe douce du hero  5. formulaire -> message WhatsApp compose */
+/* Bar "Nuit ambree" — script. Lenis retire, scroll natif. */
 (function () {
   'use strict';
   var reduit = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* 1. Burger mobile */
+  /* Burger mobile */
   var burger = document.querySelector('.burger');
   var panel = document.getElementById('nav-mobile');
   function fermerMenu() {
@@ -23,7 +21,7 @@
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape') fermerMenu(); });
   }
 
-  /* 2. Header plein au scroll */
+  /* Header au scroll */
   var header = document.querySelector('.site-header');
   function surScroll() {
     if (header) header.classList.toggle('is-scrolled', window.scrollY > 24);
@@ -31,7 +29,7 @@
   surScroll();
   window.addEventListener('scroll', surScroll, { passive: true });
 
-  /* 3. Reveals au scroll (coupes si reduced-motion) */
+  /* Reveals */
   var reveals = document.querySelectorAll('[data-reveal]');
   if (reveals.length) {
     if (reduit || !('IntersectionObserver' in window)) {
@@ -50,7 +48,7 @@
     }
   }
 
-  /* 4. Parallaxe douce sur la photo du hero (coupe si reduced-motion) */
+  /* Parallaxe hero */
   var heroImg = document.querySelector('.hero-fond img');
   if (heroImg && !reduit) {
     var enCours = false;
@@ -58,14 +56,13 @@
       if (enCours) return;
       enCours = true;
       requestAnimationFrame(function () {
-        var y = Math.min(window.scrollY, 800);
-        heroImg.style.transform = 'translateY(' + y * 0.18 + 'px) scale(1.06)';
+        heroImg.style.transform = 'translateY(' + Math.min(window.scrollY, 800) * 0.18 + 'px) scale(1.06)';
         enCours = false;
       });
     }, { passive: true });
   }
 
-  /* 5. Reservation -> WhatsApp (repli sans JS : lien wa.me direct affiche a cote) */
+  /* Reservation WhatsApp */
   var form = document.getElementById('form-resa');
   if (form) {
     form.addEventListener('submit', function (e) {
@@ -76,42 +73,26 @@
         'Nom : ' + (d.get('nom') || '-'),
         'Date : ' + (d.get('date') || '-'),
         'Heure : ' + (d.get('heure') || '-'),
-        'Personnes : ' + (d.get('personnes') || '-'),
-        'Occasion : ' + (d.get('occasion') || '-')
+        'Personnes : ' + (d.get('personnes') || '-')
       ];
-      var msg = d.get('message');
-      if (msg) lignes.push('Message : ' + msg);
+      var msg = d.get('message'); if (msg) lignes.push('Message : ' + msg);
       var numero = form.getAttribute('data-whatsapp') || '';
       window.open('https://wa.me/' + numero + '?text=' + encodeURIComponent(lignes.join('\n')), '_blank', 'noopener');
     });
   }
 })();
 
-/* ============ PRENIUM : couche d'animations (GSAP + Lenis, degradation douce) ============ */
+/* GSAP layer - PAS de Lenis */
 (function () {
   'use strict';
-  var reduit = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
   function finaliserCompteurs() {
-    document.querySelectorAll('[data-count]').forEach(function (el) {
-      el.textContent = el.getAttribute('data-count');
-    });
+    document.querySelectorAll('[data-count]').forEach(function (el) { el.textContent = el.getAttribute('data-count'); });
   }
-
   window.addEventListener('load', function () {
-    if (reduit || !window.gsap || !window.ScrollTrigger) { finaliserCompteurs(); return; }
+    if (!window.gsap || !window.ScrollTrigger) { finaliserCompteurs(); return; }
     try {
       gsap.registerPlugin(ScrollTrigger);
-
-      /* Defilement doux */
-      if (window.Lenis) {
-        var lenis = new Lenis({ lerp: 0.11, autoRaf: false });
-        lenis.on('scroll', ScrollTrigger.update);
-        gsap.ticker.add(function (t) { lenis.raf(t * 1000); });
-        gsap.ticker.lagSmoothing(0);
-      }
-
-      /* Compteurs animes */
+      /* PAS de Lenis */
       document.querySelectorAll('[data-count]').forEach(function (el) {
         var fin = parseFloat(el.getAttribute('data-count')) || 0;
         var obj = { v: 0 };
@@ -122,62 +103,16 @@
           onComplete: function () { el.textContent = el.getAttribute('data-count'); }
         });
       });
-
-      /* Parallaxe douce des images encadrees */
       document.querySelectorAll('[data-parallax]').forEach(function (el) {
         gsap.to(el, {
-          yPercent: parseFloat(el.getAttribute('data-parallax')) || -8,
-          ease: 'none',
+          yPercent: parseFloat(el.getAttribute('data-parallax')) || -8, ease: 'none',
           scrollTrigger: { trigger: el.closest('section') || el, start: 'top bottom', end: 'bottom top', scrub: true }
         });
       });
-
-      /* Bandeau defilant */
       document.querySelectorAll('.marquee-inner').forEach(function (el) {
         var demi = el.scrollWidth / 2;
         if (demi > 0) gsap.to(el, { x: -demi, duration: 26, ease: 'none', repeat: -1 });
       });
     } catch (e) { finaliserCompteurs(); }
-  });
-})();
-
-/* ============ PRENIUM+ : lueur ambiante et cartes inclinables ============ */
-(function () {
-  'use strict';
-  var reduit = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var pointeurFin = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-  if (reduit || !pointeurFin) return;
-  window.addEventListener('load', function () {
-    try {
-      if (!window.gsap) return;
-      /* Lueur qui suit le pointeur */
-      var lueur = document.createElement('div');
-      lueur.className = 'lueur-ambiante';
-      lueur.setAttribute('aria-hidden', 'true');
-      document.body.appendChild(lueur);
-      var qx = gsap.quickTo(lueur, 'x', { duration: 0.6, ease: 'power3' });
-      var qy = gsap.quickTo(lueur, 'y', { duration: 0.6, ease: 'power3' });
-      gsap.set(lueur, { xPercent: -50, yPercent: -50, opacity: 0 });
-      window.addEventListener('pointermove', function (e) {
-        qx(e.clientX); qy(e.clientY);
-        gsap.to(lueur, { opacity: 1, duration: .4, overwrite: 'auto' });
-      });
-      document.documentElement.addEventListener('mouseleave', function () {
-        gsap.to(lueur, { opacity: 0, duration: .4 });
-      });
-      /* Cartes inclinables */
-      document.querySelectorAll('.carte-p, .temoin').forEach(function (carte) {
-        carte.classList.add('inclinable');
-        carte.addEventListener('pointermove', function (e) {
-          var r = carte.getBoundingClientRect();
-          var rx = ((e.clientY - r.top) / r.height - .5) * -7;
-          var ry = ((e.clientX - r.left) / r.width - .5) * 9;
-          gsap.to(carte, { rotationX: rx, rotationY: ry, transformPerspective: 700, duration: .5, ease: 'power2.out' });
-        });
-        carte.addEventListener('pointerleave', function () {
-          gsap.to(carte, { rotationX: 0, rotationY: 0, duration: .7, ease: 'elastic.out(1, .5)' });
-        });
-      });
-    } catch (e) { /* rien */ }
   });
 })();
