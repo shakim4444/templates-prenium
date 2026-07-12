@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{NOM_ENTREPRISE}} - Contact et rendez-vous privé à {{VILLE}}</title>
+<meta name="description" content="Prenez un rendez-vous privé chez {{NOM_ENTREPRISE}}, maison de luxe à {{VILLE}}, {{PAYS}}. Horaires, adresse, téléphone et WhatsApp. Réponse rapide.">
+<meta name="theme-color" content="#14110E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%2314110E'/%3E%3Crect x='18' y='14' width='28' height='36' fill='none' stroke='%23B08D57' stroke-width='1.5'/%3E%3Cline x1='32' y1='14' x2='32' y2='50' stroke='%23B08D57' stroke-width='1'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,500;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./styles.css">
+<script>document.documentElement.classList.add('js')</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js" defer></script>
+<script src="./script.js" defer></script>
+</head>
+<body>
+
+<a class="skip-link" href="#contenu">Aller au contenu</a>
+
+<header class="site-header">
+  <div class="wrap header-in">
+    <a class="logo" href="./index.html">{{NOM_ENTREPRISE}}<em>.</em></a>
+    <nav class="nav-desktop" aria-label="Navigation principale">
+      <a href="./index.html">Accueil</a>
+      <a href="./collection.html">Collections</a>
+      <a href="./maison.html">La maison</a>
+      <a href="./services.html">Services</a>
+      <a href="./signature.html">La signature</a>
+      <a href="./contact.html" aria-current="page">Contact</a>
+    </nav>
+    <div class="header-droite">
+      <a class="btn btn--ligne-clair header-cta" href="#rendez-vous">Rendez-vous privé</a>
+      <button class="burger" type="button" aria-expanded="false" aria-controls="nav-mobile" aria-label="Ouvrir le menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<nav class="nav-panel" id="nav-mobile" aria-label="Navigation mobile">
+  <a href="./index.html">Accueil</a>
+  <a href="./collection.html">Collections</a>
+  <a href="./maison.html">La maison</a>
+  <a href="./services.html">Services</a>
+  <a href="./signature.html">La signature</a>
+      <a href="./contact.html" aria-current="page">Contact</a>
+  <a class="nav-tel" href="tel:{{TELEPHONE_LIEN}}">Rendez-vous : {{TELEPHONE}}</a>
+</nav>
+
+<main id="contenu">
+
+  <!-- ============ EN-TETE DE PAGE ============ -->
+  <section class="page-header">
+    <div class="wrap">
+      <p class="eyebrow">Contact</p>
+      <h1>Prenons <em>rendez-vous</em></h1>
+      <p class="lede">{{RDV_INFO}} Écrivez-nous par WhatsApp pour un échange immédiat, ou remplissez le formulaire ci-dessous : il compose votre demande, prête à envoyer.</p>
+    </div>
+  </section>
+
+  <!-- ============ RENDEZ-VOUS ============ -->
+  <section class="section" id="rendez-vous" aria-labelledby="titre-rdv">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow">Rendez-vous privé</p>
+        <h2 id="titre-rdv">Composez votre demande</h2>
+        <p>Renseignez les champs : au clic, votre message part sur WhatsApp, déjà rédigé. Aucune donnée n'est stockée sur ce site.</p>
+      </div>
+      <div class="rdv-grille">
+        <form class="rdv-form" id="form-rdv" data-whatsapp="{{WHATSAPP}}" data-reveal>
+          <div class="champ">
+            <label for="nom">Votre nom</label>
+            <input type="text" id="nom" name="nom" autocomplete="name" placeholder="Prénom et nom" required>
+          </div>
+          <div class="champ">
+            <label for="objet">Objet du rendez-vous</label>
+            <select id="objet" name="objet">
+              <option>Essayage d'une pièce</option>
+              <option>Conseil privé</option>
+              <option>Projet sur-mesure</option>
+              <option>Retouche ou entretien</option>
+              <option>Autre demande</option>
+            </select>
+          </div>
+          <div class="deux">
+            <div class="champ">
+              <label for="date">Date souhaitée</label>
+              <input type="date" id="date" name="date">
+            </div>
+            <div class="champ">
+              <label for="creneau">Créneau</label>
+              <select id="creneau" name="creneau">
+                <option>Matin</option>
+                <option>Après-midi</option>
+                <option>Fin de journée</option>
+              </select>
+            </div>
+          </div>
+          <div class="champ">
+            <label for="message">Votre message (facultatif)</label>
+            <textarea id="message" name="message" placeholder="Précisez la pièce, la matière ou l'occasion..."></textarea>
+          </div>
+          <button class="btn btn--oxsang" type="submit">Envoyer sur WhatsApp <span class="fleche" aria-hidden="true">&rarr;</span></button>
+          <p class="rdv-aide">Le formulaire ouvre WhatsApp avec votre demande pré-remplie. Vous validez l'envoi vous-même.</p>
+        </form>
+
+        <div data-reveal data-reveal-delay="120">
+          <div class="rdv-directe">
+            <p class="eyebrow">Nous joindre directement</p>
+            <a class="btn btn--oxsang" href="https://wa.me/{{WHATSAPP}}?text=Bonjour%2C%20je%20souhaite%20prendre%20un%20rendez-vous%20priv%C3%A9." target="_blank" rel="noopener">WhatsApp <span class="fleche" aria-hidden="true">&rarr;</span></a>
+            <a class="btn btn--ligne" href="tel:{{TELEPHONE_LIEN}}">Appeler {{TELEPHONE}}</a>
+            <a class="btn btn--ligne" href="mailto:{{EMAIL}}">Écrire un e-mail</a>
+          </div>
+
+          <div class="infos" style="margin-top:clamp(32px,5vw,48px)">
+            <div>
+              <div class="info-bloc">
+                <h3>Adresse</h3>
+                <p>{{ADRESSE}}<br>{{VILLE}}, {{PAYS}}</p>
+              </div>
+              <div class="info-bloc">
+                <h3>Horaires</h3>
+                <p class="horaire"><strong>Semaine</strong><span class="h-fill" aria-hidden="true"></span><span>{{HORAIRES_SEMAINE}}</span></p>
+                <p class="horaire"><strong>Week-end</strong><span class="h-fill" aria-hidden="true"></span><span>{{HORAIRES_WEEKEND}}</span></p>
+                <p class="horaire"><strong>Fermeture</strong><span class="h-fill" aria-hidden="true"></span><span>{{JOUR_FERMETURE}}</span></p>
+              </div>
+              <div class="info-bloc">
+                <h3>Nous suivre</h3>
+                <p><a href="{{FACEBOOK_URL}}" target="_blank" rel="noopener">Facebook</a> - <a href="{{INSTAGRAM_URL}}" target="_blank" rel="noopener">Instagram</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CARTE ============ -->
+  <section class="section section--panel" aria-labelledby="titre-plan">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow">Nous trouver</p>
+        <h2 id="titre-plan">La maison, à {{VILLE}}</h2>
+      </div>
+      <div class="carte-map" data-reveal>
+        <iframe src="{{MAPS_EMBED_URL}}" title="Plan d'accès - {{NOM_ENTREPRISE}}, {{VILLE}}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+        <p class="map-note">{{ADRESSE}} - {{VILLE}}, {{PAYS}}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CTA FINAL ============ -->
+  <section class="cta-band" aria-labelledby="titre-cta">
+    <div class="wrap">
+      <div>
+        <h2 id="titre-cta">Un accueil <em>sur mesure</em> vous attend</h2>
+        <p>Maison fondée en {{ANNEE_CREATION}} - {{SLOGAN}}.</p>
+      </div>
+      <a class="btn btn--ivoire" href="https://wa.me/{{WHATSAPP}}?text=Bonjour%2C%20je%20souhaite%20prendre%20un%20rendez-vous%20priv%C3%A9." target="_blank" rel="noopener">Prendre rendez-vous <span class="fleche" aria-hidden="true">&rarr;</span></a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p class="footer-marque" aria-hidden="true">{{NOM_ENTREPRISE}}</p>
+    <div class="footer-grille">
+      <div>
+        <h3>La maison</h3>
+        <p class="footer-desc">Maison de luxe à {{VILLE}}, {{PAYS}}. {{SLOGAN}}.</p>
+      </div>
+      <div>
+        <h3>Navigation</h3>
+        <ul>
+          <li><a href="./collection.html">Collections</a></li>
+          <li><a href="./maison.html">La maison</a></li>
+          <li><a href="./services.html">Services</a></li>
+          <li><a href="./signature.html">La signature</a></li>
+          <li><a href="./contact.html">Contact et rendez-vous</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Contact</h3>
+        <ul>
+          <li><a href="tel:{{TELEPHONE_LIEN}}">{{TELEPHONE}}</a></li>
+          <li><a href="mailto:{{EMAIL}}">{{EMAIL}}</a></li>
+          <li><a href="{{FACEBOOK_URL}}" target="_blank" rel="noopener">Facebook</a></li>
+          <li><a href="{{INSTAGRAM_URL}}" target="_blank" rel="noopener">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bas">
+      <p>&copy; {{NOM_ENTREPRISE}} - {{VILLE}}, {{PAYS}}. Tous droits réservés.</p>
+      <p>Site réalisé par Atelier Web</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

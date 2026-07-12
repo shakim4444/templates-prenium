@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>La carte - {{NOM_ENTREPRISE}}, bar à {{VILLE}}</title>
+<meta name="description" content="La carte du bar {{NOM_ENTREPRISE}} à {{VILLE}} : cocktails signatures dont le {{COCKTAIL_SIGNATURE_NOM}}, bières, spiritueux et softs. Prix en {{DEVISE}}. Happy hour {{HAPPY_HOUR_HORAIRE}}.">
+<meta name="theme-color" content="#0D1220">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%230D1220'/%3E%3Ccircle cx='26' cy='32' r='13' fill='%23E8A13D'/%3E%3Ccircle cx='40' cy='32' r='13' fill='%23D9488B' fill-opacity='.85'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./styles.css">
+<script>document.documentElement.classList.add('js')</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js" defer></script>
+<script src="./script.js" defer></script>
+</head>
+<body>
+
+<a class="skip-link" href="#contenu">Aller au contenu</a>
+
+<header class="site-header">
+  <div class="wrap header-in">
+    <a class="logo" href="./index.html">{{NOM_ENTREPRISE}}<em>.</em></a>
+    <nav class="nav-desktop" aria-label="Navigation principale">
+      <a href="./index.html">Accueil</a>
+      <a href="./carte.html" aria-current="page">La carte</a>
+      <a href="./programme.html">Programme</a>
+      <a href="./a-propos.html">À propos</a>
+      <a href="./privatiser.html">Privatiser</a>
+      <a href="./contact.html">Contact</a>
+    </nav>
+    <div class="header-droite">
+      <a class="btn btn--ambre header-cta" href="./contact.html#reservation">Réserver une table</a>
+      <button class="burger" type="button" aria-expanded="false" aria-controls="nav-mobile" aria-label="Ouvrir le menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<nav class="nav-panel" id="nav-mobile" aria-label="Navigation mobile">
+  <a href="./index.html">Accueil</a>
+  <a href="./carte.html" aria-current="page">La carte</a>
+  <a href="./programme.html">Programme</a>
+  <a href="./a-propos.html">À propos</a>
+  <a href="./privatiser.html">Privatiser</a>
+      <a href="./contact.html">Contact</a>
+  <a class="nav-tel" href="tel:{{TELEPHONE_LIEN}}">Réserver : {{TELEPHONE}}</a>
+</nav>
+
+<main id="contenu">
+
+  <header class="page-header">
+    <div class="wrap">
+      <p class="eyebrow" data-hero="1">La carte</p>
+      <h1 data-hero="2">Ce qui se boit ce soir</h1>
+      <p class="lede" data-hero="3">Cocktails préparés minute, sélection de bières et de spiritueux, softs maison. Tous les prix sont en {{DEVISE}}, service compris.</p>
+    </div>
+  </header>
+
+  <!-- ============ BANDEAU HAPPY HOUR ============ -->
+  <div class="happy" role="note" aria-label="Happy hour">
+    <div class="wrap happy-in">
+      <p class="happy-tag"><span class="point" aria-hidden="true"></span> Happy hour</p>
+      <p class="happy-texte">{{HAPPY_HOUR_HORAIRE}} - <strong>{{HAPPY_HOUR_OFFRE}}</strong></p>
+    </div>
+  </div>
+
+  <!-- ============ COCKTAIL SIGNATURE ============ -->
+  <section class="section" aria-labelledby="titre-signature">
+    <div class="wrap signature-grille">
+      <div class="signature-visuel" data-reveal="gauche">
+        <figure class="duotone">
+          <img src="https://images.unsplash.com/photo-1572116469696-31de0f17cc34?auto=format&fit=crop&w=1000&q=80" alt="Le cocktail signature {{COCKTAIL_SIGNATURE_NOM}} du bar {{NOM_ENTREPRISE}}" fetchpriority="high" width="800" height="1000">
+        </figure>
+        <p class="badge-prix">{{COCKTAIL_SIGNATURE_PRIX}} {{DEVISE}}</p>
+      </div>
+      <div data-reveal="droite">
+        <p class="eyebrow">Le cocktail signature</p>
+        <h2 id="titre-signature" class="signature-nom">{{COCKTAIL_SIGNATURE_NOM}}</h2>
+        <p>Notre création maison, celle que les habitués commandent sans ouvrir la carte. Demandez-la au comptoir, elle se prépare sous vos yeux.</p>
+        <div class="hero-ctas">
+          <a class="btn btn--magenta" href="./contact.html#reservation">Réserver une table <span class="fleche" aria-hidden="true">&rarr;</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LA CARTE COMPLETE ============ -->
+  <section class="section section--panel" aria-labelledby="titre-carte">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow">Au comptoir</p>
+        <h2 id="titre-carte">La carte complète</h2>
+        <p>Une sélection courte et tenue : chaque référence est choisie, goûtée et servie comme il faut.</p>
+      </div>
+      <div class="boissons">
+        <div class="boissons-bloc" data-reveal>
+          <h3>Cocktails</h3>
+          <div class="boisson"><span class="boisson-nom">{{COCKTAIL_SIGNATURE_NOM}}</span><span class="boisson-fill" aria-hidden="true"></span><span class="boisson-prix">{{COCKTAIL_SIGNATURE_PRIX}} {{DEVISE}}</span></div>
+          <div class="boisson"><span class="boisson-nom">{{BOISSON_1_NOM}}</span><span class="boisson-fill" aria-hidden="true"></span><span class="boisson-prix">{{BOISSON_1_PRIX}} {{DEVISE}}</span></div>
+          <div class="boisson"><span class="boisson-nom">{{BOISSON_2_NOM}}</span><span class="boisson-fill" aria-hidden="true"></span><span class="boisson-prix">{{BOISSON_2_PRIX}} {{DEVISE}}</span></div>
+          <div class="boisson"><span class="boisson-nom">{{BOISSON_3_NOM}}</span><span class="boisson-fill" aria-hidden="true"></span><span class="boisson-prix">{{BOISSON_3_PRIX}} {{DEVISE}}</span></div>
+          <div class="boisson"><span class="boisson-nom">{{BOISSON_4_NOM}}</span><span class="boisson-fill" aria-hidden="true"></span><span class="boisson-prix">{{BOISSON_4_PRIX}} {{DEVISE}}</span></div>
+        </div>
+        <div class="boissons-bloc" data-reveal data-reveal-delay="120">
+          <h3>Bières, spiritueux et softs</h3>
+          <div class="boisson"><span class="boisson-nom">{{BOISSON_5_NOM}}</span><span class="boisson-fill" aria-hidden="true"></span><span class="boisson-prix">{{BOISSON_5_PRIX}} {{DEVISE}}</span></div>
+          <div class="boisson"><span class="boisson-nom">{{BOISSON_6_NOM}}</span><span class="boisson-fill" aria-hidden="true"></span><span class="boisson-prix">{{BOISSON_6_PRIX}} {{DEVISE}}</span></div>
+          <div class="boisson"><span class="boisson-nom">{{BOISSON_7_NOM}}</span><span class="boisson-fill" aria-hidden="true"></span><span class="boisson-prix">{{BOISSON_7_PRIX}} {{DEVISE}}</span></div>
+          <div class="boisson"><span class="boisson-nom">{{BOISSON_8_NOM}}</span><span class="boisson-fill" aria-hidden="true"></span><span class="boisson-prix">{{BOISSON_8_PRIX}} {{DEVISE}}</span></div>
+          <p class="carte-note">Une envie particulière ? Demandez au bar : si les ingrédients sont là, on vous le prépare.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ AMBIANCE ============ -->
+  <section class="section" aria-labelledby="titre-ambiance">
+    <div class="wrap duo">
+      <figure class="duotone" data-reveal="gauche">
+        <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=1000&q=80" alt="Verres et cocktails colorés servis au bar {{NOM_ENTREPRISE}}" loading="lazy" width="800" height="1000">
+      </figure>
+      <div data-reveal="droite">
+        <p class="eyebrow">La méthode</p>
+        <h2 id="titre-ambiance">Préparé minute, servi glacé</h2>
+        <p>Pas de préparations qui attendent, pas de raccourcis : verrerie givrée, glace pleine, jus pressés. Le happy hour {{HAPPY_HOUR_HORAIRE}} applique la même exigence, seul le prix change.</p>
+        <div class="hero-ctas">
+          <a class="btn btn--ligne" href="./programme.html">Voir le programme des soirées <span class="fleche" aria-hidden="true">&rarr;</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CTA FINAL ============ -->
+  <section class="cta-band" aria-labelledby="titre-cta">
+    <div class="wrap">
+      <div>
+        <h2 id="titre-cta">On vous garde une place au comptoir ?</h2>
+        <p>Réservez en un message WhatsApp, réponse rapide aux heures d'ouverture.</p>
+      </div>
+      <a class="btn btn--ambre" href="https://wa.me/{{WHATSAPP}}?text=Bonjour%2C%20je%20souhaite%20r%C3%A9server%20une%20table%20au%20bar." target="_blank" rel="noopener">Réserver sur WhatsApp <span class="fleche" aria-hidden="true">&rarr;</span></a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p class="footer-marque" aria-hidden="true">{{NOM_ENTREPRISE}}</p>
+    <div class="footer-grille">
+      <div>
+        <h3>La maison</h3>
+        <p class="footer-desc">Bar à cocktails à {{VILLE}}. {{SLOGAN}}. Ouvert jusqu'à {{HEURE_FERMETURE}}, fermé le {{JOUR_FERMETURE}}.</p>
+      </div>
+      <div>
+        <h3>Navigation</h3>
+        <ul>
+          <li><a href="./carte.html">La carte</a></li>
+          <li><a href="./programme.html">Programme des soirées</a></li>
+          <li><a href="./a-propos.html">À propos</a></li>
+          <li><a href="./privatiser.html">Privatiser</a></li>
+          <li><a href="./contact.html">Contact et réservation</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Contact</h3>
+        <ul>
+          <li><a href="tel:{{TELEPHONE_LIEN}}">{{TELEPHONE}}</a></li>
+          <li><a href="mailto:{{EMAIL}}">{{EMAIL}}</a></li>
+          <li><a href="{{FACEBOOK_URL}}" target="_blank" rel="noopener">Facebook</a></li>
+          <li><a href="{{INSTAGRAM_URL}}" target="_blank" rel="noopener">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bas">
+      <p>&copy; {{NOM_ENTREPRISE}} - {{VILLE}}, {{PAYS}}. Tous droits réservés. L'abus d'alcool est dangereux pour la santé.</p>
+      <p>Site réalisé par Atelier Web</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

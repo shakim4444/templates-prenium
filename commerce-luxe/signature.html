@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{NOM_ENTREPRISE}} - {{PIECE_SIGNATURE_NOM}}, la pièce signature</title>
+<meta name="description" content="{{PIECE_SIGNATURE_NOM}}, la pièce signature de {{NOM_ENTREPRISE}} à {{VILLE}}. Présentée en salon privé, certificat d'authenticité et écrin de la maison.">
+<meta name="theme-color" content="#14110E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%2314110E'/%3E%3Crect x='18' y='14' width='28' height='36' fill='none' stroke='%23B08D57' stroke-width='1.5'/%3E%3Cline x1='32' y1='14' x2='32' y2='50' stroke='%23B08D57' stroke-width='1'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,500;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./styles.css">
+<script>document.documentElement.classList.add('js')</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js" defer></script>
+<script src="./script.js" defer></script>
+</head>
+<body>
+
+<a class="skip-link" href="#contenu">Aller au contenu</a>
+
+<header class="site-header">
+  <div class="wrap header-in">
+    <a class="logo" href="./index.html">{{NOM_ENTREPRISE}}<em>.</em></a>
+    <nav class="nav-desktop" aria-label="Navigation principale">
+      <a href="./index.html">Accueil</a>
+      <a href="./collection.html">Collections</a>
+      <a href="./maison.html">La maison</a>
+      <a href="./services.html">Services</a>
+      <a href="./signature.html" aria-current="page">La signature</a>
+      <a href="./contact.html">Contact</a>
+    </nav>
+    <div class="header-droite">
+      <a class="btn btn--ligne-clair header-cta" href="./contact.html#rendez-vous">Rendez-vous privé</a>
+      <button class="burger" type="button" aria-expanded="false" aria-controls="nav-mobile" aria-label="Ouvrir le menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<nav class="nav-panel" id="nav-mobile" aria-label="Navigation mobile">
+  <a href="./index.html">Accueil</a>
+  <a href="./collection.html">Collections</a>
+  <a href="./maison.html">La maison</a>
+  <a href="./services.html">Services</a>
+  <a href="./signature.html" aria-current="page">La signature</a>
+      <a href="./contact.html">Contact</a>
+  <a class="nav-tel" href="tel:{{TELEPHONE_LIEN}}">Rendez-vous : {{TELEPHONE}}</a>
+</nav>
+
+<main id="contenu">
+
+  <!-- ============ EN-TETE DE PAGE ============ -->
+  <section class="page-header">
+    <div class="wrap">
+      <p class="eyebrow">La pièce signature</p>
+      <h1>{{PIECE_SIGNATURE_NOM}}, l'objet qui <em>raconte la maison</em></h1>
+      <p class="lede">{{PIECE_SIGNATURE_DESC}}</p>
+    </div>
+  </section>
+
+  <!-- ============ FICHE ============ -->
+  <section class="section" aria-labelledby="titre-fiche">
+    <div class="wrap fiche-grille">
+      <div class="photo-cadre" data-reveal="gauche">
+        <img src="https://images.unsplash.com/photo-1523170335258-f5ed11844a49?auto=format&fit=crop&w=1000&q=80" alt="{{PIECE_SIGNATURE_NOM}}, pièce signature de {{NOM_ENTREPRISE}}" loading="lazy" width="1000" height="1250" data-parallax="-6">
+      </div>
+      <div data-reveal="droite">
+        <p class="eyebrow">La fiche</p>
+        <h2 id="titre-fiche">Ce qui la rend unique</h2>
+        <p class="corps">Présentée sur rendez-vous uniquement, {{PIECE_SIGNATURE_NOM}} est la pièce que nos clients demandent en premier - et celle qu'ils gardent le plus longtemps.</p>
+        <p class="corps"><strong>{{PIECE_SIGNATURE_PRIX}} {{DEVISE}}</strong> - certificat d'authenticité, écrin de la maison et première révision offerte.</p>
+        <div class="hero-ctas">
+          <a class="btn btn--oxsang" href="./contact.html#rendez-vous">La découvrir en salon privé <span class="fleche" aria-hidden="true">&rarr;</span></a>
+          <a class="btn btn--ligne" href="./collection.html">Voir toute la collection</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SAVOIR-FAIRE ============ -->
+  <section class="section section--panel" aria-labelledby="titre-savoirfaire">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow">Savoir-faire</p>
+        <h2 id="titre-savoirfaire">Trois gestes, des heures de main</h2>
+      </div>
+      <div class="etapes" data-reveal>
+        <div class="etape"><h3>La matière</h3><p>Chaque matière est sélectionnée à la source, contrôlée puis réservée à une seule pièce. Rien n'est interchangeable.</p></div>
+        <div class="etape"><h3>La main</h3><p>Façonnage, ajustage, polissage : la pièce passe entre les mains d'un seul artisan, du premier au dernier geste.</p></div>
+        <div class="etape"><h3>Le temps</h3><p>Aucune pièce ne quitte l'atelier avant d'être parfaitement juste. C'est long. C'est le prix de la signature.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CTA ============ -->
+  <section class="cta-band" aria-labelledby="titre-cta">
+    <div class="wrap">
+      <div>
+        <h2 id="titre-cta">Votre <em>rendez-vous privé</em> vous attend</h2>
+        <p>{{RDV_INFO}}</p>
+      </div>
+      <a class="btn btn--ivoire" href="https://wa.me/{{WHATSAPP}}?text=Bonjour%2C%20je%20souhaite%20prendre%20un%20rendez-vous%20priv%C3%A9." target="_blank" rel="noopener">Écrire sur WhatsApp <span class="fleche" aria-hidden="true">&rarr;</span></a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p class="footer-marque" aria-hidden="true">{{NOM_ENTREPRISE}}</p>
+    <div class="footer-grille">
+      <div>
+        <h3>La maison</h3>
+        <p class="footer-desc">Maison de luxe à {{VILLE}}, {{PAYS}}. {{SLOGAN}}.</p>
+      </div>
+      <div>
+        <h3>Navigation</h3>
+        <ul>
+          <li><a href="./collection.html">Collections</a></li>
+          <li><a href="./maison.html">La maison</a></li>
+          <li><a href="./services.html">Services</a></li>
+          <li><a href="./signature.html" aria-current="page">La signature</a></li>
+          <li><a href="./contact.html">Contact et rendez-vous</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Contact</h3>
+        <ul>
+          <li><a href="tel:{{TELEPHONE_LIEN}}">{{TELEPHONE}}</a></li>
+          <li><a href="mailto:{{EMAIL}}">{{EMAIL}}</a></li>
+          <li><a href="{{FACEBOOK_URL}}" target="_blank" rel="noopener">Facebook</a></li>
+          <li><a href="{{INSTAGRAM_URL}}" target="_blank" rel="noopener">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bas">
+      <p>&copy; {{NOM_ENTREPRISE}} - {{VILLE}}, {{PAYS}}. Tous droits réservés.</p>
+      <p>Site réalisé par Atelier Web</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
