@@ -9,6 +9,80 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=EB+Garamond:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="./atelier-web-cta.css">
+<style id="mobile-nav-style">
+.nav-burger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 28px;
+  height: 20px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 9999;
+  position: relative;
+  flex-shrink: 0;
+}
+.nav-burger span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: currentColor;
+  border-radius: 2px;
+  transition: transform .3s, opacity .3s;
+  pointer-events: none;
+}
+.nav-burger.open span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
+.nav-burger.open span:nth-child(2) { opacity: 0; }
+.nav-burger.open span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
+
+.nav-mobile-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  background: #2E0913;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  padding: 40px 24px;
+}
+.nav-mobile-overlay.open { display: flex !important; }
+.nav-mobile-overlay a {
+  display: block;
+  font-size: clamp(1.5rem, 6vw, 2.2rem);
+  font-weight: 700;
+  text-decoration: none;
+  color: #F4EDE2;
+  opacity: .85;
+  letter-spacing: .04em;
+  transition: color .2s, opacity .2s;
+}
+.nav-mobile-overlay a:hover { opacity: 1; color: #C0A062; }
+.nav-overlay-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 36px;
+  line-height: 1;
+  color: #F4EDE2;
+  opacity: .7;
+  padding: 4px 10px;
+}
+.nav-overlay-close:hover { opacity: 1; }
+
+@media (max-width: 760px) {
+  nav .links,
+  nav .links.mono { display: none !important; }
+  nav a.cta      { display: none !important; }
+  .nav-burger    { display: flex !important; }
+}
+</style>
 </head>
 <body>
 
@@ -19,12 +93,9 @@
     <a href="domaine.html">Le domaine</a>
     <a href="contact.html">Contact</a>
   </div>
-<button class="nav-burger" aria-label="Menu" aria-expanded="false" aria-controls="nav-panel-mobile">
-    <span></span><span></span><span></span>
-  </button>
+<button class="nav-burger" id="nav-burger-btn" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
 </nav>
-<nav class="nav-panel-mobile" id="nav-panel-mobile" aria-label="Menu mobile"></nav>
-
+<div class="nav-mobile-overlay" id="nav-mobile-overlay"></div>
 <header class="hero">
   <div class="glass-visual" aria-hidden="true">
     <div class="ring r1"></div>
@@ -141,25 +212,32 @@
 </aside>
 
 <script>
-(function(){
-  var burger = document.querySelector('.nav-burger');
-  var panel  = document.getElementById('nav-panel-mobile');
-  if (!burger || !panel) return;
-  var closeBtn = document.createElement('button');
-  closeBtn.className = 'nav-close';
-  closeBtn.textContent = '×';
-  closeBtn.setAttribute('aria-label', 'Fermer le menu');
-  panel.appendChild(closeBtn);
-  document.querySelectorAll('nav:not(.nav-panel-mobile) .links a').forEach(function(a) {
-    panel.appendChild(a.cloneNode(true));
+document.addEventListener('DOMContentLoaded', function() {
+  var burger = document.getElementById('nav-burger-btn');
+  var overlay = document.getElementById('nav-mobile-overlay');
+  if (!burger || !overlay) return;
+
+  // Clone desktop nav links into overlay
+  document.querySelectorAll('nav:not([id]) .links a, nav:not([id]) .links.mono a').forEach(function(a) {
+    var link = a.cloneNode(true);
+    overlay.appendChild(link);
   });
-  function openMenu()  { panel.classList.add('is-open');    burger.setAttribute('aria-expanded','true');  document.body.style.overflow='hidden'; }
-  function closeMenu() { panel.classList.remove('is-open'); burger.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
-  burger.addEventListener('click', function() { panel.classList.contains('is-open') ? closeMenu() : openMenu(); });
-  closeBtn.addEventListener('click', closeMenu);
-  panel.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', closeMenu); });
-  document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeMenu(); });
-})();
+
+  // Close button
+  var closeBtn = document.createElement('button');
+  closeBtn.className = 'nav-overlay-close';
+  closeBtn.innerHTML = '&times;';
+  closeBtn.setAttribute('aria-label', 'Fermer');
+  overlay.insertBefore(closeBtn, overlay.firstChild);
+
+  function open()  { overlay.classList.add('open'); burger.classList.add('open'); document.body.style.overflow = 'hidden'; burger.setAttribute('aria-expanded','true'); }
+  function close() { overlay.classList.remove('open'); burger.classList.remove('open'); document.body.style.overflow = ''; burger.setAttribute('aria-expanded','false'); }
+
+  burger.addEventListener('click', function() { overlay.classList.contains('open') ? close() : open(); });
+  closeBtn.addEventListener('click', close);
+  overlay.querySelectorAll('a').forEach(function(a) { a.addEventListener('click', close); });
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') close(); });
+});
 </script>
 </body>
 </html>
