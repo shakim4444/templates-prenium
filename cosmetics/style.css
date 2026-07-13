@@ -181,3 +181,73 @@ html.lenis, html.lenis body { height: auto; }
   .prod-gallery { grid-template-columns: 1fr; max-width: 300px; }
   .prod-gallery img { height: 260px; }
 }
+
+/* btn-plum: missing style fix */
+.btn-plum {
+  display: inline-block;
+  background: var(--plum);
+  color: var(--porcelain);
+  padding: 16px 36px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 15px;
+  font-family: 'Outfit', sans-serif;
+  transition: background .3s, transform .3s;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+}
+.btn-plum:hover { background: var(--coral); transform: translateY(-2px); }
+
+/* newsletter subscribe form in footer */
+footer .newsletter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  margin: 5vh auto 6vh;
+  max-width: 480px;
+}
+footer .newsletter-form {
+  display: flex;
+  gap: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  border-radius: 999px;
+  padding: 6px 6px 6px 22px;
+  box-shadow: 0 12px 36px rgba(59, 35, 64, 0.1);
+  transition: box-shadow .3s;
+}
+footer .newsletter-form:focus-within {
+  box-shadow: 0 16px 48px rgba(59, 35, 64, 0.18);
+  border-color: rgba(255, 122, 104, 0.5);
+}
+footer .newsletter-form input[type="email"] {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: 'Outfit', sans-serif;
+  font-size: 14px;
+  color: var(--plum);
+  min-width: 0;
+}
+footer .newsletter-form input[type="email"]::placeholder { color: rgba(59, 35, 64, 0.45); }
+footer .newsletter-form button {
+  background: var(--plum);
+  color: var(--porcelain);
+  border: none;
+  border-radius: 999px;
+  padding: 12px 24px;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background .3s, transform .3s;
+  flex-shrink: 0;
+}
+footer .newsletter-form button:hover { background: var(--coral); transform: scale(1.04); }

@@ -15,10 +15,13 @@ html, body { max-width: 100%; overflow-x: hidden; }
   padding: 18px;
   overflow: hidden;
   color: #fff;
-  background: #151515;
-  border: 1px solid rgba(255,255,255,.18);
+  /* Glassmorphism */
+  background: rgba(15, 15, 15, 0.45);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 12px;
-  box-shadow: 0 16px 48px rgba(0,0,0,.28);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.12);
   font-family: Arial, Helvetica, sans-serif;
   line-height: 1.25;
   text-align: left;
@@ -67,8 +70,10 @@ html, body { max-width: 100%; overflow-x: hidden; }
 }
 .aw-prospect-cta__link--email {
   color: #fff !important;
-  background: transparent;
-  border-color: rgba(255,255,255,.28);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-color: rgba(255, 255, 255, 0.28);
   font-size: 12px;
 }
 .aw-prospect-cta__link:hover { transform: translateY(-2px); }
