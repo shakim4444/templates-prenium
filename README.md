@@ -43,3 +43,13 @@ Settings → Pages → Custom domain (e.g. `demo.yourdomain.com`), then add a CN
 1. Change the CSS variables at the top of `style.css` (brand colors).
 2. Replace the Unsplash image URLs with the client's photos.
 3. Edit texts, prices and contact info directly in the HTML.
+
+
+## CTA Atelier Web
+
+Chaque page inclut un encart flottant de prise de contact vers Atelier Web :
+
+- WhatsApp : +226 07 42 95 63
+- E-mail : team.atelierweb@gmail.com
+
+Le composant est stylé dans `atelier-web-cta.css`, présent dans chaque dossier de template.
