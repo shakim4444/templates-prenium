@@ -106,12 +106,25 @@
       gsap.registerPlugin(ScrollTrigger);
 
       /* Defilement doux */
-      if (window.Lenis) {
-        var lenis = new Lenis({ lerp: 0.11 });
-        lenis.on('scroll', ScrollTrigger.update);
-        gsap.ticker.add(function (t) { lenis.raf(t * 1000); });
-        gsap.ticker.lagSmoothing(0);
-      }
+
+    /* Smooth scroll: one RAF source only. Native scrolling remains active on touch devices. */
+    if (window.Lenis && !window.matchMedia('(pointer: coarse)').matches) {
+      var lenis = new Lenis({
+        lerp: 0.1,
+        smoothWheel: true,
+        syncTouch: false,
+        wheelMultiplier: 0.9
+      });
+      lenis.on('scroll', ScrollTrigger.update);
+      var lenisRaf = function (time) {
+        lenis.raf(time);
+        window.requestAnimationFrame(lenisRaf);
+      };
+      window.requestAnimationFrame(lenisRaf);
+      window.addEventListener('pagehide', function () { lenis.destroy(); }, { once: true });
+    }
+
+    window.requestAnimationFrame(function () { ScrollTrigger.refresh(); });
 
       /* Compteurs animes */
       document.querySelectorAll('[data-count]').forEach(function (el) {

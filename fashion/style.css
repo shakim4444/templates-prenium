@@ -117,3 +117,15 @@ footer .row { display: flex; justify-content: space-between; gap: 20px; flex-wra
 .nitem .eyebrow { margin-top: 14px; display: block; }
 .testimonial { padding: 14vh 6vw; text-align: center; max-width: 900px; margin: 0 auto; }
 .testimonial .qt { font-size: clamp(1.6rem, 3.6vw, 2.8rem); font-style: italic; line-height: 1.35; }
+
+
+/* Stable smooth scrolling: Lenis on desktop, native scrolling on touch/offline. */
+html { scroll-padding-top: 96px; }
+html:not(.lenis) { scroll-behavior: smooth; }
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-stopped { overflow: clip; }
+.lenis.lenis-smooth iframe { pointer-events: none; }
+@media (prefers-reduced-motion: reduce) {
+  html, html:not(.lenis) { scroll-behavior: auto; }
+}

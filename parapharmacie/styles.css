@@ -539,3 +539,15 @@ a { color: var(--prune); }
 .diag-choix button.actif { background: var(--prune); border-color: var(--prune); color: #FFFFFF; }
 .diag-resultat { border-left: 3px solid var(--prune); background: rgba(221, 183, 192, .18); padding: 20px 22px; border-radius: 0 var(--radius) var(--radius) 0; }
 .diag-resultat .btn { margin-top: 14px; }
+
+
+/* Stable smooth scrolling: Lenis on desktop, native scrolling on touch/offline. */
+html { scroll-padding-top: 96px; }
+html:not(.lenis) { scroll-behavior: smooth; }
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-stopped { overflow: clip; }
+.lenis.lenis-smooth iframe { pointer-events: none; }
+@media (prefers-reduced-motion: reduce) {
+  html, html:not(.lenis) { scroll-behavior: auto; }
+}

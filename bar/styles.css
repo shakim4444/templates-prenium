@@ -572,3 +572,15 @@ p  { max-width: 62ch; }
 /* ============ PRENIUM+ : lueur ambiante ============ */
 .lueur-ambiante { position: fixed; top: 0; left: 0; width: 520px; height: 520px; border-radius: 50%; pointer-events: none; z-index: 3; mix-blend-mode: screen; background: radial-gradient(circle, rgba(232, 161, 61, .16) 0%, rgba(217, 72, 139, .08) 40%, transparent 70%); }
 .inclinable { will-change: transform; }
+
+
+/* Stable smooth scrolling: Lenis on desktop, native scrolling on touch/offline. */
+html { scroll-padding-top: 96px; }
+html:not(.lenis) { scroll-behavior: smooth; }
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-stopped { overflow: clip; }
+.lenis.lenis-smooth iframe { pointer-events: none; }
+@media (prefers-reduced-motion: reduce) {
+  html, html:not(.lenis) { scroll-behavior: auto; }
+}

@@ -27,12 +27,24 @@
   function init() {
     gsap.registerPlugin(ScrollTrigger);
 
-    if (window.Lenis) {
-      var lenis = new Lenis({ lerp: 0.08 });
+    /* Smooth scroll: one RAF source only. Native scrolling remains active on touch devices. */
+    if (window.Lenis && !window.matchMedia('(pointer: coarse)').matches) {
+      var lenis = new Lenis({
+        lerp: 0.1,
+        smoothWheel: true,
+        syncTouch: false,
+        wheelMultiplier: 0.9
+      });
       lenis.on('scroll', ScrollTrigger.update);
-      gsap.ticker.add(function (t) { lenis.raf(t * 1000); });
-      gsap.ticker.lagSmoothing(0);
+      var lenisRaf = function (time) {
+        lenis.raf(time);
+        window.requestAnimationFrame(lenisRaf);
+      };
+      window.requestAnimationFrame(lenisRaf);
+      window.addEventListener('pagehide', function () { lenis.destroy(); }, { once: true });
     }
+
+    window.requestAnimationFrame(function () { ScrollTrigger.refresh(); });
 
     var cursor = q('.cursor');
     if (cursor && window.matchMedia('(hover: hover)').matches) {

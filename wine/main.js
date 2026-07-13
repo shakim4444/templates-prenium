@@ -12,33 +12,31 @@
     });
   }
 
-  function hideGatePlain() {
-    var gate = q('#agegate');
-    if (gate) gate.style.display = 'none';
-  }
-
   function fallbackStatic() {
     document.documentElement.classList.add('no-anim');
-    var yes = q('#gateYes');
-    if (yes) {
-      var gate = q('#agegate');
-      if (sessionStorage.getItem('domaineGate')) { gate.style.display = 'none'; }
-      yes.addEventListener('click', function () {
-        sessionStorage.setItem('domaineGate', '1');
-        gate.style.display = 'none';
-      });
-    }
   }
 
   function init() {
     gsap.registerPlugin(ScrollTrigger);
 
-    if (window.Lenis) {
-      var lenis = new Lenis({ lerp: 0.07 });
+    /* Smooth scroll: one RAF source only. Native scrolling remains active on touch devices. */
+    if (window.Lenis && !window.matchMedia('(pointer: coarse)').matches) {
+      var lenis = new Lenis({
+        lerp: 0.1,
+        smoothWheel: true,
+        syncTouch: false,
+        wheelMultiplier: 0.9
+      });
       lenis.on('scroll', ScrollTrigger.update);
-      gsap.ticker.add(function (t) { lenis.raf(t * 1000); });
-      gsap.ticker.lagSmoothing(0);
+      var lenisRaf = function (time) {
+        lenis.raf(time);
+        window.requestAnimationFrame(lenisRaf);
+      };
+      window.requestAnimationFrame(lenisRaf);
+      window.addEventListener('pagehide', function () { lenis.destroy(); }, { once: true });
     }
+
+    window.requestAnimationFrame(function () { ScrollTrigger.refresh(); });
 
     function revealHero() {
       if (!q('.hero')) return;
@@ -49,25 +47,8 @@
       tl.to('.hero .bottle', { opacity: 1, duration: 1 }, '-=0.8');
     }
 
-    /* Age gate (index only) */
-    var gate = q('#agegate');
-    if (gate) {
-      if (sessionStorage.getItem('domaineGate')) {
-        gate.style.display = 'none';
-        revealHero();
-      } else {
-        q('#gateYes').addEventListener('click', function () {
-          sessionStorage.setItem('domaineGate', '1');
-          gsap.to(gate, {
-            opacity: 0, duration: 0.9, ease: 'power2.inOut',
-            onComplete: function () { gate.style.display = 'none'; }
-          });
-          revealHero();
-        });
-      }
-    } else if (q('.hero')) {
-      revealHero();
-    }
+    /* Direct access: the hero is revealed immediately. */
+    if (q('.hero')) revealHero();
 
     /* Subpage hero */
     if (q('.page-hero')) {
