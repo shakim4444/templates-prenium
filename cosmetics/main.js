@@ -21,7 +21,7 @@
   function setBars() {
     document.querySelectorAll('.ing').forEach(function (ing) {
       var fill = ing.querySelector('.fill');
-      if (fill) fill.style.width = (fill.dataset.pct || 0) + '%';
+      if (fill) fill.style.width = (fill.dataset.width || fill.dataset.pct || 0) + '%';
     });
   }
 
@@ -89,11 +89,20 @@
     document.querySelectorAll('.ing').forEach(function (ing) {
       var fill = ing.querySelector('.fill');
       if (!fill) return;
-      var pct = parseFloat(fill.dataset.pct || '0');
+      var pct = parseFloat(fill.dataset.width || fill.dataset.pct || '0');
+      var pctSpan = ing.querySelector('.pct');
       gsap.to(fill, {
         width: pct + '%', duration: 1.2, ease: 'power3.out',
         scrollTrigger: { trigger: ing, start: 'top 85%' }
       });
+      if (pctSpan) {
+        var counter = { v: 0 };
+        gsap.to(counter, {
+          v: pct, duration: 1.2, ease: 'power3.out',
+          scrollTrigger: { trigger: ing, start: 'top 85%' },
+          onUpdate: function () { pctSpan.textContent = Math.round(counter.v) + '%'; }
+        });
+      }
     });
 
     /* Generic reveals */
