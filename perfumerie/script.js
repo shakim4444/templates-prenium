@@ -1,8 +1,12 @@
-/* Parfumerie "Extrait" — script. Lenis retire, scroll natif. */
+/* Template parfumerie "Extrait - vapeur d'iris" - JS partage (vanilla, aucun jeton ici).
+   1. burger mobile  2. header au scroll  3. sequence d'entree du hero
+   4. reveals au scroll  5. pyramide olfactive (strates accordeon)
+   6. filtres par famille olfactive (collection)  7. formulaire -> message WhatsApp */
 (function () {
   'use strict';
   var reduit = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  /* 1. Burger mobile */
   var burger = document.querySelector('.burger');
   var panel = document.getElementById('nav-mobile');
   function fermerMenu() {
@@ -20,6 +24,7 @@
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape') fermerMenu(); });
   }
 
+  /* 2. Header plein au scroll */
   var header = document.querySelector('.site-header');
   function surScroll() {
     if (header) header.classList.toggle('is-scrolled', window.scrollY > 24);
@@ -27,12 +32,16 @@
   surScroll();
   window.addEventListener('scroll', surScroll, { passive: true });
 
+  /* 3. Sequence d'entree du hero */
   var hero = document.querySelector('.hero');
   if (hero) {
     if (reduit) hero.classList.add('is-entree');
-    else requestAnimationFrame(function () { requestAnimationFrame(function () { hero.classList.add('is-entree'); }); });
+    else requestAnimationFrame(function () {
+      requestAnimationFrame(function () { hero.classList.add('is-entree'); });
+    });
   }
 
+  /* 4. Reveals au scroll (coupes si reduced-motion) */
   var reveals = document.querySelectorAll('[data-reveal]');
   if (reveals.length) {
     if (reduit || !('IntersectionObserver' in window)) {
@@ -51,7 +60,8 @@
     }
   }
 
-  /* Pyramide olfactive */
+  /* 5. Pyramide olfactive : strates accordeon (tete / coeur / fond).
+        Reduced-motion : tout est ouvert, statique. */
   document.querySelectorAll('.pyramide').forEach(function (pyr) {
     var strates = pyr.querySelectorAll('.strate');
     function poser(strate, ouvert) {
@@ -59,7 +69,10 @@
       var btn = strate.querySelector('.strate-btn');
       if (btn) btn.setAttribute('aria-expanded', String(ouvert));
     }
-    if (reduit) { strates.forEach(function (s) { poser(s, true); }); return; }
+    if (reduit) {
+      strates.forEach(function (s) { poser(s, true); });
+      return;
+    }
     strates.forEach(function (s, i) {
       poser(s, i === 0);
       var btn = s.querySelector('.strate-btn');
@@ -72,7 +85,9 @@
     });
   });
 
-  /* Filtres familles */
+  /* 6. Filtres par famille olfactive (page collection).
+        Les chips sont construits depuis les valeurs data-famille des cartes,
+        donc ils restent justes apres le remplacement des jetons. */
   var filtres = document.getElementById('filtres-familles');
   if (filtres) {
     var cartes = Array.prototype.slice.call(document.querySelectorAll('.parfum-carte[data-famille]'));
@@ -84,12 +99,17 @@
     if (familles.length > 1) {
       function faireChip(libelle, valeur) {
         var b = document.createElement('button');
-        b.type = 'button'; b.className = 'filtre-chip'; b.textContent = libelle;
+        b.type = 'button';
+        b.className = 'filtre-chip';
+        b.textContent = libelle;
         b.setAttribute('aria-pressed', valeur === '' ? 'true' : 'false');
         b.addEventListener('click', function () {
           filtres.querySelectorAll('.filtre-chip').forEach(function (x) { x.setAttribute('aria-pressed', 'false'); });
           b.setAttribute('aria-pressed', 'true');
-          cartes.forEach(function (c) { c.classList.toggle('est-masque', valeur !== '' && (c.getAttribute('data-famille') || '').trim() !== valeur); });
+          cartes.forEach(function (c) {
+            var ok = valeur === '' || (c.getAttribute('data-famille') || '').trim() === valeur;
+            c.classList.toggle('est-masque', !ok);
+          });
         });
         return b;
       }
@@ -99,6 +119,7 @@
     }
   }
 
+  /* 7. Rendez-vous olfactif -> WhatsApp (repli sans JS : lien wa.me direct affiche a cote) */
   var form = document.getElementById('form-rdv');
   if (form) {
     form.addEventListener('submit', function (e) {
@@ -107,25 +128,43 @@
       var lignes = [
         'Bonjour, je souhaite prendre rendez-vous a la parfumerie.',
         'Nom : ' + (d.get('nom') || '-'),
-        'Date : ' + (d.get('date') || '-')
+        'Objet : ' + (d.get('objet') || '-'),
+        'Date souhaitee : ' + (d.get('date') || '-'),
+        'Creneau : ' + (d.get('creneau') || '-')
       ];
-      var msg = d.get('message'); if (msg) lignes.push('Message : ' + msg);
-      window.open('https://wa.me/' + (form.getAttribute('data-whatsapp') || '') + '?text=' + encodeURIComponent(lignes.join('\n')), '_blank', 'noopener');
+      var msg = d.get('message');
+      if (msg) lignes.push('Message : ' + msg);
+      var numero = form.getAttribute('data-whatsapp') || '';
+      window.open('https://wa.me/' + numero + '?text=' + encodeURIComponent(lignes.join('\n')), '_blank', 'noopener');
     });
   }
 })();
 
-/* GSAP layer - PAS de Lenis */
+/* ============ PRENIUM : couche d'animations (GSAP + Lenis, degradation douce) ============ */
 (function () {
   'use strict';
+  var reduit = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
   function finaliserCompteurs() {
-    document.querySelectorAll('[data-count]').forEach(function (el) { el.textContent = el.getAttribute('data-count'); });
+    document.querySelectorAll('[data-count]').forEach(function (el) {
+      el.textContent = el.getAttribute('data-count');
+    });
   }
+
   window.addEventListener('load', function () {
-    if (!window.gsap || !window.ScrollTrigger) { finaliserCompteurs(); return; }
+    if (reduit || !window.gsap || !window.ScrollTrigger) { finaliserCompteurs(); return; }
     try {
       gsap.registerPlugin(ScrollTrigger);
-      /* PAS de Lenis */
+
+      /* Defilement doux */
+      if (window.Lenis) {
+        var lenis = new Lenis({ lerp: 0.11 });
+        lenis.on('scroll', ScrollTrigger.update);
+        gsap.ticker.add(function (t) { lenis.raf(t * 1000); });
+        gsap.ticker.lagSmoothing(0);
+      }
+
+      /* Compteurs animes */
       document.querySelectorAll('[data-count]').forEach(function (el) {
         var fin = parseFloat(el.getAttribute('data-count')) || 0;
         var obj = { v: 0 };
@@ -136,16 +175,52 @@
           onComplete: function () { el.textContent = el.getAttribute('data-count'); }
         });
       });
+
+      /* Parallaxe douce des images encadrees */
       document.querySelectorAll('[data-parallax]').forEach(function (el) {
         gsap.to(el, {
-          yPercent: parseFloat(el.getAttribute('data-parallax')) || -8, ease: 'none',
+          yPercent: parseFloat(el.getAttribute('data-parallax')) || -8,
+          ease: 'none',
           scrollTrigger: { trigger: el.closest('section') || el, start: 'top bottom', end: 'bottom top', scrub: true }
         });
       });
+
+      /* Bandeau defilant */
       document.querySelectorAll('.marquee-inner').forEach(function (el) {
         var demi = el.scrollWidth / 2;
         if (demi > 0) gsap.to(el, { x: -demi, duration: 26, ease: 'none', repeat: -1 });
       });
     } catch (e) { finaliserCompteurs(); }
+  });
+})();
+
+/* ============ PRENIUM+ : sillage du pointeur et vapeur vivante ============ */
+(function () {
+  'use strict';
+  var reduit = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var pointeurFin = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  if (reduit) return;
+  window.addEventListener('load', function () {
+    try {
+      if (!window.gsap) return;
+      /* La vapeur derive lentement */
+      document.querySelectorAll('.vapeur-fond span').forEach(function (s, i) {
+        gsap.to(s, { y: -26 - i * 8, x: i % 2 ? 18 : -14, scale: 1.06, duration: 7 + i * 2, yoyo: true, repeat: -1, ease: 'sine.inOut' });
+      });
+      /* Sillage du pointeur */
+      if (!pointeurFin) return;
+      var dernier = 0;
+      window.addEventListener('pointermove', function (e) {
+        var t = Date.now();
+        if (t - dernier < 46) return;
+        dernier = t;
+        var d = document.createElement('span');
+        d.className = 'sillage';
+        d.style.left = e.clientX + 'px';
+        d.style.top = e.clientY + 'px';
+        document.body.appendChild(d);
+        gsap.fromTo(d, { opacity: .5, scale: .4 }, { opacity: 0, scale: 1.6, y: -26, duration: 1.1, ease: 'power1.out', onComplete: function () { d.remove(); } });
+      });
+    } catch (e) { /* rien */ }
   });
 })();

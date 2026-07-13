@@ -1,4 +1,4 @@
-/* LUEUR — shared script. Lenis retire, scroll natif. Degrade gracefully si GSAP/CDN absent. */
+/* LUEUR — shared script. Degrades gracefully if GSAP/Lenis CDN is unavailable. */
 (function () {
   function q(s) { return document.querySelector(s); }
 
@@ -7,12 +7,12 @@
       f.addEventListener('submit', function (e) {
         e.preventDefault();
         var b = f.querySelector('button');
-        if (b) { b.textContent = 'Envoye ✓'; b.disabled = true; }
+        if (b) { b.textContent = 'Envoyé ✓'; b.disabled = true; }
       });
     });
     document.querySelectorAll('.card button').forEach(function (btn) {
       btn.addEventListener('click', function () {
-        btn.textContent = 'Ajoute ✓';
+        btn.textContent = 'Ajouté ✓';
         setTimeout(function () { btn.textContent = 'Ajouter'; }, 1400);
       });
     });
@@ -21,7 +21,7 @@
   function setBars() {
     document.querySelectorAll('.ing').forEach(function (ing) {
       var fill = ing.querySelector('.fill');
-      if (fill) fill.style.width = (fill.getAttribute('data-pct') || 0) + '%';
+      if (fill) fill.style.width = (fill.dataset.pct || 0) + '%';
     });
   }
 
@@ -33,7 +33,12 @@
   function init() {
     gsap.registerPlugin(ScrollTrigger);
 
-    /* PAS de Lenis - scroll natif */
+    if (window.Lenis) {
+      var lenis = new Lenis({ lerp: 0.09 });
+      lenis.on('scroll', ScrollTrigger.update);
+      gsap.ticker.add(function (t) { lenis.raf(t * 1000); });
+      gsap.ticker.lagSmoothing(0);
+    }
 
     /* Hero entrance */
     if (q('.hero')) {
@@ -49,7 +54,7 @@
       gsap.from('.page-hero > *', { y: 30, opacity: 0, duration: 0.9, stagger: 0.1, ease: 'power3.out', delay: 0.1 });
     }
 
-    /* Cards tilt + pop-in */
+    /* Cards tilt toward cursor + pop-in */
     document.querySelectorAll('.card').forEach(function (card) {
       card.addEventListener('pointermove', function (e) {
         var r = card.getBoundingClientRect();
@@ -72,7 +77,7 @@
     document.querySelectorAll('.ing').forEach(function (ing) {
       var fill = ing.querySelector('.fill');
       if (!fill) return;
-      var pct = parseFloat(fill.getAttribute('data-pct') || '0');
+      var pct = parseFloat(fill.dataset.pct || '0');
       gsap.to(fill, {
         width: pct + '%', duration: 1.2, ease: 'power3.out',
         scrollTrigger: { trigger: ing, start: 'top 85%' }
@@ -86,34 +91,38 @@
         scrollTrigger: { trigger: el, start: 'top 88%' }
       });
     });
+  }
 
-    /* Parallaxe images */
-    document.querySelectorAll('[data-parallax]').forEach(function (img) {
-      gsap.fromTo(img, { yPercent: -6 }, {
-        yPercent: 6, ease: 'none',
-        scrollTrigger: { trigger: img.parentElement, start: 'top bottom', end: 'bottom top', scrub: true }
-      });
-    });
+  wireForms();
+  try {
+    if (window.gsap && window.ScrollTrigger) { init(); } else { fallbackStatic(); }
+  } catch (err) {
+    fallbackStatic();
+  }
+})();
 
-    /* Compteurs */
+/* ---- home v2: counters + parallax ---- */
+(function () {
+  function showCounts() {
+    var els = document.querySelectorAll('[data-count]');
+    for (var i = 0; i < els.length; i++) { els[i].textContent = els[i].getAttribute('data-count'); }
+  }
+  try {
+    if (!window.gsap || !window.ScrollTrigger) { showCounts(); return; }
     document.querySelectorAll('[data-count]').forEach(function (el) {
       var target = parseFloat(el.getAttribute('data-count')) || 0;
       var state = { v: 0 };
       gsap.to(state, {
         v: target, duration: 1.8, ease: 'power2.out',
         scrollTrigger: { trigger: el, start: 'top 88%' },
-        onUpdate: function () { el.textContent = Math.round(state.v); },
-        onComplete: function () { el.textContent = el.getAttribute('data-count'); }
+        onUpdate: function () { el.textContent = Math.round(state.v); }
       });
     });
-  }
-
-  wireForms();
-  window.addEventListener('load', function () {
-    try {
-      if (window.gsap && window.ScrollTrigger) { init(); } else { fallbackStatic(); }
-    } catch (err) {
-      fallbackStatic();
-    }
-  });
+    document.querySelectorAll('[data-parallax]').forEach(function (img) {
+      gsap.fromTo(img, { yPercent: -6 }, {
+        yPercent: 6, ease: 'none',
+        scrollTrigger: { trigger: img.parentElement, start: 'top bottom', end: 'bottom top', scrub: true }
+      });
+    });
+  } catch (e) { showCounts(); }
 })();

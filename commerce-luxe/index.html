@@ -1,163 +1,349 @@
 <!doctype html>
 <html lang="fr">
 <head>
+<!--
+  TEMPLATE COMMERCE DE LUXE "Maison - vitrine et lumiere" - Atelier Web
+  Adaptation a un prospect :
+  1. Copier ce dossier vers <nom-du-prospect>/
+  2. Rechercher-remplacer les valeurs de demonstration (liste dans JETONS-VALEURS-DEMO.txt)
+  3. Remplacer les URLs images.unsplash.com par les photos du prospect
+  4. Verifier : grep -r "{{" . ne doit plus rien retourner
+-->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Maison Vernet - Joaillerie de luxe | Paris</title>
-<meta name="description" content="Maison Vernet, joaillerie haute gamme a Paris. Pieces uniques, sur-mesure et rendez-vous prive.">
+<title>Maison Aurée - Maison de luxe à Ouagadougou | L’élégance, pièce par pièce</title>
+<meta name="description" content="Maison Aurée, maison de luxe à Ouagadougou, Burkina Faso. Boutique de prêt-à-porter et d’accessoires de créateurs : pièces choisies, matières nobles et conseil sur rendez-vous. Prenez un rendez-vous privé par téléphone ou WhatsApp.">
 <meta name="theme-color" content="#14110E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%2314110E'/%3E%3Crect x='18' y='14' width='28' height='36' fill='none' stroke='%23B08D57' stroke-width='1.5'/%3E%3Cline x1='32' y1='14' x2='32' y2='50' stroke='%23B08D57' stroke-width='1'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,500;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="./styles.css">
 <script>document.documentElement.classList.add('js')</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js" defer></script>
 <script src="./script.js" defer></script>
 </head>
 <body>
+
 <a class="skip-link" href="#contenu">Aller au contenu</a>
-<header class="site-header" id="site-header">
+
+<header class="site-header">
   <div class="wrap header-in">
-    <a class="logo" href="./index.html"><em>Maison</em> Vernet</a>
+    <a class="logo" href="./index.html">Maison Aurée<em>.</em></a>
     <nav class="nav-desktop" aria-label="Navigation principale">
       <a href="./index.html" aria-current="page">Accueil</a>
-      <a href="./collections.html">Collections</a>
-      <a href="./sur-mesure.html">Sur mesure</a>
-      <a href="./maison.html">La Maison</a>
+      <a href="./collection.html">Collections</a>
+      <a href="./maison.html">La maison</a>
       <a href="./services.html">Services</a>
+      <a href="./signature.html">La signature</a>
       <a href="./contact.html">Contact</a>
     </nav>
     <div class="header-droite">
-      <a class="btn btn--ivoire header-cta" href="./contact.html">Prendre rendez-vous</a>
+      <a class="btn btn--ligne-clair header-cta" href="./contact.html#rendez-vous">Rendez-vous privé</a>
       <button class="burger" type="button" aria-expanded="false" aria-controls="nav-mobile" aria-label="Ouvrir le menu">
         <span></span><span></span><span></span>
       </button>
     </div>
   </div>
 </header>
-<nav class="nav-panel" id="nav-mobile">
+
+<nav class="nav-panel" id="nav-mobile" aria-label="Navigation mobile">
   <a href="./index.html" aria-current="page">Accueil</a>
-  <a href="./collections.html">Collections</a>
-  <a href="./sur-mesure.html">Sur mesure</a>
-  <a href="./maison.html">La Maison</a>
+  <a href="./collection.html">Collections</a>
+  <a href="./maison.html">La maison</a>
   <a href="./services.html">Services</a>
-  <a href="./contact.html">Contact</a>
+  <a href="./signature.html">La signature</a>
+      <a href="./contact.html">Contact</a>
+  <a class="nav-tel" href="tel:+22625402010">Rendez-vous : +226 25 40 20 10</a>
 </nav>
+
 <main id="contenu">
-  <section class="hero-vc">
-    <div class="vc-fond">
-      <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=1600&q=80" alt="Bijoux Maison Vernet" fetchpriority="high" width="1600" height="900">
-    </div>
-    <div class="vc-lumiere" aria-hidden="true"></div>
-    <div class="wrap vc-corps">
-      <p class="eyebrow" data-hero="1">Joaillerie de Prestige - Paris</p>
-      <h1 data-hero="2">L&rsquo;art de la pierre, <em>transmis a votre histoire</em></h1>
-      <p class="hero-lede" data-hero="3">Pieces uniques et creations sur mesure, pensees pour durer au-dela des generations.</p>
-      <div class="hero-ctas" data-hero="4">
-        <a class="btn btn--ivoire" href="./contact.html">Prendre rendez-vous <span class="fleche" aria-hidden="true">&rarr;</span></a>
-        <a class="btn btn--fantome" href="./collections.html">Decouvrir les collections</a>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <img class="hero-fond" src="https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?auto=format&fit=crop&w=1600&q=80" alt="Vitrine et pièces d'exception de la maison Maison Aurée à Ouagadougou" fetchpriority="high" width="1600" height="900">
+    <div class="hero-voile" aria-hidden="true"></div>
+    <div class="wrap hero-in">
+      <span class="filet" data-hero="1" aria-hidden="true"></span>
+      <p class="chip" data-hero="2">Maison Aurée - Ouagadougou</p>
+      <h1 data-hero="3">L’élégance, pièce par pièce</h1>
+      <p class="hero-lede" data-hero="4">Boutique de prêt-à-porter et d’accessoires de créateurs : pièces choisies, matières nobles et conseil sur rendez-vous.</p>
+      <div class="hero-ctas" data-hero="5">
+        <a class="btn btn--oxsang" href="./contact.html#rendez-vous">Prendre rendez-vous privé <span class="fleche" aria-hidden="true">&rarr;</span></a>
+        <a class="btn btn--ligne-clair" href="./collection.html">Découvrir la collection</a>
       </div>
+      <p class="hero-note" data-hero="5">Maison fondée en 2015 - Ouvert 10h – 19h, <strong>fermé le dimanche</strong></p>
     </div>
   </section>
-  <div class="marquee" aria-hidden="true">
-    <div class="marquee-inner">
-      <span>Joaillerie</span><span class="m-sep">&#9670;</span>
-      <span>Sur mesure</span><span class="m-sep">&#9670;</span>
-      <span>Pieces uniques</span><span class="m-sep">&#9670;</span>
-      <span>Haute joaillerie</span><span class="m-sep">&#9670;</span>
-      <span>Joaillerie</span><span class="m-sep">&#9670;</span>
-      <span>Sur mesure</span><span class="m-sep">&#9670;</span>
-      <span>Pieces uniques</span><span class="m-sep">&#9670;</span>
-      <span>Haute joaillerie</span><span class="m-sep">&#9670;</span>
+
+  <!-- ============ BANDE DE FAITS ============ -->
+  <div class="bande-faits" aria-label="Nos engagements">
+    <div class="wrap">
+      <ul>
+        <li>Maison indépendante depuis 2015</li>
+        <li>Conseil privé sur rendez-vous</li>
+        <li>Sur-mesure et retouches</li>
+        <li>Livraison en main propre à Ouagadougou</li>
+      </ul>
     </div>
   </div>
+
+  <!-- ============ COLLECTIONS (teasers) ============ -->
   <section class="section" aria-labelledby="titre-collections">
     <div class="wrap">
       <div class="section-head section-head--split" data-reveal>
         <div>
-          <p class="eyebrow">Nos collections</p>
-          <h2 id="titre-collections">Pieces de caractere</h2>
+          <p class="eyebrow">Les collections</p>
+          <h2 id="titre-collections">Trois univers, une même exigence</h2>
         </div>
-        <a class="btn btn--encre" href="./collections.html">Toutes les collections <span class="fleche" aria-hidden="true">&rarr;</span></a>
+        <a class="btn btn--ligne" href="./collection.html">Toutes les pièces <span class="fleche" aria-hidden="true">&rarr;</span></a>
       </div>
-      <div class="trio">
-        <article class="carte-item" data-reveal>
-          <figure><img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=800&q=80" alt="Collection Eternite" loading="lazy" width="800" height="600"></figure>
-          <div class="ci-corps"><h3>Collection Eternite</h3><p>Diamants tailles brillant, or blanc 18 carats</p></div>
-        </article>
-        <article class="carte-item" data-reveal>
-          <figure><img src="https://images.unsplash.com/photo-1602173574767-37ac01994b2a?auto=format&fit=crop&w=800&q=80" alt="Collection Heritage" loading="lazy" width="800" height="600"></figure>
-          <div class="ci-corps"><h3>Collection Heritage</h3><p>Rubis et saphirs, montures or jaune</p></div>
-        </article>
-        <article class="carte-item" data-reveal>
-          <figure><img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&w=800&q=80" alt="Collection Jardins" loading="lazy" width="800" height="600"></figure>
-          <div class="ci-corps"><h3>Collection Jardins</h3><p>Emeraudes et perles, style Art Nouveau</p></div>
-        </article>
-      </div>
-    </div>
-  </section>
-  <section class="section section--encre" aria-labelledby="titre-mesure">
-    <div class="wrap cadre-photo">
-      <div class="cadre-photo-texte" data-reveal>
-        <p class="eyebrow">Sur mesure</p>
-        <h2 id="titre-mesure">Votre vision, <em>notre savoir-faire</em></h2>
-        <p>Chaque creation sur mesure nait d&rsquo;un dialogue. Nous vous accompagnons de l&rsquo;esquisse a la pose finale, avec les meilleures pierres selectionnees pour vous.</p>
-        <a class="btn btn--ivoire" href="./sur-mesure.html">En savoir plus <span class="fleche" aria-hidden="true">&rarr;</span></a>
-      </div>
-      <div class="cadre-photo-visuel" data-reveal="droite">
-        <figure>
-          <img src="https://images.unsplash.com/photo-1506630448388-4e683c67ddb0?auto=format&fit=crop&w=900&q=80" alt="Atelier Maison Vernet" loading="lazy" width="900" height="1100">
-        </figure>
+      <div class="collections">
+        <a class="collection-carte" href="./collection.html" data-reveal>
+          <div class="cadre">
+            <figure><img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=800&q=80" alt="Collection Héritage - Maison Aurée" loading="lazy" width="800" height="1000"></figure>
+          </div>
+          <h3>Héritage</h3>
+          <p class="col-desc">Tissages faso dan fani revisités en coupes contemporaines</p>
+          <span class="col-lien">Découvrir <span class="fleche" aria-hidden="true">&rarr;</span></span>
+        </a>
+        <a class="collection-carte" href="./collection.html" data-reveal data-reveal-delay="120">
+          <div class="cadre">
+            <figure><img src="https://images.unsplash.com/photo-1523170335258-f5ed11844a49?auto=format&fit=crop&w=800&q=80" alt="Collection Lumière - Maison Aurée" loading="lazy" width="800" height="1000"></figure>
+          </div>
+          <h3>Lumière</h3>
+          <p class="col-desc">Soies légères et tons ivoire pour les grandes occasions</p>
+          <span class="col-lien">Découvrir <span class="fleche" aria-hidden="true">&rarr;</span></span>
+        </a>
+        <a class="collection-carte" href="./collection.html" data-reveal data-reveal-delay="240">
+          <div class="cadre">
+            <figure><img src="https://images.unsplash.com/photo-1519744792095-2f2205e87b6f?auto=format&fit=crop&w=800&q=80" alt="Collection Nuit - Maison Aurée" loading="lazy" width="800" height="1000"></figure>
+          </div>
+          <h3>Nuit</h3>
+          <p class="col-desc">Pièces de soirée, broderies main et laiton doré</p>
+          <span class="col-lien">Découvrir <span class="fleche" aria-hidden="true">&rarr;</span></span>
+        </a>
       </div>
     </div>
   </section>
-  <section class="section" aria-labelledby="titre-temoignages">
+
+  <!-- ============ LA VITRINE (signature) ============ -->
+  <section class="section section--onyx" aria-labelledby="titre-vitrine">
     <div class="wrap">
       <div class="section-head" data-reveal>
-        <p class="eyebrow">Temoignages</p>
-        <h2 id="titre-temoignages">La confiance de nos clients</h2>
+        <p class="eyebrow">La vitrine</p>
+        <h2 id="titre-vitrine">Les pièces phares, sous la lumière</h2>
+        <p>Une sélection présentée comme dans notre vitrine : chaque pièce choisie pour sa matière, sa finition et sa rareté.</p>
+      </div>
+      <div class="vitrine-grille">
+        <article class="vitrine-case" data-reveal>
+          <div class="vc-cadre">
+            <figure><img src="https://images.unsplash.com/photo-1611085583191-a3b181a88401?auto=format&fit=crop&w=800&q=80" alt="Veste Wendé - Maison Aurée" loading="lazy" width="800" height="1000"></figure>
+            <span class="vc-lumiere" aria-hidden="true"></span>
+          </div>
+          <div class="vc-legende">
+            <h3>Veste Wendé</h3>
+            <p class="vc-desc">Faso dan fani tissé main, doublure soie</p>
+            <p class="vc-prix">95 000 FCFA</p>
+          </div>
+        </article>
+        <article class="vitrine-case" data-reveal data-reveal-delay="120">
+          <div class="vc-cadre">
+            <figure><img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=800&q=80" alt="Robe Ivoire - Maison Aurée" loading="lazy" width="800" height="1000"></figure>
+            <span class="vc-lumiere" aria-hidden="true"></span>
+          </div>
+          <div class="vc-legende">
+            <h3>Robe Ivoire</h3>
+            <p class="vc-desc">Soie sablée, dos ouvert, coupe fluide</p>
+            <p class="vc-prix">120 000 FCFA</p>
+          </div>
+        </article>
+        <article class="vitrine-case" data-reveal data-reveal-delay="240">
+          <div class="vc-cadre">
+            <figure><img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?auto=format&fit=crop&w=800&q=80" alt="Chemise Koulouba - Maison Aurée" loading="lazy" width="800" height="1000"></figure>
+            <span class="vc-lumiere" aria-hidden="true"></span>
+          </div>
+          <div class="vc-legende">
+            <h3>Chemise Koulouba</h3>
+            <p class="vc-desc">Coton égyptien, col officier</p>
+            <p class="vc-prix">45 000 FCFA</p>
+          </div>
+        </article>
+      </div>
+      <p class="vitrine-note">Chaque pièce est disponible à l'essayage sur rendez-vous privé. <a href="./collection.html">Voir toute la collection</a>.</p>
+    </div>
+  </section>
+
+  <!-- ============ PIECE SIGNATURE ============ -->
+  <section class="section" aria-labelledby="titre-signature">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow">La pièce signature</p>
+        <h2 id="titre-signature">L'objet qui raconte la maison</h2>
+      </div>
+      <div class="signature-band" data-reveal>
+        <div class="vc-cadre">
+          <figure><img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=1000&q=80" alt="Pièce signature La Veste Wendé de Maison Aurée" loading="lazy" width="1000" height="750"></figure>
+          <span class="vc-lumiere" aria-hidden="true"></span>
+        </div>
+        <div>
+          <h3>La Veste Wendé</h3>
+          <p>Notre pièce la plus demandée, façonnée dans le respect d'un savoir-faire transmis depuis 2015. Un objet pensé pour durer et se transmettre.</p>
+          <p class="prix-geant">À partir de 95 000 FCFA</p>
+          <div class="hero-ctas">
+            <a class="btn btn--ligne-clair" href="./contact.html#rendez-vous">La découvrir sur rendez-vous <span class="fleche" aria-hidden="true">&rarr;</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LA MAISON (teaser) ============ -->
+  <section class="section section--panel" aria-labelledby="titre-maison">
+    <div class="wrap duo">
+      <div class="cadre-photo" data-reveal="gauche">
+        <figure><img src="https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?auto=format&fit=crop&w=900&q=80" alt="L'atelier et le savoir-faire de Maison Aurée à Ouagadougou" loading="lazy" width="900" height="1125"></figure>
+      </div>
+      <div data-reveal="droite">
+        <p class="eyebrow">La maison</p>
+        <h2 id="titre-maison">Une maison indépendante, depuis 2015</h2>
+        <p class="corps">Chez Maison Aurée, le luxe se vit dans le détail : des matières nobles choisies une à une, des finitions faites à la main, et un accueil qui prend le temps. Boutique de prêt-à-porter et d’accessoires de créateurs : pièces choisies, matières nobles et conseil sur rendez-vous.</p>
+        <blockquote class="citation">
+          <p>&laquo; Une belle pièce ne se démode pas : elle se transmet. &raquo;</p>
+          <footer>Aïcha Kaboré, fondateur</footer>
+        </blockquote>
+        <div class="hero-ctas">
+          <a class="btn btn--ligne" href="./maison.html">Notre histoire <span class="fleche" aria-hidden="true">&rarr;</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SERVICES (teaser) ============ -->
+  <section class="section" aria-labelledby="titre-services">
+    <div class="wrap">
+      <div class="section-head section-head--split" data-reveal>
+        <div>
+          <p class="eyebrow">Nos services</p>
+          <h2 id="titre-services">L'attention au-delà de l'objet</h2>
+        </div>
+        <a class="btn btn--ligne" href="./services.html">Tous les services <span class="fleche" aria-hidden="true">&rarr;</span></a>
+      </div>
+      <div class="services-liste" data-reveal>
+        <div class="service-rang">
+          <h3>Conseil en image</h3>
+          <p>Une heure avec notre styliste pour composer votre vestiaire</p>
+        </div>
+        <div class="service-rang">
+          <h3>Retouches offertes</h3>
+          <p>Ajustements réalisés en atelier sous 48h</p>
+        </div>
+        <div class="service-rang">
+          <h3>Commandes sur mesure</h3>
+          <p>Vos pièces favorites, à vos mesures et dans vos tissus</p>
+        </div>
+        <div class="service-rang">
+          <h3>Emballage cadeau</h3>
+          <p>Coffret signature et mot manuscrit</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TEMOIGNAGES ============ -->
+  <section class="section section--panel" aria-labelledby="titre-temoignages">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow">Ils nous font confiance</p>
+        <h2 id="titre-temoignages">La fidélité, notre plus belle vitrine</h2>
       </div>
       <div class="temoins">
         <figure class="temoin" data-reveal>
-          <span class="guillemet">&ldquo;</span>
-          <blockquote><p>Une experience d&rsquo;une elegance rare. La bague de fiancailles creee pour nous est un veritable chef-d&rsquo;oeuvre.</p></blockquote>
-          <p class="etoiles">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
-          <figcaption>Charlotte M.</figcaption>
+          <span class="guillemet" aria-hidden="true">&ldquo;</span>
+          <blockquote><p>La veste Wendé est une œuvre. On sent la main derrière chaque détail.</p></blockquote>
+          <p class="etoiles" aria-label="Note : 5 sur 5">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+          <figcaption>Clarisse O.</figcaption>
         </figure>
-        <figure class="temoin" data-reveal>
-          <span class="guillemet">&ldquo;</span>
-          <blockquote><p>Le service sur mesure de Maison Vernet est exceptionnel. Chaque detail a ete pris en compte avec soin.</p></blockquote>
-          <p class="etoiles">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
-          <figcaption>Antoine L.</figcaption>
+        <figure class="temoin" data-reveal data-reveal-delay="120">
+          <span class="guillemet" aria-hidden="true">&ldquo;</span>
+          <blockquote><p>Un conseil rare et sincère. Je repars toujours avec la bonne pièce.</p></blockquote>
+          <p class="etoiles" aria-label="Note : 5 sur 5">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+          <figcaption>Idrissa N.</figcaption>
         </figure>
-        <figure class="temoin" data-reveal>
-          <span class="guillemet">&ldquo;</span>
-          <blockquote><p>J&rsquo;ai fait restaurer un bijou de famille. Le resultat depasse toutes mes esperances. Merci.</p></blockquote>
-          <p class="etoiles">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
-          <figcaption>Sophie D.</figcaption>
+        <figure class="temoin" data-reveal data-reveal-delay="240">
+          <span class="guillemet" aria-hidden="true">&ldquo;</span>
+          <blockquote><p>L’essayage privé change tout. Du grand service.</p></blockquote>
+          <p class="etoiles" aria-label="Note : 5 sur 5">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+          <figcaption>Maud R.</figcaption>
         </figure>
       </div>
     </div>
   </section>
+
+  <!-- ============ CTA FINAL ============ -->
+  <!-- ============ BANDEAU DEFILANT (PRENIUM) ============ -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-inner"><span>Pièces d'exception</span><span class="m-sep">&bull;</span><span>Rendez-vous privé</span><span class="m-sep">&bull;</span><span>Maison Aurée</span><span class="m-sep">&bull;</span><span>Depuis 2015</span><span class="m-sep">&bull;</span><span>Pièces d'exception</span><span class="m-sep">&bull;</span><span>Rendez-vous privé</span><span class="m-sep">&bull;</span><span>Maison Aurée</span><span class="m-sep">&bull;</span><span>Depuis 2015</span><span class="m-sep">&bull;</span></div>
+  </div>
+
+  <!-- ============ CHIFFRES (PRENIUM) ============ -->
+  <section class="section chiffres" aria-label="La maison en chiffres">
+    <div class="wrap chiffres-grille">
+      <div class="chiffre" data-reveal><span class="chiffre-num"><span data-count="3">3</span></span><p>univers de collection</p></div>
+      <div class="chiffre" data-reveal data-reveal-delay="90"><span class="chiffre-num"><span data-count="8">8</span></span><p>pièces phares en vitrine</p></div>
+      <div class="chiffre" data-reveal data-reveal-delay="180"><span class="chiffre-num"><span data-count="1">1</span></span><p>salon de rendez-vous privé</p></div>
+      <div class="chiffre" data-reveal data-reveal-delay="270"><span class="chiffre-num"><span data-count="100">100</span>%</span><p>de pièces authentifiées</p></div>
+    </div>
+  </section>
+
   <section class="cta-band" aria-labelledby="titre-cta">
     <div class="wrap">
       <div>
-        <h2 id="titre-cta">Prenez rendez-vous dans notre salon prive</h2>
-        <p>Rencontrons-nous pour donner vie a votre projet de joaillerie.</p>
+        <h2 id="titre-cta">Votre <em>rendez-vous privé</em> vous attend</h2>
+        <p>Essayage privé sur rendez-vous, du mardi au samedi</p>
       </div>
-      <a class="btn btn--ivoire" href="./contact.html">Prendre rendez-vous <span class="fleche" aria-hidden="true">&rarr;</span></a>
+      <a class="btn btn--ivoire" href="https://wa.me/22625402010?text=Bonjour%2C%20je%20souhaite%20prendre%20un%20rendez-vous%20priv%C3%A9." target="_blank" rel="noopener">Écrire sur WhatsApp <span class="fleche" aria-hidden="true">&rarr;</span></a>
     </div>
   </section>
+
 </main>
+
 <footer class="site-footer">
   <div class="wrap">
-    <p class="footer-marque" aria-hidden="true">Maison Vernet</p>
+    <p class="footer-marque" aria-hidden="true">Maison Aurée</p>
     <div class="footer-grille">
-      <div><h3>La Maison</h3><p class="footer-desc">Joaillerie de prestige depuis 1947. Sur rendez-vous uniquement.</p></div>
-      <div><h3>Navigation</h3><ul><li><a href="./collections.html">Collections</a></li><li><a href="./sur-mesure.html">Sur mesure</a></li><li><a href="./maison.html">La Maison</a></li><li><a href="./services.html">Services</a></li><li><a href="./contact.html">Contact</a></li></ul></div>
-      <div><h3>Contact</h3><ul><li><a href="tel:+33142601234">+33 1 42 60 12 34</a></li><li><a href="mailto:contact@maisonvernet.fr">contact@maisonvernet.fr</a></li></ul></div>
+      <div>
+        <h3>La maison</h3>
+        <p class="footer-desc">Maison de luxe à Ouagadougou, Burkina Faso. L’élégance, pièce par pièce.</p>
+      </div>
+      <div>
+        <h3>Navigation</h3>
+        <ul>
+          <li><a href="./collection.html">Collections</a></li>
+          <li><a href="./maison.html">La maison</a></li>
+          <li><a href="./services.html">Services</a></li>
+          <li><a href="./signature.html">La signature</a></li>
+          <li><a href="./contact.html">Contact et rendez-vous</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Contact</h3>
+        <ul>
+          <li><a href="tel:+22625402010">+226 25 40 20 10</a></li>
+          <li><a href="mailto:bonjour@maisonauree.bf">bonjour@maisonauree.bf</a></li>
+          <li><a href="https://www.facebook.com/maisonauree" target="_blank" rel="noopener">Facebook</a></li>
+          <li><a href="https://www.instagram.com/maisonauree" target="_blank" rel="noopener">Instagram</a></li>
+        </ul>
+      </div>
     </div>
-    <div class="footer-bas"><p>&copy; Maison Vernet - Paris</p></div>
+    <div class="footer-bas">
+      <p>&copy; Maison Aurée - Ouagadougou, Burkina Faso. Tous droits réservés.</p>
+      <p>Site réalisé par Atelier Web</p>
+    </div>
   </div>
 </footer>
+
 </body>
 </html>
