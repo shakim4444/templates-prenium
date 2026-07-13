@@ -597,3 +597,15 @@ html.lenis, html.lenis body { height: auto; }
 @media (prefers-reduced-motion: reduce) {
   html, html:not(.lenis) { scroll-behavior: auto; }
 }
+
+
+/* === Full-width navbar + footer === */
+.site-header > .wrap,
+.site-header > .header-in,
+.site-footer  > .wrap {
+  max-width: 100% !important;
+  width: 100% !important;
+  margin-inline: 0 !important;
+  padding-inline: clamp(18px, 5vw, 56px) !important;
+  box-sizing: border-box;
+}

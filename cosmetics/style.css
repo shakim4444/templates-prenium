@@ -251,3 +251,64 @@ footer .newsletter-form button {
   flex-shrink: 0;
 }
 footer .newsletter-form button:hover { background: var(--coral); transform: scale(1.04); }
+
+
+/* === Essentials section: 3-column grid === */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.grid .card {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+.grid .card img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 18px;
+  margin-inline: 0;
+}
+.grid .card h3 {
+  margin-top: 14px;
+  font-size: 18px;
+  font-weight: 700;
+}
+.grid .card p {
+  margin-top: 6px;
+  font-size: 13.5px;
+  line-height: 1.55;
+  flex: 1;
+  opacity: .78;
+}
+.grid .card .buy {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(59, 35, 64, .08);
+}
+.grid .card .pill {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  background: var(--coral);
+  color: var(--porcelain);
+  padding: 4px 10px;
+  border-radius: 999px;
+  margin-bottom: 12px;
+  align-self: flex-start;
+}
+.grid .card .pill.lilas { background: var(--lilac); color: var(--plum); }
+.grid .card .pill.mint  { background: var(--mint);  color: var(--plum); }
+@media (max-width: 780px) {
+  .grid { grid-template-columns: 1fr; gap: 20px; }
+  .grid .card img { aspect-ratio: 16 / 9; }
+}

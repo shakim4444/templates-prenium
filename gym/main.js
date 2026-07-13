@@ -1,11 +1,11 @@
-/* FORGE — shared script. Degrades gracefully if GSAP/Lenis CDN is unavailable. */
+/* FORGE - shared script. Degrades gracefully if GSAP/Lenis CDN is unavailable. */
 (function () {
   function q(s) { return document.querySelector(s); }
 
   function fillMarquee() {
     var m = q('#marquee');
     if (!m) return;
-    var words = '<span>Plus fort chaque jour —</span><span>Zéro raccourci —</span><span>Soulève fort —</span><span>FORGE —</span>';
+    var words = '<span>Plus fort chaque jour -</span><span>Zéro raccourci -</span><span>Soulève fort -</span><span>FORGE -</span>';
     m.innerHTML = words.repeat(8);
   }
   function wireForms() {
@@ -13,7 +13,7 @@
       f.addEventListener('submit', function (e) {
         e.preventDefault();
         var b = f.querySelector('button');
-        if (b) { b.textContent = 'Envoyé ✓ — à très vite à la salle'; b.disabled = true; }
+        if (b) { b.textContent = 'Envoyé ✓ - à très vite à la salle'; b.disabled = true; }
       });
     });
   }

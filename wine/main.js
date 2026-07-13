@@ -1,4 +1,4 @@
-/* DOMAINE — shared script. Degrades gracefully if GSAP/Lenis CDN is unavailable. */
+/* DOMAINE - shared script. Degrades gracefully if GSAP/Lenis CDN is unavailable. */
 (function () {
   function q(s) { return document.querySelector(s); }
 

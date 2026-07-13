@@ -198,7 +198,7 @@
     var wa = document.querySelector('a[href*="wa.me/"]');
     if (wa) {
       var num = (wa.getAttribute('href').match(/wa\.me\/(\d+)/) || [])[1];
-      if (num) lien.setAttribute('href', 'https://wa.me/' + num + '?text=' + encodeURIComponent('Bonjour ! Diagnostic express — ' + phrase));
+      if (num) lien.setAttribute('href', 'https://wa.me/' + num + '?text=' + encodeURIComponent('Bonjour ! Diagnostic express - ' + phrase));
     }
     resultat.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   }

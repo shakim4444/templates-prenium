@@ -1,12 +1,12 @@
-/* MONOLITH — shared script. Degrades gracefully if GSAP/Lenis CDN is unavailable. */
+/* MONOLITH - shared script. Degrades gracefully if GSAP/Lenis CDN is unavailable. */
 (function () {
   function q(s) { return document.querySelector(s); }
 
-  /* Vanilla behaviours — always work, even offline */
+  /* Vanilla behaviours - always work, even offline */
   function fillMarquee() {
     var m = q('#marquee');
     if (!m) return;
-    var items = 'Culturel — Résidentiel — Équipements — <em>Primé</em> — Tertiaire — Urbanisme — ';
+    var items = 'Culturel - Résidentiel - Équipements - <em>Primé</em> - Tertiaire - Urbanisme - ';
     m.innerHTML = '<span>' + items.repeat(12) + '</span>';
   }
   function wireForms() {
@@ -14,7 +14,7 @@
       f.addEventListener('submit', function (e) {
         e.preventDefault();
         var b = f.querySelector('button');
-        if (b) { b.textContent = 'Envoyé ✓ — réponse sous 48h'; b.disabled = true; }
+        if (b) { b.textContent = 'Envoyé ✓ - réponse sous 48h'; b.disabled = true; }
       });
     });
   }
