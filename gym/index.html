@@ -9,88 +9,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="./atelier-web-cta.css">
-<style id="mobile-nav-style">
-.nav-burger {
-  display: none;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 28px;
-  height: 20px;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  z-index: 9999;
-  position: relative;
-  flex-shrink: 0;
-}
-.nav-burger span {
-  display: block;
-  height: 2px;
-  width: 100%;
-  background: currentColor;
-  border-radius: 2px;
-  transition: transform .3s, opacity .3s;
-  pointer-events: none;
-}
-.nav-burger.open span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
-.nav-burger.open span:nth-child(2) { opacity: 0; }
-.nav-burger.open span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
-
-  /* isolate burger from mix-blend-mode on nav */
-  .nav-burger {
-    mix-blend-mode: normal !important;
-    isolation: isolate !important;
-    color: #F2F2EE !important;
-  }
-  .nav-burger span { background: #F2F2EE !important; }
-
-.nav-mobile-overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  z-index: 9998;
-  background: #0A0A0A;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 32px;
-  padding: 40px 24px;
-}
-.nav-mobile-overlay.open { display: flex !important; }
-.nav-mobile-overlay a {
-  display: block;
-  font-size: clamp(1.5rem, 6vw, 2.2rem);
-  font-weight: 700;
-  text-decoration: none;
-  color: #F2F2EE;
-  opacity: .85;
-  letter-spacing: .04em;
-  transition: color .2s, opacity .2s;
-}
-.nav-mobile-overlay a:hover { opacity: 1; color: #C6FF2E; }
-.nav-overlay-close {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 36px;
-  line-height: 1;
-  color: #F2F2EE;
-  opacity: .7;
-  padding: 4px 10px;
-}
-.nav-overlay-close:hover { opacity: 1; }
-
-@media (max-width: 760px) {
-  nav .links,
-  nav .links.mono { display: none !important; }
-  nav a.cta      { display: none !important; }
-  .nav-burger    { display: flex !important; }
-}
-</style>
 </head>
 <body>
 
@@ -102,9 +20,12 @@
     <a href="contact.html">Contact</a>
     <a class="cta" href="contact.html">S'inscrire</a>
   </div>
-<button class="nav-burger" id="nav-burger-btn" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+<button class="nav-burger" aria-label="Menu" aria-expanded="false" aria-controls="nav-panel-mobile">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
-<div class="nav-mobile-overlay" id="nav-mobile-overlay"></div>
+<nav class="nav-panel-mobile" id="nav-panel-mobile" aria-label="Menu mobile"></nav>
+
 <header class="hero">
   <h1 class="display" id="slam">Soulève <em>fort.</em></h1>
   <p class="sub" id="heroSub">Force · Cardio · Combat - le club le plus moderne de la ville.</p>
@@ -213,38 +134,31 @@
   <p class="aw-prospect-cta__brand">Template par Atelier Web</p>
   <p class="aw-prospect-cta__question">Vous souhaitez avoir ce site&nbsp;?</p>
   <div class="aw-prospect-cta__actions">
-    <a class="aw-prospect-cta__link" href="https://wa.me/2267429563?text=Bonjour%20Atelier%20Web%2C%20je%20souhaite%20en%20savoir%20plus%20sur%20ce%20template." target="_blank" rel="noopener noreferrer" aria-label="Contacter Atelier Web sur WhatsApp au plus 226 07 42 95 63">WhatsApp · +226 07 42 95 63</a>
+    <a class="aw-prospect-cta__link" href="https://wa.me/22607429563?text=Bonjour%20Atelier%20Web%2C%20je%20souhaite%20en%20savoir%20plus%20sur%20ce%20template." target="_blank" rel="noopener noreferrer" aria-label="Contacter Atelier Web sur WhatsApp au plus 226 07 42 95 63">WhatsApp · +226 07 42 95 63</a>
     <a class="aw-prospect-cta__link aw-prospect-cta__link--email" href="mailto:team.atelierweb@gmail.com">team.atelierweb@gmail.com</a>
   </div>
 </aside>
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-  var burger = document.getElementById('nav-burger-btn');
-  var overlay = document.getElementById('nav-mobile-overlay');
-  if (!burger || !overlay) return;
-
-  // Clone desktop nav links into overlay
-  document.querySelectorAll('nav:not([id]) .links a, nav:not([id]) .links.mono a').forEach(function(a) {
-    var link = a.cloneNode(true);
-    overlay.appendChild(link);
-  });
-
-  // Close button
+(function(){
+  var burger = document.querySelector('.nav-burger');
+  var panel  = document.getElementById('nav-panel-mobile');
+  if (!burger || !panel) return;
   var closeBtn = document.createElement('button');
-  closeBtn.className = 'nav-overlay-close';
-  closeBtn.innerHTML = '&times;';
-  closeBtn.setAttribute('aria-label', 'Fermer');
-  overlay.insertBefore(closeBtn, overlay.firstChild);
-
-  function open()  { overlay.classList.add('open'); burger.classList.add('open'); document.body.style.overflow = 'hidden'; burger.setAttribute('aria-expanded','true'); }
-  function close() { overlay.classList.remove('open'); burger.classList.remove('open'); document.body.style.overflow = ''; burger.setAttribute('aria-expanded','false'); }
-
-  burger.addEventListener('click', function() { overlay.classList.contains('open') ? close() : open(); });
-  closeBtn.addEventListener('click', close);
-  overlay.querySelectorAll('a').forEach(function(a) { a.addEventListener('click', close); });
-  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') close(); });
-});
+  closeBtn.className = 'nav-close';
+  closeBtn.textContent = '×';
+  closeBtn.setAttribute('aria-label', 'Fermer le menu');
+  panel.appendChild(closeBtn);
+  document.querySelectorAll('nav:not(.nav-panel-mobile) .links a').forEach(function(a) {
+    panel.appendChild(a.cloneNode(true));
+  });
+  function openMenu()  { panel.classList.add('is-open');    burger.setAttribute('aria-expanded','true');  document.body.style.overflow='hidden'; }
+  function closeMenu() { panel.classList.remove('is-open'); burger.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
+  burger.addEventListener('click', function() { panel.classList.contains('is-open') ? closeMenu() : openMenu(); });
+  closeBtn.addEventListener('click', closeMenu);
+  panel.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', closeMenu); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeMenu(); });
+})();
 </script>
 </body>
 </html>
