@@ -899,3 +899,30 @@ html.lenis, html.lenis body { height: auto; }
   padding-inline: clamp(18px, 5vw, 56px) !important;
   box-sizing: border-box;
 }
+
+
+/* ===== Global mobile safety ===== */
+@media (max-width: 760px) {
+  img { max-width: 100%; height: auto; }
+  section { padding: 7vh 5vw; }
+  h2.section-title { margin-bottom: 5vh; }
+  iframe { max-width: 100%; }
+}
+@media (max-width: 480px) {
+  section { padding: 5vh 4vw; }
+}
+
+
+/* ===== Advanced templates: mobile nav tightening ===== */
+@media (max-width: 760px) {
+  .site-header > .wrap,
+  .site-header > .header-in {
+    padding-inline: 16px !important;
+  }
+  .logo { font-size: clamp(14px, 4vw, 20px) !important; }
+  .header-cta { display: none !important; }
+}
+@media (max-width: 480px) {
+  .nav-panel { font-size: 1.3rem; }
+  .nav-panel a { padding: 12px 0; }
+}

@@ -18,7 +18,11 @@
     <a href="atelier.html" class="active">Atelier</a>
     <a href="contact.html">Contact</a>
   </div>
+<button class="nav-burger" aria-label="Menu" aria-expanded="false" aria-controls="nav-panel-mobile">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<nav class="nav-panel-mobile" id="nav-panel-mobile" aria-label="Menu mobile"></nav>
 
 <header class="page-hero">
   <p class="eyebrow">La maison</p>
@@ -76,5 +80,27 @@
     <a class="aw-prospect-cta__link aw-prospect-cta__link--email" href="mailto:team.atelierweb@gmail.com">team.atelierweb@gmail.com</a>
   </div>
 </aside>
+
+<script>
+(function(){
+  var burger = document.querySelector('.nav-burger');
+  var panel  = document.getElementById('nav-panel-mobile');
+  if (!burger || !panel) return;
+  var closeBtn = document.createElement('button');
+  closeBtn.className = 'nav-close';
+  closeBtn.textContent = '×';
+  closeBtn.setAttribute('aria-label', 'Fermer le menu');
+  panel.appendChild(closeBtn);
+  document.querySelectorAll('nav:not(.nav-panel-mobile) .links a').forEach(function(a) {
+    panel.appendChild(a.cloneNode(true));
+  });
+  function openMenu()  { panel.classList.add('is-open');    burger.setAttribute('aria-expanded','true');  document.body.style.overflow='hidden'; }
+  function closeMenu() { panel.classList.remove('is-open'); burger.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
+  burger.addEventListener('click', function() { panel.classList.contains('is-open') ? closeMenu() : openMenu(); });
+  closeBtn.addEventListener('click', closeMenu);
+  panel.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', closeMenu); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeMenu(); });
+})();
+</script>
 </body>
 </html>

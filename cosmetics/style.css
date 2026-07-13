@@ -312,3 +312,85 @@ footer .newsletter-form button:hover { background: var(--coral); transform: scal
   .grid { grid-template-columns: 1fr; gap: 20px; }
   .grid .card img { aspect-ratio: 16 / 9; }
 }
+
+/* ===== Mobile navigation (hamburger) ===== */
+.nav-burger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 26px;
+  height: 18px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 300;
+  color: inherit;
+}
+.nav-burger span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: currentColor;
+  border-radius: 2px;
+  transition: transform .3s, opacity .3s;
+}
+.nav-burger[aria-expanded="true"] span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+.nav-burger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.nav-burger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+.nav-panel-mobile {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 250;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  background: #FFF9F5;
+}
+.nav-panel-mobile.is-open { display: flex; }
+.nav-panel-mobile a {
+  font-size: clamp(1.4rem, 6vw, 2rem);
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-decoration: none;
+  color: #3B2340;
+  opacity: .85;
+  transition: opacity .2s, color .2s;
+}
+.nav-panel-mobile a:hover,
+.nav-panel-mobile a.active { opacity: 1; color: #FF7A68; }
+.nav-panel-mobile .nav-close {
+  position: absolute;
+  top: 22px;
+  right: 22px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 32px;
+  line-height: 1;
+  color: #3B2340;
+  opacity: .6;
+  padding: 4px 8px;
+}
+.nav-panel-mobile .nav-close:hover { opacity: 1; }
+
+@media (max-width: 760px) {
+  nav .links { display: none; }
+  nav a.cta { display: none; }
+  .nav-burger { display: flex; }
+}
+
+
+/* ===== Global mobile safety ===== */
+@media (max-width: 760px) {
+  img { max-width: 100%; height: auto; }
+  section { padding: 7vh 5vw; }
+  h2.section-title { margin-bottom: 5vh; }
+  iframe { max-width: 100%; }
+}
+@media (max-width: 480px) {
+  section { padding: 5vh 4vw; }
+}
