@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Atelier Web - Modeles de sites premium</title>
+<meta name="description" content="Des sites premium prets a l'emploi, personnalises a votre commerce et mis en ligne en 72h. Ouagadougou, Burkina Faso.">
+<meta name="theme-color" content="#F4EDE0">
+<meta property="og:title" content="Atelier Web - Modeles de sites premium">
+<meta property="og:description" content="Choisissez un modele. On le met a votre image et en ligne en 72h.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Fraunces:ital,wght@0,500;0,600;0,700;1,500;1,600;1,700&family=Young+Serif&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="../logo.png">
+<link rel="apple-touch-icon" href="../logo.png">
+<style>
+  :root{
+    --ink:#2A2118; --card:#FFFCF7; --paper:#F4EDE0; --ember:#E4572E; --gold:#8F6B1E;
+    --muted:rgba(42,33,24,.64); --line:rgba(42,33,24,.14);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    font-family:"Archivo",system-ui,sans-serif; color:var(--ink);
+    background:radial-gradient(120% 70% at 50% -10%, #FBF7EF 0%, #F4EDE0 56%, #EDE3D1 100%);
+    background-attachment:fixed; min-height:100vh; overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1680px;margin:0 auto;padding:0 clamp(24px,3.4vw,64px)}
+
+  /* ---------- header ---------- */
+  header{padding:34px 0 0}
+  .bar{display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .wm{
+    font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:30px;letter-spacing:-.005em;
+    color:var(--ink);text-decoration:none;white-space:nowrap;line-height:1;
+  }
+  .wm em{font-style:italic;font-weight:500}
+  .wm i{color:var(--ember);font-style:normal}
+  .top-cta{
+    display:inline-flex;align-items:center;gap:9px;font-size:14px;font-weight:700;letter-spacing:.03em;
+    color:#FFF6EC;background:var(--ink);text-decoration:none;padding:11px 20px;border-radius:999px;
+    transition:transform .22s cubic-bezier(.2,.7,.3,1), box-shadow .22s;white-space:nowrap;
+  }
+  .top-cta:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(42,33,24,.28)}
+
+  /* ---------- hero ---------- */
+  .hero{padding:74px 0 54px;max-width:960px}
+  h1{
+    font-family:"Young Serif",serif;font-weight:400;letter-spacing:-.015em;line-height:1.04;
+    font-size:clamp(40px,7.4vw,78px);margin-bottom:24px;
+  }
+  h1 em{font-style:normal;color:var(--ember)}
+  .lede{font-size:clamp(16px,2.2vw,20px);line-height:1.6;color:var(--muted);max-width:640px;font-weight:500}
+  .facts{display:flex;flex-wrap:wrap;gap:10px;margin-top:32px}
+  .fact{
+    font-size:13px;font-weight:600;color:var(--ink);background:rgba(255,255,255,.5);
+    border:1px solid var(--line);padding:9px 16px;border-radius:999px;
+  }
+  .fact b{color:var(--gold);font-weight:700}
+
+  /* ---------- filters ---------- */
+  .filters{display:flex;flex-wrap:wrap;gap:8px;padding:8px 0 30px;border-top:1px solid var(--line);padding-top:30px}
+  .f{
+    font-family:inherit;font-size:13px;font-weight:600;color:var(--muted);background:transparent;
+    border:1px solid var(--line);padding:9px 17px;border-radius:999px;cursor:pointer;
+    transition:color .2s, border-color .2s, background .2s;
+  }
+  .f:hover{color:var(--ink);border-color:rgba(42,33,24,.34)}
+  .f[aria-pressed="true"]{color:#FFF6EC;background:var(--ink);border-color:var(--ink)}
+  .f:focus-visible{outline:2px solid var(--ember);outline-offset:3px}
+
+  /* ---------- grid ---------- */
+  .grid{
+    display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));
+    gap:clamp(20px,1.9vw,32px);padding-bottom:20px;
+  }
+  .card{
+    position:relative;display:block;text-decoration:none;color:inherit;border-radius:22px;
+    overflow:hidden;background:var(--card);border:1px solid var(--line);
+    box-shadow:0 8px 24px rgba(42,33,24,.07);
+    transition:transform .32s cubic-bezier(.2,.7,.3,1), border-color .32s, box-shadow .32s;
+    opacity:0;transform:translateY(18px);
+  }
+  .card.in{opacity:1;transform:none}
+  .card:hover{transform:translateY(-6px);border-color:rgba(42,33,24,.26);box-shadow:0 26px 60px rgba(42,33,24,.18)}
+  .card:focus-visible{outline:2px solid var(--ember);outline-offset:3px}
+  .shot{position:relative;aspect-ratio:16/11;overflow:hidden;background:#EDE3D1}
+  .shot img{
+    width:100%;height:100%;object-fit:cover;object-position:top center;display:block;
+    transition:transform .6s cubic-bezier(.2,.7,.3,1), filter .4s;
+    filter:saturate(.92);
+  }
+  .card:hover .shot img{transform:scale(1.045);filter:saturate(1.05)}
+  .shot::after{
+    content:'';position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(42,33,24,0) 62%,rgba(42,33,24,.28) 100%);
+  }
+  .open{
+    position:absolute;right:14px;top:14px;z-index:2;
+    display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:800;letter-spacing:.1em;
+    text-transform:uppercase;color:#FFF6EC;background:var(--ink);padding:8px 14px;border-radius:999px;
+    box-shadow:0 6px 18px rgba(42,33,24,.3);
+    opacity:0;transform:translateY(-6px);transition:opacity .28s, transform .28s;
+  }
+  .card:hover .open, .card:focus-visible .open{opacity:1;transform:none}
+  .meta{padding:20px 22px 22px;display:flex;align-items:flex-start;justify-content:space-between;gap:14px}
+  .meta h2{font-family:"Young Serif",serif;font-weight:400;font-size:22px;line-height:1.2;margin-bottom:6px;letter-spacing:-.01em}
+  .meta p{font-size:13.5px;color:var(--muted);line-height:1.5}
+  .kind{
+    flex:0 0 auto;font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--gold);border:1px solid rgba(143,107,30,.34);background:rgba(143,107,30,.09);
+    padding:6px 11px;border-radius:999px;margin-top:3px;
+  }
+  .empty{padding:50px 0;color:var(--muted);font-size:15px;display:none}
+
+  /* ---------- CTA ---------- */
+  .cta{
+    margin:62px 0 0;padding:52px 40px;border-radius:26px;text-align:center;
+    background:var(--ember);color:#FFF6EC;position:relative;overflow:hidden;
+  }
+  .cta h3{font-family:"Young Serif",serif;font-weight:400;font-size:clamp(28px,4.6vw,46px);line-height:1.06;margin-bottom:14px;letter-spacing:-.01em}
+  .cta p{font-size:17px;color:rgba(255,246,236,.9);max-width:520px;margin:0 auto 30px;line-height:1.55;font-weight:500}
+  .actions{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;font-size:15.5px;font-weight:700;text-decoration:none;
+    padding:15px 28px;border-radius:999px;transition:transform .22s cubic-bezier(.2,.7,.3,1), box-shadow .22s;
+  }
+  .btn-1{background:var(--ink);color:#FFF6EC}
+  .btn-2{background:rgba(255,246,236,.14);color:#FFF6EC;border:1.5px solid rgba(255,246,236,.45)}
+  .btn:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(0,0,0,.3)}
+  .btn:focus-visible{outline:2px solid #FFF6EC;outline-offset:3px}
+  .promise{
+    display:inline-flex;align-items:center;gap:9px;font-size:12.5px;font-weight:800;letter-spacing:.14em;
+    text-transform:uppercase;background:rgba(0,0,0,.2);border:1.5px solid rgba(255,246,236,.4);
+    padding:9px 20px;border-radius:999px;margin-bottom:22px;
+  }
+
+  footer{padding:44px 0 60px;text-align:center;color:var(--muted);font-size:13.5px;line-height:1.9}
+  footer a{color:var(--ink);text-decoration:none;border-bottom:1px solid rgba(42,33,24,.3)}
+  footer a:hover{border-color:var(--ember);color:var(--ember)}
+
+  @media (max-width:620px){
+    .wrap{padding:0 18px}
+    header{padding-top:24px}
+    .hero{padding:52px 0 40px}
+    .grid{grid-template-columns:1fr;gap:20px}
+    .open{opacity:1;transform:none}     /* pas de survol sur mobile */
+    .cta{padding:42px 24px;border-radius:22px}
+    .top-cta{padding:10px 16px;font-size:13px}
+    .wm{font-size:25px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important}
+    .card{opacity:1;transform:none}
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <div class="bar">
+      <a class="wm" href="../" aria-label="Atelier Web - accueil"><em>atelier</em>web<i>.</i></a>
+      <a class="top-cta" href="https://wa.me/22607429563" target="_blank" rel="noopener">
+        Discuter sur WhatsApp
+      </a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <h1>Des sites qui donnent<br>envie <em>d'entrer</em>.</h1>
+    <p class="lede">
+      Choisissez un modele ci-dessous. On le met a votre image, avec vos photos et vos textes,
+      et on le met en ligne. Cliquez sur une carte pour visiter le site en entier.
+    </p>
+    <div class="facts">
+      <span class="fact">Livre en <b>72h</b></span>
+      <span class="fact">Reponse en <b>24h</b></span>
+    </div>
+  </section>
+
+  <nav class="filters" id="filters" aria-label="Filtrer les modeles">
+    <button class="f" data-f="all" aria-pressed="true">Tout</button>
+    <button class="f" data-f="food">Restauration</button>
+    <button class="f" data-f="beaute">Beaute &amp; soin</button>
+    <button class="f" data-f="mode">Mode &amp; luxe</button>
+    <button class="f" data-f="pro">Services</button>
+  </nav>
+
+  <main class="grid" id="grid"></main>
+  <p class="empty" id="empty">Aucun modele dans cette categorie.</p>
+
+  <section class="cta">
+    <div class="promise">⚡ Reponse en 24h</div>
+    <h3>Un modele vous plait ?</h3>
+    <p>Dites-nous votre activite. On l'adapte a votre commerce et on le met en ligne en 72h.</p>
+    <div class="actions">
+      <a class="btn btn-1" href="https://wa.me/22607429563?text=Bonjour%20Atelier%20Web%2C%20je%20suis%20interesse%28e%29%20par%20un%20site." target="_blank" rel="noopener">WhatsApp +226 07 42 95 63</a>
+      <a class="btn btn-2" href="mailto:team.atelierweb@gmail.com">Nous ecrire</a>
+    </div>
+  </section>
+
+  <footer>
+    Atelier Web - Sites web premium pour commerces<br>
+    <a href="tel:+22607429563">+226 07 42 95 63</a> &nbsp;·&nbsp;
+    <a href="mailto:team.atelierweb@gmail.com">team.atelierweb@gmail.com</a>
+  </footer>
+</div>
+
+<script>
+  var TEMPLATES = [
+    { slug:'restaurant',     nom:'Le Tamarinier', type:'Restaurant',    cat:'food',   desc:"Bistronomie, braise et produits du marche. Carte, galerie et reservation." },
+    { slug:'bar',            nom:'Baobar',        type:'Bar',           cat:'food',   desc:"Cocktails d'auteur et nuits ambrees. Programme, carte et ambiance." },
+    { slug:'wine',           nom:'Domaine',       type:'Cave a vins',   cat:'food',   desc:"Cave, selections d'exception et degustations guidees." },
+    { slug:'cosmetics',      nom:'Lueur',         type:'Cosmetiques',   cat:'beaute', desc:"Soins au karite et actifs botaniques. Rituels et gamme complete." },
+    { slug:'parapharmacie',  nom:"L'Herbier",     type:'Parapharmacie', cat:'beaute', desc:"Beaute au naturel et conseils dermo-cosmetiques par rayon." },
+    { slug:'perfumerie',     nom:'Maison Solene', type:'Parfumerie',    cat:'beaute', desc:"Parfums de niche, pyramide olfactive et sur-mesure." },
+    { slug:'fashion',        nom:'Maison',        type:'Pret-a-porter', cat:'mode',   desc:"Series limitees, collections et atelier de creation." },
+    { slug:'commerce-luxe',  nom:'Maison Auree',  type:'Boutique luxe', cat:'mode',   desc:"Pret-a-porter et accessoires de createurs, piece par piece." },
+    { slug:'gym',            nom:'Forge',         type:'Salle de sport',cat:'pro',    desc:"Club de force et conditionnement. Coachs, horaires et formules." },
+    { slug:'architecture',   nom:'Monolith',      type:'Architecture',  cat:'pro',    desc:"Studio d'architecture. Etudes de cas et approche detaillee." }
+  ];
+
+  var grid = document.getElementById('grid');
+  var empty = document.getElementById('empty');
+
+  function render(filter){
+    grid.innerHTML = '';
+    var list = TEMPLATES.filter(function(t){ return filter === 'all' || t.cat === filter; });
+    empty.style.display = list.length ? 'none' : 'block';
+    list.forEach(function(t){
+      var a = document.createElement('a');
+      a.className = 'card';
+      a.href = '../' + t.slug + '/';
+      a.setAttribute('aria-label', 'Voir le modele ' + t.nom + ' - ' + t.type);
+      a.innerHTML =
+        '<div class="shot">' +
+          '<span class="open">Voir le site &nbsp;&rarr;</span>' +
+          '<img src="../apercus/' + t.slug + '.jpg" alt="Apercu du modele ' + t.nom + '" loading="lazy" width="1280" height="900">' +
+        '</div>' +
+        '<div class="meta">' +
+          '<div><h2>' + t.nom + '</h2><p>' + t.desc + '</p></div>' +
+          '<span class="kind">' + t.type + '</span>' +
+        '</div>';
+      grid.appendChild(a);
+    });
+    reveal();
+  }
+
+  // apparition progressive des cartes (avec filet de securite : rien ne reste invisible)
+  function reveal(){
+    var cards = grid.querySelectorAll('.card');
+    function showAll(){ cards.forEach(function(c){ c.classList.add('in'); }); }
+
+    if (!('IntersectionObserver' in window)) { showAll(); return; }
+
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) {
+          var i = Array.prototype.indexOf.call(cards, e.target);
+          e.target.style.transitionDelay = Math.min(i, 6) * 55 + 'ms';
+          e.target.classList.add('in');
+          io.unobserve(e.target);
+        }
+      });
+    }, { rootMargin: '0px 0px -40px 0px' });
+    cards.forEach(function(c){ io.observe(c); });
+
+    // securite : si l'observateur n'a pas declenche (scroll instantane, onglet en
+    // arriere-plan, capture d'ecran...), on affiche tout au bout de 1,5 s.
+    setTimeout(showAll, 1500);
+  }
+
+  document.getElementById('filters').addEventListener('click', function(ev){
+    var b = ev.target.closest('.f');
+    if (!b) return;
+    this.querySelectorAll('.f').forEach(function(x){ x.setAttribute('aria-pressed','false'); });
+    b.setAttribute('aria-pressed','true');
+    render(b.dataset.f);
+  });
+
+  render('all');
+</script>
+</body>
+</html>
