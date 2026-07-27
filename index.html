@@ -12,7 +12,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=Young+Serif&display=swap" rel="stylesheet">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230C110D'/><circle cx='50' cy='50' r='19' fill='%23E4572E'/></svg>">
+<link rel="icon" type="image/png" href="./logo.png">
+<link rel="apple-touch-icon" href="./logo.png">
 <style>
   :root{
     --ink:#2A2118; --card:#FFFCF7; --paper:#F4EDE0; --ember:#E4572E; --gold:#8F6B1E;
@@ -31,9 +32,8 @@
   /* ---------- header ---------- */
   header{padding:34px 0 0}
   .bar{display:flex;align-items:center;justify-content:space-between;gap:16px}
-  .wm{font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:25px;letter-spacing:-.02em;color:var(--ink);text-decoration:none;white-space:nowrap}
-  .wm b{color:var(--ember);font-weight:700}
-  .wm i{color:var(--ember);font-style:normal}
+  .wm{display:block;line-height:0;flex:0 0 auto}
+  .wm img{width:78px;height:78px;display:block}
   .top-cta{
     display:inline-flex;align-items:center;gap:9px;font-size:14px;font-weight:700;letter-spacing:.03em;
     color:#FFF6EC;background:var(--ink);text-decoration:none;padding:11px 20px;border-radius:999px;
@@ -145,6 +145,7 @@
     .open{opacity:1;transform:none}     /* pas de survol sur mobile */
     .cta{padding:42px 24px;border-radius:22px}
     .top-cta{padding:10px 16px;font-size:13px}
+    .wm img{width:62px;height:62px}
   }
   @media (prefers-reduced-motion:reduce){
     *{animation:none!important;transition:none!important}
@@ -157,7 +158,9 @@
 <div class="wrap">
   <header>
     <div class="bar">
-      <a class="wm" href="#">atelier<b>web</b><i>.</i></a>
+      <a class="wm" href="#" aria-label="Atelier Web - accueil">
+        <img src="./logo.png" alt="Atelier Web" width="256" height="256">
+      </a>
       <a class="top-cta" href="https://wa.me/22607429563" target="_blank" rel="noopener">
         Discuter sur WhatsApp
       </a>
@@ -172,7 +175,6 @@
     </p>
     <div class="facts">
       <span class="fact">Livre en <b>72h</b></span>
-      <span class="fact">A partir de <b>150 000 FCFA</b></span>
       <span class="fact">Reponse en <b>24h</b></span>
     </div>
   </section>
