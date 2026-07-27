@@ -11,7 +11,7 @@
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=Young+Serif&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Fraunces:ital,wght@0,500;0,600;0,700;1,500;1,600;1,700&family=Young+Serif&display=swap" rel="stylesheet">
 <link rel="icon" type="image/png" href="./logo.png">
 <link rel="apple-touch-icon" href="./logo.png">
 <style>
@@ -32,8 +32,12 @@
   /* ---------- header ---------- */
   header{padding:34px 0 0}
   .bar{display:flex;align-items:center;justify-content:space-between;gap:16px}
-  .wm{display:block;line-height:0;flex:0 0 auto}
-  .wm img{width:78px;height:78px;display:block}
+  .wm{
+    font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:30px;letter-spacing:-.005em;
+    color:var(--ink);text-decoration:none;white-space:nowrap;line-height:1;
+  }
+  .wm em{font-style:italic;font-weight:500}
+  .wm i{color:var(--ember);font-style:normal}
   .top-cta{
     display:inline-flex;align-items:center;gap:9px;font-size:14px;font-weight:700;letter-spacing:.03em;
     color:#FFF6EC;background:var(--ink);text-decoration:none;padding:11px 20px;border-radius:999px;
@@ -145,7 +149,7 @@
     .open{opacity:1;transform:none}     /* pas de survol sur mobile */
     .cta{padding:42px 24px;border-radius:22px}
     .top-cta{padding:10px 16px;font-size:13px}
-    .wm img{width:62px;height:62px}
+    .wm{font-size:25px}
   }
   @media (prefers-reduced-motion:reduce){
     *{animation:none!important;transition:none!important}
@@ -158,9 +162,7 @@
 <div class="wrap">
   <header>
     <div class="bar">
-      <a class="wm" href="#" aria-label="Atelier Web - accueil">
-        <img src="./logo.png" alt="Atelier Web" width="256" height="256">
-      </a>
+      <a class="wm" href="#" aria-label="Atelier Web - accueil"><em>atelier</em>web<i>.</i></a>
       <a class="top-cta" href="https://wa.me/22607429563" target="_blank" rel="noopener">
         Discuter sur WhatsApp
       </a>
