@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Atelier Web - Modeles de sites premium</title>
 <meta name="description" content="Des sites premium prets a l'emploi, personnalises a votre commerce et mis en ligne en 72h. Ouagadougou, Burkina Faso.">
-<meta name="theme-color" content="#0C110D">
+<meta name="theme-color" content="#F4EDE0">
 <meta property="og:title" content="Atelier Web - Modeles de sites premium">
 <meta property="og:description" content="Choisissez un modele. On le met a votre image et en ligne en 72h.">
 <meta property="og:type" content="website">
@@ -15,41 +15,34 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230C110D'/><circle cx='50' cy='50' r='19' fill='%23E4572E'/></svg>">
 <style>
   :root{
-    --ink:#0C110D; --ink-2:#141b16; --paper:#F4EDE0; --ember:#E4572E; --gold:#D9A441;
-    --muted:rgba(244,237,224,.62); --line:rgba(244,237,224,.13);
+    --ink:#2A2118; --card:#FFFCF7; --paper:#F4EDE0; --ember:#E4572E; --gold:#8F6B1E;
+    --muted:rgba(42,33,24,.64); --line:rgba(42,33,24,.14);
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{-webkit-text-size-adjust:100%}
   body{
-    font-family:"Archivo",system-ui,sans-serif; color:var(--paper);
-    background:radial-gradient(120% 70% at 50% -10%, #1c2b22 0%, #141b16 52%, #0c110d 100%);
+    font-family:"Archivo",system-ui,sans-serif; color:var(--ink);
+    background:radial-gradient(120% 70% at 50% -10%, #FBF7EF 0%, #F4EDE0 56%, #EDE3D1 100%);
     background-attachment:fixed; min-height:100vh; overflow-x:hidden;
     -webkit-font-smoothing:antialiased;
   }
-  .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+  .wrap{max-width:1680px;margin:0 auto;padding:0 clamp(24px,3.4vw,64px)}
 
   /* ---------- header ---------- */
   header{padding:34px 0 0}
   .bar{display:flex;align-items:center;justify-content:space-between;gap:16px}
-  .wm{font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:25px;letter-spacing:-.02em;color:var(--paper);text-decoration:none;white-space:nowrap}
+  .wm{font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:25px;letter-spacing:-.02em;color:var(--ink);text-decoration:none;white-space:nowrap}
   .wm b{color:var(--ember);font-weight:700}
   .wm i{color:var(--ember);font-style:normal}
   .top-cta{
     display:inline-flex;align-items:center;gap:9px;font-size:14px;font-weight:700;letter-spacing:.03em;
-    color:var(--ink);background:var(--paper);text-decoration:none;padding:11px 20px;border-radius:999px;
+    color:#FFF6EC;background:var(--ink);text-decoration:none;padding:11px 20px;border-radius:999px;
     transition:transform .22s cubic-bezier(.2,.7,.3,1), box-shadow .22s;white-space:nowrap;
   }
-  .top-cta:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(0,0,0,.45)}
+  .top-cta:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(42,33,24,.28)}
 
   /* ---------- hero ---------- */
-  .hero{padding:74px 0 54px;max-width:900px}
-  .eyebrow{
-    display:inline-flex;align-items:center;gap:10px;font-size:12.5px;font-weight:800;letter-spacing:.24em;
-    text-transform:uppercase;color:var(--muted);margin-bottom:26px;
-  }
-  .eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--ember);
-    box-shadow:0 0 0 0 rgba(228,87,46,.6);animation:pulse 2.6s infinite}
-  @keyframes pulse{70%{box-shadow:0 0 0 11px rgba(228,87,46,0)}100%{box-shadow:0 0 0 0 rgba(228,87,46,0)}}
+  .hero{padding:74px 0 54px;max-width:960px}
   h1{
     font-family:"Young Serif",serif;font-weight:400;letter-spacing:-.015em;line-height:1.04;
     font-size:clamp(40px,7.4vw,78px);margin-bottom:24px;
@@ -58,7 +51,7 @@
   .lede{font-size:clamp(16px,2.2vw,20px);line-height:1.6;color:var(--muted);max-width:640px;font-weight:500}
   .facts{display:flex;flex-wrap:wrap;gap:10px;margin-top:32px}
   .fact{
-    font-size:13px;font-weight:600;color:var(--paper);background:rgba(244,237,224,.06);
+    font-size:13px;font-weight:600;color:var(--ink);background:rgba(255,255,255,.5);
     border:1px solid var(--line);padding:9px 16px;border-radius:999px;
   }
   .fact b{color:var(--gold);font-weight:700}
@@ -70,25 +63,26 @@
     border:1px solid var(--line);padding:9px 17px;border-radius:999px;cursor:pointer;
     transition:color .2s, border-color .2s, background .2s;
   }
-  .f:hover{color:var(--paper);border-color:rgba(244,237,224,.32)}
-  .f[aria-pressed="true"]{color:var(--ink);background:var(--paper);border-color:var(--paper)}
+  .f:hover{color:var(--ink);border-color:rgba(42,33,24,.34)}
+  .f[aria-pressed="true"]{color:#FFF6EC;background:var(--ink);border-color:var(--ink)}
   .f:focus-visible{outline:2px solid var(--ember);outline-offset:3px}
 
   /* ---------- grid ---------- */
   .grid{
-    display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));
-    gap:26px;padding-bottom:20px;
+    display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));
+    gap:clamp(20px,1.9vw,32px);padding-bottom:20px;
   }
   .card{
     position:relative;display:block;text-decoration:none;color:inherit;border-radius:22px;
-    overflow:hidden;background:var(--ink-2);border:1px solid var(--line);
+    overflow:hidden;background:var(--card);border:1px solid var(--line);
+    box-shadow:0 8px 24px rgba(42,33,24,.07);
     transition:transform .32s cubic-bezier(.2,.7,.3,1), border-color .32s, box-shadow .32s;
     opacity:0;transform:translateY(18px);
   }
   .card.in{opacity:1;transform:none}
-  .card:hover{transform:translateY(-6px);border-color:rgba(244,237,224,.28);box-shadow:0 26px 60px rgba(0,0,0,.5)}
+  .card:hover{transform:translateY(-6px);border-color:rgba(42,33,24,.26);box-shadow:0 26px 60px rgba(42,33,24,.18)}
   .card:focus-visible{outline:2px solid var(--ember);outline-offset:3px}
-  .shot{position:relative;aspect-ratio:16/11;overflow:hidden;background:#0e1510}
+  .shot{position:relative;aspect-ratio:16/11;overflow:hidden;background:#EDE3D1}
   .shot img{
     width:100%;height:100%;object-fit:cover;object-position:top center;display:block;
     transition:transform .6s cubic-bezier(.2,.7,.3,1), filter .4s;
@@ -97,12 +91,13 @@
   .card:hover .shot img{transform:scale(1.045);filter:saturate(1.05)}
   .shot::after{
     content:'';position:absolute;inset:0;
-    background:linear-gradient(180deg,rgba(12,17,13,0) 55%,rgba(12,17,13,.55) 100%);
+    background:linear-gradient(180deg,rgba(42,33,24,0) 62%,rgba(42,33,24,.28) 100%);
   }
   .open{
     position:absolute;right:14px;top:14px;z-index:2;
     display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:800;letter-spacing:.1em;
-    text-transform:uppercase;color:var(--ink);background:var(--paper);padding:8px 14px;border-radius:999px;
+    text-transform:uppercase;color:#FFF6EC;background:var(--ink);padding:8px 14px;border-radius:999px;
+    box-shadow:0 6px 18px rgba(42,33,24,.3);
     opacity:0;transform:translateY(-6px);transition:opacity .28s, transform .28s;
   }
   .card:hover .open, .card:focus-visible .open{opacity:1;transform:none}
@@ -111,7 +106,7 @@
   .meta p{font-size:13.5px;color:var(--muted);line-height:1.5}
   .kind{
     flex:0 0 auto;font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
-    color:var(--gold);border:1px solid rgba(217,164,65,.32);background:rgba(217,164,65,.08);
+    color:var(--gold);border:1px solid rgba(143,107,30,.34);background:rgba(143,107,30,.09);
     padding:6px 11px;border-radius:999px;margin-top:3px;
   }
   .empty{padding:50px 0;color:var(--muted);font-size:15px;display:none}
@@ -128,7 +123,7 @@
     display:inline-flex;align-items:center;gap:10px;font-size:15.5px;font-weight:700;text-decoration:none;
     padding:15px 28px;border-radius:999px;transition:transform .22s cubic-bezier(.2,.7,.3,1), box-shadow .22s;
   }
-  .btn-1{background:#0C110D;color:#FFF6EC}
+  .btn-1{background:var(--ink);color:#FFF6EC}
   .btn-2{background:rgba(255,246,236,.14);color:#FFF6EC;border:1.5px solid rgba(255,246,236,.45)}
   .btn:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(0,0,0,.3)}
   .btn:focus-visible{outline:2px solid #FFF6EC;outline-offset:3px}
@@ -139,7 +134,7 @@
   }
 
   footer{padding:44px 0 60px;text-align:center;color:var(--muted);font-size:13.5px;line-height:1.9}
-  footer a{color:var(--paper);text-decoration:none;border-bottom:1px solid rgba(244,237,224,.28)}
+  footer a{color:var(--ink);text-decoration:none;border-bottom:1px solid rgba(42,33,24,.3)}
   footer a:hover{border-color:var(--ember);color:var(--ember)}
 
   @media (max-width:620px){
@@ -170,7 +165,6 @@
   </header>
 
   <section class="hero">
-    <div class="eyebrow"><span class="dot"></span>Ouagadougou, Burkina Faso</div>
     <h1>Des sites qui donnent<br>envie <em>d'entrer</em>.</h1>
     <p class="lede">
       Choisissez un modele ci-dessous. On le met a votre image, avec vos photos et vos textes,
