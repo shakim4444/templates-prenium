@@ -1,0 +1,20 @@
+MODÈLES 3D — PROVENANCE ET LICENCES
+===================================
+
+Les objets produit des modèles interactifs sont de vrais modèles glTF rendus en
+WebGL par <model-viewer>. Ils viennent du dépôt public Khronos glTF-Sample-Assets.
+
+  car.glb     CarConcept              CC BY 4.0
+  shoe.glb    MaterialsVariantsShoe   CC BY 4.0
+  bottle.glb  WaterBottle             CC0 (domaine public)
+  sofa.glb    GlamVelvetSofa          CC BY 4.0
+
+Source : https://github.com/KhronosGroup/glTF-Sample-Assets
+Licences détaillées : voir le fichier LICENSE.md de chaque modèle dans ce dépôt.
+
+⚠️ CC BY = ATTRIBUTION OBLIGATOIRE. Si un modèle est livré à un client en gardant
+ces objets, l'attribution doit rester visible (pied de page, page mentions, ou ce
+fichier joint). Pour un client qui fournit ses propres modèles, remplacer le .glb
+et l'attribution tombe.
+
+model-viewer.min.js — Google, licence Apache 2.0, version 3.5.0.

@@ -45,3 +45,17 @@
 
 /* Rien ne dépend d'une animation : la photo est visible même sans JavaScript. */
 .no-js .ph { opacity: 1; }
+
+
+/* ── MODÈLES 3D ────────────────────────────────────────────────────
+   Les objets produit sont de vrais modèles glTF rendus en WebGL. Le conteneur
+   garde ses transformations : la chorégraphie au défilement ne change pas. */
+.mv {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  display: block;
+  background: transparent;
+  --poster-color: transparent;
+  pointer-events: none;   /* le défilement pilote la scène, pas l'utilisateur */
+}
+.bottle .ph { display: none !important; }
