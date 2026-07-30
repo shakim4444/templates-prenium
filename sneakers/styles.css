@@ -2,3 +2,39 @@
 :root{--bg:#f4f4f0;--fg:#111;--accent:#c7ff00}.impact .stage,.rotate .stage{background:#f4f4f0}.shoe{position:absolute;width:min(65vw,760px);height:min(28vw,330px);filter:drop-shadow(0 28px 26px rgba(0,0,0,.22));transform-style:preserve-3d}.shoe:before{content:'';position:absolute;inset:7% 3% 26% 6%;background:linear-gradient(155deg,#fff 0 30%,#bbb 31% 50%,#151515 51% 70%,#eee 71%);clip-path:polygon(4% 12%,56% 0,70% 22%,83% 45%,98% 62%,94% 82%,52% 91%,18% 80%,0 53%)}.shoe:after{content:'';position:absolute;left:1%;right:0;bottom:15%;height:20%;background:#e6ff6a;clip-path:polygon(0 0,100% 28%,96% 100%,12% 90%)}.shoe i,.shoe b{position:absolute;z-index:2}.shoe i{left:42%;top:23%;width:30%;height:4px;background:repeating-linear-gradient(90deg,#111 0 6px,transparent 7px 13px);transform:rotate(15deg)}.shoe b{right:17%;top:38%;width:11%;height:20%;border:2px solid #111;border-radius:50%}.shoe em{position:absolute;bottom:9%;left:22%;right:5%;height:5%;background:#111}.impact .shoe{transform:translateY(calc(-60vh + var(--e)*55vh)) rotate(calc(-18deg + var(--e)*18deg)) scale(calc(.75 + var(--e)*.25))}.shock{position:absolute;width:20vw;height:5vw;border:3px solid #111;border-radius:50%;top:68%;transform:scale(calc(var(--e)*5));opacity:calc(1 - var(--e))}.dust{position:absolute;inset:55% 0 0;background:radial-gradient(circle at 50% 40%,rgba(0,0,0,.2),transparent 28%);transform:scale(calc(var(--e)*2))}.impact h1{font-size:clamp(62px,15vw,210px);line-height:.76;letter-spacing:-.08em;margin:0;opacity:.08}.hero-shoe{transform:rotateY(calc(var(--e)*360deg)) rotateX(calc(sin(var(--p)*3.14159)*18deg)) scale(calc(.85 + sin(var(--p)*3.14159)*.25))}.detail{position:absolute;inset:auto 4vw 4vh;display:flex;justify-content:space-between;font-size:10px;letter-spacing:.2em}.deconstruct .stage{background:#101112;color:#f5f5f0}.layers{position:absolute;width:70vw;height:48vh}.layers i{position:absolute;left:10%;right:10%;height:16%;background:#deded8;clip-path:polygon(2% 20%,65% 0,100% 40%,90% 90%,20% 100%,0 60%);transform:translateY(calc((var(--n) - 1.5)*var(--e)*18vh))}.layers i:after{content:attr(data-label);position:absolute;right:0;top:30%;font:10px Arial;letter-spacing:.18em;color:#111}.layers i:nth-child(1){--n:0;background:#777}.layers i:nth-child(2){--n:1;background:var(--accent)}.layers i:nth-child(3){--n:2;background:#eee}.layers i:nth-child(4){--n:3;background:#333}.deconstruct h2{z-index:2;font-size:10vw;line-height:.8;letter-spacing:-.06em;mix-blend-mode:difference}.simulation .stage{background:#e8e7e1}.track{position:absolute;inset:55% 0 0;background:repeating-linear-gradient(90deg,#d3d0c7 0 15vw,#c8c4ba 15.1vw 15.3vw)}.foot{position:absolute;width:55vw;height:38vw;background:#777;opacity:.16;border-radius:90% 20% 40% 40%;transform:translateY(calc(-35vh + var(--e)*34vh)) rotate(-8deg)}.simshoe{transform:translateY(calc(var(--e)*8vh)) scaleY(calc(1 - sin(var(--p)*3.14159)*.22)) rotate(calc(-6deg + var(--e)*12deg))}.energy{position:absolute;width:26vw;height:26vw;border-radius:50%;background:var(--accent);filter:blur(30px);transform:scale(calc(sin(var(--p)*3.14159)*1.7));opacity:.7}.simulation h2{position:absolute;bottom:4vh;font-size:5vw}.run .stage{background:#0d0e10;color:white}.runner{position:absolute;width:30vw;height:70vh;transform:translateX(calc(-35vw + var(--e)*70vw)) rotate(calc(sin(var(--p)*10)*-7deg))}.runner:before{content:'';position:absolute;top:0;left:40%;width:30%;height:55%;background:#555;clip-path:polygon(20% 0,80% 0,100% 85%,60% 100%,0 80%)}.runner i,.runner b{position:absolute;top:48%;width:18%;height:48%;background:#bbb;transform-origin:top}.runner i{left:35%;transform:rotate(calc(-25deg + sin(var(--p)*18)*45deg))}.runner b{left:55%;transform:rotate(calc(25deg + sin(var(--p)*18)*-45deg))}.steps{position:absolute;inset:70% 0 0;display:flex;justify-content:space-around}.steps i{width:8vw;height:2vw;background:var(--accent);border-radius:50%;transform:scale(calc(.2 + var(--e)*2));filter:blur(2px)}.rings{position:absolute;width:20vw;height:20vw;border:2px solid var(--accent);border-radius:50%;transform:scale(calc(var(--e)*8));opacity:calc(1 - var(--e))}.run h2{font-size:16vw;line-height:.75;letter-spacing:-.08em;mix-blend-mode:difference}.worlds .stage{background:#ddd}.world{position:absolute;inset:0;display:grid;place-items:center;font:bold 12vw Arial;letter-spacing:-.07em;clip-path:inset(0 calc((1 - var(--e))*100%) 0 0)}.urban{background:repeating-linear-gradient(90deg,#aaa 0 10vw,#ccc 10vw 20vw)}.court{background:#db5d2a;clip-path:inset(0 calc((1.25 - var(--p)*2)*100%) 0 0)}.trackworld{background:#4773c6;clip-path:inset(0 calc((1.5 - var(--p)*2)*100%) 0 0)}.future{background:#111;color:var(--accent);clip-path:inset(0 calc((1.75 - var(--p)*2)*100%) 0 0)}.worldshoe{z-index:4;transform:scale(.65) rotate(-8deg)}.final .stage{background:#050505;color:white}.flash{position:absolute;width:20vw;height:160vh;background:white;filter:blur(18px);transform:rotate(30deg) translateX(calc(-90vw + var(--e)*190vw))}.finalshoe{transform:scale(.72) rotateY(calc(var(--e)*180deg));z-index:2}.final h2{position:absolute;top:8vh;font-size:9vw;line-height:.85;margin:0;text-align:center}.final p{position:absolute;bottom:17vh;letter-spacing:.2em}.final .cta{position:absolute;bottom:5vh}@media(max-width:700px){.shoe{width:90vw;height:42vw}.layers{width:92vw}.deconstruct h2{font-size:15vw}.runner{width:55vw}.simulation h2{font-size:8vw}.final h2{font-size:14vw}.final p{font-size:11px}}
 
 .no-js h1,.no-js h2,.no-js p,.no-js .label,.no-js .eyebrow,.no-js .cta,.no-js [class*="title"],.no-js [class*="name"]{opacity:1!important;clip-path:none!important;transform:none!important}
+
+/* ── OVERHAUL PHOTORÉALISTE (passe 2) ─────────────────────────────────────
+   Les objets étaient dessinés en CSS. Ils sont maintenant photographiés.
+   Les conteneurs gardent TOUTES leurs transformations : la chorégraphie au
+   défilement est strictement inchangée. */
+
+/* Le dessin CSS d'origine ne doit plus apparaître par-dessus la photo. */
+.shoe:before,
+.shoe:after,
+.shoe i,
+.shoe b,
+.shoe em { display: none !important; }
+
+
+
+.ph {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center;
+  display: block; pointer-events: none;
+}
+
+/* OBJETS PRODUIT : la photo garde ses proportions, et ses bords sont fondus
+   pour que l'objet flotte dans la scène au lieu d'y être collé en rectangle. */
+.shoe .ph {
+  /* object-fit contain reduisait la photo a une vignette : ces cadres ont les proportions de la
+     SILHOUETTE de l'objet (tres large pour une voiture, tres haut pour un flacon), pas
+     celles d'une photo 3:2. On remplit donc le cadre et on fond les bords. */
+  object-fit: cover;
+  -webkit-mask-image: radial-gradient(ellipse 96% 92% at 50% 50%, #000 70%, transparent 100%);
+          mask-image: radial-gradient(ellipse 96% 92% at 50% 50%, #000 70%, transparent 100%);
+  filter: drop-shadow(0 24px 34px rgba(0,0,0,.45));
+}
+
+/* Rien ne dépend d'une animation : la photo est visible même sans JavaScript. */
+.no-js .ph { opacity: 1; }
