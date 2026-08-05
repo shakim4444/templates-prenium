@@ -742,15 +742,14 @@ h1, h2, h3, h4 { font-family: var(--titre); }
   .nav-bureau a:hover, .reseaux a:hover { transform: none; }
 }
 
-/* ⚠️ Au TELEPHONE, on retire les chiffres du menu au telephone et le compte a
-   rebours de l'ecran d'ouverture (demande patron 2026-08-05). Sur un petit
-   ecran, une numerotation a cote de six entrees ajoute du bruit sans rien
-   apprendre : la liste est deja courte et entierement visible. Le bureau les
-   garde - il a la place, et le rythme y sert la lecture. */
-@media (max-width: 760px) {
-  .nav-panneau a span { display: none; }
-  .amorce-nombre { display: none; }
-}
+/* ⚠️ Ni numeros de menu, ni compte a rebours d ouverture, A TOUTE TAILLE
+   (demande patron 2026-08-05). Une numerotation « 01 02 03 » a cote de six
+   entrees n apprend rien : la liste est courte et entierement visible. Le
+   compte a rebours, lui, fait patienter quelqu un qui ne sait pas encore ce
+   qu il attend. C etait d abord une regle limitee au telephone ; elle vaut
+   partout. */
+.nav-panneau a span { display: none; }
+.amorce-nombre { display: none; }
 
 /* Toujours lisible, quel que soit le fond : la couleur rendue est l'inverse
    de ce qui se trouve dessous. Voir le commentaire du script de pose. */
