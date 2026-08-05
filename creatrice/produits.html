@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<!--
+  TEMPLATE CREATEUR "La chaine" - Atelier Web
+  Adaptation a un client :
+  1. Copier ce dossier modele/ vers <nom-du-createur>/
+  2. Rechercher-remplacer chaque jeton {{...}} dans TOUS les fichiers .html
+  3. Remplacer les URLs images.unsplash.com par les vraies photos
+  4. Verifier : grep -r "{{" . ne doit plus rien retourner
+-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Les produits que j'utilise - Naya Sanou</title>
+<meta name="description" content="Tous les produits vus dans les vidéos de Naya Sanou : marque, lien d'achat et code de réduction.">
+<meta name="theme-color" content="#070C0E">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Les produits que j'utilise - Naya Sanou">
+<meta property="og:description" content="Tous les produits vus dans les vidéos de Naya Sanou : marque, lien d'achat et code de réduction.">
+<meta property="og:image" content="./photos/hero-8396733.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://nayasanou.com/produits.html">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%23070C0E'/%3E%3Ccircle cx='32' cy='32' r='19' fill='none' stroke='%23FFD9A8' stroke-width='2'/%3E%3Ccircle cx='32' cy='32' r='6' fill='%23FFD9A8'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- UNE seule famille pour tout le site (2026-08-03). Le contraste ne vient plus de deux
+     polices mais de deux ECHELLES de la meme : 11px tres espacee, ou enorme et resserree. -->
+<link href="https://fonts.googleapis.com/css2?family=Martian+Mono:wght@300;400;500;600&family=Parisienne&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./styles.css">
+<script>
+  /* Pose le theme AVANT le premier rendu : sans ca, un visiteur en mode clair
+     verrait le site sombre pendant une image, puis basculer. */
+  (function () {
+    document.documentElement.classList.add('js');
+    try {
+      var m = JSON.parse(localStorage.getItem('chaine.v1') || '{}');
+      if (m.theme) document.documentElement.setAttribute('data-theme', m.theme);
+    } catch (e) {}
+  })();
+</script>
+<script src="./script.js" defer></script>
+<!-- Banc d'essai des couleurs. A RETIRER dans le site livre au client :
+     c'est un outil de choix, pas une fonction du site. -->
+<script src="./outils-demo.js" defer></script>
+<!-- Aperçu téléphone / bureau. A RETIRER dans le site livré : outil de démonstration. -->
+<script src="./apercu-appareil.js" defer></script>
+</head>
+<body data-page-titre="Produits">
+
+<a class="skip-link" href="#contenu">Aller au contenu</a>
+
+
+<header class="entete">
+  <div class="entete-in">
+    <a class="sceau" href="./index.html"><b>Naya Sanou</b><i>&#9679;</i></a>
+    <nav class="nav-bureau" aria-label="Navigation principale">
+      <a href="./portfolio.html">Campagnes</a>
+      <a href="./publications.html">Publications</a>
+      <a href="./produits.html" aria-current="page">Produits</a>
+      <a href="./temoignages.html">Témoignages</a>
+    </nav>
+    <div class="entete-droite">
+      <a class="btn btn--clair" href="./contact.html">Me contacter</a>
+      <button class="burger" type="button" aria-expanded="false" aria-controls="nav-mobile" aria-label="Ouvrir le menu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<nav class="nav-panneau" id="nav-mobile" aria-label="Navigation">
+  <a href="./index.html">Accueil <span>01</span></a>
+  <a href="./portfolio.html">Campagnes <span>02</span></a>
+  <a href="./publications.html">Publications <span>03</span></a>
+  <a href="./produits.html" aria-current="page">Produits <span>04</span></a>
+  <a href="./temoignages.html">Témoignages <span>05</span></a>
+  <a href="./contact.html">Contact <span>06</span></a>
+</nav>
+
+<!-- Le curseur : dans un site sans bordure ni bouton, c'est lui qui dit ce qui est
+     cliquable. Retire au doigt et si le visiteur a demande moins d'animation. -->
+<div class="curseur" aria-hidden="true"><svg class="curseur-fleche" viewBox="0 0 12 15" aria-hidden="true"><path d="M1 1 11 9.4 6.2 9.9 4.4 14.2z" fill="currentColor" stroke="rgba(255,255,255,.9)" stroke-width="1"/></svg><span>NS</span></div>
+
+<main id="contenu">
+
+  <section class="bloc" style="padding-top:clamp(140px,16vw,200px)" data-chapitre="Produits">
+    <div class="enveloppe">
+      <div class="entete-bloc entete-bloc--plein reveal">
+        <p class="eyebrow">Produits</p>
+        <h2 class="titre-plein">Mes pépites</h2>
+        <p class="plomb">Les produits utilisés dans les vidéos. Marque, description, lien d'achat et code de réduction quand la marque en donne un.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="bloc" style="padding-top:0" data-chapitre="Produits">
+    <div class="enveloppe">
+      <div class="barre-outils reveal">
+        <div class="filtres" data-filtres="produits">
+          <button class="filtre" type="button" data-valeur="tout" aria-pressed="true">Tout</button>
+          <button class="filtre" type="button" data-valeur="beaute" aria-pressed="false">Beauté</button>
+          <button class="filtre" type="button" data-valeur="mode" aria-pressed="false">Mode</button>
+          <button class="filtre" type="button" data-valeur="materiel" aria-pressed="false">Matériel</button>
+          <button class="filtre" type="button" data-valeur="maison" aria-pressed="false">Maison</button>
+        </div>
+        <label class="champ-recherche">
+          <span class="vh">Chercher un produit</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></svg>
+          <input type="search" placeholder="Chercher un produit, une marque" data-recherche="produits">
+        </label>
+      </div>
+
+      <div class="grille grille--4" data-liste="produits">
+        <article class="carte produit reveal" data-cat="beaute" data-cherche="Sérum vitamine C Zaïna Cosmétiques beaute" data-produit="produit-1">
+          <div class="carte-visuel"><img src="https://images.unsplash.com/photo-1526947425960-945c6e72858f?auto=format&fit=crop&w=1200&q=80" alt="Sérum vitamine C" loading="lazy"></div>
+          <div class="carte-corps">
+            <p class="produit-marque">Zaïna Cosmétiques</p>
+            <h3 style="font-size:20px">Sérum vitamine C</h3>
+            <p style="margin-top:8px">Tous les matins depuis quatorze mois. Le seul que j'ai racheté trois fois.</p>
+            <div class="produit-pied">
+              <a class="btn btn--fil" style="padding:11px 18px;font-size:13.5px" href="#" target="_blank" rel="noopener sponsored">Où l'acheter</a>
+              <button class="code-promo" type="button" data-code="NAYA15">NAYA15</button>
+            </div>
+          </div>
+        </article>
+        <article class="carte produit reveal" data-cat="beaute" data-cherche="Fond de teint mat Lumia Beauté beaute" data-produit="produit-2">
+          <div class="carte-visuel"><img src="./photos/routine-8396729.jpg" alt="Fond de teint mat" loading="lazy"></div>
+          <div class="carte-corps">
+            <p class="produit-marque">Lumia Beauté</p>
+            <h3 style="font-size:20px">Fond de teint mat</h3>
+            <p style="margin-top:8px">Tenu une journée entière à 38 degrés, sur un tournage en extérieur.</p>
+            <div class="produit-pied">
+              <a class="btn btn--fil" style="padding:11px 18px;font-size:13.5px" href="#" target="_blank" rel="noopener sponsored">Où l'acheter</a>
+              <button class="code-promo" type="button" data-code="NAYA10">NAYA10</button>
+            </div>
+          </div>
+        </article>
+        <article class="carte produit reveal" data-cat="mode" data-cherche="Jean droit taille haute Kaso Denim mode" data-produit="produit-3">
+          <div class="carte-visuel"><img src="./photos/jean-8396734.jpg" alt="Jean droit taille haute" loading="lazy"></div>
+          <div class="carte-corps">
+            <p class="produit-marque">Kaso Denim</p>
+            <h3 style="font-size:20px">Jean droit taille haute</h3>
+            <p style="margin-top:8px">Cousu à Ouaga. Six mois au corps, il n'a pas bougé d'un centimètre.</p>
+            <div class="produit-pied">
+              <a class="btn btn--fil" style="padding:11px 18px;font-size:13.5px" href="#" target="_blank" rel="noopener sponsored">Où l'acheter</a>
+              <button class="code-promo" type="button" data-code="NAYA20">NAYA20</button>
+            </div>
+          </div>
+        </article>
+        <article class="carte produit reveal" data-cat="materiel" data-cherche="Micro-cravate sans fil Volt Mobile materiel" data-produit="produit-4">
+          <div class="carte-visuel"><img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?auto=format&fit=crop&w=1200&q=80" alt="Micro-cravate sans fil" loading="lazy"></div>
+          <div class="carte-corps">
+            <p class="produit-marque">Volt Mobile</p>
+            <h3 style="font-size:20px">Micro-cravate sans fil</h3>
+            <p style="margin-top:8px">Ce qui a le plus changé mes vidéos, et ce n'est même pas l'image.</p>
+            <div class="produit-pied">
+              <a class="btn btn--fil" style="padding:11px 18px;font-size:13.5px" href="#" target="_blank" rel="noopener sponsored">Où l'acheter</a>
+              <button class="code-promo" type="button" data-code="NAYA5">NAYA5</button>
+            </div>
+          </div>
+        </article>
+        <article class="carte produit reveal" data-cat="materiel" data-cherche="Anneau lumineux 45 cm Volt Mobile materiel" data-produit="produit-5">
+          <div class="carte-visuel"><img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=1200&q=80" alt="Anneau lumineux 45 cm" loading="lazy"></div>
+          <div class="carte-corps">
+            <p class="produit-marque">Volt Mobile</p>
+            <h3 style="font-size:20px">Anneau lumineux 45 cm</h3>
+            <p style="margin-top:8px">Assez large pour éclairer sans faire briller la peau. Le 30 cm ne suffit pas.</p>
+            <div class="produit-pied">
+              <a class="btn btn--fil" style="padding:11px 18px;font-size:13.5px" href="#" target="_blank" rel="noopener sponsored">Où l'acheter</a>
+              <button class="code-promo" type="button" data-code="NAYA5">NAYA5</button>
+            </div>
+          </div>
+        </article>
+        <article class="carte produit reveal" data-cat="mode" data-cherche="Foulard imprimé Maison Faso mode" data-produit="produit-6">
+          <div class="carte-visuel"><img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=1200&q=80" alt="Foulard imprimé" loading="lazy"></div>
+          <div class="carte-corps">
+            <p class="produit-marque">Maison Faso</p>
+            <h3 style="font-size:20px">Foulard imprimé</h3>
+            <p style="margin-top:8px">Teinture à la main. Deux lavages, aucune perte de couleur.</p>
+            <div class="produit-pied">
+              <a class="btn btn--fil" style="padding:11px 18px;font-size:13.5px" href="#" target="_blank" rel="noopener sponsored">Où l'acheter</a>
+              <button class="code-promo" type="button" data-code="NAYA20">NAYA20</button>
+            </div>
+          </div>
+        </article>
+        <article class="carte produit reveal" data-cat="beaute" data-cherche="Vernis longue tenue Lumia Beauté beaute" data-produit="produit-7">
+          <div class="carte-visuel"><img src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&w=1200&q=80" alt="Vernis longue tenue" loading="lazy"></div>
+          <div class="carte-corps">
+            <p class="produit-marque">Lumia Beauté</p>
+            <h3 style="font-size:20px">Vernis longue tenue</h3>
+            <p style="margin-top:8px">Dix jours sans écaillure, vaisselle comprise. J'ai compté.</p>
+            <div class="produit-pied">
+              <a class="btn btn--fil" style="padding:11px 18px;font-size:13.5px" href="#" target="_blank" rel="noopener sponsored">Où l'acheter</a>
+              <button class="code-promo" type="button" data-code="NAYA10">NAYA10</button>
+            </div>
+          </div>
+        </article>
+        <article class="carte produit reveal" data-cat="maison" data-cherche="Cafetière italienne Nord Café maison" data-produit="produit-8">
+          <div class="carte-visuel"><img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=1200&q=80" alt="Cafetière italienne" loading="lazy"></div>
+          <div class="carte-corps">
+            <p class="produit-marque">Nord Café</p>
+            <h3 style="font-size:20px">Cafetière italienne</h3>
+            <p style="margin-top:8px">Six tasses, inox. Celle de ma mère a vingt ans, la mienne en aura vingt.</p>
+            <div class="produit-pied">
+              <a class="btn btn--fil" style="padding:11px 18px;font-size:13.5px" href="#" target="_blank" rel="noopener sponsored">Où l'acheter</a>
+              <button class="code-promo" type="button" data-code="NAYA10">NAYA10</button>
+            </div>
+          </div>
+        </article>
+      </div>
+      <p class="vide" data-vide="produits" hidden>Aucun produit ne correspond. Essayez un autre mot.</p>
+
+      <div style="margin-top:64px" data-vus hidden>
+        <p class="eyebrow">Vus récemment</p>
+        <div class="grille grille--4" data-vus-liste></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="pied">
+  <div class="enveloppe">
+    <div class="pied-haut">
+      <div>
+        <a class="sceau" href="./index.html"><b>Naya Sanou</b><i>&#9679;</i></a>
+        <p class="plomb" style="margin-top:16px;font-size:16px">Je teste trois semaines avant d'en parler. C'est long, ça me coûte des contrats, et c'est exactement pour ça qu'on me croit.</p>
+        <div class="reseaux" style="margin-top:22px">
+      <a href="https://www.tiktok.com/@nayasanou" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.5 3a5.6 5.6 0 0 0 4 3.7v3a8.6 8.6 0 0 1-4-1.2v6.1a5.9 5.9 0 1 1-5.1-5.8v3.1a2.8 2.8 0 1 0 2 2.7V3z"/></svg></a>
+      <a href="https://www.instagram.com/nayasanou" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="3.8"/><circle cx="17.4" cy="6.6" r="1" fill="currentColor" stroke="none"/></svg></a>
+      <a href="https://www.youtube.com/@nayasanou" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="4.5"/><path d="M10.4 9.3v5.4l4.6-2.7z" fill="currentColor" stroke="none"/></svg></a>
+      <a href="mailto:contact@nayasanou.com" aria-label="Envoyer un e-mail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7.5 8 5 8-5"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h4>Le site</h4>
+        <ul>
+          <li><a href="./portfolio.html">Campagnes</a></li>
+          <li><a href="./publications.html">Publications</a></li>
+          <li><a href="./produits.html">Produits</a></li>
+          <li><a href="./temoignages.html">Témoignages</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Travailler ensemble</h4>
+        <ul>
+          <li><a href="./contact.html">Faire une demande</a></li>
+          <li><a href="mailto:partenariats@agencenere.bf">partenariats@agencenere.bf</a></li>
+          <li><a href="https://wa.me/22670000000" target="_blank" rel="noopener">WhatsApp</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="pied-bas">
+      <span>&copy; <span data-annee>2026</span> Naya Sanou · Ouagadougou, Burkina Faso</span>
+      <span>Site par Atelier Web</span>
+    </div>
+  </div>
+</footer>
+
+
+<style>
+.aw-prospect{position:fixed;right:16px;bottom:16px;z-index:900;display:flex;flex-direction:column;gap:1px;
+box-shadow:0 10px 34px rgba(0,0,0,.45);font:400 10px/1 system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase}
+.aw-prospect span{background:#F0EBE3;color:#050505;padding:11px 16px}
+.aw-prospect a{background:#141414;color:#F0EBE3;padding:11px 16px;text-align:center;text-decoration:none;transition:background .25s}
+.aw-prospect a:hover{background:#C9A96A;color:#141414}
+@media(max-width:640px){.aw-prospect{right:12px;bottom:12px}.aw-prospect span,.aw-prospect a{padding:9px 12px;font-size:9px}}
+</style>
+<div class="aw-prospect">
+  <span>Site par Atelier Web</span>
+  <a href="https://wa.me/22607429563?text=Bonjour%2C%20j'ai%20vu%20le%20modele%20%C2%AB%20Naya%20Sanou%20%C2%BB.%20Je%20voudrais%20un%20site%20comme%20celui-la." target="_blank" rel="noopener">Nous contacter</a>
+</div></body>
+</html>

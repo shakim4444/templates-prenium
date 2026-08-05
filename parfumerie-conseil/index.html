@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Effluve - parfumerie de niche à Ouagadougou</title>
+<meta name="description" content="Effluve, parfumerie de niche a Ouagadougou. Trouvez votre parfum signature en quelques questions, ou explorez la collection par famille olfactive.">
+<meta name="theme-color" content="#F4EFE7">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Effluve - parfumerie de niche à Ouagadougou">
+<meta property="og:description" content="Trouvez votre parfum signature en quelques questions.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2343162A'/%3E%3Cpath d='M26 14h12v6l6 8v22H20V28l6-8z' fill='%23C09048'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./styles.css">
+<script src="./script.js" type="module"></script>
+<!-- Aperçu téléphone / bureau. A RETIRER dans le site livré : outil de démonstration. -->
+<script src="./apercu-appareil.js" defer></script>
+<!-- Éditeur de couleurs (fond, marque, accent). A RETIRER dans le site livré :
+     outil de démonstration, comme l'aperçu ci-dessus. -->
+<script src="./couleurs-effluve.js" defer></script>
+</head>
+<body>
+
+<a class="skip-link" href="#scene">Aller au contenu</a>
+
+<header class="entete" id="entete">
+  <a class="sceau" href="#" data-aller="accroche">Effluve<small>Parfumerie</small></a>
+  <button class="btn btn--fil" type="button" data-aller="contact">Nous contacter</button>
+</header>
+
+<!-- Le bouton de retour. Une pastille pleine plutot qu'un mot souligne : dans une
+     experience sans defilement, c'est la SEULE facon de revenir en arriere, et il
+     faut qu'on la voie du premier coup d'oeil. -->
+<button class="retour" type="button" id="retour" hidden>
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M19 12H6m5-6-6 6 6 6"/></svg>
+  Retour
+</button>
+
+<!-- =====================================================================
+     LA SCENE
+     Tout le site tient dans cette seule fenetre. Il n'y a PAS de defilement :
+     l'accroche, le questionnaire, la selection, l'explorateur de familles et
+     la prise de contact sont des ETATS qui se remplacent. C'est ce qui fait
+     la difference entre une page qu'on parcourt et une experience qu'on
+     traverse.
+     ===================================================================== -->
+<main class="scene" id="scene">
+  <div class="nuage" id="nuage" aria-hidden="true"></div>
+
+  <div class="etats" id="etats">
+
+    <!-- ---------- L'accroche ---------- -->
+    <section class="etat actif" data-etat="accroche" aria-labelledby="titre-accroche">
+      <div class="etat-in centre">
+        <h1 class="hero-titre" id="titre-accroche">Un parfum ne se choisit pas. <em>Il se reconnaît.</em></h1>
+        <p class="hero-texte">Répondez à huit questions. La collection se réduit sous vos yeux, jusqu’aux dix parfums qui vous ressemblent vraiment.</p>
+        <div class="hero-actions">
+          <button class="btn btn--plein" type="button" id="commencer">
+            Découvrir votre parfum
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h13m-5-6 6 6-6 6"/></svg>
+          </button>
+          <button class="btn btn--fil" type="button" data-aller="familles">Explorer la collection</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---------- Le questionnaire ---------- -->
+    <section class="etat" data-etat="questions" aria-labelledby="q-titre" aria-live="polite">
+      <div class="etat-in centre">
+        <div class="q-tete">
+          <p class="q-compte"><b id="q-numero">1</b> <span class="label">/ <span id="q-total">8</span></span></p>
+          <div class="q-jauge" aria-hidden="true"><i id="q-jauge"></i></div>
+          <p class="q-restants"><b id="q-restants">0</b> parfums</p>
+        </div>
+        <h2 class="q-titre" id="q-titre"></h2>
+        <p class="q-aide" id="q-aide"></p>
+        <div class="q-choix" id="q-choix"></div>
+      </div>
+    </section>
+
+    <!-- ---------- La selection ---------- -->
+    <section class="etat" data-etat="resultat" aria-labelledby="r-titre">
+      <div class="etat-in centre">
+        <p class="label" id="r-label">La sélection</p>
+        <h2 class="r-titre" id="r-titre">Votre parfum signature</h2>
+        <p class="r-texte" id="r-texte"></p>
+        <div class="r-grille" id="r-grille"></div>
+      </div>
+    </section>
+
+    <!-- ---------- L'explorateur de familles ---------- -->
+    <section class="etat" data-etat="familles" aria-labelledby="f-titre">
+      <div class="etat-in">
+        <div class="f-tete">
+          <p class="label">La collection</p>
+          <!-- ⚠️ Sur UNE ligne, taille calculee par le script : c'est ce qui
+               fait remonter les flacons et laisse la grille respirer. -->
+          <h2 class="f-titre" id="f-titre">Dix familles, une seule question : laquelle vous ressemble ?</h2>
+        </div>
+        <div class="familles" id="grille-familles"></div>
+      </div>
+    </section>
+
+    <!-- ---------- Nos ecrits, puis la prise de contact ---------- -->
+    <section class="etat etat--sombre" data-etat="contact" aria-labelledby="c-titre">
+      <div class="etat-in">
+        <div class="c-duo">
+          <div>
+            <p class="label">Nos écrits</p>
+            <h2 id="c-titre">Venez sentir.<br>C'est le seul moyen.</h2>
+            <div class="ecrits">
+              <article><b>Un parfum ne se choisit pas sur papier</b><span>La mouillette ne donne que la tête. Le fond arrive après une heure - et c'est lui que les autres retiendront de vous.</span></article>
+              <article><b>La chaleur change tout</b><span>Sous notre climat, un floral léger s'évapore avant midi et un oriental dense devient écrasant. Ça ne se lit pas sur l'étiquette.</span></article>
+              <article><b>Le bon flacon est celui qu'on finit</b><span>Nous préférons vendre un 30 ml qu'on rachètera. Repartez avec des échantillons, revenez la semaine suivante.</span></article>
+            </div>
+          </div>
+          <div class="c-fiche">
+            <p class="label">Effluve</p>
+            <dl class="c-lignes">
+              <div><dt>WhatsApp</dt><dd><a href="https://wa.me/22670000000" target="_blank" rel="noopener">+226 70 00 00 00</a></dd></div>
+              <div><dt>E-mail</dt><dd><a href="mailto:bonjour@effluve.bf">bonjour@effluve.bf</a></dd></div>
+              <div><dt>Adresse</dt><dd>Avenue Kwame Nkrumah, Ouagadougou</dd></div>
+              <div><dt>Horaires</dt><dd>Du mardi au samedi, 10 h - 19 h</dd></div>
+            </dl>
+            <p style="margin-top:30px">
+              <a class="btn btn--or" href="https://wa.me/22670000000" target="_blank" rel="noopener">
+                Prendre rendez-vous
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h13m-5-6 6 6-6 6"/></svg>
+              </a>
+            </p>
+            <p class="c-signature">&copy; <span id="annee">2026</span> Effluve - Site par Atelier Web</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<!-- =====================================================================
+     LA FICHE PARFUM
+     Volet plein ecran : la photo a gauche, tout ce qu'on veut savoir a droite.
+     ===================================================================== -->
+<div class="fiche" id="fiche" role="dialog" aria-modal="true" aria-labelledby="fiche-nom">
+  <button class="fiche-fermer" type="button" id="fiche-fermer" aria-label="Fermer la fiche">&times;</button>
+  <div class="fiche-in">
+    <div class="fiche-visuel" id="fiche-visuel"></div>
+    <div class="fiche-corps">
+      <p class="label fiche-maison" id="fiche-maison"></p>
+      <h2 class="fiche-nom" id="fiche-nom"></h2>
+      <dl class="fiche-meta" id="fiche-meta"></dl>
+      <p class="fiche-texte" id="fiche-texte"></p>
+      <p class="fiche-ambiance" id="fiche-ambiance"></p>
+      <dl class="pyramide" id="fiche-pyramide"></dl>
+      <div class="fiche-actions">
+        <a class="btn btn--plein" id="fiche-commander" href="https://wa.me/22670000000" target="_blank" rel="noopener">
+          Commander
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h13m-5-6 6 6-6 6"/></svg>
+        </a>
+        <!-- ⚠️ Un BOUTON, pas un lien « mailto ». Sur un navigateur sans client
+             de messagerie configuré - le cas de la plupart des visiteurs - un
+             mailto ne fait rien du tout, sans le moindre message : le bouton
+             a l'air casse. Ici il ouvre l'ecran de contact de la boutique, qui
+             porte le telephone, WhatsApp, l'adresse et les horaires. -->
+        <button type="button" class="btn btn--fil" id="fiche-contact">Contacter la boutique</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<style>
+.aw-prospect{position:fixed;right:16px;bottom:16px;z-index:900;display:flex;flex-direction:column;gap:1px;
+box-shadow:0 10px 34px rgba(0,0,0,.45);font:400 10px/1 system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase}
+.aw-prospect span{background:#F0EBE3;color:#050505;padding:11px 16px}
+.aw-prospect a{background:#141414;color:#F0EBE3;padding:11px 16px;text-align:center;text-decoration:none;transition:background .25s}
+.aw-prospect a:hover{background:#C9A96A;color:#141414}
+@media(max-width:640px){.aw-prospect{right:12px;bottom:12px}.aw-prospect span,.aw-prospect a{padding:9px 12px;font-size:9px}}
+</style>
+<div class="aw-prospect">
+  <span>Site par Atelier Web</span>
+  <a href="https://wa.me/22607429563?text=Bonjour%2C%20j'ai%20vu%20le%20modele%20%C2%AB%20Effluve%20%C2%BB.%20Je%20voudrais%20un%20site%20comme%20celui-la." target="_blank" rel="noopener">Nous contacter</a>
+</div></body>
+</html>

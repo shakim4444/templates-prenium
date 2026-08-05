@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<!--
+  TEMPLATE CREATEUR "La chaine" - Atelier Web
+  Adaptation a un client :
+  1. Copier ce dossier modele/ vers <nom-du-createur>/
+  2. Rechercher-remplacer chaque jeton {{...}} dans TOUS les fichiers .html
+  3. Remplacer les URLs images.unsplash.com par les vraies photos
+  4. Verifier : grep -r "{{" . ne doit plus rien retourner
+-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Contact - Naya Sanou</title>
+<meta name="description" content="Écrire à Naya Sanou : collaboration, prise de parole, presse. Réponse sous 48 heures.">
+<meta name="theme-color" content="#070C0E">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Contact - Naya Sanou">
+<meta property="og:description" content="Écrire à Naya Sanou : collaboration, prise de parole, presse. Réponse sous 48 heures.">
+<meta property="og:image" content="./photos/hero-8396733.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://nayasanou.com/contact.html">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%23070C0E'/%3E%3Ccircle cx='32' cy='32' r='19' fill='none' stroke='%23FFD9A8' stroke-width='2'/%3E%3Ccircle cx='32' cy='32' r='6' fill='%23FFD9A8'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- UNE seule famille pour tout le site (2026-08-03). Le contraste ne vient plus de deux
+     polices mais de deux ECHELLES de la meme : 11px tres espacee, ou enorme et resserree. -->
+<link href="https://fonts.googleapis.com/css2?family=Martian+Mono:wght@300;400;500;600&family=Parisienne&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./styles.css">
+<script>
+  /* Pose le theme AVANT le premier rendu : sans ca, un visiteur en mode clair
+     verrait le site sombre pendant une image, puis basculer. */
+  (function () {
+    document.documentElement.classList.add('js');
+    try {
+      var m = JSON.parse(localStorage.getItem('chaine.v1') || '{}');
+      if (m.theme) document.documentElement.setAttribute('data-theme', m.theme);
+    } catch (e) {}
+  })();
+</script>
+<script src="./script.js" defer></script>
+<!-- Banc d'essai des couleurs. A RETIRER dans le site livre au client :
+     c'est un outil de choix, pas une fonction du site. -->
+<script src="./outils-demo.js" defer></script>
+<!-- Aperçu téléphone / bureau. A RETIRER dans le site livré : outil de démonstration. -->
+<script src="./apercu-appareil.js" defer></script>
+</head>
+<body data-page-titre="Contact">
+
+<a class="skip-link" href="#contenu">Aller au contenu</a>
+
+
+<header class="entete">
+  <div class="entete-in">
+    <a class="sceau" href="./index.html"><b>Naya Sanou</b><i>&#9679;</i></a>
+    <nav class="nav-bureau" aria-label="Navigation principale">
+      <a href="./portfolio.html">Campagnes</a>
+      <a href="./publications.html">Publications</a>
+      <a href="./produits.html">Produits</a>
+      <a href="./temoignages.html">Témoignages</a>
+    </nav>
+    <div class="entete-droite">
+      <a class="btn btn--clair" href="./contact.html">Me contacter</a>
+      <button class="burger" type="button" aria-expanded="false" aria-controls="nav-mobile" aria-label="Ouvrir le menu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<nav class="nav-panneau" id="nav-mobile" aria-label="Navigation">
+  <a href="./index.html">Accueil <span>01</span></a>
+  <a href="./portfolio.html">Campagnes <span>02</span></a>
+  <a href="./publications.html">Publications <span>03</span></a>
+  <a href="./produits.html">Produits <span>04</span></a>
+  <a href="./temoignages.html">Témoignages <span>05</span></a>
+  <a href="./contact.html" aria-current="page">Contact <span>06</span></a>
+</nav>
+
+<!-- Le curseur : dans un site sans bordure ni bouton, c'est lui qui dit ce qui est
+     cliquable. Retire au doigt et si le visiteur a demande moins d'animation. -->
+<div class="curseur" aria-hidden="true"><svg class="curseur-fleche" viewBox="0 0 12 15" aria-hidden="true"><path d="M1 1 11 9.4 6.2 9.9 4.4 14.2z" fill="currentColor" stroke="rgba(255,255,255,.9)" stroke-width="1"/></svg><span>NS</span></div>
+
+<main id="contenu">
+
+  <!-- Un seul titre, le questionnaire directement a gauche (chaque ecran de choix
+       pose avant un formulaire fait perdre du monde), et a droite la voie directe
+       pour les marques qui preferent decrocher leur telephone. -->
+  <section class="bloc" style="padding-top:clamp(140px,16vw,200px)" id="demande" data-chapitre="Contact">
+    <div class="enveloppe">
+      <div class="entete-bloc entete-bloc--plein reveal">
+        <h2 class="titre-plein">Qu'est-ce qui vous amène ?</h2>
+      </div>
+
+      <div class="contact-duo">
+        <form class="reveal" data-reservation data-whatsapp="22670000000" novalidate>
+          <div class="demande-suite">
+            <div class="choix">
+              <label>
+                <input type="radio" name="prestation" value="Campagne complète">
+                <span><b>Campagne complète</b><span>Du brief au montage final. Six à huit semaines, une seule marque à la fois.</span></span>
+              </label>
+              <label>
+                <input type="radio" name="prestation" value="Série courte">
+                <span><b>Série courte</b><span>Trois à six vidéos sur deux semaines. Pour un lancement ou une nouveauté.</span></span>
+              </label>
+              <label>
+                <input type="radio" name="prestation" value="Prise de parole">
+                <span><b>Prise de parole</b><span>Conférence, table ronde, animation. Sur scène ou en direct.</span></span>
+              </label>
+              <label>
+                <input type="radio" name="prestation" value="Une demi-journée de conseil">
+                <span><b>Une demi-journée de conseil</b><span>Je regarde vos contenus et je vous dis ce qui ne va pas. Sans détour.</span></span>
+              </label>
+            </div>
+
+            <div class="champ-duo">
+              <div class="champ"><label for="nom">Votre nom</label><input id="nom" name="nom" type="text" required></div>
+              <div class="champ"><label for="structure">Marque ou structure</label><input id="structure" name="structure" type="text"></div>
+            </div>
+            <div class="champ-duo">
+              <div class="champ"><label for="email">E-mail</label><input id="email" name="email" type="email" required></div>
+              <div class="champ"><label for="date">Date souhaitée</label><input id="date" name="date" type="date"></div>
+            </div>
+            <div class="champ"><label for="details">Le projet en quelques lignes</label><textarea id="details" name="details" placeholder="Ce que vous voulez obtenir, le budget approximatif, les contraintes"></textarea></div>
+          </div>
+          <p class="avis" data-avis>Une date approximative suffit. <strong>Je réponds sous 48 heures.</strong></p>
+          <p style="margin-top:22px">
+            <button class="btn btn--clair btn--large" type="submit">Envoyer la demande <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h13m-5-6 6 6-6 6"/></svg></button>
+          </p>
+        </form>
+
+        <aside class="fiche-agence reveal">
+          <p class="agence-nom">Agence Néré</p>
+          <p class="agence-role">Représentation et partenariats</p>
+          <dl class="agence-lignes">
+            <div><dt>E-mail</dt><dd><a href="mailto:partenariats@agencenere.bf">partenariats@agencenere.bf</a></dd></div>
+            <div><dt>Téléphone</dt><dd><a href="tel:+22670000000">+226 70 00 00 00</a></dd></div>
+            <div><dt>WhatsApp</dt><dd><a href="https://wa.me/22670000000" target="_blank" rel="noopener">Écrire maintenant</a></dd></div>
+            <div><dt>Instagram</dt><dd><a href="https://www.instagram.com/nayasanou" target="_blank" rel="noopener">@nayasanou</a></dd></div>
+            <div><dt>Bureau</dt><dd>Ouagadougou, Burkina Faso</dd></div>
+          </dl>
+          <p class="agence-note">L'agence s'occupe des contrats, du planning et de la facturation. Tout ce qui touche au contenu passe par Naya, qui répond elle-même.</p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="pied">
+  <div class="enveloppe">
+    <div class="pied-haut">
+      <div>
+        <a class="sceau" href="./index.html"><b>Naya Sanou</b><i>&#9679;</i></a>
+        <p class="plomb" style="margin-top:16px;font-size:16px">Je teste trois semaines avant d'en parler. C'est long, ça me coûte des contrats, et c'est exactement pour ça qu'on me croit.</p>
+        <div class="reseaux" style="margin-top:22px">
+      <a href="https://www.tiktok.com/@nayasanou" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.5 3a5.6 5.6 0 0 0 4 3.7v3a8.6 8.6 0 0 1-4-1.2v6.1a5.9 5.9 0 1 1-5.1-5.8v3.1a2.8 2.8 0 1 0 2 2.7V3z"/></svg></a>
+      <a href="https://www.instagram.com/nayasanou" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="3.8"/><circle cx="17.4" cy="6.6" r="1" fill="currentColor" stroke="none"/></svg></a>
+      <a href="https://www.youtube.com/@nayasanou" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="4.5"/><path d="M10.4 9.3v5.4l4.6-2.7z" fill="currentColor" stroke="none"/></svg></a>
+      <a href="mailto:contact@nayasanou.com" aria-label="Envoyer un e-mail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7.5 8 5 8-5"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h4>Le site</h4>
+        <ul>
+          <li><a href="./portfolio.html">Campagnes</a></li>
+          <li><a href="./publications.html">Publications</a></li>
+          <li><a href="./produits.html">Produits</a></li>
+          <li><a href="./temoignages.html">Témoignages</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Travailler ensemble</h4>
+        <ul>
+          <li><a href="./contact.html">Faire une demande</a></li>
+          <li><a href="mailto:partenariats@agencenere.bf">partenariats@agencenere.bf</a></li>
+          <li><a href="https://wa.me/22670000000" target="_blank" rel="noopener">WhatsApp</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="pied-bas">
+      <span>&copy; <span data-annee>2026</span> Naya Sanou · Ouagadougou, Burkina Faso</span>
+      <span>Site par Atelier Web</span>
+    </div>
+  </div>
+</footer>
+
+
+<style>
+.aw-prospect{position:fixed;right:16px;bottom:16px;z-index:900;display:flex;flex-direction:column;gap:1px;
+box-shadow:0 10px 34px rgba(0,0,0,.45);font:400 10px/1 system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase}
+.aw-prospect span{background:#F0EBE3;color:#050505;padding:11px 16px}
+.aw-prospect a{background:#141414;color:#F0EBE3;padding:11px 16px;text-align:center;text-decoration:none;transition:background .25s}
+.aw-prospect a:hover{background:#C9A96A;color:#141414}
+@media(max-width:640px){.aw-prospect{right:12px;bottom:12px}.aw-prospect span,.aw-prospect a{padding:9px 12px;font-size:9px}}
+</style>
+<div class="aw-prospect">
+  <span>Site par Atelier Web</span>
+  <a href="https://wa.me/22607429563?text=Bonjour%2C%20j'ai%20vu%20le%20modele%20%C2%AB%20Naya%20Sanou%20%C2%BB.%20Je%20voudrais%20un%20site%20comme%20celui-la." target="_blank" rel="noopener">Nous contacter</a>
+</div></body>
+</html>

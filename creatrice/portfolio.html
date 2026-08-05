@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<!--
+  TEMPLATE CREATEUR "La chaine" - Atelier Web
+  Adaptation a un client :
+  1. Copier ce dossier modele/ vers <nom-du-createur>/
+  2. Rechercher-remplacer chaque jeton {{...}} dans TOUS les fichiers .html
+  3. Remplacer les URLs images.unsplash.com par les vraies photos
+  4. Verifier : grep -r "{{" . ne doit plus rien retourner
+-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Campagnes et collaborations - Naya Sanou</title>
+<meta name="description" content="Les campagnes de Naya Sanou : brief, tournage et résultats chiffrés pour chaque marque.">
+<meta name="theme-color" content="#070C0E">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Campagnes et collaborations - Naya Sanou">
+<meta property="og:description" content="Les campagnes de Naya Sanou : brief, tournage et résultats chiffrés pour chaque marque.">
+<meta property="og:image" content="./photos/hero-8396733.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://nayasanou.com/portfolio.html">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%23070C0E'/%3E%3Ccircle cx='32' cy='32' r='19' fill='none' stroke='%23FFD9A8' stroke-width='2'/%3E%3Ccircle cx='32' cy='32' r='6' fill='%23FFD9A8'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- UNE seule famille pour tout le site (2026-08-03). Le contraste ne vient plus de deux
+     polices mais de deux ECHELLES de la meme : 11px tres espacee, ou enorme et resserree. -->
+<link href="https://fonts.googleapis.com/css2?family=Martian+Mono:wght@300;400;500;600&family=Parisienne&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./styles.css">
+<script>
+  /* Pose le theme AVANT le premier rendu : sans ca, un visiteur en mode clair
+     verrait le site sombre pendant une image, puis basculer. */
+  (function () {
+    document.documentElement.classList.add('js');
+    try {
+      var m = JSON.parse(localStorage.getItem('chaine.v1') || '{}');
+      if (m.theme) document.documentElement.setAttribute('data-theme', m.theme);
+    } catch (e) {}
+  })();
+</script>
+<script src="./script.js" defer></script>
+<!-- Banc d'essai des couleurs. A RETIRER dans le site livre au client :
+     c'est un outil de choix, pas une fonction du site. -->
+<script src="./outils-demo.js" defer></script>
+<!-- Aperçu téléphone / bureau. A RETIRER dans le site livré : outil de démonstration. -->
+<script src="./apercu-appareil.js" defer></script>
+</head>
+<body data-page-titre="Portfolio">
+
+<a class="skip-link" href="#contenu">Aller au contenu</a>
+
+
+<header class="entete">
+  <div class="entete-in">
+    <a class="sceau" href="./index.html"><b>Naya Sanou</b><i>&#9679;</i></a>
+    <nav class="nav-bureau" aria-label="Navigation principale">
+      <a href="./portfolio.html" aria-current="page">Campagnes</a>
+      <a href="./publications.html">Publications</a>
+      <a href="./produits.html">Produits</a>
+      <a href="./temoignages.html">Témoignages</a>
+    </nav>
+    <div class="entete-droite">
+      <a class="btn btn--clair" href="./contact.html">Me contacter</a>
+      <button class="burger" type="button" aria-expanded="false" aria-controls="nav-mobile" aria-label="Ouvrir le menu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<nav class="nav-panneau" id="nav-mobile" aria-label="Navigation">
+  <a href="./index.html">Accueil <span>01</span></a>
+  <a href="./portfolio.html" aria-current="page">Campagnes <span>02</span></a>
+  <a href="./publications.html">Publications <span>03</span></a>
+  <a href="./produits.html">Produits <span>04</span></a>
+  <a href="./temoignages.html">Témoignages <span>05</span></a>
+  <a href="./contact.html">Contact <span>06</span></a>
+</nav>
+
+<!-- Le curseur : dans un site sans bordure ni bouton, c'est lui qui dit ce qui est
+     cliquable. Retire au doigt et si le visiteur a demande moins d'animation. -->
+<div class="curseur" aria-hidden="true"><svg class="curseur-fleche" viewBox="0 0 12 15" aria-hidden="true"><path d="M1 1 11 9.4 6.2 9.9 4.4 14.2z" fill="currentColor" stroke="rgba(255,255,255,.9)" stroke-width="1"/></svg><span>NS</span></div>
+
+<main id="contenu">
+
+  <section class="bloc" style="padding-top:clamp(140px,16vw,200px)" data-chapitre="Portfolio">
+    <div class="enveloppe">
+      <div class="entete-bloc reveal">
+        <p class="eyebrow">Portfolio</p>
+        <h2 class="titre-plein">Les résultats qui comptent</h2>
+        <p class="plomb">Pas une galerie de jolies images : le brief, le tournage, et les chiffres qui ont suivi. Cliquez sur une campagne pour l'ouvrir.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="bloc" style="padding-top:0" data-chapitre="Campagnes">
+    <div class="enveloppe">
+      <div class="grille grille--3">
+        <article class="campagne carte reveal">
+          <div class="carte-visuel"><img src="./photos/matins-8396727.jpg" alt="Trente matins, sans filtre" loading="lazy"><span class="etiquette">Zaïna Cosmétiques</span></div>
+          <div class="carte-corps">
+            <h3>Trente matins, sans filtre</h3>
+            <div class="campagne-meta"><span>Série · 6 épisodes</span><b>2,4 M</b></div>
+          </div>
+          <button class="campagne-ouvrir" type="button" data-campagne="camp-1">
+            <span class="vh">Ouvrir la campagne Trente matins, sans filtre</span>
+          </button>
+        </article>
+        <article class="campagne carte reveal">
+          <div class="carte-visuel"><img src="./photos/routine-8396729.jpg" alt="Toute la routine pour 5 000 francs" loading="lazy"><span class="etiquette">Lumia Beauté</span></div>
+          <div class="carte-corps">
+            <h3>Toute la routine pour 5 000 francs</h3>
+            <div class="campagne-meta"><span>TikTok + Reels</span><b>1,1 M</b></div>
+          </div>
+          <button class="campagne-ouvrir" type="button" data-campagne="camp-2">
+            <span class="vh">Ouvrir la campagne Toute la routine pour 5 000 francs</span>
+          </button>
+        </article>
+        <article class="campagne carte reveal">
+          <div class="carte-visuel"><img src="./photos/jean-8396734.jpg" alt="Le jean qui vieillit bien" loading="lazy"><span class="etiquette">Kaso Denim</span></div>
+          <div class="carte-corps">
+            <h3>Le jean qui vieillit bien</h3>
+            <div class="campagne-meta"><span>Documentaire · 6 mois</span><b>860 K</b></div>
+          </div>
+          <button class="campagne-ouvrir" type="button" data-campagne="camp-3">
+            <span class="vh">Ouvrir la campagne Le jean qui vieillit bien</span>
+          </button>
+        </article>
+        <article class="campagne carte reveal">
+          <div class="carte-visuel"><img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?auto=format&fit=crop&w=1200&q=80" alt="Une journée, une seule charge" loading="lazy"><span class="etiquette">Volt Mobile</span></div>
+          <div class="carte-corps">
+            <h3>Une journée, une seule charge</h3>
+            <div class="campagne-meta"><span>Format vertical</span><b>1,6 M</b></div>
+          </div>
+          <button class="campagne-ouvrir" type="button" data-campagne="camp-4">
+            <span class="vh">Ouvrir la campagne Une journée, une seule charge</span>
+          </button>
+        </article>
+        <article class="campagne carte reveal">
+          <div class="carte-visuel"><img src="./photos/duo-8396719.jpg" alt="Cinq femmes, cinq métiers" loading="lazy"><span class="etiquette">Maison Faso</span></div>
+          <div class="carte-corps">
+            <h3>Cinq femmes, cinq métiers</h3>
+            <div class="campagne-meta"><span>Éditorial photo</span><b>540 K</b></div>
+          </div>
+          <button class="campagne-ouvrir" type="button" data-campagne="camp-5">
+            <span class="vh">Ouvrir la campagne Cinq femmes, cinq métiers</span>
+          </button>
+        </article>
+        <article class="campagne carte reveal">
+          <div class="carte-visuel"><img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=1200&q=80" alt="Le café est d'ici" loading="lazy"><span class="etiquette">Nord Café</span></div>
+          <div class="carte-corps">
+            <h3>Le café est d'ici</h3>
+            <div class="campagne-meta"><span>Direct + capsules</span><b>720 K</b></div>
+          </div>
+          <button class="campagne-ouvrir" type="button" data-campagne="camp-6">
+            <span class="vh">Ouvrir la campagne Le café est d'ici</span>
+          </button>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  
+  <!-- Volets immersifs : le contenu vit dans des <template>, rien n'est charge en plus. -->
+  <template id="camp-1">
+    <p class="eyebrow">Zaïna Cosmétiques · 2024</p>
+    <h2>Trente matins, sans filtre</h2>
+    <div class="volet-heros" style="margin-top:34px"><img src="./photos/matins-8396727.jpg" alt=""></div>
+    <div class="duo">
+      <div>
+        <h3>Le brief</h3>
+        <p class="plomb" style="margin-top:14px">Zaïna sortait une crème et voulait des avant/après. J'ai dit non : plus personne n'y croit, et une photo retouchée fait perdre en confiance ce qu'elle fait gagner en clics. J'ai proposé l'inverse - filmer trente matins de suite, sans maquillage, y compris les jours où ça n'allait pas.</p>
+      </div>
+      <div>
+        <h3>Ce qu'on a tourné</h3>
+        <p class="plomb" style="margin-top:14px">Même mur, même lumière, même heure, trente jours. Aucun montage flatteur. L'épisode 6, celui où ma peau réagit mal et où je le dis, a fait deux fois plus de vues que les cinq autres réunis. C'est là que les commandes sont parties.</p>
+      </div>
+    </div>
+    <div class="volet-resultats">
+      <div><b>2,4 M</b><span>vues cumulées</span></div>
+      <div><b>+ 310 %</b><span>trafic boutique</span></div>
+      <div><b>9 400</b><span>pots vendus</span></div>
+    </div>
+    <div class="volet-galerie">
+      <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=1200&q=80" alt="" loading="lazy"><img src="./photos/atelier-8396722.jpg" alt="" loading="lazy"><img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=1200&q=80" alt="" loading="lazy">
+    </div>
+  </template>
+  <template id="camp-2">
+    <p class="eyebrow">Lumia Beauté · 2025</p>
+    <h2>Toute la routine pour 5 000 francs</h2>
+    <div class="volet-heros" style="margin-top:34px"><img src="./photos/routine-8396729.jpg" alt=""></div>
+    <div class="duo">
+      <div>
+        <h3>Le brief</h3>
+        <p class="plomb" style="margin-top:14px">Lumia voulait prouver qu'on peut se soigner la peau sans y laisser un salaire. Le piège était évident : à trop insister sur le prix, on dit « bas de gamme » sans le vouloir.</p>
+      </div>
+      <div>
+        <h3>Ce qu'on a tourné</h3>
+        <p class="plomb" style="margin-top:14px">Une seule prise, dans un vrai magasin, sans coupe. Et le ticket de caisse filmé en gros plan à la fin. C'est le ticket qui a tout fait : on peut discuter un avis, pas un ticket.</p>
+      </div>
+    </div>
+    <div class="volet-resultats">
+      <div><b>1,1 M</b><span>vues</span></div>
+      <div><b>18 %</b><span>de clics sur le lien</span></div>
+      <div><b>4,7 / 5</b><span>note des acheteuses</span></div>
+    </div>
+    <div class="volet-galerie">
+      <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=1200&q=80" alt="" loading="lazy"><img src="./photos/atelier-8396722.jpg" alt="" loading="lazy"><img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=1200&q=80" alt="" loading="lazy">
+    </div>
+  </template>
+  <template id="camp-3">
+    <p class="eyebrow">Kaso Denim · 2024</p>
+    <h2>Le jean qui vieillit bien</h2>
+    <div class="volet-heros" style="margin-top:34px"><img src="./photos/jean-8396734.jpg" alt=""></div>
+    <div class="duo">
+      <div>
+        <h3>Le brief</h3>
+        <p class="plomb" style="margin-top:14px">Kaso coud à Ouagadougou et se bat contre une idée reçue tenace : que le local tient moins longtemps. Une vidéo de lancement n'aurait rien prouvé - c'est le temps qui prouve.</p>
+      </div>
+      <div>
+        <h3>Ce qu'on a tourné</h3>
+        <p class="plomb" style="margin-top:14px">J'ai porté le même jean six mois et filmé une minute chaque mois. Le film montre l'usure réelle, genoux compris. On voit ce qui s'abîme. C'est précisément ce qui rend crédible tout le reste.</p>
+      </div>
+    </div>
+    <div class="volet-resultats">
+      <div><b>860 K</b><span>vues</span></div>
+      <div><b>+ 42 %</b><span>de nouvelles clientes</span></div>
+      <div><b>6 mois</b><span>de tournage</span></div>
+    </div>
+    <div class="volet-galerie">
+      <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=1200&q=80" alt="" loading="lazy"><img src="./photos/atelier-8396722.jpg" alt="" loading="lazy"><img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=1200&q=80" alt="" loading="lazy">
+    </div>
+  </template>
+  <template id="camp-4">
+    <p class="eyebrow">Volt Mobile · 2025</p>
+    <h2>Une journée, une seule charge</h2>
+    <div class="volet-heros" style="margin-top:34px"><img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?auto=format&fit=crop&w=1200&q=80" alt=""></div>
+    <div class="duo">
+      <div>
+        <h3>Le brief</h3>
+        <p class="plomb" style="margin-top:14px">Volt annonçait deux jours d'autonomie. Un chiffre sur une fiche technique ne convainc personne : tout le monde en a déjà vu, et tout le monde a déjà été déçu.</p>
+      </div>
+      <div>
+        <h3>Ce qu'on a tourné</h3>
+        <p class="plomb" style="margin-top:14px">Ma journée filmée du réveil au coucher, avec le pourcentage de batterie incrusté en permanence à l'écran. Sans coupure, sans accélération. Le téléphone finit à 31 %, et ça, ça se retient.</p>
+      </div>
+    </div>
+    <div class="volet-resultats">
+      <div><b>1,6 M</b><span>vues</span></div>
+      <div><b>12 000</b><span>précommandes</span></div>
+      <div><b>87 %</b><span>ont regardé jusqu'au bout</span></div>
+    </div>
+    <div class="volet-galerie">
+      <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=1200&q=80" alt="" loading="lazy"><img src="./photos/atelier-8396722.jpg" alt="" loading="lazy"><img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=1200&q=80" alt="" loading="lazy">
+    </div>
+  </template>
+  <template id="camp-5">
+    <p class="eyebrow">Maison Faso · 2024</p>
+    <h2>Cinq femmes, cinq métiers</h2>
+    <div class="volet-heros" style="margin-top:34px"><img src="./photos/duo-8396719.jpg" alt=""></div>
+    <div class="duo">
+      <div>
+        <h3>Le brief</h3>
+        <p class="plomb" style="margin-top:14px">Maison Faso voulait sortir ses tissus du placard des grandes occasions. Le vrai frein n'était pas le goût, c'était : « ça ne se porte pas au bureau ».</p>
+      </div>
+      <div>
+        <h3>Ce qu'on a tourné</h3>
+        <p class="plomb" style="margin-top:14px">Cinq femmes, cinq métiers, photographiées sur leur lieu de travail une vraie journée. Pas de studio, pas de mannequins. Une comptable, une infirmière, une avocate. Le message se passe de légende.</p>
+      </div>
+    </div>
+    <div class="volet-resultats">
+      <div><b>540 K</b><span>vues</span></div>
+      <div><b>+ 128 %</b><span>de demandes sur mesure</span></div>
+      <div><b>5</b><span>portraits</span></div>
+    </div>
+    <div class="volet-galerie">
+      <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=1200&q=80" alt="" loading="lazy"><img src="./photos/atelier-8396722.jpg" alt="" loading="lazy"><img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=1200&q=80" alt="" loading="lazy">
+    </div>
+  </template>
+  <template id="camp-6">
+    <p class="eyebrow">Nord Café · 2025</p>
+    <h2>Le café est d'ici</h2>
+    <div class="volet-heros" style="margin-top:34px"><img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=1200&q=80" alt=""></div>
+    <div class="duo">
+      <div>
+        <h3>Le brief</h3>
+        <p class="plomb" style="margin-top:14px">Nord Café torréfie à vingt minutes du centre-ville et personne ne le savait. Le problème n'était pas le produit, c'était que personne n'avait jamais vu l'atelier.</p>
+      </div>
+      <div>
+        <h3>Ce qu'on a tourné</h3>
+        <p class="plomb" style="margin-top:14px">Deux heures de direct depuis la torréfaction, questions ouvertes, puis trois capsules courtes tirées du direct. Le direct fait venir les curieux ; les capsules les font revenir. Mille huit cents personnes ont poussé la porte dans le mois.</p>
+      </div>
+    </div>
+    <div class="volet-resultats">
+      <div><b>720 K</b><span>vues</span></div>
+      <div><b>1 800</b><span>visiteurs à l'atelier</span></div>
+      <div><b>3</b><span>capsules</span></div>
+    </div>
+    <div class="volet-galerie">
+      <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=1200&q=80" alt="" loading="lazy"><img src="./photos/atelier-8396722.jpg" alt="" loading="lazy"><img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=1200&q=80" alt="" loading="lazy">
+    </div>
+  </template>
+
+  <div class="volet-plein" id="volet-campagne" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Détail de la campagne">
+    <button class="volet-fermer" type="button" data-fermer-volet aria-label="Fermer">&times;</button>
+    <div class="volet-plein-in" data-volet-contenu></div>
+  </div>
+  
+  <!-- ============ APPEL ============ -->
+  <section class="bloc appel" data-chapitre="Contact">
+    <div class="enveloppe">
+      <h2 class="reveal">Votre campagne, la prochaine ?</h2>
+      <p class="plomb reveal">Envoyez le brief. Je dis oui, non, ou je propose autre chose - mais je réponds.</p>
+      <div class="appel-actions reveal">
+        <a class="btn btn--clair" href="./contact.html#demande">Faire une demande <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h13m-5-6 6 6-6 6"/></svg></a>
+        <a class="btn btn--fil" href="./temoignages.html">Ce qu'en disent les marques</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="pied">
+  <div class="enveloppe">
+    <div class="pied-haut">
+      <div>
+        <a class="sceau" href="./index.html"><b>Naya Sanou</b><i>&#9679;</i></a>
+        <p class="plomb" style="margin-top:16px;font-size:16px">Je teste trois semaines avant d'en parler. C'est long, ça me coûte des contrats, et c'est exactement pour ça qu'on me croit.</p>
+        <div class="reseaux" style="margin-top:22px">
+      <a href="https://www.tiktok.com/@nayasanou" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.5 3a5.6 5.6 0 0 0 4 3.7v3a8.6 8.6 0 0 1-4-1.2v6.1a5.9 5.9 0 1 1-5.1-5.8v3.1a2.8 2.8 0 1 0 2 2.7V3z"/></svg></a>
+      <a href="https://www.instagram.com/nayasanou" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="3.8"/><circle cx="17.4" cy="6.6" r="1" fill="currentColor" stroke="none"/></svg></a>
+      <a href="https://www.youtube.com/@nayasanou" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="4.5"/><path d="M10.4 9.3v5.4l4.6-2.7z" fill="currentColor" stroke="none"/></svg></a>
+      <a href="mailto:contact@nayasanou.com" aria-label="Envoyer un e-mail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7.5 8 5 8-5"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h4>Le site</h4>
+        <ul>
+          <li><a href="./portfolio.html">Campagnes</a></li>
+          <li><a href="./publications.html">Publications</a></li>
+          <li><a href="./produits.html">Produits</a></li>
+          <li><a href="./temoignages.html">Témoignages</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Travailler ensemble</h4>
+        <ul>
+          <li><a href="./contact.html">Faire une demande</a></li>
+          <li><a href="mailto:partenariats@agencenere.bf">partenariats@agencenere.bf</a></li>
+          <li><a href="https://wa.me/22670000000" target="_blank" rel="noopener">WhatsApp</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="pied-bas">
+      <span>&copy; <span data-annee>2026</span> Naya Sanou · Ouagadougou, Burkina Faso</span>
+      <span>Site par Atelier Web</span>
+    </div>
+  </div>
+</footer>
+
+
+<style>
+.aw-prospect{position:fixed;right:16px;bottom:16px;z-index:900;display:flex;flex-direction:column;gap:1px;
+box-shadow:0 10px 34px rgba(0,0,0,.45);font:400 10px/1 system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase}
+.aw-prospect span{background:#F0EBE3;color:#050505;padding:11px 16px}
+.aw-prospect a{background:#141414;color:#F0EBE3;padding:11px 16px;text-align:center;text-decoration:none;transition:background .25s}
+.aw-prospect a:hover{background:#C9A96A;color:#141414}
+@media(max-width:640px){.aw-prospect{right:12px;bottom:12px}.aw-prospect span,.aw-prospect a{padding:9px 12px;font-size:9px}}
+</style>
+<div class="aw-prospect">
+  <span>Site par Atelier Web</span>
+  <a href="https://wa.me/22607429563?text=Bonjour%2C%20j'ai%20vu%20le%20modele%20%C2%AB%20Naya%20Sanou%20%C2%BB.%20Je%20voudrais%20un%20site%20comme%20celui-la." target="_blank" rel="noopener">Nous contacter</a>
+</div></body>
+</html>

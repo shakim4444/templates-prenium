@@ -1,0 +1,472 @@
+/* =========================================================================
+   EFFLUVE - parfumerie de niche
+   Feuille unique, sans dependance, sans build.
+
+   DIRECTION (2026-08-04)
+   Le site N'A PAS DE DEFILEMENT. L'accroche, le questionnaire, la selection,
+   l'explorateur de familles et la prise de contact sont des ETATS qui se
+   remplacent dans une seule fenetre. C'est ce qui separe une page qu'on
+   parcourt d'une experience qu'on traverse.
+
+   PALETTE - mesuree sur le logo de la marque, pas devinee :
+   le fichier `guidelines/EFFLUVE` donne un bordeaux #481818 (76 % des pixels)
+   et un or #C09048. Le brief demandait « violet profond » : le prune retenu
+   ci-dessous (#43162A) appartient aux deux lectures.
+   ========================================================================= */
+
+:root {
+  --creme:    #F6F3EC;
+  --creme-2:  #E9E4DA;
+  --prune:    #231C24;
+  --prune-2:  #3A3140;
+  --or:       #C0A472;
+  --or-clair: #D6BE93;
+  --encre:    #2A1A20;
+  --sourd:    #7A6A6E;
+  --trait:    rgba(67, 22, 42, .16);
+  --trait-or: rgba(192, 144, 72, .38);
+
+  --titre: "Cormorant Garamond", Georgia, serif;
+  --corps: "Jost", system-ui, -apple-system, sans-serif;
+
+  --marge: clamp(18px, 4vw, 56px);
+  --max: 1340px;
+  --sortie: cubic-bezier(.22, 1, .36, 1);
+  --lent: cubic-bezier(.65, 0, .35, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+/* ⚠️ Pas de defilement de page : c'est le principe meme de l'experience.
+   Chaque etat qui peut deborder gere SON propre defilement. */
+html, body { height: 100%; overflow: hidden; }
+body {
+  margin: 0; background: var(--creme); color: var(--encre);
+  font-family: var(--corps); font-size: 16px; line-height: 1.6;
+  font-weight: 300; letter-spacing: .01em;
+}
+img { max-width: 100%; display: block; }
+button { font: inherit; color: inherit; }
+a { color: inherit; text-decoration: none; }
+
+h1, h2, h3 { font-family: var(--titre); font-weight: 400; line-height: 1.04; letter-spacing: -.01em; margin: 0; }
+h1 { font-size: clamp(40px, 6.4vw, 88px); }
+h2 { font-size: clamp(28px, 4.2vw, 58px); }
+h3 { font-size: clamp(19px, 2vw, 26px); }
+p  { margin: 0; }
+
+.label {
+  font-size: 10.5px; letter-spacing: .3em; text-transform: uppercase;
+  color: var(--sourd); font-weight: 400;
+}
+.or { color: var(--or); }
+.centre { text-align: center; }
+
+.vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+.skip-link { position: absolute; left: -9999px; top: 12px; z-index: 200; background: var(--prune); color: var(--creme); padding: 12px 18px; }
+.skip-link:focus { left: 12px; }
+:focus-visible { outline: 2px solid var(--or); outline-offset: 4px; }
+
+/* ---------- Boutons ---------- */
+.btn {
+  display: inline-flex; align-items: center; gap: 12px;
+  padding: 15px 30px; border: 1px solid transparent; border-radius: 100px;
+  font-size: 13px; letter-spacing: .16em; text-transform: uppercase; font-weight: 400;
+  cursor: pointer; background: none;
+  transition: background .35s, color .35s, border-color .35s, transform .35s var(--sortie);
+}
+.btn--plein { background: var(--prune); color: var(--creme); border-color: var(--prune); }
+.btn--plein:hover { background: var(--prune-2); border-color: var(--prune-2); transform: translateY(-2px); }
+.btn--fil { border-color: var(--trait); color: var(--prune); }
+.btn--fil:hover { border-color: var(--prune); }
+.btn--or { border-color: var(--trait-or); color: var(--or); }
+.btn--or:hover { background: var(--or); color: var(--creme); border-color: var(--or); }
+.btn svg { width: 17px; height: 17px; flex: none; }
+
+/* =========================================================================
+   1. En-tete et bouton de retour
+   ========================================================================= */
+.entete {
+  position: fixed; inset: 0 0 auto; z-index: 60;
+  padding: 20px var(--marge);
+  display: flex; align-items: center; justify-content: space-between; gap: 14px;
+  transition: transform .38s var(--sortie), opacity .38s;
+}
+/* ⚠️ L'en-tete s'efface quand l'ecran DESCEND, et revient des qu'on remonte
+   (demande patron 2026-08-05). Sur les ecrans remplis - la collection, le
+   contact - elle restait plantee au-dessus du contenu qu'on faisait defiler
+   dessous. Elle ne disparait jamais quand il n'y a rien a faire defiler : le
+   script ne la remonte qu'a partir d'une vraie course. */
+.entete.remontee { transform: translateY(-118%); opacity: 0; }
+.sceau { font-family: var(--titre); font-size: clamp(28px, 3vw, 38px); letter-spacing: .16em; color: var(--prune); line-height: 1; }
+.sceau small { display: block; font-family: var(--corps); font-size: clamp(9px, .8vw, 10.5px); letter-spacing: .42em; color: var(--or); margin-top: 4px; }
+
+/* ⚠️ Une pastille pleine, pas un mot souligne. Dans une experience sans
+   defilement, c'est la SEULE facon de revenir en arriere : elle doit se voir
+   du premier coup d'oeil, y compris sur un fond charge de flacons.
+   Elle vit EN BAS, centree - la ou se trouvait l'ancien « Revenir » du
+   questionnaire. C'est la que la main la cherche apres avoir repondu. */
+.retour {
+  position: fixed; left: 50%; bottom: 26px; z-index: 62;
+  transform: translateX(-50%);
+  display: inline-flex; align-items: center; gap: 9px;
+  padding: 12px 22px 12px 18px; border-radius: 100px;
+  border: 1px solid var(--prune); background: var(--prune); color: var(--creme);
+  font-size: 11.5px; letter-spacing: .18em; text-transform: uppercase;
+  cursor: pointer; box-shadow: 0 16px 34px -16px rgba(67, 22, 42, .9);
+  transition: background .3s, opacity .45s, box-shadow .3s;
+  animation: retourEntre .5s var(--sortie) both;
+}
+/* ⚠️ Le survol ne peut PAS ecrire `transform` tout court : il ecraserait le
+   `translateX(-50%)` qui centre le bouton, et celui-ci sauterait a droite. */
+.retour:hover { background: var(--prune-2); transform: translateX(-50%) translateY(-3px); box-shadow: 0 22px 40px -16px rgba(67, 22, 42, .95); }
+.retour svg { width: 16px; height: 16px; }
+.retour[hidden] { display: none; }
+@keyframes retourEntre { from { opacity: 0; transform: translateX(-50%) translateY(14px); } }
+
+/* =========================================================================
+   2. La scene et ses etats
+   ========================================================================= */
+.scene { position: relative; height: 100svh; overflow: hidden; }
+
+/* ⚠️ LE CENTRE DOIT RESTER LIBRE : les flacons couvraient le titre et les
+   boutons, et au telephone la page etait illisible. On perce le nuage d'un
+   masque doux - une coupure nette se verrait comme un cercle dessine. */
+.nuage {
+  position: absolute; inset: 0; pointer-events: none; z-index: 0;
+  /* ⚠️ La clairiere s'est ELARGIE quand les photos sont passees en detoure :
+     avant, le fond blanc de chaque photo diluait le flacon dans la creme et le
+     titre passait devant sans peine. Detoures, les flacons sont nets - deux
+     d'entre eux se posaient sur « Il se reconnait » (vu a la capture). */
+  /* ⚠️ DEUX masques, pas un. Le radial degage le centre, ou vivent le titre et
+     les boutons. Mais la BANDE DU HAUT porte le sceau et « Nous contacter » :
+     des flacons s'y posaient dessus (vu a la capture). Le degrade lineaire
+     efface donc aussi cette bande, et `intersect` ne garde le nuage que la ou
+     les deux masques le laissent passer. */
+  -webkit-mask-image: radial-gradient(ellipse 52% 47% at 50% 50%, transparent 50%, #000 100%),
+                      linear-gradient(to bottom, transparent 0, transparent 78px, #000 136px);
+  mask-image: radial-gradient(ellipse 52% 47% at 50% 50%, transparent 50%, #000 100%),
+              linear-gradient(to bottom, transparent 0, transparent 78px, #000 136px);
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+  opacity: .8;
+  transition: opacity .9s var(--lent), transform 1.2s var(--lent);
+}
+/* Le nuage RESPIRE au changement d'etat : c'est ce petit recul qui donne le
+   sentiment que toute la scene bascule, et pas seulement le texte. */
+.nuage.recul { opacity: .35; transform: scale(1.09); }
+/* ⚠️ Sur les ecrans REMPLIS (familles, selection, contact), le nuage passait
+   par-dessus les cartes et les titres - vu a la capture. Le masque ne degage
+   que le centre, or ces ecrans occupent tout le cadre. Le decor s'efface donc
+   presque entierement : il reste une atmosphere, il ne se bat plus avec le
+   contenu. */
+.nuage.efface { opacity: .12; }
+@media (max-width: 760px) {
+  .nuage {
+    -webkit-mask-image: radial-gradient(ellipse 76% 40% at 50% 50%, transparent 62%, #000 100%);
+    mask-image: radial-gradient(ellipse 76% 40% at 50% 50%, transparent 62%, #000 100%);
+    opacity: .7;
+  }
+}
+.fiole {
+  position: absolute; width: 26px; height: 40px; margin: -20px 0 0 -13px;
+  --e: 1;
+  transform: scale(var(--e));
+  transition: opacity .85s var(--sortie), transform .85s var(--sortie), filter .85s;
+  will-change: transform, opacity;
+}
+/* Le flottement (demande patron 2026-08-05 : « qu'ils bougent un peu plus »).
+   ⚠️ Chaque flacon a SA duree, SA course et SON inclinaison, posees par le
+   script. Une seule et meme animation pour cent flacons se voit tout de suite :
+   la scene entiere respire en cadence, comme un seul objet. Le decalage rend le
+   mouvement croyable.
+   ⚠️ On n'anime QUE `transform` : c'est la seule propriete que le navigateur
+   sait bouger sans redessiner la page. Animer `top` ou `margin` sur cent
+   elements ferait tomber la fluidite au premier defilement. */
+.fiole > span {
+  display: block;
+  animation: flotte var(--t, 7s) ease-in-out infinite alternate;
+}
+@keyframes flotte {
+  from { transform: translate3d(calc(var(--dx, 4px) * -1), calc(var(--dy, 11px) * -1), 0) rotate(calc(var(--r, 2deg) * -1)); }
+  to   { transform: translate3d(var(--dx, 4px), var(--dy, 11px), 0) rotate(var(--r, 2deg)); }
+}
+.fiole svg, .fiole img { width: 100%; height: 100%; display: block; object-fit: contain; }
+/* ⚠️ Les photos du nuage sont DETOUREES (dossier photos-nuage/, WebP a canal
+   alpha) : le fond blanc du studio n'existe plus, les flacons flottent
+   vraiment. On employait auparavant `mix-blend-mode: multiply`, qui effacait
+   bien le blanc mais teintait AUSSI le flacon avec la couleur du fond - un jus
+   jaune y prenait un ton sale. Le detourage regle les deux. */
+.fiole.hors { opacity: 0; transform: scale(calc(var(--e) * .3)); filter: blur(2px); }
+@media (max-width: 760px) { .fiole { width: 17px; height: 26px; margin: -13px 0 0 -8.5px; } }
+
+/* ---------- Les etats ----------
+   Ils se superposent. Un seul est actif ; les autres sont retires du flux et
+   du parcours clavier. La transition est volontairement APPUYEE : on recule,
+   on floute et on efface le sortant pendant que l'entrant monte. */
+.etats { position: absolute; inset: 0; z-index: 2; }
+.etat {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  /* ⚠️ Le bas est PLUS GENEREUX que le haut, et ce n'est pas une erreur : le
+     bouton de retour flotte en bas de la fenetre. Avec des marges egales, le
+     contenu tombe geometriquement au centre mais parait BAS - l'oeil compte la
+     pastille comme faisant partie du bloc (remarque patron 2026-08-05 sur
+     l'ecran de la collection). Les vingt-huit pixels d'ecart remontent le
+     contenu juste assez pour que l'ensemble retombe d'aplomb. */
+  padding: 84px var(--marge) 152px;
+  overflow-y: auto; overflow-x: hidden;
+  opacity: 0; visibility: hidden; pointer-events: none;
+  transform: scale(.94) translateY(34px); filter: blur(9px);
+  transition: opacity .62s var(--lent), transform .95s var(--lent),
+              filter .62s var(--lent), visibility .62s;
+}
+.etat.actif { opacity: 1; visibility: visible; pointer-events: auto; transform: none; filter: none; }
+.etat.sortant { opacity: 0; transform: scale(1.07) translateY(-30px); filter: blur(14px); }
+/* ⚠️ Un ecran EN ATTENTE ne transitionne pas. Sans cette ligne, changer sa
+   position de depart (le passage en « descente ») declenche une transition de
+   950 ms sur un element invisible : quand il devient actif un quart de seconde
+   plus tard, il n'est pas encore arrive a sa position de depart, et le
+   mouvement part du mauvais endroit - une descente jouee a l'envers. Mesure a
+   l'appui : la valeur lue etait +32px au lieu de -46px. */
+.etat:not(.actif):not(.sortant) { transition: none; }
+
+/* L'ecran qui arrive PAR-DESSUS ce qu'on regardait descend du haut : le
+   contact ouvert depuis une fiche parfum. Le mouvement dit « je me pose sur
+   ta page », la montee dirait « tu as tourne la page ».
+   ⚠️ `.actif` doit rester plus fort que `.descend`, sinon l'ecran resterait
+   fige en position d'entree - d'ou la double classe. */
+.etat.descend { transform: scale(.97) translateY(-46px); }
+.etat.descend.actif { transform: none; }
+.etat.descend.sortant { transform: scale(.97) translateY(-46px); filter: blur(12px); }
+.etat.actif.descend .etat-in > * { animation-name: descend; }
+@keyframes descend { from { opacity: 0; transform: translateY(-26px); filter: blur(5px); } }
+.etat-in { width: 100%; max-width: var(--max); margin: auto; }
+
+/* L'entree en cascade : chaque bloc arrive un peu apres le precedent. C'est
+   ce decalage qui fait « scene » plutot que « changement d'ecran ». */
+.etat.actif .etat-in > * { animation: monte .85s var(--sortie) both; }
+.etat.actif .etat-in > *:nth-child(1) { animation-delay: .12s; }
+.etat.actif .etat-in > *:nth-child(2) { animation-delay: .2s; }
+.etat.actif .etat-in > *:nth-child(3) { animation-delay: .28s; }
+.etat.actif .etat-in > *:nth-child(4) { animation-delay: .36s; }
+@keyframes monte { from { opacity: 0; transform: translateY(30px); filter: blur(5px); } }
+
+/* ---------- L'accroche ---------- */
+.hero-titre { color: var(--prune); max-width: 15ch; margin: 0 auto; }
+.hero-titre em { font-style: italic; color: var(--or); }
+.hero-texte { margin: 30px auto 0; max-width: 52ch; color: var(--sourd); font-size: 17px; }
+.hero-actions { margin-top: 46px; display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+/* ---------- Le questionnaire ---------- */
+.q-tete { display: flex; align-items: center; justify-content: space-between; gap: 20px; margin-bottom: 34px; }
+.q-compte { font-family: var(--titre); font-size: 15px; color: var(--prune); white-space: nowrap; }
+.q-compte b { font-size: 30px; color: var(--or); font-weight: 400; }
+.q-jauge { flex: 1; height: 1px; background: var(--trait); position: relative; }
+.q-jauge i { position: absolute; inset: 0 auto 0 0; background: var(--or); transition: width .7s var(--sortie); }
+.q-titre { color: var(--prune); }
+.q-aide { margin-top: 14px; color: var(--sourd); font-size: 14.5px; }
+.q-choix {
+  margin-top: 40px; display: grid; gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr));
+}
+.q-choix button {
+  padding: 22px 20px; border: 1px solid var(--trait); border-radius: 3px;
+  background: rgba(255, 255, 255, .35); cursor: pointer; text-align: left;
+  transition: border-color .3s, background .3s, transform .3s var(--sortie);
+}
+.q-choix button:hover { border-color: var(--or); background: rgba(255, 255, 255, .7); transform: translateY(-3px); }
+.q-choix b { display: block; font-family: var(--titre); font-size: 22px; font-weight: 400; color: var(--prune); }
+.q-choix span { display: block; margin-top: 6px; font-size: 13px; color: var(--sourd); line-height: 1.5; }
+.q-restants { font-size: 12px; letter-spacing: .18em; text-transform: uppercase; color: var(--sourd); }
+.q-restants b { color: var(--or); font-size: 15px; font-weight: 400; }
+
+/* ---------- La selection ---------- */
+.r-titre { color: var(--prune); }
+.r-texte { margin: 22px auto 0; max-width: 54ch; color: var(--sourd); }
+.r-grille {
+  margin-top: 36px; display: grid; gap: 14px; text-align: left;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 176px), 1fr));
+}
+.r-carte {
+  border: 1px solid var(--trait); border-radius: 3px; padding: 0 0 18px;
+  background: rgba(255, 255, 255, .45); cursor: pointer; text-align: left;
+  transition: border-color .35s, transform .35s var(--sortie), box-shadow .35s;
+  display: flex; flex-direction: column; overflow: hidden;
+}
+.r-carte:hover { border-color: var(--or); transform: translateY(-6px); box-shadow: 0 20px 44px -24px rgba(67, 22, 42, .55); }
+/* ⚠️ Une HAUTEUR, pas un rapport. Avec `aspect-ratio: 3/4`, dix cartes sur
+   deux rangees depassaient le bas du cadre (vu a la capture) - et le site est
+   cense tenir dans une seule fenetre. Une hauteur bornee garantit que la
+   grille rentre, quelle que soit la largeur des colonnes. */
+/* ⚠️ Le porte-photo est BLANC, pas creme (demande patron 2026-08-05). Les
+   photos produit sont prises sur fond blanc : posees sur un beige plus fonce,
+   elles forment un rectangle blanc DANS un cadre - on voit la photo au lieu de
+   voir le flacon. Sur du blanc, le raccord est invisible. C'est un porte-photo,
+   pas une surface de theme : il reste blanc quelle que soit la direction
+   choisie dans l'editeur de couleurs. */
+.r-visuel { width: 100%; height: clamp(100px, 13vh, 138px); background: #FFF; display: grid; place-items: center; overflow: hidden; }
+.r-visuel img { width: 100%; height: 100%; object-fit: contain; padding: 12px; }
+.r-visuel .flacon-mini { width: 46px; height: 70px; }
+.r-carte .r-maison { margin: 16px 16px 0; font-size: 10px; letter-spacing: .24em; text-transform: uppercase; color: var(--sourd); }
+.r-carte .r-nom { margin: 7px 16px 0; font-family: var(--titre); font-size: 20px; color: var(--prune); line-height: 1.1; }
+.r-carte .r-fam { margin: 7px 16px 0; font-size: 11px; color: var(--or); letter-spacing: .1em; text-transform: uppercase; }
+
+/* ⚠️ AU TELEPHONE, DEUX PAR LIGNE (demande patron 2026-08-05). La grille
+   automatique exigeait 176 px par colonne : sur un ecran de 390 px il n'en
+   tenait qu'UNE, et chaque parfum occupait toute la largeur - dix cartes
+   geantes a faire defiler. On impose donc deux colonnes.
+   ⚠️ Le porte-photo passe en RAPPORT et non en hauteur fixe : le flacon est
+   ainsi montre ENTIER, jamais rogne. `contain` ne suffit pas si la boite est
+   trop basse - l'image y devient une bande minuscule. */
+@media (max-width: 760px) {
+  .r-grille { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .r-visuel { height: auto; aspect-ratio: 3 / 4; }
+  .r-visuel img { padding: 8px; }
+  .r-carte { padding-bottom: 14px; }
+  .r-carte .r-maison { margin: 12px 12px 0; font-size: 9px; letter-spacing: .18em; }
+  .r-carte .r-nom { margin: 5px 12px 0; font-size: 16px; }
+  .r-carte .r-fam { margin: 5px 12px 0; font-size: 10px; }
+}
+
+/* ---------- L'explorateur de familles ---------- */
+.f-tete { text-align: center; margin-bottom: clamp(28px, 4vh, 48px); }
+/* ⚠️ Une seule ligne, taille calculee par le script. Une valeur fixe ne peut
+   pas convenir : la phrase est longue et la fenetre change de largeur. C'est
+   ce qui fait remonter la grille de flacons. */
+.f-titre { color: var(--prune); margin-top: 14px; }
+@media (min-width: 900px) { .f-titre { white-space: nowrap; } }
+
+.familles {
+  display: grid; gap: 12px;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 208px), 1fr));
+}
+.famille {
+  position: relative; overflow: hidden; cursor: pointer; text-align: left;
+  border: 1px solid var(--trait); border-radius: 3px; padding: 0 0 20px;
+  background: rgba(255, 255, 255, .4);
+  transition: border-color .4s, transform .4s var(--sortie), background .4s, box-shadow .4s;
+  display: flex; flex-direction: column;
+}
+.famille:hover { border-color: var(--or); transform: translateY(-6px); background: rgba(255, 255, 255, .78); box-shadow: 0 20px 44px -26px rgba(67, 22, 42, .5); }
+/* Les vraies photos de la famille, en bandeau haut de carte. */
+.f-apercu { display: flex; gap: 1px; background: var(--trait); aspect-ratio: 16 / 10; }
+.f-apercu span { flex: 1; background: #FFF center/contain no-repeat; }
+.famille h3 { margin: 16px 18px 0; color: var(--prune); }
+.famille p { margin: 7px 18px 0; font-size: 12.5px; color: var(--sourd); line-height: 1.5; }
+.famille .compte {
+  position: absolute; z-index: 2; top: 12px; right: 14px;
+  font-family: var(--titre); font-size: 26px; color: var(--creme);
+  text-shadow: 0 2px 12px rgba(67, 22, 42, .8);
+}
+
+/* ---------- Nos ecrits et la prise de contact ---------- */
+.etat--sombre { background: var(--prune); color: var(--creme); }
+.etat--sombre h2 { color: var(--creme); }
+.etat--sombre .label { color: rgba(244, 239, 231, .6); }
+.c-duo { display: grid; gap: clamp(34px, 5vw, 74px); align-items: start; }
+@media (min-width: 900px) { .c-duo { grid-template-columns: 1.15fr .85fr; } }
+.ecrits { margin-top: clamp(28px, 4vh, 44px); display: grid; gap: 20px; }
+.ecrits article { border-top: 1px solid rgba(244, 239, 231, .22); padding-top: 16px; }
+.ecrits b { display: block; font-family: var(--titre); font-size: 20px; font-weight: 400; }
+.ecrits span { display: block; margin-top: 7px; font-size: 14px; color: rgba(244, 239, 231, .7); line-height: 1.55; }
+.c-fiche { border-top: 1px solid rgba(244, 239, 231, .22); padding-top: 22px; }
+.c-lignes { margin: 22px 0 0; display: grid; gap: 1px; background: rgba(244, 239, 231, .18); }
+.c-lignes > div { background: var(--prune); padding: 14px 0; display: flex; flex-wrap: wrap; gap: 5px 18px; justify-content: space-between; align-items: baseline; }
+.c-lignes dt { font-size: 10px; letter-spacing: .24em; text-transform: uppercase; color: rgba(244, 239, 231, .55); }
+.c-lignes dd { margin: 0; font-size: 15px; }
+.c-lignes a:hover { color: var(--or-clair); }
+.etat--sombre .btn--or { border-color: var(--or-clair); color: var(--or-clair); }
+.etat--sombre .btn--or:hover { background: var(--or-clair); color: var(--prune); }
+.c-signature { margin-top: 26px; font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: rgba(244, 239, 231, .45); }
+
+/* =========================================================================
+   3. La fiche parfum
+   ========================================================================= */
+.fiche {
+  position: fixed; inset: 0; z-index: 120; background: var(--creme);
+  overflow-y: auto; opacity: 0; visibility: hidden;
+  transform: scale(1.03); filter: blur(8px);
+  transition: opacity .5s var(--lent), visibility .5s, transform .7s var(--lent), filter .5s;
+}
+.fiche.ouverte { opacity: 1; visibility: visible; transform: none; filter: none; }
+.fiche-in {
+  min-height: 100%; display: grid; align-items: center; gap: clamp(30px, 5vw, 74px);
+  max-width: var(--max); margin: 0 auto; padding: 104px var(--marge) 72px;
+}
+@media (min-width: 900px) { .fiche-in { grid-template-columns: .85fr 1.15fr; } }
+.fiche.ouverte .fiche-visuel { animation: monte .8s var(--sortie) both .1s; }
+.fiche.ouverte .fiche-corps { animation: monte .8s var(--sortie) both .2s; }
+
+/* ⚠️ BLANC, pas creme (demande patron 2026-08-05). Les photos produit sont
+   prises sur fond blanc : sur un aplat beige, on voyait le rectangle de la
+   photo avant de voir le parfum. Sur du blanc, le fond de la photo se confond
+   avec le cadre et il ne reste que le flacon. Le liseré or garde le bloc
+   dessine dans la page - un blanc pur sans bord flotterait. */
+.fiche-visuel {
+  position: relative; display: grid; place-items: center;
+  background: #FFF; border: 1px solid var(--trait-or);
+  border-radius: 3px; padding: clamp(30px, 4vw, 56px); aspect-ratio: 4 / 5;
+}
+.fiche-visuel .flacon-grand { width: min(240px, 62%); height: auto; }
+.fiche-visuel img { width: 100%; height: 100%; object-fit: contain; }
+
+.fiche-maison { color: var(--or); }
+.fiche-nom { color: var(--prune); margin-top: 12px; }
+.fiche-meta { margin: 22px 0 0; display: flex; flex-wrap: wrap; gap: 12px 30px; }
+.fiche-meta div { min-width: 118px; }
+.fiche-meta dt { font-size: 10px; letter-spacing: .24em; text-transform: uppercase; color: var(--sourd); }
+.fiche-meta dd { margin: 5px 0 0; font-family: var(--titre); font-size: 19px; color: var(--prune); }
+.fiche-texte { margin-top: 26px; color: var(--encre); max-width: 58ch; }
+.fiche-ambiance { margin-top: 14px; font-family: var(--titre); font-style: italic; font-size: 20px; color: var(--or); }
+
+.pyramide { margin: 30px 0 0; border-top: 1px solid var(--trait); }
+.pyramide > div { padding: 16px 0; border-bottom: 1px solid var(--trait); display: grid; gap: 4px 26px; }
+@media (min-width: 640px) { .pyramide > div { grid-template-columns: 132px 1fr; align-items: baseline; } }
+.pyramide dt { font-size: 10px; letter-spacing: .24em; text-transform: uppercase; color: var(--or); }
+.pyramide dd { margin: 0; color: var(--encre); }
+
+.fiche-actions { margin-top: 32px; display: flex; gap: 14px; flex-wrap: wrap; }
+.fiche-fermer {
+  position: fixed; top: 20px; right: var(--marge); z-index: 130;
+  width: 46px; height: 46px; border-radius: 50%; border: 1px solid var(--trait);
+  background: var(--creme); color: var(--prune); cursor: pointer;
+  display: grid; place-items: center; font-size: 21px; line-height: 1;
+}
+.fiche-fermer:hover { background: var(--prune); color: var(--creme); border-color: var(--prune); }
+
+/* =========================================================================
+   4. Le curseur au flacon (demande patron 2026-08-05)
+
+   La forme est RELEVEE sur le logo de la marque : le « i » de EFFLUVE est un
+   vaporisateur ancien - poire inclinee en haut a gauche, col fin, corps galbe,
+   pied evase. C'est ce dessin, pas un flacon generique.
+
+   ⚠️ Le point actif est le SOMMET DU COL, pas le centre : un curseur dont le
+   point de clic est au milieu du dessin donne l'impression de cliquer a cote.
+   ⚠️ Le repli est toujours declare (`, auto` / `, pointer`) : si le navigateur
+   refuse l'image - taille, format, systeme - il reste un curseur, jamais rien.
+   ⚠️ Le trait sombre autour de l'or n'est pas decoratif : sans lui, le curseur
+   disparait sur l'ecran de contact, qui est un aplat prune.
+   ⚠️ Rien sur les appareils tactiles : il n'y a pas de curseur a remplacer, et
+   la regle ferait travailler le navigateur pour rien.
+   ========================================================================= */
+@media (hover: hover) and (pointer: fine) {
+  body {
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='32' viewBox='0 0 24 32'%3E%3Cg fill='%23C09048' stroke='%2343162A' stroke-width='1.1' stroke-linejoin='round'%3E%3Cellipse cx='5' cy='6.6' rx='3.9' ry='2.7' transform='rotate(-18 5 6.6)'/%3E%3Crect x='10.3' y='2' width='3.4' height='9' rx='1'/%3E%3Cpath d='M10.3 11c0 2.6-4.3 3.6-4.3 7.6 0 3.4 2.5 4.9 3.5 7.4h5c1-2.5 3.5-4 3.5-7.4 0-4-4.3-5-4.3-7.6z'/%3E%3Crect x='6.6' y='26' width='10.8' height='3.2' rx='1.2'/%3E%3C/g%3E%3C/svg%3E") 12 2, auto;
+  }
+  a, button, [role="button"], .q-choix button, .r-carte, .famille, summary, label {
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='40' viewBox='0 0 24 32'%3E%3Cg fill='%23D8A860' stroke='%2343162A' stroke-width='1.2' stroke-linejoin='round'%3E%3Cellipse cx='5' cy='6.6' rx='3.9' ry='2.7' transform='rotate(-18 5 6.6)'/%3E%3Crect x='10.3' y='2' width='3.4' height='9' rx='1'/%3E%3Cpath d='M10.3 11c0 2.6-4.3 3.6-4.3 7.6 0 3.4 2.5 4.9 3.5 7.4h5c1-2.5 3.5-4 3.5-7.4 0-4-4.3-5-4.3-7.6z'/%3E%3Crect x='6.6' y='26' width='10.8' height='3.2' rx='1.2'/%3E%3C/g%3E%3Cg fill='none' stroke='%23D8A860' stroke-width='1' opacity='.75'%3E%3Cpath d='M19.5 13.5c1.6 1.8 1.6 5.2 0 7'/%3E%3C/g%3E%3C/svg%3E") 15 2, pointer;
+  }
+  /* Le champ de saisie garde le curseur du systeme : on ne remplace pas un
+     signe qui indique OU le texte va s'ecrire. */
+  input, textarea, select { cursor: auto; }
+}
+
+/* =========================================================================
+   5. Mouvement reduit
+   ========================================================================= */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; }
+  .fiole > span { animation: none !important; }
+  .etat { transform: none !important; filter: none !important; }
+}

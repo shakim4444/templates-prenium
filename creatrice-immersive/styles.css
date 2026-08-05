@@ -1,0 +1,451 @@
+/* =========================================================================
+   NAYA SANOU - version « démo interactive »
+   Feuille unique, sans dépendance, sans build.
+
+   DIRECTION
+   Le hero est celui de la version classique. Tout change au premier
+   défilement : la page passe en deux colonnes et n'en sort plus.
+     - à GAUCHE, le contenu seul. Très peu de mots, beaucoup de blanc, une
+       hiérarchie forte. C'est la typographie qui porte.
+     - à DROITE, l'expérience. Le panneau reste à l'écran et se transforme
+       d'une section à l'autre : portrait, campagne légendée, résultats,
+       décomposition en galerie, produits, photo finale.
+
+   Les transitions sont lentes et sans effet spectaculaire. L'objectif n'est
+   pas qu'on remarque l'animation, c'est que chaque section ait l'air de
+   DEVENIR la suivante.
+   ========================================================================= */
+
+:root {
+  --encre:  #F1ECE6;   /* fond : ivoire */
+  --nuit:   #E4DED6;
+  --voile:  #DDD5CD;
+  --ivoire: #2E2E2E;   /* texte et aplats : anthracite */
+  --sourd:  #6E6259;   /* le taupe assombri : le taupe d'origine tombe a 1,9:1 */
+  --taupe:  #B6A697;
+  --halo:   #7D4047;   /* lie-de-vin : l'accent, en petite dose */
+  --trait:  rgba(46, 46, 46, .16);
+  --trait-fort: rgba(46, 46, 46, .34);
+  --sur-photo: #F1ECE6;
+
+  --tech:  "Martian Mono", ui-monospace, "SF Mono", monospace;
+  --corps: "Martian Mono", ui-monospace, monospace;
+  --titre: var(--tech);
+
+  --marge: clamp(18px, 4vw, 52px);
+  --max: 1600px;
+  --sortie: cubic-bezier(.22, 1, .36, 1);
+  --lent: cubic-bezier(.65, 0, .35, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--encre); color: var(--ivoire);
+  font-family: var(--corps); font-size: 15px; line-height: 1.65;
+  font-weight: 300; letter-spacing: -.01em;
+  overflow-x: hidden;
+}
+img { max-width: 100%; display: block; }
+button { font: inherit; color: inherit; }
+a { color: inherit; text-decoration: none; }
+h1, h2, h3, h4 {
+  font-family: var(--titre); font-weight: 500; margin: 0;
+  letter-spacing: -.045em; line-height: .94; text-transform: uppercase;
+}
+h1 { font-size: clamp(38px, 6.6vw, 104px); }
+h2 { font-size: clamp(28px, 3.6vw, 58px); }
+h3 { font-size: clamp(15px, 1.3vw, 18px); letter-spacing: -.01em; line-height: 1.3; text-transform: none; }
+p { margin: 0; }
+em { font-style: normal; color: var(--sourd); }
+
+.enveloppe { width: 100%; max-width: var(--max); margin: 0 auto; padding: 0 var(--marge); }
+
+.label, .eyebrow {
+  font-family: var(--tech); font-size: 11px; font-weight: 400;
+  letter-spacing: .24em; text-transform: uppercase; color: var(--sourd);
+}
+.plomb { color: var(--sourd); max-width: 42ch; }
+
+.vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+.skip-link { position: absolute; left: -9999px; top: 10px; z-index: 200; background: var(--ivoire); color: var(--encre); padding: 12px 18px; }
+.skip-link:focus { left: 12px; }
+:focus-visible { outline: 2px solid var(--halo); outline-offset: 4px; }
+
+/* ---------- Boutons ---------- */
+.btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: var(--tech); font-size: 11px; letter-spacing: .24em;
+  text-transform: uppercase; font-weight: 400;
+  padding: 13px 0 12px; border: 0; border-bottom: 1px solid var(--trait-fort);
+  background: none; cursor: pointer; transition: border-color .35s, gap .35s var(--sortie);
+}
+.btn:hover { border-color: var(--ivoire); gap: 16px; }
+.btn svg { width: 15px; height: 15px; flex: none; }
+.btn--clair { color: var(--ivoire); }
+
+/* =========================================================================
+   1. En-tete
+   ========================================================================= */
+.entete {
+  position: fixed; inset: 0 0 auto; z-index: 60;
+  padding: 22px var(--marge);
+  display: flex; align-items: center; justify-content: space-between;
+  transition: background .4s, padding .4s, box-shadow .4s;
+  mix-blend-mode: normal;
+}
+.entete.collee { background: rgba(241, 236, 230, .93); backdrop-filter: blur(12px); padding: 14px var(--marge); box-shadow: 0 1px 0 var(--trait); }
+.sceau { font-family: var(--titre); font-size: 15px; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; }
+/* Sur le hero, l'en-tete est posee sur une photo sombre : elle doit s'y lire. */
+.entete:not(.collee) { color: var(--sur-photo); }
+/* ⚠️ « Me contacter » ne suivait PAS (signale par le patron 2026-08-05) : la
+   regle `.btn--clair { color: var(--ivoire) }` ecrase la couleur heritee de
+   l'en-tete, et le bouton restait en encre sombre sur la photo du hero -
+   invisible la ou il compte le plus. Il faut donc le nommer explicitement, et
+   sa ligne de soulignement avec lui. */
+.entete:not(.collee) .btn--clair { color: var(--sur-photo); border-bottom-color: rgba(255, 255, 255, .45); }
+.entete:not(.collee) .btn--clair:hover { border-bottom-color: var(--sur-photo); }
+
+/* =========================================================================
+   2. Le hero - identique a la version classique
+   ========================================================================= */
+.hero { position: relative; min-height: 100svh; display: flex; align-items: flex-end; padding: 132px 0 clamp(28px, 4vw, 52px); overflow: hidden; }
+.hero-fond { position: absolute; inset: 0; z-index: 0; }
+.hero-fond img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 26%; }
+.hero-grade { position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, rgba(46,46,46,.42) 0%, rgba(46,46,46,.06) 30%, rgba(46,46,46,.82) 100%); }
+.hero-in { position: relative; z-index: 2; width: 100%; color: var(--sur-photo); display: flex; flex-direction: column; justify-content: flex-end; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 34px; }
+.hero .btn { color: var(--sur-photo); border-color: rgba(255,255,255,.35); }
+.hero .btn:hover { border-color: var(--sur-photo); }
+.hero-bas {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+  gap: 24px; margin-top: clamp(36px, 6vw, 72px); padding-top: 24px;
+  border-top: 1px solid rgba(255,255,255,.16);
+}
+.hero-chiffres { display: flex; flex-wrap: wrap; gap: clamp(26px, 4vw, 56px); }
+.hero-chiffres b { display: block; font-family: var(--titre); font-weight: 500; font-size: clamp(26px, 3.4vw, 44px); line-height: 1; letter-spacing: -.05em; }
+.hero-chiffres span { display: block; margin-top: 8px; font-family: var(--tech); font-size: 10px; letter-spacing: .24em; text-transform: uppercase; color: rgba(255,255,255,.6); }
+.reseaux { display: flex; gap: 26px; }
+.reseaux a { opacity: .55; transition: opacity .3s; }
+.reseaux a:hover { opacity: 1; }
+.reseaux svg { width: 15px; height: 15px; }
+
+/* =========================================================================
+   3. Les deux colonnes
+   ⚠️ Le panneau de droite est `sticky`, pas `fixed`. En fixed il faudrait le
+   montrer et le cacher a la main au debut et a la fin du bloc, et il
+   deborderait sur le hero et sur le pied de page. En sticky, il reste
+   naturellement dans les limites de son parent - le navigateur s'en occupe.
+   ========================================================================= */
+.duo { position: relative; }
+@media (min-width: 1000px) {
+  .duo { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(30px, 4vw, 70px); align-items: start; }
+}
+
+.colonne { min-width: 0; }
+.scene {
+  min-height: 100svh; display: flex; flex-direction: column; justify-content: center;
+  padding: clamp(70px, 12vh, 130px) 0;
+}
+.scene > * + * { margin-top: 26px; }
+.scene h2 { max-width: 15ch; }
+/* La hierarchie tient a l'ecart entre les tailles, pas au nombre de niveaux :
+   une etiquette de 11 px, un titre enorme, et rien entre les deux. */
+.scene .plomb { font-size: 15px; }
+
+/* Le panneau immersif */
+.panneau {
+  position: sticky; top: 0; height: 100svh;
+  display: flex; align-items: center; padding: clamp(24px, 4vh, 56px) 0;
+}
+.panneau-cadre { position: relative; width: 100%; height: 100%; overflow: hidden; background: var(--nuit); }
+
+.couche {
+  position: absolute; inset: 0;
+  opacity: 0; transform: scale(1.05);
+  transition: opacity 1.1s var(--lent), transform 1.6s var(--lent);
+  pointer-events: none;
+}
+.couche.active { opacity: 1; transform: scale(1); pointer-events: auto; }
+.couche > img { width: 100%; height: 100%; object-fit: cover; }
+
+/* La legende posee sur la photo de campagne. */
+.legende {
+  position: absolute; left: 0; right: 0; bottom: 0;
+  padding: clamp(20px, 3vw, 36px);
+  background: linear-gradient(180deg, transparent, rgba(46,46,46,.86));
+  color: var(--sur-photo);
+  opacity: 0; transform: translateY(14px);
+  transition: opacity .9s var(--sortie) .35s, transform .9s var(--sortie) .35s;
+}
+.couche.active .legende { opacity: 1; transform: none; }
+.legende .label { color: rgba(241,236,230,.66); }
+.legende b { display: block; margin-top: 8px; font-family: var(--titre); font-weight: 500; font-size: clamp(17px, 1.6vw, 23px); letter-spacing: -.03em; text-transform: uppercase; }
+.legende span { display: block; margin-top: 6px; font-size: 13px; color: rgba(241,236,230,.74); }
+
+/* Les chiffres poses sur la photo des resultats. */
+.resultats-sur-photo {
+  position: absolute; inset: auto 0 0 0; padding: clamp(20px, 3vw, 36px);
+  background: linear-gradient(180deg, transparent, rgba(46,46,46,.88));
+  color: var(--sur-photo); display: flex; flex-wrap: wrap; gap: clamp(18px, 3vw, 44px);
+}
+.resultats-sur-photo div { opacity: 0; transform: translateY(16px); transition: opacity .8s var(--sortie), transform .8s var(--sortie); }
+.couche.active .resultats-sur-photo div { opacity: 1; transform: none; }
+.couche.active .resultats-sur-photo div:nth-child(2) { transition-delay: .12s; }
+.couche.active .resultats-sur-photo div:nth-child(3) { transition-delay: .24s; }
+.resultats-sur-photo b { display: block; font-family: var(--titre); font-weight: 500; font-size: clamp(22px, 2.6vw, 38px); line-height: 1; letter-spacing: -.05em; }
+.resultats-sur-photo span { display: block; margin-top: 7px; font-family: var(--tech); font-size: 10px; letter-spacing: .22em; text-transform: uppercase; color: rgba(241,236,230,.64); }
+
+/* ---------- La décomposition en galerie ----------
+   Les quatre tuiles portent la MEME photo, chacune cadrée sur un quart :
+   assemblées, elles reforment l'image. Quand la section devient active elles
+   s'écartent et leur légende apparaît. C'est ce qui donne l'impression que la
+   photo se défait pour révéler ce qui a été publié.
+   ⚠️ On écarte par `transform`, pas en animant `gap` : une transition sur gap
+   force le navigateur à recalculer la grille à chaque image. */
+.mosaique { position: absolute; inset: 0; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; }
+.tuile { position: relative; overflow: hidden; display: block; transition: transform 1.2s var(--lent); }
+.tuile-photo { position: absolute; inset: 0; background-size: 200% 200%; }
+.tuile:nth-child(1) .tuile-photo { background-position: 0 0; }
+.tuile:nth-child(2) .tuile-photo { background-position: 100% 0; }
+.tuile:nth-child(3) .tuile-photo { background-position: 0 100%; }
+.tuile:nth-child(4) .tuile-photo { background-position: 100% 100%; }
+.couche.active .tuile:nth-child(1) { transform: translate(-6px, -6px); }
+.couche.active .tuile:nth-child(2) { transform: translate(6px, -6px); }
+.couche.active .tuile:nth-child(3) { transform: translate(-6px, 6px); }
+.couche.active .tuile:nth-child(4) { transform: translate(6px, 6px); }
+.tuile-info {
+  position: absolute; left: 0; right: 0; bottom: 0; padding: 14px 15px;
+  background: linear-gradient(180deg, transparent, rgba(46,46,46,.88));
+  color: var(--sur-photo);
+  opacity: 0; transform: translateY(10px);
+  transition: opacity .7s var(--sortie), transform .7s var(--sortie);
+}
+.couche.active .tuile-info { opacity: 1; transform: none; }
+.couche.active .tuile:nth-child(2) .tuile-info { transition-delay: .1s; }
+.couche.active .tuile:nth-child(3) .tuile-info { transition-delay: .2s; }
+.couche.active .tuile:nth-child(4) .tuile-info { transition-delay: .3s; }
+.tuile-info b { display: block; font-size: 12.5px; font-weight: 400; letter-spacing: -.01em; }
+.tuile-info span { display: block; margin-top: 3px; font-family: var(--tech); font-size: 9.5px; letter-spacing: .2em; text-transform: uppercase; color: rgba(241,236,230,.6); }
+
+/* ---------- Les produits qui apparaissent autour de l'image ---------- */
+.produits-flottants { position: absolute; inset: 0; }
+.puce-produit {
+  position: absolute; display: flex; align-items: center; gap: 10px;
+  padding: 10px 14px 10px 10px; background: rgba(241, 236, 230, .95);
+  color: var(--ivoire); max-width: 74%;
+  opacity: 0; transform: translateY(12px) scale(.96);
+  transition: opacity .8s var(--sortie), transform .8s var(--sortie);
+  box-shadow: 0 18px 40px -22px rgba(46, 46, 46, .8);
+}
+.couche.active .puce-produit { opacity: 1; transform: none; }
+.couche.active .puce-produit:nth-child(2) { transition-delay: .16s; }
+.couche.active .puce-produit:nth-child(3) { transition-delay: .32s; }
+.puce-produit img { width: 42px; height: 42px; object-fit: cover; flex: none; }
+.puce-produit b { display: block; font-size: 12.5px; font-weight: 400; }
+.puce-produit span { display: block; margin-top: 2px; font-family: var(--tech); font-size: 9.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--sourd); }
+
+/* ---------- Le formulaire de la derniere scene ---------- */
+.champ { display: block; margin-top: 20px; }
+.champ label { display: block; font-family: var(--tech); font-size: 10px; letter-spacing: .24em; text-transform: uppercase; color: var(--sourd); }
+.champ input, .champ textarea, .champ select {
+  width: 100%; margin-top: 9px; padding: 11px 0; border: 0; border-bottom: 1px solid var(--trait);
+  background: none; color: var(--ivoire); font: inherit; border-radius: 0;
+}
+.champ textarea { min-height: 88px; resize: vertical; }
+.champ input:focus, .champ textarea:focus, .champ select:focus { outline: none; border-color: var(--ivoire); }
+.champ-duo { display: grid; gap: 20px; }
+@media (min-width: 620px) { .champ-duo { grid-template-columns: 1fr 1fr; } }
+.avis { margin-top: 20px; font-size: 13px; color: var(--sourd); }
+
+/* =========================================================================
+   4. Pied de page
+   ========================================================================= */
+.pied { border-top: 1px solid var(--trait); margin-top: clamp(60px, 9vw, 120px); padding: clamp(40px, 5vw, 64px) 0 34px; }
+.pied-haut { display: grid; gap: 34px; }
+@media (min-width: 760px) { .pied-haut { grid-template-columns: 1.4fr 1fr 1fr; } }
+.pied h4 { font-family: var(--tech); font-size: 11px; letter-spacing: .24em; color: var(--sourd); }
+.pied ul { list-style: none; margin: 16px 0 0; padding: 0; display: grid; gap: 10px; }
+.pied-bas { margin-top: clamp(36px, 5vw, 60px); padding-top: 22px; border-top: 1px solid var(--trait); display: flex; flex-wrap: wrap; gap: 12px 26px; justify-content: space-between; font-family: var(--tech); font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: var(--sourd); }
+
+/* =========================================================================
+   5. Le banc d'essai typographique - identique a la version classique, pour
+   que les deux demos se comparent sous la meme typographie.
+   ========================================================================= */
+h1, h2, h3, h4, .sceau { font-family: var(--titre); }
+[data-typo] h1, [data-typo] h2 { letter-spacing: -.02em; }
+[data-typo="editorial"] h1, [data-typo="editorial"] h2,
+[data-typo="magazine"] h1, [data-typo="magazine"] h2,
+[data-typo="couture"] h1, [data-typo="couture"] h2 { letter-spacing: .005em; }
+
+[data-typo="luxe"]      { --titre: "Cormorant Garamond", Georgia, serif; --corps: "Jost", system-ui, sans-serif; --tech: "Jost", system-ui, sans-serif; }
+[data-typo="editorial"] { --titre: "Playfair Display", Georgia, serif;   --corps: "Inter", system-ui, sans-serif; --tech: "Inter", system-ui, sans-serif; }
+[data-typo="cosmetique"]{ --titre: "Fraunces", Georgia, serif;           --corps: "Karla", system-ui, sans-serif; --tech: "Karla", system-ui, sans-serif; }
+[data-typo="minimal"]   { --titre: "Instrument Serif", Georgia, serif;   --corps: "Manrope", system-ui, sans-serif; --tech: "Manrope", system-ui, sans-serif; }
+[data-typo="magazine"]  { --titre: "Bodoni Moda", Georgia, serif;        --corps: "Work Sans", system-ui, sans-serif; --tech: "Work Sans", system-ui, sans-serif; }
+[data-typo="couture"]   { --titre: "Italiana", Georgia, serif;           --corps: "Montserrat", system-ui, sans-serif; --tech: "Montserrat", system-ui, sans-serif; }
+[data-typo="douceur"]   { --titre: "DM Serif Display", Georgia, serif;   --corps: "DM Sans", system-ui, sans-serif; --tech: "DM Sans", system-ui, sans-serif; }
+[data-typo="parisien"]  { --titre: "Marcellus", Georgia, serif;          --corps: "Lato", system-ui, sans-serif; --tech: "Lato", system-ui, sans-serif; }
+[data-typo="net"]       { --titre: "Syne", system-ui, sans-serif;        --corps: "Space Grotesk", system-ui, sans-serif; --tech: "Space Grotesk", system-ui, sans-serif; }
+[data-typo="eclat"]     { --titre: "Prata", Georgia, serif;              --corps: "Figtree", system-ui, sans-serif; --tech: "Figtree", system-ui, sans-serif; }
+[data-typo="signature"] { --titre: "Gilda Display", Georgia, serif;      --corps: "Nunito Sans", system-ui, sans-serif; --tech: "Nunito Sans", system-ui, sans-serif; }
+[data-typo="ligne"]     { --titre: "Tenor Sans", system-ui, sans-serif;  --corps: "Barlow", system-ui, sans-serif; --tech: "Barlow", system-ui, sans-serif; }
+[data-typo="sensuel"]   { --titre: "Yeseva One", Georgia, serif;         --corps: "Poppins", system-ui, sans-serif; --tech: "Poppins", system-ui, sans-serif; }
+[data-typo="classique"] { --titre: "Libre Baskerville", Georgia, serif;  --corps: "Outfit", system-ui, sans-serif; --tech: "Outfit", system-ui, sans-serif; }
+
+.typo-bouton {
+  position: fixed; right: 18px; top: 88px; z-index: 70;
+  width: 46px; height: 46px; border: 1px solid var(--trait-fort);
+  background: var(--encre); color: var(--ivoire); font-size: 17px;
+  display: grid; place-items: center; cursor: pointer;
+}
+.typo-bouton:hover { background: var(--ivoire); color: var(--encre); }
+.typo-panneau {
+  position: fixed; right: 18px; top: 142px; z-index: 70; width: min(292px, calc(100vw - 36px));
+  max-height: min(70vh, 560px); overflow-y: auto;
+  background: var(--encre); border: 1px solid var(--trait-fort); padding: 8px; display: none;
+}
+.typo-panneau[data-ouvert] { display: block; }
+.typo-panneau p { font-family: var(--tech); font-size: 10px; letter-spacing: .24em; text-transform: uppercase; color: var(--sourd); padding: 10px 10px 12px; }
+.typo-panneau button { display: block; width: 100%; text-align: left; padding: 11px 10px; background: none; border: 0; color: var(--ivoire); cursor: pointer; line-height: 1.25; }
+.typo-panneau button:hover { background: rgba(46,46,46,.05); }
+.typo-panneau button[aria-pressed="true"] { background: var(--ivoire); color: var(--encre); }
+.typo-panneau button b { display: block; font-size: 15px; font-weight: 500; }
+.typo-panneau button span { font-size: 11px; opacity: .6; }
+/* ⚠️ Au telephone, en haut a droite, le bouton se pose SUR le titre de la
+   section (vu a la capture). Il descend en bas a GAUCHE : le bas droit est
+   occupe par la pastille de demonstration a la publication. */
+@media (max-width: 760px) {
+  .typo-bouton { top: auto; right: auto; left: 14px; bottom: 14px; width: 42px; height: 42px; }
+  .typo-panneau { top: auto; right: auto; left: 14px; bottom: 64px; max-height: 56vh; }
+}
+
+/* =========================================================================
+   6. Téléphone
+   ⚠️ Deux colonnes n'ont aucun sens sur 390 px, et un panneau collant qui
+   occupe tout l'écran empêcherait de lire le texte. En dessous de 1000 px,
+   chaque visuel redescend DANS sa section, en flux normal, et l'effet de
+   transformation disparaît : c'est une expérience de bureau, assumée comme
+   telle. Le contenu, lui, reste complet.
+   ========================================================================= */
+@media (max-width: 999px) {
+  .panneau { position: static; height: auto; padding: 0; }
+  .panneau-cadre { display: none; }
+  .scene { min-height: 0; padding: clamp(56px, 9vh, 84px) 0; }
+  .visuel-mobile { display: block; margin-top: 26px; aspect-ratio: 4 / 5; overflow: hidden; background: var(--nuit); }
+  .visuel-mobile img { width: 100%; height: 100%; object-fit: cover; }
+}
+@media (min-width: 1000px) { .visuel-mobile { display: none; } }
+
+/* =========================================================================
+   7. Mouvement réduit
+   ========================================================================= */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; }
+  .couche { transform: none !important; }
+  .tuile { transform: none !important; }
+}
+
+
+/* ---------- Volume au survol (2026-08-05) ----------
+   Tous les elements cliquables grossissent legerement : c'est le seul retour
+   visuel dans un site sans bordure ni fond de bouton.
+   ⚠️ On exclut ce qui porte DEJA un transform (les cartes, qui se soulevent) :
+   deux regles qui ecrivent la meme propriete, la derniere gagne, et la carte
+   cesserait de se soulever. */
+.btn, .sceau, .burger, .code-promo, .nav-bureau a, .reseaux a,
+.typo-bouton, .coul-bouton, .ap-bouton, .carrousel-puce {
+  transition: transform .32s cubic-bezier(.22, 1, .36, 1),
+              opacity .3s, background .35s, color .35s, border-color .35s;
+  transform-origin: center center;
+}
+.btn:hover, .sceau:hover, .burger:hover, .code-promo:hover,
+.nav-bureau a:hover, .reseaux a:hover,
+.typo-bouton:hover, .coul-bouton:hover, .ap-bouton:hover { transform: scale(1.07); }
+.btn:active, .nav-bureau a:active, .sceau:active { transform: scale(.98); }
+/* Le focus clavier merite le meme signal que la souris. */
+.btn:focus-visible, .nav-bureau a:focus-visible, .sceau:focus-visible { transform: scale(1.07); }
+
+@media (prefers-reduced-motion: reduce) {
+  .btn:hover, .sceau:hover, .burger:hover, .code-promo:hover,
+  .nav-bureau a:hover, .reseaux a:hover { transform: none; }
+}
+
+/* ---------- Le curseur : le monogramme HB (2026-08-05) ----------
+   Un disque qui suit le pointeur et s'ouvre sur les images, portant les
+   initiales en ecriture manuscrite. Il ne decore pas : dans un site sans
+   bordure ni fond de bouton, c'est lui qui dit ce qui est cliquable. */
+.curseur {
+  position: fixed; top: 0; left: 0; z-index: 300; pointer-events: none;
+  /* ⚠️ Au repos, le point actif est la POINTE de la fleche, pas le centre du
+     bloc : c'est ce qui fait qu'on croit a un curseur. Au survol le disque se
+     recentre, parce qu'un cercle se vise par son milieu. */
+  width: 46px; height: 18px; border-radius: 50%;
+  transform: translate(-1px, -1px);
+  display: none; align-items: flex-start; gap: 4px;
+  color: var(--ivoire);
+  transition: width .35s var(--sortie), height .35s var(--sortie),
+              background .35s, transform .35s var(--sortie);
+}
+@media (hover: hover) and (pointer: fine) { .curseur { display: flex; } }
+.curseur-fleche { width: 12px; height: 15px; flex: none; transition: opacity .2s; }
+/* Plus d'inversion : sur une page claire, un disque qui retourne les couleurs
+   agresse au lieu de guider. Un aplat lie-de-vin translucide suffit a le signaler. */
+.curseur.ouvert {
+  width: 76px; height: 76px; background: rgba(125, 64, 71, .82);
+  transform: translate(-50%, -50%);
+  align-items: center; justify-content: center; gap: 0;
+}
+/* La fleche s'efface quand le disque s'ouvre : deux signes de pointage a la
+   fois, c'est un de trop. */
+.curseur.ouvert .curseur-fleche { opacity: 0; }
+/* ⚠️ Le monogramme est TOUJOURS la, ouvert ou ferme : c'est la signature. Au
+   repos il tient dans la ligne, a cote de la fleche ; au survol il passe au
+   centre du disque et grandit avec lui. */
+.curseur span {
+  font-family: "Parisienne", "Brush Script MT", cursive;
+  line-height: 1; letter-spacing: 0; text-transform: none;
+  font-size: 19px; margin-top: -3px;
+  color: var(--ivoire); text-shadow: 0 1px 5px rgba(241, 236, 230, .85);
+  transition: font-size .35s var(--sortie), color .3s, text-shadow .3s;
+}
+.curseur.ouvert span {
+  position: absolute; inset: 0; display: grid; place-items: center;
+  font-size: 30px; margin: 0;
+  color: #F1ECE6; text-shadow: 0 1px 6px rgba(46, 46, 46, .35);
+}
+/* La variante etroite : meme signal, sur un lien de texte, sans recouvrir
+   le mot qu'on est en train de viser. */
+.curseur.ouvert--fin { width: 46px; height: 46px; }
+.curseur.ouvert--fin span { font-size: 21px; }
+
+/* ⚠️ Le curseur du systeme n'est masque que si le NOTRE tourne vraiment (classe posee
+   par le script). Sinon un navigateur sans JavaScript, ou un visiteur en mouvement
+   reduit, se retrouverait sans aucun curseur du tout - le site deviendrait inutilisable. */
+.curseur-actif body, .curseur-actif a, .curseur-actif button,
+.curseur-actif input, .curseur-actif select, .curseur-actif textarea { cursor: none; }
+@media (prefers-reduced-motion: reduce) { .curseur { display: none !important; } }
+
+/* Toujours lisible, quel que soit le fond : la couleur rendue est l'inverse
+   de ce qui se trouve dessous. Voir le commentaire du script de pose. */
+.curseur { mix-blend-mode: difference; color: #FFFFFF; }
+.curseur span { color: #FFFFFF; text-shadow: none; }
+.curseur .curseur-fleche { stroke: rgba(0,0,0,.35); }
+/* Le disque de survol garde son aplat : il porte sa propre couleur. */
+.curseur.ouvert, .curseur.ouvert--fin { mix-blend-mode: normal; }
+.curseur.ouvert span { color: #F1ECE6; }
+
+/* Voile du hero renforce : la photo de cette version est un studio clair,
+   la aussi le texte doit tenir. Valeurs choisies pour retrouver le niveau de
+   contraste de la version d'origine (mesure : 3,65:1 -> plus de 6:1).
+   ⚠️ Le selecteur DOIT etre `.hero--nu .hero-grade` : la feuille pose deja
+   une regle a deux classes pour le hero depouille, et une simple
+   `.hero-grade` placee plus bas ne la surpasse pas - la specificite l'emporte
+   sur l'ordre. Erreur commise ici meme, rattrapee par la mesure : le
+   contraste n'avait pas bouge d'un centieme. */
+.hero--nu .hero-grade {
+  background: linear-gradient(180deg, rgba(26,24,22,.60) 0%, rgba(26,24,22,.30) 34%, rgba(26,24,22,.88) 100%);
+}
+.hero .hero-grade {
+  background: linear-gradient(180deg, rgba(26,24,22,.62) 0%, rgba(26,24,22,.34) 36%, rgba(26,24,22,.9) 100%);
+}
